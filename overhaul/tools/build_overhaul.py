@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.7.0'
+VERSION = '0.7.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -532,6 +532,10 @@ def native_overlay(stage, game, catalogs):
 
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
+
+## Объяснения решений 0.7.1
+
+Программы показывают точные эффекты во время подготовки и после завершения, длительность и опыт. Будущая награда также показана карточкой национального духа; предпросмотр её не выдаёт. Советские контрмеры поясняют все ступени мобилизации и общее окно 240 дней без продления. Подробнее: docs/DECISIONS_071_RU.md.
 
 ## Операции, диверсии и совещания 0.7.0
 

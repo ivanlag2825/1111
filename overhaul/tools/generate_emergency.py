@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from clausewitz import parse, walk
 from effect_presentation import present_effects
 from spirit_lifecycle import timed_selection
+from decision_details import describe
 
 
 def records():
@@ -87,6 +88,16 @@ def generate(output):
     text('hro_city_responses','Ставка: кризисы и контрмеры','Stavka: Crises and Countermeasures')
     text('hro_city_responses_desc','Падение города создаёт кризис. Одна чрезвычайная программа выполняется за раз. Награда за каждый город выдаётся один раз: решением или соответствующим фокусом. Подготовка расходует политическую власть и временно отвлекает производство.',
          'A fallen city creates a crisis. One emergency programme can run at a time. Each city reward is granted once, through a decision or its focus. Preparation costs political power and temporarily diverts production.')
+    text('hro_city_reward_preview', 'После полного завершения: следующая ступень второй мобилизации при текущем числе ответов. Окно — 240 дней от первого ответа; повышение ступени не продлевает срок. При завершении ступень пересчитывается.',
+         'On full completion: next Second Mobilisation tier based on current responses. A 240-day window begins with the first response; upgrades do not refresh it. The tier is recalculated on completion.')
+    mobilisation = {node.key: {m.key:float(m.value) for m in node.one('modifier').value}
+                    for script in ideas for node in parse(script)}
+    working = mobilisation['hro_idea_city_response_working']
+    tier_ru = ' '.join(f"Ступень {tier}: " + describe(mobilisation[f'hro_idea_city_mobilization_{tier}'], 'russian') + '.' for tier in range(1,4))
+    tier_en = ' '.join(f"Tier {tier}: " + describe(mobilisation[f'hro_idea_city_mobilization_{tier}'], 'english') + '.' for tier in range(1,4))
+    text('hro_city_mobilization_details',
+         'Во время подготовки: ' + describe(working, 'russian') + '. После завершения повышается одна общая ступень второй мобилизации. ' + tier_ru + ' Ступени заменяют друг друга, не складываются. Окно 240 дней начинается с первой контрмеры и не продлевается. Подсказка ниже показывает следующую ступень при текущем числе ответов.',
+         'During preparation: ' + describe(working, 'english') + '. Completion upgrades one shared mobilisation tier. ' + tier_en + ' Tiers replace each other without stacking. The 240-day window begins with the first response and is never extended. The tooltip below previews the next tier using current responses.')
     effects=[];decisions=[];events=['add_namespace = hro'];daily=[]
     def notification(identity, ru, en, dr, de):
         text(identity+'.t',ru,en);text(identity+'.d',dr,de);text(identity+'.a','К исполнению.','Proceed.')
@@ -98,6 +109,8 @@ def generate(output):
         text(response,'Контрмеры: '+city['ru'],'Countermeasures: '+city['en'])
         text(response+'_desc', f"Цена {city['cost']} ПВ, срок {city['days']} дней. После завершения: {n} новых военных заводов на востоке, {city['manpower']} людских ресурсов, два 100% исследовательских бонуса и ступень второй мобилизации. Награда общая с фокусом этого города, не выдаётся повторно. При недоступной области вместо очереди предприятий — дополнительные исследования. Это новые мощности, исходная эвакуация не дублируется.",
              f"Cost {city['cost']} PP; duration {city['days']} days. Completion: {n} new eastern military factories, {city['manpower']} manpower, two 100% research bonuses and a mobilisation tier. Shared with this city's focus, never awarded twice. Unavailable factory capacity grants extra research instead. These are new facilities, not duplicated evacuation.")
+        for language in loc:
+            loc[language][response+'_desc'] += '\n\n' + loc[language]['hro_city_mobilization_details']
         notification(f'hro.{500+index}', city['ru']+': стратегический кризис',city['en']+': Strategic Crisis',
                      'Противник контролирует город. Появляется национальный дух «Кризис отступления»: одна из трёх общих ступеней по тяжести потерь. Решение или городской фокус дают контрмеры и положительный дух «Вторая мобилизация». Мир и капитуляция снимают временные военные духи; повторная потеря не создаёт наград.',
                      'The enemy controls the city. The Retreat Crisis national spirit applies one of three shared tiers. A regional decision or focus grants countermeasures and the positive Second Mobilisation spirit. Peace and capitulation remove temporary war spirits; repeated losses grant nothing.')
@@ -135,7 +148,12 @@ def generate(output):
     icon = generic_army cost = {city['cost']} days_remove = {city['days']}
     visible = {{ original_tag = SOV has_country_flag = {p}_lost NOT = {{ has_country_flag = {p}_responded }} }}
     available = {{ hro_war_eastern_war = yes NOT = {{ has_country_flag = hro_city_response_busy }} }}
-    complete_effect = {{ set_country_flag = hro_city_response_busy set_country_flag = {p}_active add_ideas = hro_idea_city_response_working }}
+    complete_effect = {{ set_country_flag = hro_city_response_busy set_country_flag = {p}_active add_ideas = hro_idea_city_response_working
+        custom_effect_tooltip = hro_city_reward_preview
+        if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 1 }} }} show_ideas_tooltip = hro_idea_city_mobilization_3 }}
+        else_if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 0 }} }} show_ideas_tooltip = hro_idea_city_mobilization_2 }}
+        else = {{ show_ideas_tooltip = hro_idea_city_mobilization_1 }}
+    }}
     cancel_trigger = {{ OR = {{ NOT = {{ hro_war_eastern_war = yes }} NOT = {{ has_country_flag = {p}_active }} has_country_flag = {p}_responded }} }}
     cancel_effect = {{ {cancel} = yes }}
     remove_effect = {{ if = {{ limit = {{ has_country_flag = {p}_active hro_war_eastern_war = yes }} {finish} = yes }} else = {{ {cancel} = yes }} }}

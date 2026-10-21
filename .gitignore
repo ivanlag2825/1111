@@ -10,4 +10,5 @@ dist/*
 !dist/fix.zip
 !dist/coal.zip
 !dist/operations.zip
+!dist/briefing.zip
 .pytest_cache/

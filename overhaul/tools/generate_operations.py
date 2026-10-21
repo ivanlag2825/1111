@@ -72,8 +72,8 @@ def generate(output):
    decision('prepare_'+stem,'Подготовить операцию: '+ru,'Prepare Operation: '+en,90,
     ' '.join(no(x) for x in ['preparing','ready','active','cooldown','rest','exhaustion'])+' '+enemy(vp),
     flag(pending)+' set_variable = { hro_ops_preparation_days = 0 } '+flag('preparing',35)+' '+idea('preparing',35),
-    '35 дней подготовки за 90 ПВ. Затем 45 дней на запуск. Военный выпуск −8% во время подготовки. Один общий слот операций.',
-    '35 days of preparation for 90 PP, then a 45-day launch window. Factory output −8% during preparation. One shared operation slot.',vis)
+    '35 дней за 90 ПВ: военный выпуск −8%, планирование +35%. Затем 45 дней, чтобы запустить операцию ещё за 30 ПВ. Запуск даёт на 30 дней атаку +30%, скорость +15%, восстановление организации +20%, планирование +40%, расход снабжения −10% всей армии страны. После этого 60 дней истощения: организация −10%, восстановление −25%, скорость −15%, снабжение +25%, истощение +10%. Один общий слот операций.',
+    '35 preparation days for 90 PP: factory output −8%, planning +35%. Then 45 days to launch for another 30 PP. Launch grants national attack +30%, speed +15%, organisation recovery +20%, planning +40%, supply use −10% for 30 days. Followed by 60 days of exhaustion: organisation −10%, recovery −25%, speed −15%, supply use +25%, attrition +10%. One shared operation slot.',vis)
    decision('status_prep_'+stem,'Подготовка: '+ru,'Preparing: '+en,0,'always = no','',
     'Прошло [?hro_ops_preparation_days|0] из 35 дней. После подготовки появится решение о запуске.',
     '[?hro_ops_preparation_days|0] of 35 days elapsed. A launch decision appears after preparation.',vis+' '+has(pending))
@@ -82,8 +82,8 @@ def generate(output):
    decision('launch_'+stem,'Начать операцию: '+ru,'Launch Operation: '+en,30,
     has('ready')+' '+has(ready)+' '+enemy(vp),
     clear('ready')+' '+clear(ready)+' '+flag('active',30)+' '+flag('assault_started')+' '+flag('cooldown',90)+' '+idea('assault',30),
-    'На 30 дней: атака +30%, скорость +15%, восстановление организации +20%, планирование +40%, расход снабжения −10%. Затем 60 дней истощения. Повторный запуск не раньше 90 дней. Бонус действует на всю армию страны.',
-    '30 days: attack +30%, speed +15%, organisation recovery +20%, planning +40%, supply use −10%. Followed by 60 days of exhaustion. 90-day launch cooldown. Bonuses affect the national army.',vis+' '+has(ready))
+    'На 30 дней: атака +30%, скорость +15%, восстановление организации +20%, планирование +40%, расход снабжения −10%. Затем 60 дней истощения: организация −10%, восстановление организации −25%, скорость −15%, снабжение +25%, истощение +10%. Повторный запуск не раньше 90 дней. Бонус действует на всю армию страны.',
+    '30 days: attack +30%, speed +15%, organisation recovery +20%, planning +40%, supply use −10%. Followed by 60 days of exhaustion: organisation −10%, recovery −25%, speed −15%, supply use +25%, attrition +10%. 90-day launch cooldown. Bonuses affect the national army.',vis+' '+has(ready))
    for mode,duration in [('attack',75),('hold',60)]:
     task=f'council_{mode}_{stem}';condition=enemy(vp)
     # Defensive targets must border enemy-controlled territory, not simply a country at war.
@@ -93,7 +93,7 @@ def generate(output):
      no('council_busy')+' '+no('council_cooldown')+' '+condition,
      flag('council_busy')+' '+flag('council_cooldown',90)+' '+flag(task)+f' set_variable = {{ hro_ops_council_days = 0 }}',
      f'Добровольная задача на {duration} дней. Награда: 80 ПВ, 50 опыта армии и 45 дней усиления '+('атаки +15%, планирования +25%.' if mode=='attack' else 'защиты +20%, восстановления организации +25%.')+' Провал: 30 дней стабильности −5%, планирования −10%. Повторное совещание через 90 дней.',
-     f'Voluntary {duration}-day objective. Reward: 80 PP, 50 army XP and 45 days of military bonuses. Failure: stability −5%, planning −10% for 30 days. 90-day council cooldown.',vis)
+     f'Voluntary {duration}-day objective. Reward: 80 PP, 50 army XP and 45 days of '+('attack +15%, planning +25%.' if mode=='attack' else 'defence +20%, organisation recovery +25%.')+' Failure: stability −5%, planning −10% for 30 days. 90-day council cooldown.',vis)
     expired=f'check_variable = {{ hro_ops_council_days > {duration-1} }}'
     success=owns(vp) if mode=='attack' else owns(vp)+' '+expired
     failure=expired if mode=='attack' else 'NOT = { '+owns(vp)+' }'

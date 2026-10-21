@@ -7,6 +7,9 @@ initialisation and focus-tree generation remain with the main builder.
 import argparse
 import json
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from decision_details import describe, experience
 
 
 def _programme(tag, key, slot, branch, ru, en, goal_ru, goal_en, cost, days,
@@ -356,7 +359,13 @@ def generate(output: Path) -> dict:
                    'The working national spirit applies costs throughout preparation. '
                    f"Completion grants a {p['benefit_days']}-day result. "
                    'There is no activation reward. Each programme can finish only once; cancellation refunds nothing.')
+        ru_desc += '\n\n§YВо время подготовки:§! ' + describe(working_mods, 'russian') + '.'
+        ru_desc += f"\n\n§YПосле завершения на {p['benefit_days']} дней:§! " + describe(p['mods'], 'russian') + '. ' + experience(p['xp'], 'russian')
+        en_desc += '\n\n§YDuring preparation:§! ' + describe(working_mods, 'english') + '.'
+        en_desc += f"\n\n§YOn completion for {p['benefit_days']} days:§! " + describe(p['mods'], 'english') + '. ' + experience(p['xp'], 'english')
         loc(identity + '_desc', ru_desc, en_desc)
+        loc(identity + '_reward_preview', f"После {p['days']} дней подготовки: результат на {p['benefit_days']} дней. " + experience(p['xp'], 'russian'),
+            f"After {p['days']} preparation days: result for {p['benefit_days']} days. " + experience(p['xp'], 'english'))
         idea(working, p['ru'] + ': выполнение', p['en'] + ': In Progress',
              'Издержки подготовки. При отмене или завершении дух удаляется; награда появляется только после полного срока.',
              'Preparation costs. Removed on cancellation or completion; benefits require the full programme duration.', working_mods)
@@ -394,6 +403,8 @@ def generate(output: Path) -> dict:
             set_country_flag = hro_{slot}_programme_busy
             set_country_flag = {active}
             add_ideas = {working}
+            custom_effect_tooltip = {identity}_reward_preview
+            show_ideas_tooltip = {benefit}
         }}
         cancel_trigger = {{ NOT = {{ {ongoing} }} }}
         cancel_effect = {{ {cancel} = yes }}

@@ -1,4 +1,4 @@
-# Historical Reality: Total War 1936–1946 — 0.7.0
+# Historical Reality: Total War 1936–1946 — 0.7.1
 
 Исторические маршруты Германии и СССР для двух игроков, все DLC, исторические условия и свободный исход. 133 новых фокуса встроены в обычные деревья; изменены предпосылки 74 исходных узлов, для 44 ключевых переходов проверена обязательность нового этапа. Все 749 исходных ID, награды и вызовы DLC сохранены.
 
@@ -8,12 +8,14 @@
 
 [Операции, истощение, диверсии и совещания 0.7.0](docs/OPERATIONS_070_RU.md). Новые циклы генерирует `generate_operations.py`; их таймеры и награды проверяются исполнением сгенерированных решений. `native_duration_factor` в германском каталоге сокращает числовые исходные длительности от пяти недель; символьные DLC-сроки сохраняются.
 
+[Точные награды решений 0.7.1](docs/DECISIONS_071_RU.md): `decision_details.py` переводит реальные модификаторы программ и мобилизации в числовые описания RU/EN; `show_ideas_tooltip` показывает будущий дух без выдачи награды.
+
 ## Разработка
 
 Python 3.10+, без сторонних пакетов. Исходные `common/national_focus/germany.txt`, `soviet.txt` и `history/states/*.txt` должны соответствовать игре. Сборщик только читает их; проверяет принадлежность городских провинций областям и реальные победные очки. Архивы пользователя служат исходными данными.
 
 ```bash
-python3 overhaul/tools/build_overhaul.py --game-dir /path/to/hoi4 --output-dir /path/to/new-build --schema-dir /path/to/cwtools-hoi4-config --archive /path/to/operations.zip
+python3 overhaul/tools/build_overhaul.py --game-dir /path/to/hoi4 --output-dir /path/to/new-build --schema-dir /path/to/cwtools-hoi4-config --archive /path/to/briefing.zip
 python3 -m unittest discover -s overhaul/tests -v
 ```
 

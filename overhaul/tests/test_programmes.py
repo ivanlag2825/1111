@@ -47,6 +47,8 @@ def execute(nodes, state, definitions):
             state['ideas'].add(n.scalar('idea'))
         elif n.key == 'army_experience':
             state['xp'] += float(n.value)
+        elif n.key in ('custom_effect_tooltip', 'show_ideas_tooltip'):
+            pass  # Presentation-only effects do not grant the previewed idea.
         elif n.key in definitions and n.value == 'yes':
             execute(definitions[n.key].value, state, definitions)
         else:
