@@ -1,4 +1,4 @@
-# HRO 0.6.1: integration, focus chapters and city recovery contract
+# HRO 0.6.2: integration, focus chapters and city recovery contract
 
 Target: user-provided Germany/USSR focus trees, all DLC, two human opponents, historical conditions with a free outcome, 1936–1946. Historical main routes are the redesign priority. Preserve alternative political paths, native IDs and native event/reward/cleanup effects. Rewire actual prerequisites and layout so new reforms participate in ordinary progression. Old optional side-column architecture is superseded.
 
@@ -55,6 +55,11 @@ Capture requires actual German VP control, active Eastern war and the original S
 
 ## Visible national-spirit delivery hotfix
 
-All233own spirits must resolve to owned `GFX_idea_hro_spirit_*` sprites and valid64x64RGBA DDS files packaged in the mod. Explicit visible=yes and cancel_if_invalid=no; script guards own removal. Asset authoring is standard-library-only and must preserve all modifier dictionaries. Audit the sprite-to-texture chain; missing/invalid files fail the build.
+All234own spirits must resolve to owned `GFX_idea_hro_spirit_*` sprites and valid64x64RGBA DDS files packaged in the mod. Explicit visible=yes and cancel_if_invalid=no; script guards own removal. Asset authoring is standard-library-only and must preserve all modifier dictionaries. Audit the sprite-to-texture chain; missing/invalid files fail the build.
 
 Grant German city momentum synchronously before notification. Event immediate/option may reconcile spirits only, never replay material rewards. For120/240/180day windows, add_timed_idea uses the remaining duration derived from the existing flag creation date. A missing/new tier must retain the original deadline; existing tiers must not be refreshed. Timed flags specify value1. Daily sync repairs missing active spirits in0.6saves without resetting flags/counters or issuing rewards; never reopen expired windows. Preserve active-war, both-side capitulation and1947 cleanup. First installation and pre0.6saves still require1936; hotfix0.6.1can continue0.6saves after full game restart.
+
+
+## Coal and recruitment 0.6.2
+
+`generate_reserves.py` adds600basecoal to GER and800to SOV across nine supplied-map coal states. Validate original owner and actual coal presence against the input map. Runtime requires ownership/full control; defer unavailable regions and never repeat per-region additions on reload/recapture. GER receives1,000,000manpower once and a permanent conscription+.02spirit, repairable without replaying manpower. No Soviet/foreign manpower reward. Preserve0.6save flags and all previous archives including dist/fix.zip. Two German shadow-industry focuses must use production_speed_arms_factory_factor+.20, replacing the civilian construction modifier; preserve output/repair and distinct factory rewards.

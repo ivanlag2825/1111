@@ -1165,8 +1165,8 @@
       ],
       "icon": "GFX_focus_generic_mass_production",
       "reward": "hro_set_hro_idea_ger_shadow_industry_2 = yes if = { limit = { 54 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 54 = { add_extra_state_shared_building_slots = 4 if = { limit = { free_building_slots = { building = arms_factory size > 3 include_locked = yes } } add_building_construction = { type = arms_factory level = 4 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_warfactory_clusters bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_warfactory_clusters bonus = 1 uses = 2 category = industry } }",
-      "desc_ru": "Программа «Кластеры военного производства». Рассредоточенные производственные кластеры: выпуск военных заводов +12%; ремонт +35%; гражданское строительство +20%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Armaments Production Clusters. industrial capacity factory +12%; industry repair factor +35%; production speed industrial complex factor +20%. Research, capacity and manpower rewards are shown in the completion effects.",
+      "desc_ru": "Программа «Кластеры военного производства». Рассредоточенные производственные кластеры: выпуск военных заводов +12%; ремонт +35%; строительство военных заводов +20%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
+      "desc_en": "Armaments Production Clusters. industrial capacity factory +12%; industry repair factor +35%; military factory construction speed +20%. Research, capacity and manpower rewards are shown in the completion effects.",
       "earliest": "1943.1.1"
     },
     {
@@ -1205,8 +1205,8 @@
       ],
       "icon": "GFX_focus_generic_military_industry",
       "reward": "hro_set_hro_idea_ger_shadow_industry_2 = yes if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 4 if = { limit = { free_building_slots = { building = arms_factory size > 3 include_locked = yes } } add_building_construction = { type = arms_factory level = 4 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_decentralized_arsenals bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_decentralized_arsenals bonus = 1 uses = 2 category = industry } }",
-      "desc_ru": "Программа «Децентрализованные арсеналы». Рассредоточенные производственные кластеры: выпуск военных заводов +12%; ремонт +35%; гражданское строительство +20%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Decentralised Arsenals. industrial capacity factory +12%; industry repair factor +35%; production speed industrial complex factor +20%. Research, capacity and manpower rewards are shown in the completion effects.",
+      "desc_ru": "Программа «Децентрализованные арсеналы». Рассредоточенные производственные кластеры: выпуск военных заводов +12%; ремонт +35%; строительство военных заводов +20%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
+      "desc_en": "Decentralised Arsenals. industrial capacity factory +12%; industry repair factor +35%; military factory construction speed +20%. Research, capacity and manpower rewards are shown in the completion effects.",
       "earliest": "1942.1.1"
     },
     {
@@ -2138,12 +2138,12 @@
       "initial": false,
       "name_ru": "Рассредоточенные производственные кластеры",
       "name_en": "Dispersed Production Clusters",
-      "desc_ru": "выпуск военных заводов +12%; ремонт +35%; гражданское строительство +20%.",
-      "desc_en": "industrial capacity factory +12%; industry repair factor +35%; production speed industrial complex factor +20%",
+      "desc_ru": "выпуск военных заводов +12%; ремонт +35%; строительство военных заводов +20%.",
+      "desc_en": "industrial capacity factory +12%; industry repair factor +35%; military factory construction speed +20%",
       "modifiers": {
         "industrial_capacity_factory": 0.12,
         "industry_repair_factor": 0.35,
-        "production_speed_industrial_complex_factor": 0.2
+        "production_speed_arms_factory_factor": 0.2
       }
     },
     {

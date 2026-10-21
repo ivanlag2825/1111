@@ -8,4 +8,5 @@ dist/*
 !dist/fronts.zip
 !dist/eastern.zip
 !dist/fix.zip
+!dist/coal.zip
 .pytest_cache/

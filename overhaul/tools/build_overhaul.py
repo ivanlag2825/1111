@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.6.1'
+VERSION = '0.6.2'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -536,6 +536,14 @@ def player_guide(catalogs, gameplay, report):
 
 У СССР потеря города даёт отрицательный «Кризис отступления». Положительная «Вторая мобилизация» появляется после регионального решения или фокуса. Временные военные духи действуют только в продолжающейся войне Германии и СССР: мир и капитуляция любой стороны снимают их, даже если уведомление о захвате приходит позднее.
 
+## Уголь, пополнения и военные кластеры 0.6.2
+
+На следующий игровой день Германия получает до +600 базовой добычи угля, СССР — до +800. Уголь добавляется в существующие угольные области один раз, при владении и полном контроле. Недоступная область получает прибавку после восстановления контроля; уже обработанные области не награждаются повторно. Законы торговли, вывоз ресурсов и потери территорий продолжают влиять на доступный уголь.
+
+Германия получает один раз 1 000 000 доступных людских ресурсов и постоянный дух «Расширенный резерв пополнений»: призывное население +2 процентных пункта. Перезагрузка не повторяет выдачу людей. Бонус призыва пополняет резерв по правилам мобилизации игры.
+
+«Кластеры военного производства» и «Децентрализованные арсеналы» теперь дают +20% строительства военных заводов. Прежний бонус гражданского строительства заменён. Обе программы используют одну реформу, поэтому она не складывается сама с собой; их отдельные награды предприятиями сохраняются.
+
 ## Исправленные награды
 
 Реформы показывают параметры положительной ступени и условие улучшения. Служебная смена идей скрыта из подсказки. Реальные операции выполняются один раз, только при отсутствии равной или более высокой ступени; выбранная специализация сохраняется. Отсутствующие идеи не снимаются. Проверены все авторские реформы и добавленные награды исходных фокусов, включая три отмеченных на скриншотах.
@@ -654,6 +662,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         emergency = emergency_module.generate(stage)
         offensive_module = module('hro_offensive_generator', OVERHAUL / 'tools/generate_offensive.py')
         offensive = offensive_module.generate(stage)
+        reserves_module = module('hro_material_reserves', OVERHAUL / 'tools/generate_reserves.py')
+        reserves_module.validate_geography(game)
+        reserves = reserves_module.generate(stage)
         groups_module = module('hro_group_generator', OVERHAUL / 'tools/generate_groups.py')
         focus_groups = groups_module.generate(stage, catalogs)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -669,6 +680,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
+                      material_reserves=reserves,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},

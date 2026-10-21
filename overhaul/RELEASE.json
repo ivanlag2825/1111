@@ -1,10 +1,9 @@
 {
-  "version": "0.6.1",
-  "archive": "dist/fix.zip",
-  "sha256": "db640812f5da95e2506bdf6180a435a572a05e5e9459e17d186abaa10695b805",
-  "bytes": 521580,
+  "version": "0.6.2",
+  "archive": "dist/coal.zip",
+  "sha256": "2b1d07e30aa81ba05923a2783f2c585553177d44aad14462cbdf794665416979",
+  "bytes": 526101,
   "runtime_verified": false,
-  "balance_and_focus_files_unchanged": true,
   "new_focus_counts": {
     "GER": 60,
     "SOV": 73
@@ -13,10 +12,20 @@
   "native_prerequisite_rewrites": 74,
   "mandatory_integration_checks": 44,
   "saved_game_update": {
-    "from": "0.6",
+    "from_versions": [
+      "0.6",
+      "0.6.1"
+    ],
     "full_restart_required": true,
-    "restores_active_windows_only": true,
-    "repeats_rewards": false
+    "one_time_reserve_awards": true
+  },
+  "military_construction_fix": {
+    "focuses": [
+      "hro_ger_warfactory_clusters",
+      "hro_ger_decentralized_arsenals"
+    ],
+    "modifier": "production_speed_arms_factory_factor",
+    "value": 0.2
   },
   "continuous_focus_layout": {
     "GER": {
@@ -341,13 +350,37 @@
   "spirit_delivery": {
     "owned_assets": {
       "owned_icons": 4,
-      "visible_spirits": 233,
+      "visible_spirits": 234,
       "external_texture_dependency": false
     },
     "direct_city_awards": true,
     "native_timed_ideas": true,
     "restore_active_060_windows": true,
     "replays_material_rewards": false
+  },
+  "material_reserves": {
+    "base_coal_added": {
+      "GER": 600,
+      "SOV": 800
+    },
+    "coal_states": {
+      "GER": {
+        "51": 250,
+        "67": 150,
+        "65": 100,
+        "66": 100
+      },
+      "SOV": {
+        "227": 200,
+        "578": 200,
+        "569": 200,
+        "572": 100,
+        "881": 100
+      }
+    },
+    "german_one_time_manpower": 1000000,
+    "german_recruitable_population_points": 2,
+    "repeat_rewards": false
   },
   "layout_audit": {
     "scope": "base coordinates; native conditional offsets and visibility require engine review",
@@ -368,7 +401,7 @@
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 31,
+    "script_files": 34,
     "authored_focuses": 133,
     "focuses_per_country": {
       "GER": 60,
@@ -378,11 +411,11 @@
     "catalogue_native_patches": 209,
     "native_prerequisite_patches": 74,
     "required_integrated_milestones": 44,
-    "ideas": 233,
+    "ideas": 234,
     "idea_families": 42,
     "events": 45,
     "decisions": 42,
-    "localisation_keys_per_language": 1162,
+    "localisation_keys_per_language": 1164,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -390,13 +423,13 @@
     "warnings": []
   },
   "country_catalog_sha256": {
-    "GER": "0edef71031254287c23ef9240d0241de2fcbbd4e6f9e17dc8595fa1dced0dd24",
+    "GER": "1d001cebaa7966d7a1304af205b75d8dd438082e947f1677926b2c3ab0d8600e",
     "SOV": "10fb6b297e3c8aba9dcdf9a55fadb5cb36c5d13705fbb8c2859359ee665da1b5"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "tests": {
-    "overhaul": 144
+    "overhaul": 150
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-spirit-fix/dist/fix.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-eastern-campaign/dist/eastern.zip"
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-coal-reserves/dist/coal.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-spirit-fix/dist/fix.zip"
 }
