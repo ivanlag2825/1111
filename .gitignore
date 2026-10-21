@@ -7,4 +7,5 @@ dist/*
 !dist/war.zip
 !dist/fronts.zip
 !dist/eastern.zip
+!dist/fix.zip
 .pytest_cache/

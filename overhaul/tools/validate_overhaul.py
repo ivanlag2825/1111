@@ -739,6 +739,10 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                     errors.append(f'Family setter does not select its family: {setter}')
             except ValueError as exc:
                 errors.append(str(exc))
+    spirit_asset_audit = (root / 'interface/hro_spirit_icons.gfx').is_file() or any(str(i.scalar('picture','')).startswith('hro_spirit_') for i in ideas.values())
+    if spirit_asset_audit:
+        from spirit_lifecycle import audit_spirit_assets
+        errors.extend(audit_spirit_assets(root))
     localisation = _read_localisation(root, errors)
     for language, values in localisation.items():
         for key in sorted(required_loc - values.keys()):
@@ -773,6 +777,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
         'prerequisite_checks': 'all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped',
         'family_checks': 'bounded budgets and executable upgrade-only setter contracts' if catalogues else 'catalogues not supplied',
         'schema_keyword_audit': schema_dir is not None,
+        'national_spirit_asset_audit': spirit_asset_audit,
         'warnings': warnings,
     }
 

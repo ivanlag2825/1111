@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.6.0'
+VERSION = '0.6.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -526,7 +526,15 @@ def player_guide(catalogs, gameplay, report):
 1. Выключи прежние версии Historical Reality и другие моды деревьев/баланса GER/SOV.
 2. Замени старую папку `{FOLDER}` новой. Папка и файл `{FOLDER}.mod` должны лежать в `Документы/Paradox Interactive/Hearts of Iron IV/mod`.
 3. Включите один и тот же архив у обоих игроков; сверьте игру, DLC и checksum. Python не нужен.
-4. Начните НОВУЮ кампанию 1936 года. История городов, военных дней и новых наград из прежних сохранений не переносится. Правило HRO «Свободные сроки» снимает только добавленные даты фокусов.
+4. При первой установке или переходе с версий до 0.6 нужна новая кампания 1936 года. При обновлении с 0.6 можно продолжить её сохранение после полного перезапуска HOI4; активные окна восстанавливаются на следующий игровой день без повторных выплат. Истёкшие окна не возобновляются. Правило HRO «Свободные сроки» снимает только добавленные даты фокусов.
+
+## Исправление духов 0.6.1
+
+Германская награда за город теперь непосредственно синхронизирует национальный дух до отправки события. Открытие и кнопка уведомления повторяют только проверку духа, без выдачи наград. Германский оперативный успех, советская мобилизация и восстановление выдаются настоящими временными идеями с оставшимся сроком. Повышение ступени и восстановление пропавшей идеи сохраняют исходную дату окончания.
+
+У всех 233 духов мода собственные встроенные иконки, явная видимость и управляемое скриптом снятие. Иконки, файлы текстур и сохранение модификаторов проверяются сборкой. Подробнее — `docs/SPIRITS_061_RU.md`.
+
+У СССР потеря города даёт отрицательный «Кризис отступления». Положительная «Вторая мобилизация» появляется после регионального решения или фокуса. Временные военные духи действуют только в продолжающейся войне Германии и СССР: мир и капитуляция любой стороны снимают их, даже если уведомление о захвате приходит позднее.
 
 ## Исправленные награды
 
@@ -648,6 +656,8 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         offensive = offensive_module.generate(stage)
         groups_module = module('hro_group_generator', OVERHAUL / 'tools/generate_groups.py')
         focus_groups = groups_module.generate(stage, catalogs)
+        spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
+        spirit_assets = spirit_module.author_spirit_assets(stage)
         combined_rewards = permanent_reform_envelopes(catalogs, war_adaptation)
         put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.*"\n')
         report.update(version=VERSION, folder=FOLDER, native_background_systems='preserved',
@@ -659,6 +669,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
+                      spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
+                                       'native_timed_ideas':True,'restore_active_060_windows':True,
+                                       'replays_material_rewards':False},
                       city_catalog_sha256=hashlib.sha256((OVERHAUL / 'data/cities.json').read_bytes()).hexdigest(),
                       permanent_reform_envelopes=combined_rewards,
                       country_catalog_sha256={c['tag']: hashlib.sha256((catalog_dir / (c['tag'].lower() + '.json')).read_bytes()).hexdigest() for c in catalogs})
@@ -704,7 +717,9 @@ def package(built, output):
                     'Документы/Paradox Interactive/Hearts of Iron IV/mod\n\n'
                     f'Выключи прежние версии и включи {NAME} {VERSION} в лаунчере.\n'
                     'При обновлении замени старую папку historical_reality_overhaul новой.\n'
-                    'Оба игрока используют одинаковый архив, версию игры и DLC. Начните новую кампанию 1936 года.\n'
+                    'Оба игрока используют одинаковый архив, версию игры и DLC.\n'
+                    'Закрой игру полностью перед заменой файлов. Сохранение версии 0.6 можно продолжить после перезапуска; дай пройти игровому дню.\n'
+                    'При первой установке и обновлении с более ранних версий нужна новая кампания 1936 года.\n'
                     'В папку Steam ничего копировать не нужно. Python и установщик не нужны.\n'
                     f'Подробности и ограничения: {FOLDER}/README_RU.md\n'
                     'Новая версия прошла статические проверки, но ещё не проверена в игровом движке и сетевой партии.\n'

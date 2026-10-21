@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from clausewitz import parse, walk
 from effect_presentation import present_effects
+from spirit_lifecycle import timed_selection
 
 
 def records():
@@ -89,7 +90,7 @@ def generate(output):
     effects=[];decisions=[];events=['add_namespace = hro'];daily=[]
     def notification(identity, ru, en, dr, de):
         text(identity+'.t',ru,en);text(identity+'.d',dr,de);text(identity+'.a','К исполнению.','Proceed.')
-        events.append(f'country_event = {{ id = {identity} title = {identity}.t desc = {identity}.d is_triggered_only = yes fire_only_once = yes option = {{ name = {identity}.a }} }}')
+        events.append(f'country_event = {{ id = {identity} title = {identity}.t desc = {identity}.d is_triggered_only = yes fire_only_once = yes immediate = {{ hro_city_sync = yes }} option = {{ name = {identity}.a hro_city_sync = yes }} }}')
 
     for index, city in enumerate(records(), 1):
         k=city['key'];p=f'hro_city_{k}';vp=city['province'];state=city['factory_state'];n=city['factories']
@@ -98,8 +99,8 @@ def generate(output):
         text(response+'_desc', f"Цена {city['cost']} ПВ, срок {city['days']} дней. После завершения: {n} новых военных заводов на востоке, {city['manpower']} людских ресурсов, два 100% исследовательских бонуса и ступень второй мобилизации. Награда общая с фокусом этого города, не выдаётся повторно. При недоступной области вместо очереди предприятий — дополнительные исследования. Это новые мощности, исходная эвакуация не дублируется.",
              f"Cost {city['cost']} PP; duration {city['days']} days. Completion: {n} new eastern military factories, {city['manpower']} manpower, two 100% research bonuses and a mobilisation tier. Shared with this city's focus, never awarded twice. Unavailable factory capacity grants extra research instead. These are new facilities, not duplicated evacuation.")
         notification(f'hro.{500+index}', city['ru']+': стратегический кризис',city['en']+': Strategic Crisis',
-                     'Противник контролирует город. Нарушены управление и производственные связи. Открыты чрезвычайные контрмеры Ставки и региональная ветка фокусов. Штрафы имеют три общие ступени; повторная потеря города не создаёт новую награду.',
-                     'The enemy controls the city. Command and industrial links are disrupted. Emergency Stavka measures and the regional focus route are available. Crisis penalties have three shared tiers; losing the city again grants no new reward.')
+                     'Противник контролирует город. Появляется национальный дух «Кризис отступления»: одна из трёх общих ступеней по тяжести потерь. Решение или городской фокус дают контрмеры и положительный дух «Вторая мобилизация». Мир и капитуляция снимают временные военные духи; повторная потеря не создаёт наград.',
+                     'The enemy controls the city. The Retreat Crisis national spirit applies one of three shared tiers. A regional decision or focus grants countermeasures and the positive Second Mobilisation spirit. Peace and capitulation remove temporary war spirits; repeated losses grant nothing.')
         notification(f'hro.{510+index}',city['ru']+': освобождение',city['en']+': Liberation',
                      'Город вновь под нашим контролем. Его вклад в кризис снят, открыто ограниченное окно восстановления. Прежний выпуск и повреждённые предприятия восстанавливаются по обычным правилам игры.',
                      'The city is under our control again. Its crisis contribution is removed and a finite rebuilding window opens. Production and damaged factories recover under normal game rules.')
@@ -125,7 +126,7 @@ def generate(output):
             }}
         }} else = {{ add_tech_bonus = {{ name = {response} bonus = 1 uses = 2 category = industry }} }}
         if = {{ limit = {{ NOT = {{ has_country_flag = hro_city_mobilization_active }} }}
-            set_country_flag = {{ flag = hro_city_mobilization_active days = 240 }}
+            set_country_flag = {{ flag = hro_city_mobilization_active value = 1 days = 240 }}
         }}
         hro_city_sync = yes
     }}
@@ -152,13 +153,16 @@ def generate(output):
     }}
     if = {{ limit = {{ hro_war_eastern_war = yes has_country_flag = {p}_lost controls_province = {vp} NOT = {{ has_country_flag = {p}_liberated }} }}
         set_country_flag = {p}_liberated add_to_variable = {{ hro_city_liberated_total = 1 }}
-        if = {{ limit = {{ NOT = {{ has_country_flag = hro_city_rebuilding_active }} }} set_country_flag = {{ flag = hro_city_rebuilding_active days = 180 }} }}
+        if = {{ limit = {{ NOT = {{ has_country_flag = hro_city_rebuilding_active }} }} set_country_flag = {{ flag = hro_city_rebuilding_active value = 1 days = 180 }} }}
         country_event = {{ id = hro.{510+index} days = 1 }}
     }}
     if = {{ limit = {{ has_country_flag = {p}_active NOT = {{ hro_war_eastern_war = yes }} }} {cancel} = yes }}''')
 
     def select(family, tier):
         desired=groups[family][tier-1]
+        if family in ('mobilization', 'rebuilding'):
+            flag,days = ('hro_city_mobilization_active',240) if family == 'mobilization' else ('hro_city_rebuilding_active',180)
+            return timed_selection(groups[family],desired,flag,days)
         return remove([i for i in groups[family] if i != desired])+f' if = {{ limit = {{ NOT = {{ has_idea = {desired} }} }} add_ideas = {desired} }}'
     unresolved=[]
     for city in records():
@@ -171,7 +175,7 @@ def generate(output):
         set_country_flag = hro_city_orderly_awarded
         add_manpower = 120000
         if = { limit = { NOT = { has_country_flag = hro_city_mobilization_active } }
-            set_country_flag = { flag = hro_city_mobilization_active days = 240 }
+            set_country_flag = { flag = hro_city_mobilization_active value = 1 days = 240 }
         }
         hro_city_sync = yes
     }

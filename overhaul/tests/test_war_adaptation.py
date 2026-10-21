@@ -55,6 +55,17 @@ class EmittedLifecycle:
                 return {'>': state['date'] > target, '<': state['date'] < target,
                         '=': state['date'] == target}[n.op]
             if n.key == 'has_country_flag':
+                if isinstance(n.value, list):
+                    identity = n.scalar('flag')
+                    if not self.flag(state, identity):
+                        return False
+                    age = (state['date'] - state['flag_dates'][identity]).days
+                    for child in n.value:
+                        if child.key == 'days':
+                            target = int(child.value)
+                            if not {'>':age > target,'<':age < target,'=':age == target}[child.op]:
+                                return False
+                    return True
                 if tag != state['tag']:
                     return n.value in state.get('enemy_flags', set())
                 return self.flag(state, n.value)
@@ -97,6 +108,7 @@ class EmittedLifecycle:
                 identity = n.value if isinstance(n.value, str) else n.scalar('flag')
                 expiry = None if isinstance(n.value, str) or n.scalar('days') is None else state['date'] + timedelta(days=int(n.scalar('days')))
                 state['flags'][identity] = expiry
+                state.setdefault('flag_dates', {})[identity] = state['date']
             elif n.key == 'clr_country_flag':
                 state['flags'].pop(n.value, None)
             elif n.key in ('set_variable', 'add_to_variable'):
@@ -105,6 +117,15 @@ class EmittedLifecycle:
                     state['variables'][child.key] = value if n.key == 'set_variable' else state['variables'].get(child.key, 0) + value
             elif n.key == 'add_ideas':
                 state['ideas'].add(n.value)
+            elif n.key == 'set_temp_variable':
+                for child in n.value:
+                    state.setdefault('temp_variables', {})[child.key] = float(child.value)
+            elif n.key == 'add_timed_idea':
+                duration = n.scalar('days')
+                days = int(duration) if duration.isdigit() else int(state['temp_variables'][duration])
+                identity = n.scalar('idea')
+                state['ideas'].add(identity)
+                state.setdefault('expiry', {})[identity] = state['date'] + timedelta(days=days)
             elif n.key == 'remove_ideas':
                 state['ideas'].discard(n.value)
             elif n.key == 'country_event':
@@ -128,6 +149,9 @@ class EmittedLifecycle:
     def tick(self, state, when=None):
         if when is not None:
             state['date'] = day(when)
+        for identity, expiry in state.get('expiry', {}).items():
+            if state['date'] >= expiry:
+                state['ideas'].discard(identity)
         self.execute(self.daily, state)
 
     def advance(self, state, when):

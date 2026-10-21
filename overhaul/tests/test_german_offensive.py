@@ -78,6 +78,39 @@ class GermanOffensiveTests(unittest.TestCase):
         self.assertEqual(self.s['events'].count('hro.611'),1)
         self.assertEqual(self.s['variables']['hro_off_ger_cities'],1)
 
+    def test_capture_effect_itself_grants_a_visible_timed_spirit_before_notification(self):
+        self.s['controlled'].add(3151);self.s['enemy_flags'].add('hro_city_leningrad_lost')
+        self.r.call('hro_off_ger_leningrad_capture',self.s)
+        self.assertIn(offensive.CITY_IDEAS[0],self.s['ideas'])
+        self.assertEqual(self.s['expiry'][offensive.CITY_IDEAS[0]],self.s['flags']['hro_off_ger_city_window'])
+        self.assertIn('hro.613',self.s['events'])
+
+    def test_missing_active_city_spirit_is_repaired_with_original_expiry_and_no_repayment(self):
+        self.capture('minsk');deadline=self.s['expiry'][offensive.CITY_IDEAS[0]]
+        self.r.advance(self.s,'1941.8.1')
+        before=(self.s['add_political_power'],self.s['army_experience'],list(self.s['research']),list(self.s['events']))
+        self.s['ideas'].difference_update(offensive.CITY_IDEAS);self.s['expiry'].clear()
+        self.r.call('hro_off_ger_sync',self.s)
+        self.assertIn(offensive.CITY_IDEAS[0],self.s['ideas'])
+        self.assertEqual(self.s['expiry'][offensive.CITY_IDEAS[0]],deadline)
+        self.assertEqual(before,(self.s['add_political_power'],self.s['army_experience'],self.s['research'],self.s['events']))
+
+    def test_city_upgrade_keeps_native_timer_and_expired_window_cannot_be_repaired(self):
+        self.capture('minsk');deadline=self.s['expiry'][offensive.CITY_IDEAS[0]]
+        self.r.advance(self.s,'1941.8.1');self.capture('kiev')
+        self.assertEqual(self.s['expiry'][offensive.CITY_IDEAS[1]],deadline)
+        self.r.advance(self.s,'1941.10.20');self.r.call('hro_off_ger_sync',self.s)
+        self.assertFalse(set(offensive.CITY_IDEAS)&self.s['ideas'])
+
+    def test_capture_event_immediate_and_button_restore_only_spirits(self):
+        self.capture('minsk');before=(self.s['add_political_power'],self.s['army_experience'],len(self.s['research']))
+        event=next(n for n in parse((Path(self.temp.name)/'events/hro_offensive_events.txt').read_text()) if n.scalar('id')=='hro.611')
+        for node in [event.one('immediate'),event.one('option')]:
+            self.s['ideas'].difference_update(offensive.CITY_IDEAS)
+            self.r.execute([n for n in node.value if n.key!='name'],self.s)
+            self.assertIn(offensive.CITY_IDEAS[0],self.s['ideas'])
+        self.assertEqual(before,(self.s['add_political_power'],self.s['army_experience'],len(self.s['research'])))
+
     def test_actual_soviet_city_loss_script_unlocks_the_german_capture_reward(self):
         output=Path(self.temp.name);city_generate(output);sov_runtime=SovietCityLifecycle(output)
         sov=dict(tag='SOV',date=day('1941.6.22'),war=True,capitulated=False,enemy_capitulated=False,

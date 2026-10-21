@@ -24,7 +24,12 @@ class Runtime:
             if n.key=='hro_war_eastern_war':return (s['war'] and not s['capitulated'] and not s['enemy_capitulated'] and s['date']<date(1947,1,1))==(n.value=='yes')
             if n.key=='controls_province':return int(n.value) in s['enemy' if enemy else 'controlled']
             if n.key=='any_enemy_country':return s['war'] and self.condition(n.value,s,True)
-            if n.key=='has_country_flag':return n.value in s['flags'] and (s['flags'][n.value] is None or s['date']<s['flags'][n.value])
+            if n.key=='has_country_flag':
+                identity=n.value if isinstance(n.value,str) else n.scalar('flag')
+                exists=identity in s['flags'] and (s['flags'][identity] is None or s['date']<s['flags'][identity])
+                if not exists or isinstance(n.value,str):return exists
+                age=(s['date']-s['flag_dates'][identity]).days
+                return all({'<':age<int(c.value),'>':age>int(c.value),'=':age==int(c.value)}[c.op] for c in n.value if c.key=='days')
             if n.key=='has_idea':return n.value in s['ideas']
             if n.key=='check_variable':
                 return all({'<':s['vars'].get(c.key,0)<float(c.value),'>':s['vars'].get(c.key,0)>float(c.value),'=':s['vars'].get(c.key,0)==float(c.value)}[c.op] for c in n.value)
@@ -47,13 +52,17 @@ class Runtime:
             elif n.key=='set_country_flag':
                 k=n.value if isinstance(n.value,str) else n.scalar('flag')
                 s['flags'][k]=None if isinstance(n.value,str) or n.scalar('days') is None else s['date']+timedelta(days=int(n.scalar('days')))
+                s.setdefault('flag_dates',{})[k]=s['date']
             elif n.key=='clr_country_flag':s['flags'].pop(n.value,None)
             elif n.key in ('set_variable','add_to_variable'):
                 for c in n.value:s['vars'][c.key]=float(c.value)+(s['vars'].get(c.key,0) if n.key=='add_to_variable' else 0)
             elif n.key=='add_ideas':s['ideas'].add(n.value)
             elif n.key=='remove_ideas':s['ideas'].discard(n.value)
             elif n.key=='add_timed_idea':
-                s['ideas'].add(n.scalar('idea'));s['expiry'][n.scalar('idea')]=s['date']+timedelta(days=int(n.scalar('days')))
+                duration=n.scalar('days');days=int(duration) if duration.isdigit() else int(s['temp_variables'][duration])
+                s['ideas'].add(n.scalar('idea'));s['expiry'][n.scalar('idea')]=s['date']+timedelta(days=days)
+            elif n.key=='set_temp_variable':
+                for c in n.value:s.setdefault('temp_variables',{})[c.key]=float(c.value)
             elif n.key=='add_manpower':s['manpower']+=int(n.value)
             elif n.key=='add_tech_bonus':s['research'].append((n.scalar('category'),int(n.scalar('uses'))))
             elif n.key=='add_extra_state_shared_building_slots':s['slots']+=int(n.value)
@@ -174,6 +183,30 @@ class CityEmergencyTests(unittest.TestCase):
         self.s['war']=True;self.r.call('hro_city_orderly_mobilization',self.s);before=self.s['manpower']
         self.assertIn('hro_idea_city_mobilization_1',self.s['ideas']);self.assertFalse(any(k.endswith('_lost') for k in self.s['flags']))
         self.r.call('hro_city_orderly_mobilization',self.s);self.assertEqual(self.s['manpower'],before)
+
+    def test_response_grants_native_timer_and_missing_mobilisation_repairs_without_reward_replay(self):
+        self.lose('minsk');self.r.call('hro_city_minsk_finish',self.s)
+        idea='hro_idea_city_mobilization_1';deadline=self.s['flags']['hro_city_mobilization_active']
+        self.assertEqual(self.s['expiry'][idea],deadline)
+        self.r.advance(self.s,73);before=(self.s['manpower'],list(self.s['factories']),list(self.s['research']))
+        self.s['ideas'].discard(idea);self.s['expiry'].clear();self.r.call('hro_city_sync',self.s)
+        self.assertIn(idea,self.s['ideas']);self.assertEqual(self.s['expiry'][idea],deadline)
+        self.assertEqual(before,(self.s['manpower'],self.s['factories'],self.s['research']))
+
+    def test_mobilisation_upgrade_and_final_day_repair_keep_the_original_deadline(self):
+        self.lose('minsk');self.r.call('hro_city_minsk_finish',self.s)
+        deadline=self.s['flags']['hro_city_mobilization_active'];self.r.advance(self.s,40)
+        self.lose('kiev');self.r.call('hro_city_kiev_finish',self.s)
+        idea='hro_idea_city_mobilization_2';self.assertEqual(self.s['expiry'][idea],deadline)
+        self.r.advance(self.s,199);self.s['ideas'].discard(idea);self.r.call('hro_city_sync',self.s)
+        self.assertIn(idea,self.s['ideas']);self.assertEqual(self.s['expiry'][idea],deadline)
+        self.r.advance(self.s,1);self.assertFalse(any('city_mobilization' in i for i in self.s['ideas']))
+
+    def test_liberation_rebuilding_has_a_native_timer_and_repairs_without_refresh(self):
+        self.lose('minsk');self.regain('minsk');idea='hro_idea_city_rebuilding_1'
+        deadline=self.s['flags']['hro_city_rebuilding_active'];self.assertEqual(self.s['expiry'][idea],deadline)
+        self.r.advance(self.s,80);self.s['ideas'].discard(idea);self.r.call('hro_city_sync',self.s)
+        self.assertIn(idea,self.s['ideas']);self.assertEqual(self.s['expiry'][idea],deadline)
 
     def test_liberation_window_requires_actual_recapture_and_is_finite(self):
         self.s['war']=True;self.r.call('hro_city_start_liberation_offensive',self.s)

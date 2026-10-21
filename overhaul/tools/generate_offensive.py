@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path[:0]=[str(Path(__file__).resolve().parent),str(Path(__file__).resolve().parents[2]/'tools')]
 from generate_emergency import records
 from generate_war_adaptation import _remove,_select
+from spirit_lifecycle import timed_selection
 
 LAUNCH_IDEAS=('hro_idea_off_ger_breakthrough','hro_idea_off_ger_pursuit')
 CITY_IDEAS=tuple(f'hro_idea_off_ger_city_momentum_{n}' for n in range(1,4))
@@ -38,7 +39,7 @@ def generate(output):
     events=['add_namespace = hro']
     def event(index,ru,en,dr,de):
         key=f'hro.{index}';text(key+'.t',ru,en);text(key+'.d',dr,de);text(key+'.a','Использовать преимущество.','Exploit the advantage.')
-        events.append(f'country_event = {{ id = {key} title = {key}.t desc = {key}.d is_triggered_only = yes fire_only_once = yes option = {{ name = {key}.a }} }}')
+        events.append(f'country_event = {{ id = {key} title = {key}.t desc = {key}.d is_triggered_only = yes fire_only_once = yes immediate = {{ hro_off_ger_sync = yes }} option = {{ name = {key}.a hro_off_ger_sync = yes }} }}')
     event(601,'Первый удар на Востоке','The Opening Blow in the East',
           'Началась первая наступательная кампания против СССР. Первые 60 военных дней дают крупное преимущество, затем до 120-го дня действует меньший бонус. Зима приостанавливает действие бонуса, но не расход военного времени.',
           'The first offensive campaign against the USSR has begun. The first 60 war days grant a major advantage, with a smaller tier until day 120. Winter suppresses the bonus without stopping war-time consumption.')
@@ -52,15 +53,16 @@ def generate(output):
             add_to_variable = {{ hro_off_ger_cities = 1 }}
             add_political_power = {pp} army_experience = {xp}
             add_tech_bonus = {{ name = {name} bonus = 1 uses = 2 category = {city['tech']} }}
-            if = {{ limit = {{ NOT = {{ has_country_flag = hro_off_ger_city_window }} }} set_country_flag = {{ flag = hro_off_ger_city_window days = 120 }} }}
+            if = {{ limit = {{ NOT = {{ has_country_flag = hro_off_ger_city_window }} }} set_country_flag = {{ flag = hro_off_ger_city_window value = 1 days = 120 }} }}
+            hro_off_ger_sync = yes
             country_event = {{ id = hro.{610+index} days = 1 }}
         }}'''
         effects.append(name+' = {\n'+body+'\n}')
         city_checks.append(name+' = yes')
         text(name, 'Военный опыт: '+city['ru'], 'Campaign Lessons: '+city['en'])
         event(610+index,city['ru']+': оперативный успех',city['en']+': Operational Success',
-              f"Город под нашим контролем. Один раз получено {pp} ПВ, {xp} армейского опыта, два 100% профильных исследовательских бонуса и ступень 120-дневного оперативного преимущества. Повторная сдача и захват награду не обновляют.",
-              f"The city is under our control. One-time rewards: {pp} PP, {xp} army experience, two 100% research bonuses and a tier of 120-day operational advantage. Losing and recapturing it cannot renew the reward.")
+              f"Город под нашим контролем. Один раз получено {pp} ПВ, {xp} армейского опыта и два 100% профильных исследовательских бонуса. Национальный дух «Оперативный успех на Востоке» даёт на 120 дней +10–20% атаки, +5–15% защиты, +10–20% восстановления организации и +20–40% планирования по числу впервые захваченных городов. Повышение ступени не продлевает срок. Дух действует только при продолжающейся войне с СССР; капитуляция любой стороны снимает его. Повторный захват не награждается.",
+              f"One-time rewards: {pp} PP, {xp} army experience and two 100% research bonuses. The Eastern Operational Success national spirit grants 120 days of +10–20% attack, +5–15% defence, +10–20% organisation recovery and +20–40% planning speed, depending on first city captures. Upgrades do not extend its deadline. Requires an ongoing war with the USSR; either side's capitulation removes it. Repeated captures grant nothing.")
     effects.append(f'''hro_off_ger_sync = {{
         if = {{ limit = {{ original_tag = GER hro_war_eastern_war = yes has_country_flag = hro_off_ger_launch_authorized NOT = {{ hro_war_winter_season = yes }} }}
             if = {{ limit = {{ check_variable = {{ hro_off_ger_campaign_days < 60 }} }} {_select(LAUNCH_IDEAS,LAUNCH_IDEAS[0])} }}
@@ -68,9 +70,9 @@ def generate(output):
             else = {{ {_remove(LAUNCH_IDEAS)} }}
         }} else = {{ {_remove(LAUNCH_IDEAS)} }}
         if = {{ limit = {{ original_tag = GER hro_war_eastern_war = yes has_country_flag = hro_off_ger_city_window }}
-            if = {{ limit = {{ check_variable = {{ hro_off_ger_cities > 2 }} }} {_select(CITY_IDEAS,CITY_IDEAS[2])} }}
-            else_if = {{ limit = {{ check_variable = {{ hro_off_ger_cities > 1 }} }} {_select(CITY_IDEAS,CITY_IDEAS[1])} }}
-            else = {{ {_select(CITY_IDEAS,CITY_IDEAS[0])} }}
+            if = {{ limit = {{ check_variable = {{ hro_off_ger_cities > 2 }} }} {timed_selection(CITY_IDEAS,CITY_IDEAS[2],'hro_off_ger_city_window',120)} }}
+            else_if = {{ limit = {{ check_variable = {{ hro_off_ger_cities > 1 }} }} {timed_selection(CITY_IDEAS,CITY_IDEAS[1],'hro_off_ger_city_window',120)} }}
+            else = {{ {timed_selection(CITY_IDEAS,CITY_IDEAS[0],'hro_off_ger_city_window',120)} }}
         }} else = {{ {_remove(CITY_IDEAS)} }}
     }}
     hro_off_ger_tick = {{
