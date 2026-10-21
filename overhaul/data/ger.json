@@ -3377,5 +3377,6 @@
       "target": "GER_the_four_year_plan"
     }
   ],
-  "expansion_050": true
+  "expansion_050": true,
+  "native_duration_factor": 0.8
 }

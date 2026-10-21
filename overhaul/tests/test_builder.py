@@ -80,6 +80,30 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(focus.one('bypass').scalar('has_capitulated'), 'yes')
         self.assertIsNotNone(focus.one('available').one('OR'))
 
+    def test_german_pacing_preserves_conditions_symbolic_costs_and_soviet_durations(self):
+        directory = self.game / 'common/national_focus'
+        path = directory / 'germany.txt'
+        source = path.read_text()
+        source = source[:source.rfind('}')] + """
+ focus = { id = GER_long cost = 10 x = 6 y = 0 completion_reward = { add_political_power = 17 } }
+ focus = { id = GER_short cost = 2 x = 8 y = 0 }
+ focus = { id = GER_circle cost = @inner_circle_time_tier_1 x = 10 y = 0 }
+}
+"""
+        path.write_text('@inner_circle_time_tier_1 = 10\n' + source)
+        ger = catalog('GER'); ger['native_duration_factor'] = .8
+        report, _ = builder.native_overlay(self.output, self.game, [ger, catalog('SOV')])
+        compiled = {n.scalar('id'):n for n in walk(parse((self.output / 'common/national_focus/germany.txt').read_text())) if n.key == 'focus'}
+        self.assertEqual(compiled['GER_anchor'].scalar('cost'), '4')  # Existing override 5, not original 10.
+        self.assertEqual(compiled['GER_long'].scalar('cost'), '8')
+        self.assertEqual(compiled['GER_short'].scalar('cost'), '2')
+        self.assertEqual(compiled['GER_circle'].scalar('cost'), '@inner_circle_time_tier_1')
+        self.assertEqual(compiled['GER_anchor'].one('available').scalar('has_war'), 'no')
+        self.assertEqual(compiled['GER_long'].one('completion_reward').scalar('add_political_power'), '17')
+        sov = next(n for n in walk(parse((self.output / 'common/national_focus/soviet.txt').read_text())) if n.key == 'focus')
+        self.assertEqual(sov.scalar('cost'), '5')
+        self.assertEqual(len(report['german_native_pacing']), 2)
+
     def test_unknown_native_id_stops_overlay(self):
         changed = catalog('GER')
         changed['native_patches'][0]['id'] = 'GER_does_not_exist'

@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.6.2'
+VERSION = '0.7.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -375,13 +375,27 @@ def native_overlay(stage, game, catalogs):
     pacing = json.loads((PROJECT / 'data/historical_gates.json').read_text(encoding='utf-8'))
     native_loc = {'russian': {}, 'english': {}}
     report = {'source_sha256': {}, 'original_focus_counts': {}, 'native_patches': [], 'branch_offsets': offsets,
-              'continuous_focus_layout': {}, 'native_inlay_moves': {}, 'original_focus_ids_preserved': True, 'native_scripted_effects_preserved': True}
+              'continuous_focus_layout': {}, 'native_inlay_moves': {}, 'german_native_pacing': [], 'original_focus_ids_preserved': True, 'native_scripted_effects_preserved': True}
     layout = module('hro_native_layout_fix', OVERHAUL / 'tools/native_layout_fix.py')
     for catalog in catalogs:
         tag = catalog['tag']
         tree, text = trees[tag], texts[tag]
         originals = {f.scalar('id'): f for f in tree.all('focus')}
-        patches = {p['id']: p for p in catalog['native_patches']}
+        patches = {p['id']: dict(p) for p in catalog['native_patches']}
+        if tag == 'GER' and catalog.get('native_duration_factor'):
+            from math import ceil
+            for identity, focus in originals.items():
+                if str(focus.scalar('cost', '0')).startswith('@'):
+                    continue
+                source = patches.get(identity, {}).get('cost', focus.scalar('cost', '0'))
+                try:
+                    weeks = float(source)
+                except (TypeError, ValueError):
+                    continue  # Keep DLC inner-circle symbolic durations unchanged.
+                if weeks >= 5:
+                    new_cost = ceil(weeks * catalog['native_duration_factor'] * 2) / 2
+                    patches.setdefault(identity, {'id': identity})['cost'] = new_cost
+                    report['german_native_pacing'].append({'id':identity,'previous_weeks':weeks,'new_weeks':new_cost})
         if unknown := patches.keys() - originals.keys():
             raise ValueError(f'Unknown native patch IDs for {tag}: {sorted(unknown)}')
         for identity, config in pacing.items():
@@ -518,6 +532,16 @@ def native_overlay(stage, game, catalogs):
 
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
+
+## Операции, диверсии и совещания 0.7.0
+
+Решения находятся в разделах «Штаб: крупные операции», «Штаб: действия в тылу» и «Штаб: военные совещания» во время войны Германии и СССР. Подготовка операции: 90 ПВ и 35 дней, затем 45 дней для запуска за 30 ПВ. Усиление действует на всю армию страны: атака +30%, скорость +15%, восстановление организации +20%, планирование +40%, снабжение −10% на 30 дней. Затем 60 дней истощения; перегруппировка за 40 ПВ снимает его через 21 день. Новая операция — не раньше 90 дней после запуска.
+
+Диверсии повреждают ремонтируемые авиабазы (80 ПВ, 21 день, 2 уровня) или инфраструктуру (100 ПВ, 28 дней, 1 уровень). Глубокие рейды требуют разведагентства; соседние доступны без него. Охрана за 60 ПВ на 90 дней даёт ремонт +30% и уменьшает урон диверсий вдвое.
+
+Военное совещание — добровольный выбор города: взять за 75 дней либо удержать приграничный город 60 дней. Цена 25 ПВ, награда 80 ПВ, 50 опыта армии и 45 дней усиления. Провал: стабильность −5%, планирование −10% на 30 дней. Повторное совещание через 90 дней; текущее задание показывает счётчик дней.
+
+Длинные ванильные фокусы Германии сокращены примерно на 20% (70 → 56, 35 → 28 дней), даты доступности и специальные сроки внутреннего круга сохранены. Подробнее: docs/OPERATIONS_070_RU.md.
 
 Германия против СССР, два игрока, все DLC, исторические условия и свободный исход до 1946 года.
 
@@ -665,6 +689,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         reserves_module = module('hro_material_reserves', OVERHAUL / 'tools/generate_reserves.py')
         reserves_module.validate_geography(game)
         reserves = reserves_module.generate(stage)
+        operations_module = module('hro_operations_generator', OVERHAUL / 'tools/generate_operations.py')
+        operations_module.validate_geography(game)
+        operations = operations_module.generate(stage)
         groups_module = module('hro_group_generator', OVERHAUL / 'tools/generate_groups.py')
         focus_groups = groups_module.generate(stage, catalogs)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -680,7 +707,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves,
+                      material_reserves=reserves, operations=operations,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},

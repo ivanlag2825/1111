@@ -255,7 +255,7 @@ def _keyword_audit(own_docs, all_focuses, effect_defs, trigger_defs, schema, err
     text = '\n'.join(p.read_text(encoding='utf-8-sig') for p in config.rglob('*.cwt'))
     effect_keys = set(re.findall(r'alias\[effect:([A-Za-z_][A-Za-z0-9_]*)\]', text)) | set(effect_defs)
     trigger_keys = set(re.findall(r'alias\[trigger:([A-Za-z_][A-Za-z0-9_]*)\]', text)) | set(trigger_defs)
-    trigger_keys |= {'arms_factory', 'industrial_complex', 'dockyard', 'infrastructure', 'rail_way', 'supply_node'}
+    trigger_keys |= {'arms_factory', 'industrial_complex', 'dockyard', 'infrastructure', 'rail_way', 'supply_node', 'air_base'}
     # Calls already used by retained native trees are valid external interfaces.
     for focus in all_focuses.values():
         if str(focus.scalar('id', '')).startswith(PREFIX):
@@ -265,7 +265,7 @@ def _keyword_audit(own_docs, all_focuses, effect_defs, trigger_defs, schema, err
                 effect_keys.add(n.key)
                 trigger_keys.add(n.key)
     scope = re.compile(r'(?:[A-Z]{3}|ROOT|FROM|FROM\.FROM|PREV|THIS|\d+)\Z')
-    trigger_containers = {'AND', 'OR', 'NOT', 'if', 'else_if', 'else', 'limit'}
+    trigger_containers = {'AND', 'OR', 'NOT', 'if', 'else_if', 'else', 'limit', 'controller'}  # State-to-controller scope: CWTools links.cwt
     def triggers(nodes):
         for n in nodes:
             if n.key in trigger_containers or (n.key and scope.fullmatch(n.key)) or (n.key and n.key.startswith(('any_', 'all_'))):
