@@ -1,0 +1,94 @@
+{
+  "GER_rhineland": {
+    "earliest_start": "1936.1.1",
+    "reason_ru": "Ремилитаризация Рейнской области: 7 марта 1936 года; ограничение относится к началу фокуса, а не к точной дате события."
+  },
+  "GER_remilitarize_the_rhineland": {
+    "earliest_start": "1936.1.1",
+    "reason_ru": "Ремилитаризация Рейнской области: 7 марта 1936 года; ограничение относится к началу фокуса, а не к точной дате события."
+  },
+  "GER_remilitarise_the_rhineland": {
+    "earliest_start": "1936.1.1",
+    "reason_ru": "Ремилитаризация Рейнской области: 7 марта 1936 года; ограничение относится к началу фокуса, а не к точной дате события."
+  },
+  "GER_anschluss": {
+    "earliest_start": "1938.1.1",
+    "reason_ru": "Аншлюс: март 1938 года; подготовка разрешена с января."
+  },
+  "GER_demand_sudetenland": {
+    "earliest_start": "1938.7.1",
+    "reason_ru": "Судетский кризис и Мюнхен: сентябрь 1938 года."
+  },
+  "GER_first_vienna_award": {
+    "earliest_start": "1938.9.1",
+    "reason_ru": "Первый Венский арбитраж: 2 ноября 1938 года."
+  },
+  "GER_fate_of_czechoslovakia": {
+    "earliest_start": "1939.1.1",
+    "reason_ru": "Оккупация чешских земель: март 1939 года."
+  },
+  "GER_mol_rib_pact": {
+    "earliest_start": "1939.6.1",
+    "reason_ru": "Пакт Молотова — Риббентропа: 23 августа 1939 года."
+  },
+  "GER_molotov_ribbentrop_pact": {
+    "earliest_start": "1939.6.1",
+    "reason_ru": "Пакт Молотова — Риббентропа: 23 августа 1939 года."
+  },
+  "GER_danzig_or_war": {
+    "earliest_start": "1939.6.1",
+    "reason_ru": "Нападение Германии на Польшу: 1 сентября 1939 года."
+  },
+  "GER_war_with_the_ussr": {
+    "earliest_start": "1941.3.1",
+    "reason_ru": "Нападение на СССР: 22 июня 1941 года; это нижняя граница подготовки, не сценарий объявления войны."
+  },
+  "GER_total_war": {
+    "earliest_start": "1943.1.1",
+    "reason_ru": "Речь о тотальной войне: 18 февраля 1943 года; мобилизация экономики началась раньше."
+  },
+  "SOV_finish_five_year_plan": {
+    "earliest_start": "1936.1.1",
+    "reason_ru": "Вторая пятилетка: 1933–1937 годы."
+  },
+  "SOV_third_five_year_plan": {
+    "earliest_start": "1938.1.1",
+    "reason_ru": "Третья пятилетка: 1938–1941 годы, прервана войной."
+  },
+  "SOV_the_third_five_year_plan": {
+    "earliest_start": "1938.1.1",
+    "reason_ru": "Третья пятилетка: 1938–1941 годы, прервана войной."
+  },
+  "SOV_claims_on_baltic": {
+    "earliest_start": "1939.8.1",
+    "reason_ru": "Договоры о базах: осень 1939 года; оккупация и аннексия стран Балтии: 1940 год."
+  },
+  "SOV_claims_in_baltic": {
+    "earliest_start": "1939.8.1",
+    "reason_ru": "Договоры о базах: осень 1939 года; оккупация и аннексия стран Балтии: 1940 год."
+  },
+  "SOV_claims_on_poland": {
+    "earliest_start": "1939.8.1",
+    "reason_ru": "Вторжение СССР в Польшу: 17 сентября 1939 года."
+  },
+  "SOV_claims_on_finland": {
+    "earliest_start": "1939.8.1",
+    "reason_ru": "Начало советско-финляндской войны: 30 ноября 1939 года."
+  },
+  "SOV_reconcile_japan": {
+    "earliest_start": "1941.1.1",
+    "reason_ru": "Пакт о нейтралитете с Японией: 13 апреля 1941 года."
+  },
+  "SOV_war_with_japan": {
+    "earliest_start": "1945.4.1",
+    "reason_ru": "Вступление СССР в войну против Японии: август 1945 года; фокус готовится заранее."
+  },
+  "GER_totaler_krieg": {
+    "earliest_start": "1943.1.1",
+    "reason_ru": "Речь о тотальной войне: 18 февраля 1943 года; мобилизация экономики началась раньше."
+  },
+  "SOV_finish_the_five_year_plan": {
+    "earliest_start": "1936.1.1",
+    "reason_ru": "Вторая пятилетка: 1933–1937 годы."
+  }
+}

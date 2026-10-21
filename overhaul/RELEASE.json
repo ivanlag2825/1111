@@ -1,0 +1,56 @@
+{
+  "version": "0.3.0",
+  "archive": "dist/rework.zip",
+  "sha256": "4a2d075236ae390f1b13ba13bb84d2738e3845a22783b977b6367582d0b5b75a",
+  "bytes": 421657,
+  "runtime_verified": false,
+  "new_focus_counts": {
+    "GER": 40,
+    "SOV": 41
+  },
+  "native_focus_ids_preserved": 749,
+  "native_prerequisite_rewrites": 67,
+  "mandatory_integration_checks": 32,
+  "layout_audit": {
+    "scope": "base coordinates; native conditional offsets and visibility require engine review",
+    "countries": {
+      "GER": {
+        "new_native_overlaps": 0,
+        "new_new_overlaps": 0,
+        "introduced_native_native_overlaps": 0
+      },
+      "SOV": {
+        "new_native_overlaps": 0,
+        "new_new_overlaps": 0,
+        "introduced_native_native_overlaps": 0
+      }
+    }
+  },
+  "validation": {
+    "runtime_verified": false,
+    "script_files": 15,
+    "authored_focuses": 81,
+    "focuses_per_country": {
+      "GER": 40,
+      "SOV": 41
+    },
+    "native_focuses": 749,
+    "catalogue_native_patches": 207,
+    "native_prerequisite_patches": 67,
+    "required_integrated_milestones": 32,
+    "ideas": 157,
+    "idea_families": 16,
+    "events": 20,
+    "decisions": 36,
+    "localisation_keys_per_language": 657,
+    "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
+    "family_checks": "bounded budgets and executable upgrade-only setter contracts",
+    "schema_keyword_audit": true,
+    "warnings": []
+  },
+  "tests": {
+    "overhaul": 60,
+    "legacy_local": 34
+  },
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-main-tree/dist/rework.zip"
+}

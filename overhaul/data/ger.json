@@ -1,0 +1,2534 @@
+{
+  "tag": "GER",
+  "focuses": [
+    {
+      "id": "hro_ger_procurement_register",
+      "name_ru": "Промышленность на военном учёте",
+      "name_en": "Industry under Military Audit",
+      "desc_ru": "Общий учёт станков, кадров и заказов открывает дальнейшее перевооружение. Полностью снимает начальную дезорганизацию заказов и строит 2 гражданских завода в Тюрингии. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "A common machinery, labour and orders register enables rearmament, fully clears procurement disorganization and builds 2 civilian factories in Thuringia. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 1,
+      "x": 55,
+      "y": 1,
+      "icon": "GFX_focus_GER_the_four_year_plan",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_the_four_year_plan",
+          "GER_prioritize_economic_growth"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_industry_1 = yes if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } } add_building_construction = { type = industrial_complex level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_industry_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_tooling_audit",
+      "name_ru": "Станкостроительная программа",
+      "name_en": "Machine-Tool Programme",
+      "desc_ru": "Два 100%-х бонуса промышленных исследований и военный завод в Ганновере. Программа становится обязательной основой расширения Reichswerke. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 25 политической власти.",
+      "desc_en": "Two 100% industry research bonuses and an arms factory in Hannover; machine tools become a prerequisite for expanding the Reichswerke. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 25 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 3,
+      "x": 52,
+      "y": 3,
+      "icon": "GFX_focus_generic_modernize_industry",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_autarky_efforts"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 1 if = { limit = { free_building_slots = { building = arms_factory size > 0 include_locked = yes } } add_building_construction = { type = arms_factory level = 1 instant_build = yes } } else = { ROOT = { add_political_power = 25 } } } } else = { add_political_power = 25 }",
+      "earliest": "1936.1.1"
+    },
+    {
+      "id": "hro_ger_long_series",
+      "name_ru": "Длинные серии вооружения",
+      "name_en": "Long Armament Production Runs",
+      "desc_ru": "2 военных завода. Массовая стандартизация даёт +6% выпуска и +8% предела эффективности, замедляя её рост на 4%. Решение определяет следующую промышленную реформу. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories. Standardization grants +6% output and +8% efficiency cap at the cost of -4% efficiency growth; this choice shapes the later reform. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 3,
+      "x": 56,
+      "y": 3,
+      "icon": "GFX_focus_generic_mass_production",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_accelerate_the_rearmament_program"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_industry_series_2 = yes if = { limit = { 54 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 54 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_series_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_flexible_orders"
+      ]
+    },
+    {
+      "id": "hro_ger_flexible_orders",
+      "name_ru": "Гибкие производственные группы",
+      "name_en": "Flexible Production Groups",
+      "desc_ru": "2 военных завода. +3% выпуска, +12% роста эффективности и +10% сохранения эффективности при смене модели. Альтернатива максимальному пределу длинных серий. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories. Gain +3% output, +12% efficiency growth and +10% retained efficiency on model changes, emphasizing adaptability. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 3,
+      "x": 58,
+      "y": 3,
+      "icon": "GFX_focus_generic_reorient_production",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_accelerate_the_rearmament_program"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_industry_flexible_2 = yes if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_flexible_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_long_series"
+      ]
+    },
+    {
+      "id": "hro_ger_supplier_standards",
+      "name_ru": "Единые комплекты поставок",
+      "name_en": "Standardized Supplier Assemblies",
+      "desc_ru": "2 военных завода и два 100%-х промышленных бонуса. Через единые допуски и комплектующие открывается центральное планирование действующей военной экономики. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories and gain two 100% industry bonuses. Common tolerances and assemblies enable central wartime planning. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 7,
+      "x": 57,
+      "y": 7,
+      "icon": "GFX_focus_generic_central_planning",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_concentrated_armament_program",
+          "GER_establish_production_targets"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_supplier_standards bonus = 1 uses = 2 category = industry } if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "earliest": "1938.1.1"
+    },
+    {
+      "id": "hro_ger_rationalized_designs",
+      "name_ru": "Комиссия стандартных конструкций",
+      "name_en": "Standard Designs Commission",
+      "desc_ru": "Два 100%-х бонуса танковой техники и один 100%-й бонус механизации. Комиссия обязательна для штатной ветки рационализации вооружения.",
+      "desc_en": "Two 100% armor bonuses and a 100% mechanization bonus; the commission opens the native armament rationalization milestone.",
+      "branch": "industry",
+      "row": 9,
+      "x": 56,
+      "y": 9,
+      "icon": "GFX_focus_generic_tank_assembly",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_zentrale_planung"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_rationalized_designs bonus = 1 uses = 2 category = armor } add_tech_bonus = { name = hro_ger_rationalized_designs bonus = 1 uses = 1 category = cat_mechanized_equipment }",
+      "earliest": "1940.1.1"
+    },
+    {
+      "id": "hro_ger_emergency_dispersal",
+      "name_ru": "Рассредоточить оборонные предприятия",
+      "name_en": "Disperse Defence Workshops",
+      "desc_ru": "Строит 2 военных завода в Тюрингии и даёт два 100%-х строительных бонуса. Готовит действующие предприятия к работе под ударами авиации. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories in Thuringia and gain two 100% construction bonuses, preparing industry to continue production under air attack. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 9,
+      "x": 58,
+      "y": 9,
+      "icon": "GFX_focus_generic_military_industry",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_zentrale_planung"
+        ]
+      ],
+      "reward": "if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_ger_emergency_dispersal bonus = 1 uses = 2 category = construction_tech }",
+      "earliest": "1940.1.1"
+    },
+    {
+      "id": "hro_ger_mature_procurement",
+      "name_ru": "Арсенал затяжной войны",
+      "name_en": "Arsenal for a Prolonged War",
+      "desc_ru": "4 военных завода. Длинные серии достигают +10% выпуска и +12% предела эффективности; гибкие группы — +7% выпуска, +16% роста и +15% сохранения эффективности. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 100 политической власти.",
+      "desc_en": "Build 4 arms factories. Long runs reach +10% output and +12% efficiency cap; flexible groups reach +7% output, +16% efficiency growth and +15% efficiency retention. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 100 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 13,
+      "x": 57,
+      "y": 13,
+      "icon": "GFX_focus_generic_total_war",
+      "cost": 7,
+      "prerequisites": [
+        [
+          "GER_totaler_krieg"
+        ]
+      ],
+      "reward": "if = { limit = { has_country_flag = hro_ger_series_program } hro_set_hro_idea_ger_industry_series_3 = yes } else = { hro_set_hro_idea_ger_industry_flexible_3 = yes } if = { limit = { 54 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 54 = { add_extra_state_shared_building_slots = 4 if = { limit = { free_building_slots = { building = arms_factory size > 3 include_locked = yes } } add_building_construction = { type = arms_factory level = 4 instant_build = yes } } else = { ROOT = { add_political_power = 100 } } } } else = { add_political_power = 100 }",
+      "earliest": "1943.1.1"
+    },
+    {
+      "id": "hro_ger_fuel_processes",
+      "name_ru": "Вторая очередь синтетических комбинатов",
+      "name_en": "Second Synthetic Fuel Programme",
+      "desc_ru": "Строит 2 синтетических завода и даёт два 100%-х бонуса синтетических ресурсов. Встраивается перед существующими программами бензина и Buna. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 synthetic refineries and gain two 100% synthetic-resource bonuses; this programme precedes the native fuel and Buna branches. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "industry",
+      "row": 7,
+      "x": 54,
+      "y": 7,
+      "icon": "GFX_goal_generic_oil_refinery",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_coal_liquefaction"
+        ],
+        [
+          "hro_ger_tooling_audit"
+        ]
+      ],
+      "reward": "if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = synthetic_refinery size > 1 include_locked = yes } } add_building_construction = { type = synthetic_refinery level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_ger_fuel_processes bonus = 1 uses = 2 category = synth_resources }",
+      "earliest": "1937.1.1"
+    },
+    {
+      "id": "hro_ger_transport_ledger",
+      "name_ru": "Штаб военных перевозок",
+      "name_en": "Military Transport Directorate",
+      "desc_ru": "Снимает начальный штраф к снабжению и износу, открывает транспортные проекты и даёт два 100%-х бонуса поездов. Теперь предшествует штатному автобану.",
+      "desc_en": "Clear initial supply and attrition penalties, unlock transport programmes and gain two 100% train bonuses; the directorate precedes the native Autobahn focus.",
+      "branch": "logistics",
+      "row": 1,
+      "x": 48,
+      "y": 1,
+      "icon": "GFX_focus_GER_kriegslokomotive",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_the_four_year_plan",
+          "GER_prioritize_economic_growth"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_logistics_1 = yes add_tech_bonus = { name = hro_ger_transport_ledger bonus = 1 uses = 2 category = train_tech }",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_logistics_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_railway_timetable",
+      "name_ru": "Приоритет магистральным дорогам",
+      "name_en": "Prioritize Trunk Railways",
+      "desc_ru": "Два 100%-х бонуса поездов и 30 опыта армии. Железнодорожный вариант открывает восточное расширение автобана и общий моторный парк.",
+      "desc_en": "Two 100% train bonuses and 30 army experience; the railway choice opens eastward infrastructure expansion and the common motor pool.",
+      "branch": "logistics",
+      "row": 5,
+      "x": 47,
+      "y": 5,
+      "icon": "GFX_focus_GER_kriegslokomotive",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_kdf_wagen_factories"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_railway_timetable bonus = 1 uses = 2 category = train_tech } army_experience = 30",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_rail_transport_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_road_workshops"
+      ]
+    },
+    {
+      "id": "hro_ger_road_workshops",
+      "name_ru": "Приоритет дорожным колоннам",
+      "name_en": "Prioritize Road Transport Columns",
+      "desc_ru": "Два 100%-х бонуса моторизации и один 100%-й бонус обеспечения. Дорожный вариант открывает ту же магистральную программу, делая выбор транспортной школы реальным.",
+      "desc_en": "Two 100% motorization bonuses and a 100% support bonus; the road choice opens the same infrastructure milestones while emphasizing truck columns.",
+      "branch": "logistics",
+      "row": 5,
+      "x": 49,
+      "y": 5,
+      "icon": "GFX_focus_generic_truck",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_kdf_wagen_factories"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_road_workshops bonus = 1 uses = 2 category = motorized_equipment } add_tech_bonus = { name = hro_ger_road_workshops bonus = 1 uses = 1 category = support_tech }",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_road_transport_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_railway_timetable"
+      ]
+    },
+    {
+      "id": "hro_ger_motor_transport_standards",
+      "name_ru": "Единый моторный парк",
+      "name_en": "Common Motor Vehicle Pool",
+      "desc_ru": "2 военных завода, 100%-й бонус механизации, -3% расхода снабжения и -3% износа. Стандарты связывают дорожное строительство с военной веткой локомотивов. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories, gain a 100% mechanization bonus and reduce supply use and attrition by 3%; vehicle standards connect infrastructure to the army locomotive branch. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "logistics",
+      "row": 7,
+      "x": 48,
+      "y": 7,
+      "icon": "GFX_focus_generic_motor_cycle",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_railway_timetable",
+          "hro_ger_road_workshops"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_logistics_2 = yes if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_ger_motor_transport_standards bonus = 1 uses = 1 category = cat_mechanized_equipment }",
+      "earliest": "1937.1.1"
+    },
+    {
+      "id": "hro_ger_sustained_supply",
+      "name_ru": "Континентальная система снабжения",
+      "name_en": "Continental Supply System",
+      "desc_ru": "Два 100%-х бонуса обеспечения. Закрепляет реформу снабжения: -8% его расхода, -6% износа и -15% зимнего износа. Доступна обеим штатным финальным военным веткам.",
+      "desc_en": "Two 100% support bonuses. Complete the supply reform with -8% supply use, -6% attrition and -15% winter attrition; both native late military specializations can qualify.",
+      "branch": "logistics",
+      "row": 13,
+      "x": 10,
+      "y": 13,
+      "icon": "GFX_focus_generic_reinforcing_the_supply_network",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_kriegslokomotiven"
+        ],
+        [
+          "GER_improve_the_logistics_system",
+          "GER_defend_the_vaterland"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_logistics_3 = yes add_tech_bonus = { name = hro_ger_sustained_supply bonus = 1 uses = 2 category = support_tech }",
+      "earliest": "1941.1.1"
+    },
+    {
+      "id": "hro_ger_staff_curriculum",
+      "name_ru": "Генеральный штаб новой войны",
+      "name_en": "General Staff for a New War",
+      "desc_ru": "Снимает начальную несогласованность штабов. 40 опыта армии и 25 командной власти; открывает две существующие доктринальные ветви и оперативные проекты.",
+      "desc_en": "Clear initial staff coordination penalties, gain 40 army experience and 25 command power, and open the two native doctrine branches and operational programmes.",
+      "branch": "army",
+      "row": 1,
+      "x": 8,
+      "y": 1,
+      "icon": "GFX_focus_GER_army",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_develop_modern_maneuver_warfare"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_army_1 = yes army_experience = 40 add_command_power = 25",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_staff_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_mission_command",
+      "name_ru": "Самостоятельность полевых штабов",
+      "name_en": "Field Command Initiative",
+      "desc_ru": "+4% организации, +12% скорости планирования и 40 опыта. Подготовка пополнений длится на 5% дольше. Выбор обязателен перед Auftragstaktik и сохраняется в поздней реформе.",
+      "desc_en": "Gain +4% organization, +12% planning speed and 40 army experience, with training 5% slower. Choose a command model before Auftragstaktik.",
+      "branch": "army",
+      "row": 5,
+      "x": 6,
+      "y": 5,
+      "icon": "GFX_goal_generic_axis_build_infantry",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_the_prussian_legacy",
+          "GER_adopt_new_panzer_doctrine"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_army_mission_2 = yes army_experience = 40",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_mission_command_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_standard_staff"
+      ]
+    },
+    {
+      "id": "hro_ger_standard_staff",
+      "name_ru": "Единая оперативная школа",
+      "name_en": "Unified Operational School",
+      "desc_ru": "+2% организации, +8% максимального планирования и 40 опыта; подготовка пополнений на 5% быстрее. Альтернатива полевой инициативе перед общей штатной веткой.",
+      "desc_en": "Gain +2% organization, +8% maximum planning and 40 army experience, with training 5% faster; an alternative command model feeds the shared native branch.",
+      "branch": "army",
+      "row": 5,
+      "x": 10,
+      "y": 5,
+      "icon": "GFX_focus_generic_military_mission",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_the_prussian_legacy",
+          "GER_adopt_new_panzer_doctrine"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_army_staff_2 = yes army_experience = 40",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_standard_staff_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_mission_command"
+      ]
+    },
+    {
+      "id": "hro_ger_combined_exercises",
+      "name_ru": "Общевойсковые манёвры",
+      "name_en": "Combined Arms Field Exercises",
+      "desc_ru": "100%-е бонусы танков и пехотного вооружения и 40 опыта армии. Теперь штатное взаимодействие танков и авиации требует полевых испытаний.",
+      "desc_en": "Gain 100% armor and infantry weapons bonuses and 40 army experience; native combined arms now requires field testing.",
+      "branch": "army",
+      "row": 7,
+      "x": 12,
+      "y": 7,
+      "icon": "GFX_focus_generic_combined_arms",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_panzer_troops_school",
+          "GER_improve_motorized_troops"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_combined_exercises bonus = 1 uses = 1 category = armor } add_tech_bonus = { name = hro_ger_combined_exercises bonus = 1 uses = 1 category = infantry_weapons } army_experience = 40",
+      "earliest": "1937.1.1"
+    },
+    {
+      "id": "hro_ger_armour_maintenance_school",
+      "name_ru": "Корпус ремонта и пополнений",
+      "name_en": "Maintenance and Replacement Corps",
+      "desc_ru": "Два 100%-х бонуса обеспечения, 100%-й бонус механизации и 30 опыта армии. Реформа становится необходимым шагом к Panzergrenadier.",
+      "desc_en": "Two 100% support bonuses, a 100% mechanization bonus and 30 army experience; the corps is a required step toward Panzergrenadier.",
+      "branch": "army",
+      "row": 9,
+      "x": 8,
+      "y": 9,
+      "icon": "GFX_focus_generic_tank_assembly",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_instill_auftragstaktik"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 2 category = support_tech } add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 1 category = cat_mechanized_equipment } army_experience = 30",
+      "earliest": "1938.1.1"
+    },
+    {
+      "id": "hro_ger_operational_command_system",
+      "name_ru": "Оперативные резервы фронта",
+      "name_en": "Operational Front Reserves",
+      "desc_ru": "60 опыта и 30 командной власти. Полевой путь получает +8% организации и +18% скорости планирования; штабной — +5% организации и +14% максимального планирования.",
+      "desc_en": "Gain 60 army experience and 30 command power. Field initiative reaches +8% organization and +18% planning speed; the staff school reaches +5% organization and +14% maximum planning.",
+      "branch": "army",
+      "row": 15,
+      "x": 7,
+      "y": 15,
+      "icon": "GFX_focus_GER_german_army_invincible",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_sustained_supply"
+        ]
+      ],
+      "reward": "if = { limit = { has_country_flag = hro_ger_mission_command_program } hro_set_hro_idea_ger_army_mission_3 = yes } else = { hro_set_hro_idea_ger_army_staff_3 = yes } army_experience = 60 add_command_power = 30",
+      "earliest": "1942.1.1"
+    },
+    {
+      "id": "hro_ger_war_academies",
+      "name_ru": "Военно-технические академии",
+      "name_en": "Military Technical Academies",
+      "desc_ru": "Добавляет ячейку исследований при наличии менее 6; при уже достигнутом пределе даёт два 100%-х промышленных бонуса. Всегда даёт два 100%-х бонуса танков.",
+      "desc_en": "Add one research slot if the current total is below 6; at the cap gain two 100% industry bonuses instead. Always gain two 100% armor bonuses.",
+      "branch": "army",
+      "row": 17,
+      "x": 10,
+      "y": 17,
+      "icon": "GFX_focus_generic_university_2",
+      "cost": 7,
+      "prerequisites": [
+        [
+          "hro_ger_operational_command_system"
+        ],
+        [
+          "GER_expand_kummersdorfs_capacity",
+          "GER_the_prussian_legacy"
+        ]
+      ],
+      "reward": "if = { limit = { amount_research_slots < 6 } add_research_slot = 1 } else = { add_tech_bonus = { name = hro_ger_war_academies bonus = 1 uses = 2 category = industry } } add_tech_bonus = { name = hro_ger_war_academies bonus = 1 uses = 2 category = armor }",
+      "earliest": "1943.1.1"
+    },
+    {
+      "id": "hro_ger_armed_forces_1946",
+      "name_ru": "Вооружённые силы 1946 года",
+      "name_en": "Armed Forces of 1946",
+      "desc_ru": "Поздняя общевойсковая реформа: 100 опыта армии, по два 100%-х бонуса пехотного вооружения и механизации и завершающая система адаптации затяжной войны.",
+      "desc_en": "A late combined arms reform grants 100 army experience, two 100% infantry weapons and mechanization bonuses each, and the final prolonged-war adaptation system.",
+      "branch": "army",
+      "row": 19,
+      "x": 8,
+      "y": 19,
+      "icon": "GFX_focus_generic_combined_arms",
+      "cost": 7,
+      "prerequisites": [
+        [
+          "hro_ger_war_academies"
+        ],
+        [
+          "hro_ger_prolonged_war_allocation"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_war_3 = yes add_tech_bonus = { name = hro_ger_armed_forces_1946 bonus = 1 uses = 2 category = infantry_weapons } add_tech_bonus = { name = hro_ger_armed_forces_1946 bonus = 1 uses = 2 category = cat_mechanized_equipment } army_experience = 100",
+      "earliest": "1946.1.1"
+    },
+    {
+      "id": "hro_ger_airfield_staff_links",
+      "name_ru": "Штаб воздушной войны",
+      "name_en": "Air War Operations Staff",
+      "desc_ru": "Полностью снимает исходную несогласованность авиационных служб, даёт 40 опыта авиации и открывает авиационные проекты. Требуется штатным веткам исследовательского института и Jagdwaffe.",
+      "desc_en": "Fully remove initial air service coordination penalties, gain 40 air experience and unlock aviation programmes; the research institute and Jagdwaffe now require this staff.",
+      "branch": "air",
+      "row": 1,
+      "x": 20,
+      "y": 1,
+      "icon": "GFX_focus_GER_airforce",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_expanding_the_luftwaffe"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_air_1 = yes air_experience = 40",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_air_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_front_air_programme",
+      "name_ru": "Авиация непосредственной поддержки",
+      "name_en": "Battlefield Air Support Priority",
+      "desc_ru": "+6% эффективности заданий, -5% аварийности, 40 опыта авиации и два 100%-х бонуса средней авиации. Выбор открывает общую промышленную ветку.",
+      "desc_en": "Gain +6% mission efficiency, -5% accidents, 40 air experience and two 100% medium air bonuses; this choice feeds the common production reform.",
+      "branch": "air",
+      "row": 5,
+      "x": 16,
+      "y": 5,
+      "icon": "GFX_focus_generic_cas_aircraft",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_dive_bombers",
+          "GER_tactical_bombers"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_air_2 = yes add_tech_bonus = { name = hro_ger_front_air_programme bonus = 1 uses = 2 category = medium_air } air_experience = 40",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_front_air_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_industrial_air_defence"
+      ]
+    },
+    {
+      "id": "hro_ger_industrial_air_defence",
+      "name_ru": "Воздушный щит промышленности",
+      "name_en": "Industrial Air Defence Priority",
+      "desc_ru": "Та же реформа служб: +6% эффективности и -5% аварийности. Вместо штурмовой программы — два 100%-х бонуса лёгкой авиации и 100%-й бонус радара.",
+      "desc_en": "Gain +6% mission efficiency and -5% accidents, with two 100% light air bonuses and a 100% radar bonus emphasizing industrial air defence.",
+      "branch": "air",
+      "row": 5,
+      "x": 22,
+      "y": 5,
+      "icon": "GFX_focus_generic_energy",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_form_the_jagdwaffe"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_air_2 = yes add_tech_bonus = { name = hro_ger_industrial_air_defence bonus = 1 uses = 2 category = light_air } add_tech_bonus = { name = hro_ger_industrial_air_defence bonus = 1 uses = 1 category = radar_tech }",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_industrial_air_program"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_front_air_programme"
+      ]
+    },
+    {
+      "id": "hro_ger_mature_air_operations",
+      "name_ru": "Приёмка и рассредоточение авиапрома",
+      "name_en": "Aircraft Acceptance and Dispersal",
+      "desc_ru": "2 военных завода. Общая реформа авиации достигает +10% эффективности заданий и -10% аварийности. Открывает штатный институт аэродинамики. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories. The air service reform reaches +10% mission efficiency and -10% accidents and opens the native aerodynamic institute. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "air",
+      "row": 7,
+      "x": 20,
+      "y": 7,
+      "icon": "GFX_focus_generic_aircraft_production",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_front_air_programme",
+          "hro_ger_industrial_air_defence"
+        ],
+        [
+          "GER_aeronautical_research_institute"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_air_3 = yes if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "earliest": "1939.1.1"
+    },
+    {
+      "id": "hro_ger_tactical_airliaison",
+      "name_ru": "Авианаводчики передовых соединений",
+      "name_en": "Forward Air Controllers",
+      "desc_ru": "Связывает уже выполненные танковые манёвры с выбранной воздушной доктриной. По 30 опыта армии и авиации и два 100%-х авиационных бонуса.",
+      "desc_en": "Link armored field exercises with the chosen air doctrine; gain 30 army and air experience each and two 100% air equipment bonuses.",
+      "branch": "air",
+      "row": 9,
+      "x": 14,
+      "y": 9,
+      "icon": "GFX_focus_generic_tank_air_support",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_combined_arms"
+        ],
+        [
+          "hro_ger_front_air_programme",
+          "hro_ger_industrial_air_defence"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_tactical_airliaison bonus = 1 uses = 2 category = air_equipment } army_experience = 30 air_experience = 30",
+      "earliest": "1939.1.1"
+    },
+    {
+      "id": "hro_ger_jet_rearmament",
+      "name_ru": "Реактивное перевооружение",
+      "name_en": "Jet Rearmament Programme",
+      "desc_ru": "Два 100%-х бонуса реактивных технологий и дополнительный военный завод. Реальная поздняя программа предшествует существующему дальнему бомбардировщику. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 25 политической власти.",
+      "desc_en": "Gain two 100% jet technology bonuses and an arms factory; the late rearmament programme precedes the native long-range bomber milestone. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 25 political power instead of the buildings.",
+      "branch": "air",
+      "row": 15,
+      "x": 20,
+      "y": 15,
+      "icon": "GFX_focus_GER_amerikabomber",
+      "cost": 7,
+      "prerequisites": [
+        [
+          "GER_aerodynamic_research_institute"
+        ],
+        [
+          "hro_ger_mature_air_operations"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_jet_rearmament bonus = 1 uses = 2 category = jet_technology } if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 1 if = { limit = { free_building_slots = { building = arms_factory size > 0 include_locked = yes } } add_building_construction = { type = arms_factory level = 1 instant_build = yes } } else = { ROOT = { add_political_power = 25 } } } } else = { add_political_power = 25 }",
+      "earliest": "1944.1.1"
+    },
+    {
+      "id": "hro_ger_naval_operations_staff",
+      "name_ru": "Морская программа вооружения",
+      "name_en": "Naval Armament Planning Board",
+      "desc_ru": "40 опыта флота и единое оперативное управление. Теперь Plan Z и рейдерская программа получают общий обязательный этап вместо отдельной необязательной линейки.",
+      "desc_en": "Gain 40 navy experience and common naval command; Plan Z and trade interdiction now share a mandatory planning milestone.",
+      "branch": "navy",
+      "row": 1,
+      "x": 32,
+      "y": 1,
+      "icon": "GFX_focus_GER_navy",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_strengthen_the_kriegsmarine"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_navy_1 = yes navy_experience = 40",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_navy_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_balanced_task_force",
+      "name_ru": "Конструкторское бюро эскортов",
+      "name_en": "Escort Design Office",
+      "desc_ru": "2 верфи, два 100%-х бонуса эсминцев, +8% эффективности прикрытия и конвоирования. Требуется штатному строительству крупных надводных кораблей. Морская специализация закрепляется первым выбранным бюро: позднее прохождение другой программы сохраняет верфи и исследования, но не меняет уже принятую школу. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 dockyards, gain two 100% destroyer bonuses and +8% screening and convoy escort efficiency; the office precedes capital ship construction. The first design office establishes the naval specialization: taking the other programme later still grants its dockyards and research bonuses, but preserves the chosen school. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "navy",
+      "row": 5,
+      "x": 30,
+      "y": 5,
+      "icon": "GFX_focus_generic_cruiser2",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_expand_kriegsmarinewerft"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_navy_screen_2 = yes if = { limit = { 58 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 58 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = dockyard size > 1 include_locked = yes } } add_building_construction = { type = dockyard level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_ger_balanced_task_force bonus = 1 uses = 2 category = dd_tech }",
+      "earliest": "1936.1.1"
+    },
+    {
+      "id": "hro_ger_limited_maritime_war",
+      "name_ru": "Серийные секции подлодок",
+      "name_en": "Serial Submarine Sections",
+      "desc_ru": "2 верфи, два 100%-х бонуса подлодок и +10% эффективности рейдерства. Конвоирование на 4% хуже. Программа обязательна перед штатными усилиями по подлодкам. Морская специализация закрепляется первым выбранным бюро: позднее прохождение другой программы сохраняет верфи и исследования, но не меняет уже принятую школу. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 dockyards, gain two 100% submarine bonuses and +10% convoy raiding efficiency, with convoy escort 4% worse. Required before the native U-boat programme. The first design office establishes the naval specialization: taking the other programme later still grants its dockyards and research bonuses, but preserves the chosen school. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "navy",
+      "row": 5,
+      "x": 36,
+      "y": 5,
+      "icon": "GFX_goal_generic_navy_submarine",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_wolfpack_tactics"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_navy_raiding_2 = yes if = { limit = { 56 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 56 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = dockyard size > 1 include_locked = yes } } add_building_construction = { type = dockyard level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_ger_limited_maritime_war bonus = 1 uses = 2 category = ss_tech }",
+      "earliest": "1936.1.1"
+    },
+    {
+      "id": "hro_ger_mature_maritime_programme",
+      "name_ru": "Единое командование морских операций",
+      "name_en": "Unified Maritime Operations Command",
+      "desc_ru": "50 опыта флота. Закрепляет выбранную специализацию: рейдерство до +16% либо прикрытие и конвоирование до +12%. Становится частью штатной ветки атлантического господства.",
+      "desc_en": "Gain 50 navy experience and complete the existing specialization: raiding reaches +16%, or screening and convoy escort reach +12%. Required on the native Atlantic dominance route.",
+      "branch": "navy",
+      "row": 7,
+      "x": 32,
+      "y": 7,
+      "icon": "GFX_focus_GER_high_seas_fleet",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_balanced_task_force",
+          "hro_ger_limited_maritime_war"
+        ],
+        [
+          "GER_re_establish_the_seekriegsleitung"
+        ]
+      ],
+      "reward": "if = { limit = { has_idea = hro_idea_ger_navy_raiding_2 } hro_set_hro_idea_ger_navy_raiding_3 = yes } else = { hro_set_hro_idea_ger_navy_screen_3 = yes } navy_experience = 50",
+      "earliest": "1940.1.1"
+    },
+    {
+      "id": "hro_ger_coastal_defence_plan",
+      "name_ru": "Морская оборона континента",
+      "name_en": "Continental Maritime Defence",
+      "desc_ru": "По два 100%-х бонуса минного оружия и морской авиации и 50 опыта флота. Не требует победы над противником и подходит затяжной войне.",
+      "desc_en": "Gain two 100% naval mines and naval aviation bonuses each and 50 navy experience; available in a prolonged war without requiring victory.",
+      "branch": "navy",
+      "row": 11,
+      "x": 32,
+      "y": 11,
+      "icon": "GFX_focus_generic_atlantic_coast",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_seeherrschaft",
+          "GER_unrestricted_convoy_raiding"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_ger_coastal_defence_plan bonus = 1 uses = 2 category = naval_mines } add_tech_bonus = { name = hro_ger_coastal_defence_plan bonus = 1 uses = 2 category = naval_air } navy_experience = 50",
+      "earliest": "1942.1.1"
+    },
+    {
+      "id": "hro_ger_agency_responsibilities",
+      "name_ru": "Разграничить военные полномочия",
+      "name_en": "Define Wartime Responsibilities",
+      "desc_ru": "75 политической власти и +3% стабильности. Реформа ведомств соединяет политическую и производственную ветки и открывает государственные проекты.",
+      "desc_en": "Gain 75 political power and +3% stability. Administrative reform connects political and industrial routes and unlocks state programmes.",
+      "branch": "state",
+      "row": 7,
+      "x": 60,
+      "y": 7,
+      "icon": "GFX_focus_GER_reorganize_the_wehrmacht",
+      "cost": 4,
+      "prerequisites": [
+        [
+          "hro_ger_procurement_register"
+        ],
+        [
+          "GER_reorganize_the_wehrmacht",
+          "GER_heed_von_neuraths_concerns"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_state_1 = yes add_political_power = 75 add_stability = 0.03",
+      "earliest": "1936.1.1",
+      "flags": [
+        "hro_ger_state_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_central_coordination",
+      "name_ru": "Чрезвычайный хозяйственный штаб",
+      "name_en": "Emergency Economic Headquarters",
+      "desc_ru": "Центральный путь: +0,30 политической власти в день, +3% стабильности, но -3% скорости исследований. Одна из двух обязательных моделей управления перед тотальной мобилизацией.",
+      "desc_en": "The centralized model grants +0.30 daily political power and +3% stability, with -3% research speed; choose an administrative model before total mobilization.",
+      "branch": "state",
+      "row": 11,
+      "x": 59,
+      "y": 11,
+      "icon": "GFX_focus_generic_central_planning",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_agency_responsibilities"
+        ],
+        [
+          "GER_zentrale_planung"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_state_central_2 = yes add_political_power = 75",
+      "earliest": "1941.1.1",
+      "flags": [
+        "hro_ger_central_administration"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_technical_autonomy"
+      ]
+    },
+    {
+      "id": "hro_ger_technical_autonomy",
+      "name_ru": "Полномочия техническим комиссиям",
+      "name_en": "Empower Technical Commissions",
+      "desc_ru": "Технический путь: +4% скорости исследований и +10% ремонта, но -0,10 политической власти в день; два 100%-х бонуса электроники. Альтернативный путь к тотальной мобилизации.",
+      "desc_en": "The technical model grants +4% research speed and +10% repair speed at -0.10 daily political power, plus two 100% electronics bonuses.",
+      "branch": "state",
+      "row": 11,
+      "x": 61,
+      "y": 11,
+      "icon": "GFX_focus_generic_university_2",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_agency_responsibilities"
+        ],
+        [
+          "GER_zentrale_planung"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_state_technical_2 = yes add_tech_bonus = { name = hro_ger_technical_autonomy bonus = 1 uses = 2 category = electronics }",
+      "earliest": "1941.1.1",
+      "flags": [
+        "hro_ger_technical_administration"
+      ],
+      "mutually_exclusive": [
+        "hro_ger_central_coordination"
+      ]
+    },
+    {
+      "id": "hro_ger_foreign_service_planning",
+      "name_ru": "Континентальные торговые соглашения",
+      "name_en": "Continental Commercial Agreements",
+      "desc_ru": "Открывает дипломатические проекты, удешевляет лицензии на 12% и даёт +5% скорости лицензионного производства, 75 политической власти и два 100%-х бонуса добычи.",
+      "desc_en": "Unlock diplomatic programmes, reduce licensing cost by 12%, gain +5% licensed production speed, 75 political power and two 100% excavation bonuses.",
+      "branch": "diplomacy",
+      "row": 9,
+      "x": 51,
+      "y": 9,
+      "icon": "GFX_goal_generic_positive_trade_relations",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_trade_deal_with_sweden"
+        ],
+        [
+          "hro_ger_agency_responsibilities"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_diplomacy_2 = yes add_tech_bonus = { name = hro_ger_foreign_service_planning bonus = 1 uses = 2 category = excavation_tech } add_political_power = 75",
+      "earliest": "1939.1.1",
+      "flags": [
+        "hro_ger_diplomacy_unlocked"
+      ]
+    },
+    {
+      "id": "hro_ger_campaign_reserve_plans",
+      "name_ru": "Распределение ресурсов большой войны",
+      "name_en": "Resources for a Major War",
+      "desc_ru": "Открывает военные проекты: два 100%-х бонуса артиллерии, 50 опыта армии и -4% износа. Опирается на реально проведённую штатную тотальную мобилизацию.",
+      "desc_en": "Unlock wartime programmes, gain two 100% artillery bonuses and 50 army experience, and reduce attrition by 4%, following native total mobilization.",
+      "branch": "war",
+      "row": 13,
+      "x": 60,
+      "y": 13,
+      "icon": "GFX_focus_GER_all_for_the_front",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_totaler_krieg"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_war_1 = yes add_tech_bonus = { name = hro_ger_campaign_reserve_plans bonus = 1 uses = 2 category = artillery } army_experience = 50",
+      "earliest": "1942.1.1",
+      "flags": [
+        "hro_ger_war_unlocked"
+      ],
+      "available": "has_war = yes"
+    },
+    {
+      "id": "hro_ger_prolonged_war_allocation",
+      "name_ru": "Резервы для многолетней войны",
+      "name_en": "Reserves for a Multi-Year War",
+      "desc_ru": "2 военных завода и 50 опыта армии. +12% скорости ремонта и -2% расхода снабжения. Нужны одновременно проведённые промышленная и оперативная реформы. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 arms factories and gain 50 army experience, +12% repair speed and -2% supply use; requires both industrial and operational reforms. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "war",
+      "row": 17,
+      "x": 58,
+      "y": 17,
+      "icon": "GFX_focus_generic_military_industry",
+      "cost": 5,
+      "prerequisites": [
+        [
+          "hro_ger_campaign_reserve_plans"
+        ],
+        [
+          "hro_ger_mature_procurement"
+        ],
+        [
+          "hro_ger_operational_command_system"
+        ]
+      ],
+      "reward": "hro_set_hro_idea_ger_war_2 = yes if = { limit = { 54 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 54 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } army_experience = 50",
+      "earliest": "1944.1.1"
+    },
+    {
+      "id": "hro_ger_recovery_without_victory",
+      "name_ru": "Восстановление без капитуляции",
+      "name_en": "Reconstruction without Capitulation",
+      "desc_ru": "2 гражданских завода и +5% стабильности; завершает выбранную административную реформу и систему внешней торговли. Можно продолжать войну: искусственного требования победы нет. Если область не принадлежит нам, контролируется не полностью либо для всей очереди не хватает места, вместо предприятий предоставляется 50 политической власти.",
+      "desc_en": "Build 2 civilian factories, gain +5% stability and complete the chosen administrative and commercial reforms; available while the war continues. If the state is not owned and fully controlled, or the complete building batch cannot fit, gain 50 political power instead of the buildings.",
+      "branch": "state",
+      "row": 19,
+      "x": 60,
+      "y": 19,
+      "icon": "GFX_goal_generic_construction2",
+      "cost": 7,
+      "prerequisites": [
+        [
+          "hro_ger_prolonged_war_allocation"
+        ]
+      ],
+      "reward": "if = { limit = { has_country_flag = hro_ger_central_administration } hro_set_hro_idea_ger_state_central_3 = yes } else = { hro_set_hro_idea_ger_state_technical_3 = yes } hro_set_hro_idea_ger_diplomacy_3 = yes if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } } add_building_construction = { type = industrial_complex level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_stability = 0.05",
+      "earliest": "1945.1.1"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "hro_idea_ger_industry_0",
+      "family": "hro_family_ger_industry",
+      "stage": 0,
+      "tag": "GER",
+      "initial": true,
+      "name_ru": "Разрозненные производственные стандарты",
+      "name_en": "Fragmented Production Standards",
+      "desc_ru": "Военные ведомства заказывают несовместимые образцы. Начальная потеря выпуска и темпа освоения невелика; промышленная программа постепенно заменяет этот дух.",
+      "desc_en": "Agencies order incompatible designs. The initial output and efficiency penalties are mild; the industrial programme replaces this spirit in stages.",
+      "modifiers": {
+        "industrial_capacity_factory": -0.03,
+        "production_factory_efficiency_gain_factor": -0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_industry_1",
+      "family": "hro_family_ger_industry",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Общий реестр военных заказов",
+      "name_en": "Unified Procurement Register",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {}
+    },
+    {
+      "id": "hro_idea_ger_industry_series_2",
+      "family": "hro_family_ger_industry",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Длинные производственные серии",
+      "name_en": "Long Production Runs",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "industrial_capacity_factory": 0.06,
+        "production_factory_max_efficiency_factor": 0.08,
+        "production_factory_efficiency_gain_factor": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_industry_flexible_2",
+      "family": "hro_family_ger_industry",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Гибкие производственные задания",
+      "name_en": "Flexible Production Orders",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "industrial_capacity_factory": 0.03,
+        "production_factory_efficiency_gain_factor": 0.12,
+        "line_change_production_efficiency_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_industry_series_3",
+      "family": "hro_family_ger_industry",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Зрелая серийная промышленность",
+      "name_en": "Mature Series Production",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "industrial_capacity_factory": 0.1,
+        "production_factory_max_efficiency_factor": 0.12,
+        "production_factory_efficiency_gain_factor": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_industry_flexible_3",
+      "family": "hro_family_ger_industry",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Освоенная гибкая промышленность",
+      "name_en": "Mature Flexible Production",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "industrial_capacity_factory": 0.07,
+        "production_factory_efficiency_gain_factor": 0.16,
+        "line_change_production_efficiency_factor": 0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_army_0",
+      "family": "hro_family_ger_army",
+      "stage": 0,
+      "tag": "GER",
+      "initial": true,
+      "name_ru": "Неодинаковая штабная подготовка",
+      "name_en": "Uneven Staff Preparation",
+      "desc_ru": "Связь штабов и распределение полномочий требуют дополнительной работы. Этот умеренный штраф не заменяет исходные армейские духи.",
+      "desc_en": "Headquarters coordination and delegated authority need work. This modest penalty does not replace native army spirits.",
+      "modifiers": {
+        "army_org_factor": -0.025,
+        "planning_speed": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_army_1",
+      "family": "hro_family_ger_army",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Единая программа штабных занятий",
+      "name_en": "Common Staff Curriculum",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {}
+    },
+    {
+      "id": "hro_idea_ger_army_mission_2",
+      "family": "hro_family_ger_army",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Делегирование боевых задач",
+      "name_en": "Delegated Combat Tasks",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "army_org_factor": 0.04,
+        "planning_speed": 0.12,
+        "training_time_army_factor": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_army_staff_2",
+      "family": "hro_family_ger_army",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Стандартизированная штабная процедура",
+      "name_en": "Standardised Staff Procedure",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "army_org_factor": 0.02,
+        "max_planning_factor": 0.08,
+        "training_time_army_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_army_mission_3",
+      "family": "hro_family_ger_army",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовленное инициативное командование",
+      "name_en": "Trained Mission Command",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "army_org_factor": 0.08,
+        "planning_speed": 0.18,
+        "max_planning_factor": 0.05,
+        "training_time_army_factor": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_army_staff_3",
+      "family": "hro_family_ger_army",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Согласованное оперативное управление",
+      "name_en": "Coordinated Operational Command",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "army_org_factor": 0.05,
+        "max_planning_factor": 0.14,
+        "planning_speed": 0.04,
+        "training_time_army_factor": -0.08
+      }
+    },
+    {
+      "id": "hro_idea_ger_logistics_0",
+      "family": "hro_family_ger_logistics",
+      "stage": 0,
+      "tag": "GER",
+      "initial": true,
+      "name_ru": "Несогласованные транспортные заявки",
+      "name_en": "Uncoordinated Transport Requests",
+      "desc_ru": "Разные ведомства конкурируют за транспорт. Небольшой дополнительный расход снабжения снимается последовательной логистической программой.",
+      "desc_en": "Agencies compete for transport. A modest extra supply cost is removed through a staged logistics programme.",
+      "modifiers": {
+        "supply_consumption_factor": 0.04,
+        "attrition": 0.015
+      }
+    },
+    {
+      "id": "hro_idea_ger_logistics_1",
+      "family": "hro_family_ger_logistics",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Согласованный график перевозок",
+      "name_en": "Coordinated Transport Timetable",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {}
+    },
+    {
+      "id": "hro_idea_ger_logistics_2",
+      "family": "hro_family_ger_logistics",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Рациональное распределение снабжения",
+      "name_en": "Rational Supply Allocation",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "supply_consumption_factor": -0.03,
+        "attrition": -0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_logistics_3",
+      "family": "hro_family_ger_logistics",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Устойчивая система армейского снабжения",
+      "name_en": "Resilient Army Supply System",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "supply_consumption_factor": -0.08,
+        "attrition": -0.06,
+        "winter_attrition_factor": -0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_air_0",
+      "family": "hro_family_ger_air",
+      "stage": 0,
+      "tag": "GER",
+      "initial": true,
+      "name_ru": "Разрыв между аэродромами и штабами",
+      "name_en": "Airfield–Headquarters Coordination Gap",
+      "desc_ru": "Неодинаковые процедуры немного снижают эффективность миссий. Их можно исправить без снятия исходных ограничений авиации.",
+      "desc_en": "Uneven procedures slightly reduce mission efficiency. They can be corrected without removing native air limitations.",
+      "modifiers": {
+        "air_mission_efficiency": -0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_air_1",
+      "family": "hro_family_ger_air",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Общие процедуры авиачастей",
+      "name_en": "Common Air-Unit Procedures",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {}
+    },
+    {
+      "id": "hro_idea_ger_air_2",
+      "family": "hro_family_ger_air",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Связанная система воздушных операций",
+      "name_en": "Integrated Air Operations",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "air_mission_efficiency": 0.06,
+        "air_accidents_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_air_3",
+      "family": "hro_family_ger_air",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Зрелая система воздушных операций",
+      "name_en": "Mature Air Operations System",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "air_mission_efficiency": 0.1,
+        "air_accidents_factor": -0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_navy_1",
+      "family": "hro_family_ger_navy",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Общий морской оперативный штаб",
+      "name_en": "Joint Naval Operations Staff",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "naval_coordination": 0.04,
+        "naval_attrition": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_navy_raiding_2",
+      "family": "hro_family_ger_navy",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Программа ограниченной морской войны",
+      "name_en": "Limited Maritime Warfare Programme",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "convoy_raiding_efficiency_factor": 0.1,
+        "convoy_escort_efficiency": -0.04,
+        "naval_coordination": 0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_navy_screen_2",
+      "family": "hro_family_ger_navy",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Программа устойчивого соединения",
+      "name_en": "Balanced Task-Force Programme",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "screening_efficiency": 0.08,
+        "convoy_escort_efficiency": 0.08,
+        "convoy_raiding_efficiency_factor": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_navy_raiding_3",
+      "family": "hro_family_ger_navy",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Согласованная рейдерская война",
+      "name_en": "Coordinated Raider Warfare",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "convoy_raiding_efficiency_factor": 0.16,
+        "naval_coordination": 0.08,
+        "naval_detection": 0.05,
+        "convoy_escort_efficiency": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_navy_screen_3",
+      "family": "hro_family_ger_navy",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовленное соединение прикрытия",
+      "name_en": "Trained Covering Task Force",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "screening_efficiency": 0.12,
+        "convoy_escort_efficiency": 0.12,
+        "naval_coordination": 0.06,
+        "convoy_raiding_efficiency_factor": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_state_1",
+      "family": "hro_family_ger_state",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Согласованные полномочия ведомств",
+      "name_en": "Coordinated Agency Responsibilities",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "political_power_gain": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_state_central_2",
+      "family": "hro_family_ger_state",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Централизованное согласование",
+      "name_en": "Centralised Coordination",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "political_power_gain": 0.3,
+        "research_speed_factor": -0.03,
+        "stability_factor": 0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_state_technical_2",
+      "family": "hro_family_ger_state",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Техническая автономия ведомств",
+      "name_en": "Technical Agency Autonomy",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "political_power_gain": -0.1,
+        "research_speed_factor": 0.04,
+        "industry_repair_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_state_central_3",
+      "family": "hro_family_ger_state",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Устойчивая центральная координация",
+      "name_en": "Established Central Coordination",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "political_power_gain": 0.45,
+        "research_speed_factor": -0.02,
+        "stability_factor": 0.04,
+        "industry_repair_factor": 0.08
+      }
+    },
+    {
+      "id": "hro_idea_ger_state_technical_3",
+      "family": "hro_family_ger_state",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовленная техническая администрация",
+      "name_en": "Professional Technical Administration",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "political_power_gain": -0.05,
+        "research_speed_factor": 0.05,
+        "industry_repair_factor": 0.15,
+        "stability_factor": 0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_diplomacy_1",
+      "family": "hro_family_ger_diplomacy",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовленная торговая документация",
+      "name_en": "Prepared Commercial Documentation",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "license_purchase_cost": -0.06,
+        "trade_opinion_factor": 0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_diplomacy_2",
+      "family": "hro_family_ger_diplomacy",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Согласованные лицензионные стандарты",
+      "name_en": "Coordinated Licensing Standards",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "license_purchase_cost": -0.12,
+        "license_production_speed": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_diplomacy_3",
+      "family": "hro_family_ger_diplomacy",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовленная внешнеторговая служба",
+      "name_en": "Professional Foreign Trade Service",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "license_purchase_cost": -0.16,
+        "license_production_speed": 0.1,
+        "trade_opinion_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_war_1",
+      "family": "hro_family_ger_war",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Ремонтные резервы действующей армии",
+      "name_en": "Field-Army Repair Reserves",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "attrition": -0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_war_2",
+      "family": "hro_family_ger_war",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Распределение ресурсов затяжной войны",
+      "name_en": "Prolonged-War Resource Allocation",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "industry_repair_factor": 0.12,
+        "supply_consumption_factor": -0.02
+      }
+    },
+    {
+      "id": "hro_idea_ger_war_3",
+      "family": "hro_family_ger_war",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Устойчивая система военной адаптации",
+      "name_en": "Resilient Wartime Adaptation System",
+      "desc_ru": "Действующая ступень проведённой реформы. Эффекты заменяют предыдущую ступень этой системы, а не складываются с ней. Итоговые показатели указаны ниже.",
+      "desc_en": "The current stage of the enacted reform. Its effects replace earlier stages in this system rather than stacking with them. Current modifiers are listed below.",
+      "modifiers": {
+        "industrial_capacity_factory": 0.04,
+        "industry_repair_factor": 0.18,
+        "supply_consumption_factor": -0.03,
+        "army_org_factor": 0.015
+      }
+    }
+  ],
+  "native_patches": [
+    {
+      "id": "GER_prioritize_economic_growth",
+      "cost": 5,
+      "extra_reward": "add_stability = 0.01",
+      "x": 45,
+      "y": 0,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_the_four_year_plan",
+      "cost": 3,
+      "extra_reward": "add_political_power = 15",
+      "x": 51,
+      "y": 0,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_construct_the_reichsautobahn",
+      "cost": 3,
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_construct_the_reichsautobahn bonus = 0.25 uses = 1 category = train_tech }",
+      "x": 48,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_prioritize_economic_growth",
+          "GER_the_four_year_plan"
+        ],
+        [
+          "hro_ger_transport_ledger"
+        ]
+      ]
+    },
+    {
+      "id": "GER_autarky_efforts",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_autarky_efforts bonus = 0.3 uses = 1 category = excavation_tech }",
+      "x": 53,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_the_four_year_plan"
+        ],
+        [
+          "hro_ger_procurement_register"
+        ]
+      ]
+    },
+    {
+      "id": "GER_institute_price_controls",
+      "cost": 3,
+      "extra_reward": "add_political_power = 25 add_stability = 0.01",
+      "x": 53,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_establish_the_reichswerke",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_establish_the_reichswerke bonus = 0.3 uses = 1 category = industry }",
+      "x": 52,
+      "y": 6,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_autarky_efforts"
+        ],
+        [
+          "hro_ger_tooling_audit"
+        ]
+      ]
+    },
+    {
+      "id": "GER_coal_liquefaction",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_coal_liquefaction bonus = 0.35 uses = 1 category = synth_resources }",
+      "x": 54,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_subsidize_hoesch_benzin",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_subsidize_hoesch_benzin bonus = 0.25 uses = 1 category = excavation_tech } add_political_power = 15",
+      "x": 53,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_coal_liquefaction"
+        ],
+        [
+          "hro_ger_fuel_processes"
+        ]
+      ]
+    },
+    {
+      "id": "GER_establish_buna_werke",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_establish_buna_werke bonus = 0.3 uses = 1 category = synth_resources }",
+      "x": 55,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_coal_liquefaction"
+        ],
+        [
+          "hro_ger_fuel_processes"
+        ]
+      ]
+    },
+    {
+      "id": "GER_accelerate_the_rearmament_program",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_accelerate_the_rearmament_program bonus = 0.3 uses = 1 category = industry }",
+      "x": 57,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_the_four_year_plan"
+        ],
+        [
+          "hro_ger_procurement_register"
+        ]
+      ]
+    },
+    {
+      "id": "GER_establish_production_targets",
+      "cost": 3,
+      "extra_reward": "add_political_power = 25 add_tech_bonus = { name = GER_establish_production_targets bonus = 0.25 uses = 1 category = industry }",
+      "x": 58,
+      "y": 4,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_accelerate_the_rearmament_program"
+        ],
+        [
+          "hro_ger_long_series",
+          "hro_ger_flexible_orders"
+        ]
+      ]
+    },
+    {
+      "id": "GER_zentrale_planung",
+      "cost": 5,
+      "extra_reward": "add_political_power = 35 add_tech_bonus = { name = GER_zentrale_planung bonus = 0.3 uses = 1 category = electronics }",
+      "x": 57,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_concentrated_armament_program",
+          "GER_establish_production_targets"
+        ],
+        [
+          "hro_ger_supplier_standards"
+        ]
+      ]
+    },
+    {
+      "id": "GER_create_rustungsstab",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_create_rustungsstab bonus = 0.35 uses = 1 category = industry } add_political_power = 15",
+      "x": 58,
+      "y": 10,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_zentrale_planung"
+        ],
+        [
+          "hro_ger_emergency_dispersal"
+        ]
+      ]
+    },
+    {
+      "id": "GER_armament_rationalization",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_armament_rationalization bonus = 0.4 uses = 1 category = industry }",
+      "x": 56,
+      "y": 10,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_zentrale_planung"
+        ],
+        [
+          "hro_ger_rationalized_designs"
+        ]
+      ]
+    },
+    {
+      "id": "GER_totaler_krieg",
+      "cost": 5,
+      "extra_reward": "add_war_support = 0.02 army_experience = 15",
+      "earliest": "1943.1.1",
+      "x": 57,
+      "y": 12,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_create_rustungsstab"
+        ],
+        [
+          "GER_armament_rationalization"
+        ],
+        [
+          "hro_ger_central_coordination",
+          "hro_ger_technical_autonomy"
+        ]
+      ]
+    },
+    {
+      "id": "GER_develop_modern_maneuver_warfare",
+      "cost": 3,
+      "extra_reward": "army_experience = 10",
+      "x": 8,
+      "y": 0,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_the_prussian_legacy",
+      "cost": 3,
+      "extra_reward": "army_experience = 10 add_tech_bonus = { name = GER_the_prussian_legacy bonus = 0.25 uses = 1 category = infantry_weapons }",
+      "x": 6,
+      "y": 4,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_develop_modern_maneuver_warfare"
+        ],
+        [
+          "hro_ger_staff_curriculum"
+        ]
+      ]
+    },
+    {
+      "id": "GER_improve_motorized_troops",
+      "cost": 3,
+      "extra_reward": "army_experience = 10 add_tech_bonus = { name = GER_improve_motorized_troops bonus = 0.25 uses = 1 category = cat_mechanized_equipment }",
+      "x": 3,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_lessons_of_the_great_war",
+      "cost": 3,
+      "extra_reward": "army_experience = 20",
+      "x": 5,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_artillery_bombardment",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_artillery_bombardment bonus = 0.35 uses = 1 category = artillery }",
+      "x": 4,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_stormtroopers",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_stormtroopers bonus = 0.35 uses = 1 category = infantry_weapons }",
+      "x": 4,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_instill_auftragstaktik",
+      "cost": 3,
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_army_0 } hro_set_hro_idea_ger_army_1 = yes } army_experience = 15",
+      "x": 8,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_the_prussian_legacy",
+          "GER_adopt_new_panzer_doctrine"
+        ],
+        [
+          "hro_ger_mission_command",
+          "hro_ger_standard_staff"
+        ]
+      ]
+    },
+    {
+      "id": "GER_panzergrenadier",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_panzergrenadier bonus = 0.35 uses = 1 category = cat_mechanized_equipment }",
+      "x": 8,
+      "y": 10,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_instill_auftragstaktik"
+        ],
+        [
+          "hro_ger_armour_maintenance_school"
+        ]
+      ]
+    },
+    {
+      "id": "GER_kriegslokomotiven",
+      "cost": 3,
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_kriegslokomotiven bonus = 0.35 uses = 1 category = train_tech }",
+      "x": 11,
+      "y": 12,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_panzergrenadier"
+        ],
+        [
+          "hro_ger_motor_transport_standards"
+        ]
+      ]
+    },
+    {
+      "id": "GER_improve_the_logistics_system",
+      "cost": 5,
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_political_power = 25",
+      "x": 7,
+      "y": 12,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_adopt_new_panzer_doctrine",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_adopt_new_panzer_doctrine bonus = 0.35 uses = 1 category = armor }",
+      "x": 10,
+      "y": 4,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_develop_modern_maneuver_warfare"
+        ],
+        [
+          "hro_ger_staff_curriculum"
+        ]
+      ]
+    },
+    {
+      "id": "GER_panzer_troops_school",
+      "cost": 3,
+      "extra_reward": "army_experience = 20 add_command_power = 5",
+      "x": 11,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_combined_arms",
+      "cost": 5,
+      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_combined_arms bonus = 0.25 uses = 1 category = support_tech }",
+      "x": 14,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_advanced_panzer_research"
+        ],
+        [
+          "GER_dive_bombers"
+        ],
+        [
+          "hro_ger_combined_exercises"
+        ]
+      ]
+    },
+    {
+      "id": "GER_expanding_the_luftwaffe",
+      "cost": 3,
+      "extra_reward": "air_experience = 10",
+      "x": 20,
+      "y": 0,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_aeronautical_research_institute",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_aeronautical_research_institute bonus = 0.35 uses = 1 category = air_equipment }",
+      "x": 17,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_expanding_the_luftwaffe"
+        ],
+        [
+          "hro_ger_airfield_staff_links"
+        ]
+      ]
+    },
+    {
+      "id": "GER_dive_bombers",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_dive_bombers bonus = 0.35 uses = 1 category = medium_air }",
+      "x": 15,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_tactical_bombers",
+      "cost": 3,
+      "extra_reward": "add_tech_bonus = { name = GER_tactical_bombers bonus = 0.25 uses = 1 category = air_equipment } air_experience = 10",
+      "x": 17,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_form_the_jagdwaffe",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_form_the_jagdwaffe bonus = 0.35 uses = 1 category = light_air }",
+      "x": 23,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_expanding_the_luftwaffe"
+        ],
+        [
+          "hro_ger_airfield_staff_links"
+        ]
+      ]
+    },
+    {
+      "id": "GER_reorganize_the_luftwaffe",
+      "cost": 5,
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_air_0 } hro_set_hro_idea_ger_air_1 = yes } air_experience = 15",
+      "x": 21,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_solve_the_logistical_bottlenecks",
+      "cost": 3,
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } air_experience = 10",
+      "x": 20,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_reorganize_the_luftwaffe"
+        ],
+        [
+          "hro_ger_front_air_programme",
+          "hro_ger_industrial_air_defence"
+        ]
+      ]
+    },
+    {
+      "id": "GER_defense_of_the_reich",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_defense_of_the_reich bonus = 0.4 uses = 1 category = radar_tech }",
+      "x": 23,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_strengthen_the_kriegsmarine",
+      "cost": 3,
+      "extra_reward": "navy_experience = 15",
+      "x": 32,
+      "y": 0,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_plan_z",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_plan_z bonus = 0.35 uses = 1 category = bb_tech }",
+      "x": 30,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_strengthen_the_kriegsmarine"
+        ],
+        [
+          "hro_ger_naval_operations_staff"
+        ]
+      ]
+    },
+    {
+      "id": "GER_trade_interdiction",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_trade_interdiction bonus = 0.35 uses = 1 category = ss_tech }",
+      "x": 34,
+      "y": 2,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_strengthen_the_kriegsmarine"
+        ],
+        [
+          "hro_ger_naval_operations_staff"
+        ]
+      ]
+    },
+    {
+      "id": "GER_wolfpack_tactics",
+      "cost": 3,
+      "extra_reward": "navy_experience = 20",
+      "x": 37,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_u_boat_efforts",
+      "cost": 5,
+      "extra_reward": "add_tech_bonus = { name = GER_u_boat_efforts bonus = 0.35 uses = 1 category = ss_tech }",
+      "x": 37,
+      "y": 6,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_wolfpack_tactics"
+        ],
+        [
+          "hro_ger_limited_maritime_war"
+        ]
+      ]
+    },
+    {
+      "id": "GER_reorganize_the_wehrmacht",
+      "cost": 5,
+      "extra_reward": "army_experience = 15 add_command_power = 5"
+    },
+    {
+      "id": "GER_anschluss",
+      "cost": 10,
+      "extra_reward": "army_experience = 10",
+      "earliest": "1938.1.1"
+    },
+    {
+      "id": "GER_molotov_ribbentrop_pact",
+      "cost": 5,
+      "extra_reward": "add_political_power = 15",
+      "earliest": "1939.6.1"
+    },
+    {
+      "id": "GER_war_with_the_ussr",
+      "cost": 10,
+      "extra_reward": "army_experience = 15",
+      "earliest": "1941.3.1"
+    },
+    {
+      "id": "GER_currency_reforms",
+      "x": 42,
+      "y": 2,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_lower_taxes",
+      "x": 41,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_abolish_price_controls",
+      "x": 40,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_increased_trade",
+      "x": 39,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_housing_developments",
+      "x": 43,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_workers_rights",
+      "x": 44,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_industrial_expansion",
+      "x": 42,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_invest_in_vereinigte_stahlwerke",
+      "x": 41,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_agricultural_reforms",
+      "x": 43,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_urbanization",
+      "x": 44,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_wirtschaftswunder",
+      "x": 42,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_mass_production",
+      "x": 41,
+      "y": 12,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_build_defense_industry",
+      "x": 43,
+      "y": 12,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_war_production",
+      "x": 42,
+      "y": 14,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_build_the_rur_dam",
+      "x": 46,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_trade_deal_with_sweden",
+      "x": 50,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_kdf_wagen_factories",
+      "x": 48,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_expand_the_reichsautobahn_south",
+      "x": 47,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_expand_the_reichsautobahn_east",
+      "x": 49,
+      "y": 6,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_kdf_wagen_factories"
+        ],
+        [
+          "hro_ger_railway_timetable",
+          "hro_ger_road_workshops"
+        ]
+      ]
+    },
+    {
+      "id": "GER_develop_heraeus_facilities",
+      "x": 48,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_seize_foreign_industries",
+      "x": 51,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_autarky_achieved",
+      "x": 53,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_concentrated_armament_program",
+      "x": 56,
+      "y": 4,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_accelerate_the_rearmament_program"
+        ],
+        [
+          "hro_ger_long_series",
+          "hro_ger_flexible_orders"
+        ]
+      ]
+    },
+    {
+      "id": "GER_fortify_the_vaterland",
+      "x": 8,
+      "y": 2,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_all_terrain_military_motorcycle",
+      "x": 7,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_salvage_captured_equipment",
+      "x": 9,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_establish_the_afrikakorps",
+      "x": 6,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_establish_the_skijager",
+      "x": 10,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_nationalize_ford_factories",
+      "x": 5,
+      "y": 12,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_defend_the_vaterland",
+      "x": 9,
+      "y": 12,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_uranverein",
+      "x": 8,
+      "y": 14,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_advanced_panzer_research",
+      "x": 13,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_expand_kummersdorfs_capacity",
+      "x": 12,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_uralbomber_program",
+      "x": 19,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_rocketry_innovations",
+      "x": 17,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_fallschirmjager",
+      "x": 20,
+      "y": 2,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_experimental_rotorcrafts",
+      "x": 23,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_develop_the_knickebein",
+      "x": 25,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_construct_the_kammhuber_line",
+      "x": 22,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_establish_night_fighter_squadrons",
+      "x": 24,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_torpedobomber",
+      "x": 25,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_establish_carrier_groups",
+      "x": 26,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_aerodynamic_research_institute",
+      "x": 20,
+      "y": 12,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_solve_the_logistical_bottlenecks",
+          "GER_construct_the_kammhuber_line",
+          "GER_establish_night_fighter_squadrons"
+        ],
+        [
+          "GER_rocketry_innovations"
+        ],
+        [
+          "hro_ger_mature_air_operations"
+        ]
+      ]
+    },
+    {
+      "id": "GER_amerikabomber",
+      "x": 20,
+      "y": 16,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_aerodynamic_research_institute"
+        ],
+        [
+          "hro_ger_jet_rearmament"
+        ]
+      ]
+    },
+    {
+      "id": "GER_expand_kriegsmarinewerft",
+      "x": 28,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_construct_aircraft_carriers",
+      "x": 27,
+      "y": 6,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_expand_kriegsmarinewerft"
+        ],
+        [
+          "hro_ger_balanced_task_force"
+        ]
+      ]
+    },
+    {
+      "id": "GER_grosskampfschiff_construction",
+      "x": 29,
+      "y": 6,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_expand_kriegsmarinewerft"
+        ],
+        [
+          "hro_ger_balanced_task_force"
+        ]
+      ]
+    },
+    {
+      "id": "GER_high_seas_fleet",
+      "x": 28,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_re_establish_the_seekriegsleitung",
+      "x": 32,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_marinestosstrupp",
+      "x": 31,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_atlantic_naval_bases",
+      "x": 33,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_atlantic_naval_dominance",
+      "x": 32,
+      "y": 8,
+      "relative_position_id": null,
+      "prerequisites": [
+        [
+          "GER_marinestosstrupp",
+          "GER_atlantic_naval_bases"
+        ],
+        [
+          "hro_ger_mature_maritime_programme"
+        ]
+      ]
+    },
+    {
+      "id": "GER_cruiser_warfare",
+      "x": 35,
+      "y": 4,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_panzerschiff_raiders",
+      "x": 35,
+      "y": 6,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_unrestricted_convoy_raiding",
+      "x": 36,
+      "y": 8,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_seeherrschaft",
+      "x": 32,
+      "y": 10,
+      "relative_position_id": null
+    },
+    {
+      "id": "GER_fuhrerprinzip",
+      "x": 61,
+      "y": 22,
+      "relative_position_id": null
+    }
+  ],
+  "notes_ru": [
+    "v0.3: 40 новых крупных фокусов физически вставлены в основные промышленные и военные направления; 30 существующих узлов получают новые обязательные предпосылки. Это не восемь необязательных боковых столбцов.",
+    "Политические альтернативы DLC сохранены; основные военные и общие экономические ветки получили новые этапы. Исходные IDs и награды сохранены, чтобы не разрушить внешние игровые события.",
+    "Первый обязательный этап в каждой из четырёх проблемных систем полностью снимает начальный штраф. Поздние ступени дают ощутимую специализацию с издержками вместо мелких прибавок.",
+    "Новый исследовательский слот доступен с1943 и только при числе слотов менее6; при пределе выдаются два промышленных исследовательских бонуса.",
+    "Фокусные заводы появляются только в принадлежащих и контролируемых германских областях: захваченные противником предприятия не клонируются в новой столице.",
+    "Сохранены MEFO, штатные переменные армии, авиации и промышленности, внутренний круг и нативные дипломатические эффекты. Военные реформы не требуют прохождения авиационного или морского дерева.",
+    "Развилки: длинные серии/гибкое производство, железнодорожные/дорожные колонны, полевая/единая оперативная школа, поддержка фронта/ПВО промышленности, чрезвычайный штаб/технические комиссии; каждая вновь соединяется через OR.",
+    "Для освобождения промышленных рядов блок внутреннего круга перемещён целиком ниже хозяйственной ветки через единственный корневой узел GER_fuhrerprinzip; его внутренняя структура, условия и награды сохранены.",
+    "Морская специализация закрепляется первой выбранной конструкторской программой; другая морская ветка позже доступна и выдаёт предприятия с исследованиями, сохраняя принятую школу. Это согласуется с исходной возможностью позднего перехода между Plan Z и рейдерской веткой."
+  ],
+  "integrated_milestones": [
+    {
+      "native": "GER_autarky_efforts",
+      "requires": "hro_ger_procurement_register"
+    },
+    {
+      "native": "GER_establish_the_reichswerke",
+      "requires": "hro_ger_tooling_audit"
+    },
+    {
+      "native": "GER_zentrale_planung",
+      "requires": "hro_ger_supplier_standards"
+    },
+    {
+      "native": "GER_construct_the_reichsautobahn",
+      "requires": "hro_ger_transport_ledger"
+    },
+    {
+      "native": "GER_the_prussian_legacy",
+      "requires": "hro_ger_staff_curriculum"
+    },
+    {
+      "native": "GER_adopt_new_panzer_doctrine",
+      "requires": "hro_ger_staff_curriculum"
+    },
+    {
+      "native": "GER_panzergrenadier",
+      "requires": "hro_ger_armour_maintenance_school"
+    },
+    {
+      "native": "GER_kriegslokomotiven",
+      "requires": "hro_ger_motor_transport_standards"
+    },
+    {
+      "native": "GER_combined_arms",
+      "requires": "hro_ger_combined_exercises"
+    },
+    {
+      "native": "GER_aeronautical_research_institute",
+      "requires": "hro_ger_airfield_staff_links"
+    },
+    {
+      "native": "GER_aerodynamic_research_institute",
+      "requires": "hro_ger_mature_air_operations"
+    },
+    {
+      "native": "GER_amerikabomber",
+      "requires": "hro_ger_jet_rearmament"
+    },
+    {
+      "native": "GER_plan_z",
+      "requires": "hro_ger_naval_operations_staff"
+    },
+    {
+      "native": "GER_u_boat_efforts",
+      "requires": "hro_ger_limited_maritime_war"
+    },
+    {
+      "native": "GER_construct_aircraft_carriers",
+      "requires": "hro_ger_balanced_task_force"
+    },
+    {
+      "native": "GER_atlantic_naval_dominance",
+      "requires": "hro_ger_mature_maritime_programme"
+    }
+  ]
+}
