@@ -215,12 +215,12 @@ class ValidatorTests(unittest.TestCase):
         self.assert_invalid('Initial debuff budget exceeded')
 
     def test_final_family_bonus_budget_is_enforced(self):
-        self.ger['ideas'][2]['modifiers']['industrial_capacity_factory'] = 0.30
+        self.ger['ideas'][2]['modifiers']['industrial_capacity_factory'] = 0.50
         fixture(self.base, self.ger, self.sov)
         self.assert_invalid('Final family bonus budget exceeded')
 
     def test_substantial_bounded_final_reform_is_allowed(self):
-        self.ger['ideas'][2]['modifiers']['industrial_capacity_factory'] = 0.20
+        self.ger['ideas'][2]['modifiers']['industrial_capacity_factory'] = 0.35
         fixture(self.base, self.ger, self.sov)
         self.assertEqual(validate(self.mod, self.catalogues)['ideas'], 3)
 

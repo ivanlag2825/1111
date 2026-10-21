@@ -137,6 +137,44 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(focus.scalar('relative_position_id'), 'GER_anchor')
         self.assertEqual(focus.scalar('icon'), 'GFX_focus_GER_four_year_plan')
 
+    def test_native_overlay_moves_continuous_panel_after_expanded_shared_rows(self):
+        path = self.game / 'common/national_focus/germany.txt'
+        original = tree('GER').replace('id = SYNTH_GER',
+            'continuous_focus_position = { x = 500 y = 1300 } id = SYNTH_GER')
+        path.write_text(original, encoding='utf-8')
+        catalogs = [catalog('GER'), catalog('SOV')]
+        catalogs[0]['focuses'][0].update(x=2, y=30)
+        report, _ = builder.native_overlay(self.output, self.game, catalogs)
+        compiled = parse((self.output / 'common/national_focus/germany.txt').read_text(encoding='utf-8-sig'))[0]
+        self.assertEqual(compiled.one('continuous_focus_position').scalar('x'), '500')
+        self.assertEqual(compiled.one('continuous_focus_position').scalar('y'), '4290')
+        self.assertEqual(path.read_text(), original)
+        self.assertEqual(report['continuous_focus_layout']['GER']['max_base_focus_y'], 30)
+
+    def test_source_audit_rejects_undeclared_or_incorrect_continuous_panel_edit(self):
+        original = tree('GER').replace('id = SYNTH_GER',
+            'continuous_focus_position = { x = 500 y = 1300 } id = SYNTH_GER')
+        changed = original.replace('y = 1300', 'y = 3900')
+        with self.assertRaisesRegex(ValueError, 'Native tree fields'):
+            builder.verify_native_preservation(parse(original), parse(changed), [])
+        with self.assertRaisesRegex(ValueError, 'differs from declared'):
+            builder.verify_native_preservation(parse(original), parse(changed), [],
+                {'SYNTH_GER': {'x': 500, 'y': 999}})
+
+    def test_combined_reform_envelope_counts_one_tier_and_war_reward(self):
+        catalogs = [catalog('GER')]
+        catalogs[0]['ideas'] = [
+            {'family': 'hro_family_a', 'modifiers': {'industrial_capacity_factory': .08}},
+            {'family': 'hro_family_a', 'modifiers': {'industrial_capacity_factory': .25}},
+            {'family': 'hro_family_b', 'modifiers': {'industrial_capacity_factory': .05}},
+        ]
+        result = builder.permanent_reform_envelopes(catalogs,
+            {'permanent_rewards': {'GER': {'industrial_capacity_factory': .10}}})
+        self.assertEqual(result['countries']['GER']['industrial_capacity_factory'], .40)
+        with self.assertRaisesRegex(ValueError, 'Combined permanent HRO bonus budget exceeded'):
+            builder.permanent_reform_envelopes(catalogs,
+                {'permanent_rewards': {'GER': {'industrial_capacity_factory': .30}}})
+
     def test_layout_audit_rejects_new_overlap(self):
         preview = builder.module('hro_preview_for_tests', ROOT / 'overhaul/tools/preview_trees.py')
         schematic = {'countries': {tag: {'new_vs_native_collision_candidates': [],
@@ -147,6 +185,10 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(checked['countries']['GER']['new_native_overlaps'], 0)
         schematic['countries']['GER']['new_vs_native_collision_candidates'] = [{'new': 'hro_ger_test'}]
         with self.assertRaisesRegex(ValueError, 'New focus base-layout overlaps'):
+            builder.audit_integrated_layout(self.game, preview, schematic)
+        schematic['countries']['GER']['new_vs_native_collision_candidates'] = []
+        schematic['countries']['GER']['continuous_focus_panel'] = {'safe_below_all_focuses': False}
+        with self.assertRaisesRegex(ValueError, 'Continuous focus panel can overlap'):
             builder.audit_integrated_layout(self.game, preview, schematic)
 
     def test_layout_audit_checks_newly_colliding_original_focuses(self):

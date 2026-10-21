@@ -1,8 +1,8 @@
 {
-  "version": "0.3.0",
-  "archive": "dist/rework.zip",
-  "sha256": "4a2d075236ae390f1b13ba13bb84d2738e3845a22783b977b6367582d0b5b75a",
-  "bytes": 421657,
+  "version": "0.4.0",
+  "archive": "dist/war.zip",
+  "sha256": "d501635ff70f9446d47a3f3329b09f56e4bf860152e8b0646581c7310fb79a79",
+  "bytes": 442403,
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 40,
@@ -11,24 +11,108 @@
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 67,
   "mandatory_integration_checks": 32,
+  "continuous_focus_layout": {
+    "GER": {
+      "position": {
+        "x": 500,
+        "y": 3900
+      },
+      "max_base_focus_y": 27.0,
+      "max_conditional_focus_y": 27.0,
+      "row_height_px": 130,
+      "margin_rows": 3,
+      "focus_count": 478,
+      "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
+      "old_position": {
+        "x": "500",
+        "y": "1300"
+      }
+    },
+    "SOV": {
+      "position": {
+        "x": 55,
+        "y": 3250
+      },
+      "max_base_focus_y": 22.0,
+      "max_conditional_focus_y": 22.0,
+      "row_height_px": 130,
+      "margin_rows": 3,
+      "focus_count": 352,
+      "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
+      "old_position": {
+        "x": "55",
+        "y": "1600"
+      }
+    }
+  },
+  "permanent_reform_envelopes": {
+    "scope": "one active tier per country family plus earned war adaptation; excludes DLC and temporary programmes",
+    "countries": {
+      "GER": {
+        "industrial_capacity_factory": 0.32,
+        "army_org_factor": 0.23,
+        "supply_consumption_factor": -0.36,
+        "winter_attrition_factor": -0.6
+      },
+      "SOV": {
+        "industrial_capacity_factory": 0.35,
+        "army_org_factor": 0.25,
+        "supply_consumption_factor": -0.35,
+        "winter_attrition_factor": 0
+      }
+    }
+  },
+  "war_adaptation": {
+    "ideas": 8,
+    "events": 4,
+    "soviet_shock_days": 120,
+    "german_winter_experience_days": 45,
+    "duration_clock": "bounded actual daily war counters; peace and German warm seasons do not advance",
+    "winter_season": "November through March",
+    "winter_years": [
+      1936,
+      1946
+    ],
+    "reforms_authorized_before_eligibility": true,
+    "surprise_requires_defending": true,
+    "native_penalties_removed": false,
+    "daily_scope": "country, filtered by original_tag",
+    "permanent_rewards": {
+      "SOV": {
+        "army_org_regain": 0.25,
+        "planning_speed": 0.35,
+        "max_planning_factor": 0.25,
+        "industrial_capacity_factory": 0.1,
+        "supply_consumption_factor": -0.1
+      },
+      "GER": {
+        "winter_attrition_factor": -0.4,
+        "acclimatization_cold_climate_gain_factor": 1.0,
+        "supply_consumption_factor": -0.1,
+        "army_org_regain": 0.15
+      }
+    }
+  },
   "layout_audit": {
     "scope": "base coordinates; native conditional offsets and visibility require engine review",
     "countries": {
       "GER": {
         "new_native_overlaps": 0,
         "new_new_overlaps": 0,
-        "introduced_native_native_overlaps": 0
+        "introduced_native_native_overlaps": 0,
+        "continuous_panel_below_focuses": true
       },
       "SOV": {
         "new_native_overlaps": 0,
         "new_new_overlaps": 0,
-        "introduced_native_native_overlaps": 0
+        "introduced_native_native_overlaps": 0,
+        "continuous_panel_below_focuses": true
       }
     }
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 15,
+    "script_files": 20,
     "authored_focuses": 81,
     "focuses_per_country": {
       "GER": 40,
@@ -38,19 +122,20 @@
     "catalogue_native_patches": 207,
     "native_prerequisite_patches": 67,
     "required_integrated_milestones": 32,
-    "ideas": 157,
+    "ideas": 167,
     "idea_families": 16,
-    "events": 20,
+    "events": 24,
     "decisions": 36,
-    "localisation_keys_per_language": 657,
+    "localisation_keys_per_language": 689,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
     "warnings": []
   },
   "tests": {
-    "overhaul": 60,
+    "overhaul": 94,
     "legacy_local": 34
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-main-tree/dist/rework.zip"
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-war-adaptation/dist/war.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-main-tree/dist/rework.zip"
 }

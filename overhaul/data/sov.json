@@ -5,8 +5,8 @@
       "id": "hro_sov_planning_commission",
       "name_ru": "Ревизия второй пятилетки",
       "name_en": "Audit the Second Five-Year Plan",
-      "desc_ru": "Проверка мощностей становится обязательным этапом завершения второй пятилетки. Снимает штрафы промышленной семьи HRO, даёт +5% выпуска военных заводов, +4% роста эффективности и 35 ПВ.",
-      "desc_en": "A required stage of the Second Plan. Removes the HRO industrial penalties, provides +5% military factory output, +4% efficiency growth and 35 political power.",
+      "desc_ru": "Обязательная ревизия мощностей перед завершением второй пятилетки. Убирает промышленные штрафы HRO и вводит +10% выпуска военных заводов и +10% роста эффективности; дополнительно 35 ПВ.",
+      "desc_en": "A required capacity audit before completing the Second Five-Year Plan. Removes HRO industrial penalties and introduces +10% military factory output and +10% efficiency growth; also grants 35 political power.",
       "branch": "industry",
       "row": 2,
       "cost": 3,
@@ -30,8 +30,8 @@
       "id": "hro_sov_defence_combines",
       "name_ru": "Пятилетка оборонных комбинатов",
       "name_en": "A Plan for Defence Combines",
-      "desc_ru": "Четыре военных завода на Урале и +15% скорости военного строительства ценой −8% гражданского строительства и +2 п.п. ожидаемых потребительских товаров. Определяет направление третьей пятилетки.",
-      "desc_en": "Four Ural military factories and +15% military construction, at the cost of −8% civilian construction and +2 expected consumer goods points. Shapes the Third Plan.",
+      "desc_ru": "Шесть военных заводов на Урале. Оборонный приоритет даёт +35% строительства военных заводов ценой −15% гражданского строительства и +3 п.п. ожидаемых потребительских товаров. Этот выбор определяет позднюю специализацию пятилетки. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Six military factories in the Urals. The armaments priority gives +35% military factory construction at the cost of −15% civilian construction and +3 expected consumer goods points. This choice determines the later plan specialization. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "industry",
       "row": 4,
       "cost": 5,
@@ -40,7 +40,7 @@
           "SOV_finish_the_five_year_plan"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_plan_defence_2 = yes if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "reward": "hro_set_hro_idea_sov_plan_defence_2 = yes if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = arms_factory size > 2 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = arms_factory size > 2 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 }",
       "x": 1,
       "y": 3,
       "icon": "GFX_SOV_shift_to_armaments_production_ccp_2d_sov_compatibility",
@@ -56,8 +56,8 @@
       "id": "hro_sov_balanced_expansion",
       "name_ru": "Уголь, сталь и новые города",
       "name_en": "Coal, Steel and New Cities",
-      "desc_ru": "Три гражданских завода, +12% гражданского строительства и +5% роста эффективности ценой −4% военного строительства. Альтернатива раннему насыщению армии вооружением.",
-      "desc_en": "Three civilian factories, +12% civilian construction and +5% efficiency growth, at the cost of −4% military construction. A longer investment route for the Third Plan.",
+      "desc_ru": "Четыре гражданских завода на Урале. Долгий инвестиционный путь даёт +25% гражданского строительства и +10% роста эффективности ценой −8% строительства военных заводов. Взаимоисключающий выбор вместо ранних оборонных комбинатов. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Four civilian factories in the Urals. The investment route gives +25% civilian construction and +10% efficiency growth at the cost of −8% military factory construction. A mutually exclusive alternative to early armaments combines. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "industry",
       "row": 4,
       "cost": 5,
@@ -66,7 +66,7 @@
           "SOV_finish_the_five_year_plan"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_plan_balanced_2 = yes if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } } add_building_construction = { type = industrial_complex level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 1 if = { limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } } add_building_construction = { type = industrial_complex level = 1 instant_build = yes } } else = { ROOT = { add_political_power = 25 } } } } else = { add_political_power = 25 }",
+      "reward": "hro_set_hro_idea_sov_plan_balanced_2 = yes if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 2\n            if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } }\n                add_building_construction = { type = industrial_complex level = 2 instant_build = yes } }\n            else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 2\n            if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } }\n                add_building_construction = { type = industrial_complex level = 2 instant_build = yes } }\n            else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
       "x": 3,
       "y": 3,
       "icon": "GFX_SOV_eastern_development_ccp_2d_sov_compatibility",
@@ -82,8 +82,8 @@
       "id": "hro_sov_serial_standards",
       "name_ru": "От чертежа к массовой серии",
       "name_en": "From Blueprint to Mass Production",
-      "desc_ru": "Обязательный переход к отраслевым реформам третьей пятилетки: +8% выпуска и +8% роста эффективности вместо предыдущей промышленной ступени; два бонуса 75% к производственным технологиям.",
-      "desc_en": "Required before the Third Plan ministry reforms: replace the previous industrial stage with +8% output and +8% efficiency growth; two 75% production research bonuses.",
+      "desc_ru": "Переводит промышленность на массовую серию: +18% выпуска военных заводов и +18% роста эффективности вместо предыдущей промышленной ступени. Два бонуса 75% к производственным технологиям; обязательный этап перед отраслевыми реформами.",
+      "desc_en": "Introduces mass production: +18% military factory output and +18% efficiency growth replace the previous industrial stage. Two 75% production research bonuses; required before the ministry reforms.",
       "branch": "industry",
       "row": 6,
       "cost": 4,
@@ -101,8 +101,8 @@
       "id": "hro_sov_engineering_bureaux",
       "name_ru": "Единая технологическая оснастка",
       "name_en": "Unified Industrial Tooling",
-      "desc_ru": "Объединяет металлургию и конструкторские бюро перед промышленной модернизацией. Промышленная семья достигает +12% выпуска и +10% роста эффективности. Выбранная пятилетка получает последнюю ступень: +20% военного или +15% гражданского строительства.",
-      "desc_en": "Unites metallurgy and design bureaux before industrial modernization. The industrial family reaches +12% output and +10% efficiency growth. Upgrade the chosen plan to +20% military or +15% civilian construction.",
+      "desc_ru": "Промышленная семья достигает +25% выпуска и +25% роста эффективности. Выбранная пятилетка усиливается до +45% военного строительства при −20% гражданского и +3 п.п. потребительских товаров либо +35% гражданского строительства и +15% роста эффективности при −8% военного строительства.",
+      "desc_en": "The industrial family reaches +25% output and +25% efficiency growth. Upgrade the chosen plan to +45% military construction with −20% civilian construction and +3 consumer goods points, or +35% civilian construction and +15% efficiency growth with −8% military construction.",
       "branch": "industry",
       "row": 14,
       "cost": 5,
@@ -120,8 +120,8 @@
       "id": "hro_sov_commissioning_capacity",
       "name_ru": "Уральская производственная база",
       "name_en": "The Ural Industrial Base",
-      "desc_ru": "Два гражданских завода в Свердловске и два бонуса 75% к промышленным исследованиям. Академия наук теперь опирается на созданную промышленную базу обоих восточных направлений.",
-      "desc_en": "Two civilian factories in Sverdlovsk and two 75% industry research bonuses. The Academy now requires the industrial base of both eastern development programmes.",
+      "desc_ru": "Три гражданских завода в Свердловске и два бонуса 75% к промышленным исследованиям. Основной научный маршрут теперь опирается на производственную базу обоих восточных направлений. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Three civilian factories in Sverdlovsk and two 75% industry research bonuses. The main science route now relies on the productive base of both eastern development programs. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "industry",
       "row": 8,
       "cost": 4,
@@ -133,7 +133,7 @@
           "SOV_develop_the_urals"
         ]
       ],
-      "reward": "if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } } add_building_construction = { type = industrial_complex level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_sov_commissioning_capacity bonus = 0.75 uses = 2 category = industry }",
+      "reward": "add_tech_bonus = { name = hro_sov_commissioning_capacity bonus = 0.75 uses = 2 category = industry } if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = industrial_complex size > 2 include_locked = yes } }\n                add_building_construction = { type = industrial_complex level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 }",
       "x": 6,
       "y": 7,
       "icon": "GFX_SOV_develop_the_urals_ccp_2d_sov_compatibility"
@@ -142,8 +142,8 @@
       "id": "hro_sov_staff_college",
       "name_ru": "Академия Генерального штаба",
       "name_en": "The General Staff Academy",
-      "desc_ru": "Первый обязательный шаг реформы командования. Убирает штраф организации HRO, меняет штраф планирования на +5% и даёт 35 армейского опыта. Нативные последствия чисток снимаются через реабилитацию и уроки войны.",
-      "desc_en": "The first required command reform. Removes HRO organisation penalties, changes the planning penalty to +5%, and grants 35 army experience. Native purge penalties still require rehabilitation and lessons of war.",
+      "desc_ru": "Первый обязательный этап реформы Генштаба снимает штрафы HRO и даёт +20% скорости планирования и 75 армейского опыта. Последствия чисток остаются за исходными реабилитацией и уроками войны.",
+      "desc_en": "The first required General Staff reform removes HRO penalties and grants +20% planning speed and 75 army experience. Native purge consequences remain governed by rehabilitation and Lessons of War.",
       "branch": "army",
       "row": 2,
       "cost": 3,
@@ -152,7 +152,7 @@
           "SOV_strengthen_the_mobilization_plan"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_staff_1 = yes army_experience = 35",
+      "reward": "hro_set_hro_idea_sov_staff_1 = yes army_experience = 75",
       "x": 39,
       "y": 1,
       "icon": "GFX_SOV_military_engineering_university_ccp_2d_sov_compatibility",
@@ -164,8 +164,8 @@
       "id": "hro_sov_signals_procedures",
       "name_ru": "Радиосети Генерального штаба",
       "name_en": "General Staff Radio Networks",
-      "desc_ru": "После реабилитации командиров связывает штабы едиными радиосетями: +5% организации, +10% скорости планирования и два бонуса 75% к электронике. Открывает реорганизацию Красной армии.",
-      "desc_en": "After rehabilitation, link headquarters by radio: +5% organisation, +10% planning speed, and two 75% electronics research bonuses. Required before Red Army reorganization.",
+      "desc_ru": "Радиосети после реабилитации повышают организацию на 8% и скорость планирования на 30%, заменяя прежнюю штабную ступень. Два бонуса 75% к электронике; следующий основной этап — реорганизация Красной армии.",
+      "desc_en": "Post-rehabilitation radio networks grant +8% organization and +30% planning speed, replacing the previous staff stage. Two 75% electronics research bonuses; the next main stage is Red Army reorganization.",
       "branch": "army",
       "row": 6,
       "cost": 4,
@@ -183,8 +183,8 @@
       "id": "hro_sov_defence_in_depth",
       "name_ru": "Эшелонированная оборона фронтов",
       "name_en": "Defence in Depth",
-      "desc_ru": "Оборонная модель: +3% организации, +5% защиты и +8% максимального планирования ценой −10% его скорости. Сохраняет возможность наступать, но исключает специализацию самостоятельных подвижных групп.",
-      "desc_en": "Defensive specialization: +3% organisation, +5% defence and +8% maximum planning at a cost of −10% planning speed. Excludes the mobile group specialization.",
+      "desc_ru": "Специализация эшелонированной обороны: +6% организации, +12% защиты и +18% максимального бонуса планирования ценой −20% скорости планирования; 75 армейского опыта. Исключает самостоятельные механизированные группы.",
+      "desc_en": "Defence-in-depth specialization: +6% organization, +12% army defense and +18% maximum planning bonus at the cost of −20% planning speed; 75 army experience. Excludes independent mechanized groups.",
       "branch": "army",
       "row": 8,
       "cost": 4,
@@ -193,7 +193,7 @@
           "SOV_military_reorganization"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_army_depth_2 = yes army_experience = 35",
+      "reward": "hro_set_hro_idea_sov_army_depth_2 = yes army_experience = 75",
       "x": 38,
       "y": 7,
       "icon": "GFX_SOV_the_defense_of_moscow_ccp_2d_sov_compatibility",
@@ -208,8 +208,8 @@
       "id": "hro_sov_mobile_groups",
       "name_ru": "Самостоятельные механизированные группы",
       "name_en": "Independent Mechanized Groups",
-      "desc_ru": "Маневренная модель: +5% скорости армии и +15% скорости планирования ценой +5% расхода снабжения и +5% времени обучения. Исключает специализацию глубокой обороны.",
-      "desc_en": "Maneuver specialization: +5% army speed and +15% planning speed at the cost of +5% supply consumption and +5% training time. Excludes defence in depth.",
+      "desc_ru": "Подвижная специализация: +10% скорости дивизий и +30% скорости планирования ценой +10% потребления снабжения и +10% времени подготовки; 75 армейского опыта. Исключает специализацию глубокой обороны.",
+      "desc_en": "Mobile specialization: +10% division speed and +30% planning speed at the cost of +10% supply consumption and +10% training time; 75 army experience. Excludes the defense-in-depth specialization.",
       "branch": "army",
       "row": 8,
       "cost": 4,
@@ -218,7 +218,7 @@
           "SOV_military_reorganization"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_army_mobile_2 = yes army_experience = 35",
+      "reward": "hro_set_hro_idea_sov_army_mobile_2 = yes army_experience = 75",
       "x": 40,
       "y": 7,
       "icon": "GFX_SOV_superior_war_machines_ccp_2d_sov_compatibility",
@@ -233,8 +233,8 @@
       "id": "hro_sov_front_feedback",
       "name_ru": "Отчёты фронтов вместо сводок",
       "name_en": "Reports from the Fighting Fronts",
-      "desc_ru": "Боевой опыт становится обязательным этапом уроков войны. Даёт 60 армейского опыта и два бонуса 100% к технологиям рот обеспечения. Годовой период чрезвычайных мер NSB сохраняется.",
-      "desc_en": "Battlefield feedback becomes a required stage of lessons of war. Gain 60 army experience and two 100% support company research bonuses. The NSB emergency-measures year remains in force.",
+      "desc_ru": "Отчёты действующих фронтов становятся обязательным этапом уроков войны. 100 армейского опыта и два бонуса 100% к технологиям рот обеспечения. Исходный годовой период чрезвычайных мер сохраняется. Военная адаптация: после 120 фактических дней первой войны с Германией снимает новые штрафы вторжения и даёт восстановление организации +25%, скорость планирования +35%, максимальный план +25%, военный выпуск +10%, снабжение −10%. Если реформа завершена заранее, результат включается после накопления военного опыта. Исходные ограничения Красной армии снимаются своими реформами.",
+      "desc_en": "Front-line reports become a required stage of Lessons of War. Grants 100 army experience and two 100% support technology research bonuses. The native year of desperate measures remains in force. War adaptation: after 120 actual days of the first war with Germany, removes the new invasion penalties and grants organisation recovery +25%, planning speed +35%, maximum planning +25%, military output +10%, supply use −10%. A reform completed in advance takes effect once the wartime experience is earned. Native Red Army restrictions still require their own reforms.",
       "branch": "war",
       "row": 6,
       "cost": 4,
@@ -243,7 +243,7 @@
           "SOV_desperate_measures"
         ]
       ],
-      "reward": "army_experience = 60 add_tech_bonus = { name = hro_sov_front_feedback bonus = 1 uses = 2 category = support_tech }",
+      "reward": "army_experience = 100 add_tech_bonus = { name = hro_sov_front_feedback bonus = 1 uses = 2 category = support_tech } hro_war_sov_complete_adaptation = yes",
       "x": 42,
       "y": 5,
       "icon": "GFX_SOV_an_adaptable_army_ccp_2d_sov_compatibility"
@@ -252,8 +252,8 @@
       "id": "hro_sov_mature_command",
       "name_ru": "Фронт как единая операция",
       "name_en": "The Front as a Single Operation",
-      "desc_ru": "Соединяет уроки войны, выбранную доктрину и глубокий тыл. Штабная реформа достигает +10% организации, +10% планирования и −8% времени обучения. Улучшает выбранную оборонную или подвижную модель.",
-      "desc_en": "Merge lessons of war, the selected doctrine and deep logistics. Staff reform reaches +10% organisation, +10% maximum planning and −8% training time; upgrade the chosen army model.",
+      "desc_ru": "Соединение командования и тыла заменяет штабную ступень на +15% организации, +25% максимального бонуса планирования и −20% времени подготовки; 100 армейского опыта. Оборонная модель дополнительно даёт +10% организации и +20% защиты при медленном планировании; подвижная — +15% скорости и +40% планирования при +12% снабжения и подготовки.",
+      "desc_en": "Combining command and logistics replaces the staff stage with +15% organization, +25% maximum planning bonus and −20% training time; 100 army experience. The defense model adds +10% organization and +20% defense with slower planning; the mobile model gives +15% speed and +40% planning with +12% supply and training time.",
       "branch": "army",
       "row": 10,
       "cost": 5,
@@ -269,7 +269,7 @@
           "hro_sov_supply_in_depth"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_staff_3 = yes if = { limit = { has_country_flag = hro_sov_army_depth } hro_set_hro_idea_sov_army_depth_3 = yes } else = { hro_set_hro_idea_sov_army_mobile_3 = yes } army_experience = 50",
+      "reward": "hro_set_hro_idea_sov_staff_3 = yes if = { limit = { has_country_flag = hro_sov_army_depth } hro_set_hro_idea_sov_army_depth_3 = yes } else = { hro_set_hro_idea_sov_army_mobile_3 = yes } army_experience = 100",
       "x": 41,
       "y": 9,
       "icon": "GFX_SOV_the_glory_of_the_red_army_ccp_2d_sov_compatibility",
@@ -279,8 +279,8 @@
       "id": "hro_sov_transport_council",
       "name_ru": "Наркомат путей сообщения",
       "name_en": "The Commissariat of Railways",
-      "desc_ru": "Обязательная железнодорожная реформа перед расширением сети. Полностью снимает стартовые штрафы снабжения и истощения HRO; даёт два бонуса 100% к поездам. Открывает транспортные программы решений.",
-      "desc_en": "Required before railway expansion. Removes initial HRO supply and attrition penalties; grants two 100% train research bonuses and unlocks transport decision programmes.",
+      "desc_ru": "Первая реформа железнодорожного тыла снимает стартовые штрафы и вводит −5% потребления снабжения, −10% штрафов при его нехватке и +15% ремонта промышленности. Даёт два бонуса 100% к поездам и открывает транспортные программы решений.",
+      "desc_en": "The first railway logistics reform removes initial penalties and introduces −5% supply consumption, −10% out-of-supply penalties and +15% industrial repair speed. Grants two 100% train research bonuses and unlocks transport decision programs.",
       "branch": "logistics",
       "row": 6,
       "cost": 3,
@@ -301,8 +301,8 @@
       "id": "hro_sov_evacuation_planning",
       "name_ru": "Площадки приёма эвакуируемых заводов",
       "name_en": "Reception Sites for Evacuated Industry",
-      "desc_ru": "Готовит площадки и оборудование до переброски заводов. Даёт 40 ПВ и два бонуса 75% к строительству. Следующий нативный фокус перемещает настоящие заводы с затратой поездов; новых копий эвакуируемых предприятий не создаётся.",
-      "desc_en": "Prepare sites and machinery before relocation. Gain 40 political power and two 75% construction research bonuses. The following native focus relocates real factories and consumes trains.",
+      "desc_ru": "Подготовка приёмных площадок даёт 40 ПВ и два бонуса 75% к строительным технологиям. Следующий исходный фокус действительно перемещает существующие заводы с затратой поездов и повреждениями; новых копий эвакуируемых предприятий не создаётся.",
+      "desc_en": "Reception-site preparation grants 40 political power and two 75% construction research bonuses. The following native focus relocates existing factories with train costs and damage; no duplicate evacuated factories are created.",
       "branch": "logistics",
       "row": 4,
       "cost": 3,
@@ -320,8 +320,8 @@
       "id": "hro_sov_truck_dispatch",
       "name_ru": "Автомобильные батальоны фронтов",
       "name_en": "Front Motor Transport Battalions",
-      "desc_ru": "Связывает железнодорожный тыл с моторизацией армии. −8% расхода снабжения и −5% истощения вместо предыдущей ступени; два бонуса 100% к моторизации. Требуется для нового этапа Дороги жизни и снабжения наступлений.",
-      "desc_en": "Connect railway logistics with army motorization. Replace the previous logistics stage with −8% supply consumption and −5% attrition; two 100% motorization research bonuses.",
+      "desc_ru": "Реформа автомобильного тыла заменяет предыдущую ступень на −15% потребления снабжения, −15% истощения, −15% штрафов его нехватки и +20% ремонта промышленности. Два бонуса 100% к моторизации; входит в основные маршруты Дороги жизни и снабжения наступлений.",
+      "desc_en": "The truck logistics reform replaces the previous stage with −15% supply consumption, −15% attrition, −15% out-of-supply penalties and +20% industrial repair speed. Two 100% motorization research bonuses; integrated into the Road of Life and offensive supply routes.",
       "branch": "logistics",
       "row": 8,
       "cost": 4,
@@ -342,8 +342,8 @@
       "id": "hro_sov_supply_in_depth",
       "name_ru": "Тыл на глубину операции",
       "name_en": "Logistics for Deep Operations",
-      "desc_ru": "Крупная реформа тыла: −14% потребления снабжения и −10% истощения вместо предыдущей ступени. Требуется для объединённого управления фронтами и завершения главной армейской ветки.",
-      "desc_en": "A major logistics reform: replace the previous stage with −14% supply consumption and −10% attrition. Required for unified front command and the main army capstone.",
+      "desc_ru": "Система глубокого тыла даёт −25% потребления снабжения, −25% истощения, −20% штрафов при недостатке снабжения и +25% ремонта промышленности вместо предыдущей ступени; 75 армейского опыта. Крупные наступления теперь требуют этой основной реформы.",
+      "desc_en": "Deep logistics grants −25% supply consumption, −25% attrition, −20% out-of-supply penalties and +25% industrial repair speed instead of the previous stage; 75 army experience. Major offensives now require this main reform.",
       "branch": "logistics",
       "row": 10,
       "cost": 5,
@@ -355,7 +355,7 @@
           "SOV_lessons_of_war"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_logistics_3 = yes army_experience = 40",
+      "reward": "hro_set_hro_idea_sov_logistics_3 = yes army_experience = 75",
       "x": 36,
       "y": 9,
       "icon": "GFX_focus_SOV_the_road_of_life",
@@ -365,8 +365,8 @@
       "id": "hro_sov_air_inspection",
       "name_ru": "Боевые лётные школы",
       "name_en": "Combat Flying Schools",
-      "desc_ru": "Перестраивает подготовку до расширения аэроклубов: 40 авиационного опыта и два бонуса 75% к истребителям. Открывает авиационные программы решений.",
-      "desc_en": "Reorganize training before expanding flying clubs: 40 air experience and two 75% fighter research bonuses. Unlock aviation decision programmes.",
+      "desc_ru": "Боевые лётные школы дают 75 авиационного опыта и два бонуса 75% к истребителям. Обязательная подготовка перед расширением аэроклубов открывает авиационные программы решений.",
+      "desc_en": "Combat flying schools grant 75 air experience and two 75% fighter research bonuses. Required preparation before expanding flying clubs also unlocks aviation decision programs.",
       "branch": "air",
       "row": 2,
       "cost": 3,
@@ -375,7 +375,7 @@
           "SOV_transpolar_flights"
         ]
       ],
-      "reward": "air_experience = 40 add_tech_bonus = { name = hro_sov_air_inspection bonus = 0.75 uses = 2 category = light_fighter }",
+      "reward": "air_experience = 75 add_tech_bonus = { name = hro_sov_air_inspection bonus = 0.75 uses = 2 category = light_fighter }",
       "x": 12,
       "y": 1,
       "icon": "GFX_focus_SOV_flying_clubs",
@@ -387,8 +387,8 @@
       "id": "hro_sov_aircraft_acceptance",
       "name_ru": "Испытания новых авиамоторов",
       "name_en": "New Aero-Engine Trials",
-      "desc_ru": "Два военных завода в Свердловске и два бонуса 75% к авиационной технике. Испытательная база становится обязательным этапом модернизации авиационных предприятий.",
-      "desc_en": "Two military factories in Sverdlovsk and two 75% aircraft research bonuses. The testing base is required before modernizing aircraft facilities.",
+      "desc_ru": "Три военных завода в Свердловске и два бонуса 75% к авиационной технике. Испытательная база становится обязательным этапом модернизации авиационных предприятий. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Three military factories in Sverdlovsk and two 75% air equipment research bonuses. The testing base becomes a required stage of aircraft plant modernization. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "air",
       "row": 4,
       "cost": 4,
@@ -397,7 +397,7 @@
           "SOV_expand_the_aircraft_industry"
         ]
       ],
-      "reward": "if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_sov_aircraft_acceptance bonus = 0.75 uses = 2 category = air_equipment }",
+      "reward": "add_tech_bonus = { name = hro_sov_aircraft_acceptance bonus = 0.75 uses = 2 category = air_equipment } if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = arms_factory size > 2 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 }",
       "x": 9,
       "y": 3,
       "icon": "GFX_SOV_modernize_aircraft_facilities_ccp_2d_sov_compatibility"
@@ -406,8 +406,8 @@
       "id": "hro_sov_front_air_programme",
       "name_ru": "Воздушные армии фронтов",
       "name_en": "Air Armies of the Fronts",
-      "desc_ru": "Специализация фронтовой авиации: +10% поддержки с воздуха и +5% эффективности миссий ценой −8% дальности. Входит в основные маршруты развития штурмовой и дальней авиации.",
-      "desc_en": "Front aviation specialization: +10% air support and +5% mission efficiency at a cost of −8% range. Leads into the main ground-support and long-range aviation branches.",
+      "desc_ru": "Фронтовая специализация даёт +20% бонуса поддержки с воздуха и +15% эффективности миссий ценой −15% дальности; 75 авиационного опыта. Исключает промышленную ПВО и определяет позднюю реформу ВВС.",
+      "desc_en": "The front-line specialization gives +20% air support bonus and +15% mission efficiency at the cost of −15% range; 75 air experience. Excludes industrial air defense and determines the later air force reform.",
       "branch": "air",
       "row": 8,
       "cost": 4,
@@ -417,7 +417,7 @@
           "SOV_intensify_pilot_training_program"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_air_front_2 = yes air_experience = 35",
+      "reward": "hro_set_hro_idea_sov_air_front_2 = yes air_experience = 75",
       "x": 10,
       "y": 7,
       "icon": "GFX_SOV_ground_support_ccp_2d_sov_compatibility",
@@ -432,8 +432,8 @@
       "id": "hro_sov_industrial_air_defence",
       "name_ru": "Корпуса ПВО промышленных районов",
       "name_en": "Industrial Air Defence Corps",
-      "desc_ru": "Специализация защиты промышленности: +15% эффективности перехвата и −10% аварийности ценой −5% дальности. Сохраняет развитие авиации через собственную модель вместо фронтовой.",
-      "desc_en": "Industrial defence specialization: +15% interception efficiency and −10% accidents at a cost of −5% range. Preserves aviation progression through an alternative to front aviation.",
+      "desc_ru": "Промышленная ПВО даёт +30% эффективности перехвата и −25% аварийности ценой −10% дальности; 75 авиационного опыта. Исключает фронтовую специализацию и определяет позднюю реформу ВВС.",
+      "desc_en": "Industrial air defense gives +30% interception efficiency and −25% air accidents at the cost of −10% range; 75 air experience. Excludes front-line specialization and determines the later air force reform.",
       "branch": "air",
       "row": 8,
       "cost": 4,
@@ -443,7 +443,7 @@
           "SOV_intensify_pilot_training_program"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_air_defence_2 = yes air_experience = 35",
+      "reward": "hro_set_hro_idea_sov_air_defence_2 = yes air_experience = 75",
       "x": 12,
       "y": 7,
       "icon": "GFX_SOV_the_modern_war_in_the_skies_ccp_2d_sov_compatibility",
@@ -458,8 +458,8 @@
       "id": "hro_sov_mature_air_system",
       "name_ru": "Единое командование ВВС",
       "name_en": "Unified Air Force Command",
-      "desc_ru": "Повышает выбранную специализацию до +15% поддержки и +10% эффективности миссий либо +20% перехвата и −15% аварийности. Обязательный этап перед реактивным институтом.",
-      "desc_en": "Upgrade the selected specialization to +15% air support and +10% mission efficiency, or +20% interception and −15% accidents. Required before the Jet Institute.",
+      "desc_ru": "Единое командование повышает выбранную модель до +30% поддержки и +25% эффективности миссий при −15% дальности либо +45% перехвата и −35% аварийности при −10% дальности. 100 авиационного опыта; обязательный этап перед реактивным институтом.",
+      "desc_en": "Unified command upgrades the chosen model to +30% air support and +25% mission efficiency with −15% range, or +45% interception and −35% accidents with −10% range. Grants 100 air experience; required before the jet institute.",
       "branch": "air",
       "row": 12,
       "cost": 5,
@@ -468,7 +468,7 @@
           "SOV_the_modern_war_in_the_skies"
         ]
       ],
-      "reward": "if = { limit = { has_country_flag = hro_sov_air_front } hro_set_hro_idea_sov_air_front_3 = yes } else = { hro_set_hro_idea_sov_air_defence_3 = yes } air_experience = 60",
+      "reward": "if = { limit = { has_country_flag = hro_sov_air_front } hro_set_hro_idea_sov_air_front_3 = yes } else = { hro_set_hro_idea_sov_air_defence_3 = yes } air_experience = 100",
       "x": 11,
       "y": 11,
       "icon": "GFX_SOV_expand_aviation_institutes_ccp_2d_sov_compatibility",
@@ -478,8 +478,8 @@
       "id": "hro_sov_naval_service_board",
       "name_ru": "Штаб морских коммуникаций",
       "name_en": "Maritime Communications Staff",
-      "desc_ru": "40 морского опыта и два бонуса 75% к корабельным технологиям. Входит в основной путь создания Наркомата ВМФ и открывает морские программы решений.",
-      "desc_en": "Gain 40 navy experience and two 75% naval equipment research bonuses. Required before creating the Navy Commissariat; unlocks naval decision programmes.",
+      "desc_ru": "75 морского опыта и два бонуса 75% к корабельным технологиям. Штаб коммуникаций входит в основной маршрут Наркомата ВМФ и открывает морские программы решений.",
+      "desc_en": "Grants 75 navy experience and two 75% naval equipment research bonuses. The communications staff is part of the main Navy Commissariat route and unlocks naval decision programs.",
       "branch": "navy",
       "row": 2,
       "cost": 3,
@@ -488,7 +488,7 @@
           "SOV_expand_the_red_fleet"
         ]
       ],
-      "reward": "navy_experience = 40 add_tech_bonus = { name = hro_sov_naval_service_board bonus = 0.75 uses = 2 category = naval_equipment }",
+      "reward": "navy_experience = 75 add_tech_bonus = { name = hro_sov_naval_service_board bonus = 0.75 uses = 2 category = naval_equipment }",
       "x": 21,
       "y": 1,
       "icon": "GFX_SOV_pc_of_the_ussr_navy_ccp_2d_sov_compatibility",
@@ -500,8 +500,8 @@
       "id": "hro_sov_escort_priority",
       "name_ru": "Приоритет защиты коммуникаций",
       "name_en": "Prioritize Maritime Communications",
-      "desc_ru": "Дешёвый флот сопровождения: +15% эффективности эскорта и +12% выпуска верфей ценой −0,1 ПВ в день; два бонуса 100% к эсминцам. Исключает программу большого флота.",
-      "desc_en": "An economical escort fleet: +15% convoy escort efficiency and +12% dockyard output at a cost of −0.1 daily political power; two 100% destroyer bonuses. Excludes the capital fleet programme.",
+      "desc_ru": "Флот сопровождения получает +35% эффективности эскорта и +25% выпуска верфей ценой −0,20 ПВ в день, а также два бонуса 100% к эсминцам. Исключает программу большого флота.",
+      "desc_en": "The escort fleet gains +35% convoy escort efficiency and +25% dockyard output at the cost of −0.20 daily political power, plus two 100% destroyer research bonuses. Excludes the capital fleet program.",
       "branch": "navy",
       "row": 6,
       "cost": 4,
@@ -525,8 +525,8 @@
       "id": "hro_sov_capital_fleet_priority",
       "name_ru": "Большой флот новой державы",
       "name_en": "A Great Fleet for a New Power",
-      "desc_ru": "Три верфи в Ленинграде и три бонуса 100% к корабельным модулям. Крупное вложение в морскую войну конкурирует со временем сухопутных реформ и исключает специализацию эскортных служб.",
-      "desc_en": "Three Leningrad dockyards and three 100% ship-module research bonuses. A major investment in naval warfare that competes for army reform time and excludes escort specialization.",
+      "desc_ru": "Пять верфей в Ленинграде либо во Владивостоке и три бонуса 100% к корабельным модулям. Программа большого флота исключает эскортную специализацию и конкурирует за время с сухопутным перевооружением. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Five dockyards in Leningrad or Vladivostok and three 100% ship module research bonuses. The capital fleet program excludes escort specialization and competes with army rearmament for focus time. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "navy",
       "row": 6,
       "cost": 6,
@@ -535,7 +535,7 @@
           "SOV_pc_of_the_ussr_navy"
         ]
       ],
-      "reward": "if = { limit = { 195 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 195 = { add_extra_state_shared_building_slots = 3 if = { limit = { free_building_slots = { building = dockyard size > 2 include_locked = yes } } add_building_construction = { type = dockyard level = 3 instant_build = yes } } else = { ROOT = { add_political_power = 75 } } } } else_if = { limit = { 408 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 408 = { add_extra_state_shared_building_slots = 3 if = { limit = { free_building_slots = { building = dockyard size > 2 include_locked = yes } } add_building_construction = { type = dockyard level = 3 instant_build = yes } } else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 } add_tech_bonus = { name = hro_sov_capital_fleet_priority bonus = 1 uses = 3 category = ship_modules_tech }",
+      "reward": "add_tech_bonus = { name = hro_sov_capital_fleet_priority bonus = 1 uses = 3 category = ship_modules_tech } if = { limit = { 195 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 195 = { add_extra_state_shared_building_slots = 5\n            if = { limit = { free_building_slots = { building = dockyard size > 4 include_locked = yes } }\n                add_building_construction = { type = dockyard level = 5 instant_build = yes } }\n            else = { ROOT = { add_political_power = 125 } } } } else_if = { limit = { 408 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 408 = { add_extra_state_shared_building_slots = 5\n            if = { limit = { free_building_slots = { building = dockyard size > 4 include_locked = yes } }\n                add_building_construction = { type = dockyard level = 5 instant_build = yes } }\n            else = { ROOT = { add_political_power = 125 } } } } else = { add_political_power = 125 }",
       "x": 22,
       "y": 5,
       "icon": "GFX_SOV_an_oceangoing_navy_ccp_2d_sov_compatibility",
@@ -550,8 +550,8 @@
       "id": "hro_sov_maritime_air_reporting",
       "name_ru": "Единая морская воздушная разведка",
       "name_en": "Unified Naval Air Reconnaissance",
-      "desc_ru": "Объединяет новую систему ВВС и манёвры флота: по 35 опыта, два бонуса 100% к морской авиации. Требуется для основного фокуса морской авиации.",
-      "desc_en": "Merge the reformed air force with fleet maneuvers: 35 air and navy experience, and two 100% naval aviation bonuses. Required before the main naval aviation focus.",
+      "desc_ru": "Соединение морской разведки и ВВС даёт по 75 морского и авиационного опыта и два бонуса 100% к морской авиации. Требуется для основного фокуса развития морской авиации.",
+      "desc_en": "Combining naval reconnaissance and the air force grants 75 navy and 75 air experience plus two 100% naval air research bonuses. Required for the main naval aviation development focus.",
       "branch": "navy",
       "row": 14,
       "cost": 4,
@@ -563,7 +563,7 @@
           "hro_sov_mature_air_system"
         ]
       ],
-      "reward": "navy_experience = 35 air_experience = 35 add_tech_bonus = { name = hro_sov_maritime_air_reporting bonus = 1 uses = 2 category = naval_air }",
+      "reward": "navy_experience = 75 air_experience = 75 add_tech_bonus = { name = hro_sov_maritime_air_reporting bonus = 1 uses = 2 category = naval_air }",
       "x": 15,
       "y": 13,
       "icon": "GFX_SOV_expand_the_morskaya_aviatsiya_ccp_2d_sov_compatibility"
@@ -572,8 +572,8 @@
       "id": "hro_sov_gosplan_responsibility",
       "name_ru": "Госплан: ответственность за результат",
       "name_en": "Gosplan: Responsibility for Results",
-      "desc_ru": "Входит в основную ветку внутренней политики. Снимает штраф гражданского строительства HRO и меняет бюрократическую потерю ПВ на +0,15 ПВ в день; даёт ещё 50 ПВ для кадров и программ. Даёт два бонуса 75% к промышленным исследованиям.",
-      "desc_en": "Part of the main domestic route. Removes the HRO construction penalty and replaces bureaucratic power losses with +0.15 daily political power; grants a further 50 political power. Gain two 75% industry research bonuses.",
+      "desc_ru": "Основная административная реформа снимает стартовые ограничения и меняет бюрократические потери на +0,30 ПВ в день. Ещё 50 ПВ и два бонуса 75% к промышленным исследованиям помогают выбирать кадры и отраслевые программы.",
+      "desc_en": "The main administrative reform removes initial restrictions and replaces bureaucratic losses with +0.30 daily political power. Another 50 political power and two 75% industry research bonuses support appointments and industrial programs.",
       "branch": "state",
       "row": 3,
       "cost": 3,
@@ -594,8 +594,8 @@
       "id": "hro_sov_wartime_coordination",
       "name_ru": "Государственный комитет обороны",
       "name_en": "State Defence Committee",
-      "desc_ru": "Военный этап управления: +0,25 ПВ в день, +5% строительства и +15% ремонта вместо прежней административной ступени; 100 ПВ и 25 командных очков. Требует настоящей большой войны через чрезвычайные меры.",
-      "desc_en": "Wartime administration: replace the previous stage with +0.25 daily political power, +5% construction and +15% repair; gain 100 political power and 25 command power. Requires an actual major war through emergency measures.",
+      "desc_ru": "ГКО даёт +0,50 ПВ в день, +15% строительства и +35% ремонта вместо прежней административной ступени; дополнительно 100 ПВ и 25 командных очков. Требуется действительная большая война через исходные чрезвычайные меры.",
+      "desc_en": "The State Defense Committee grants +0.50 daily political power, +15% construction and +35% repair instead of the previous administrative stage; also 100 political power and 25 command power. Requires a real major war through the native desperate measures.",
       "branch": "state",
       "row": 9,
       "cost": 5,
@@ -616,8 +616,8 @@
       "id": "hro_sov_postwar_planning",
       "name_ru": "Восстановление союзных республик",
       "name_en": "Reconstruction of the Union Republics",
-      "desc_ru": "Два гражданских завода в Челябинске; административная реформа достигает +0,35 ПВ в день, +25% ремонта и +3% стабильности. Модернизация требует реального пути восстановления промышленности.",
-      "desc_en": "Two civilian factories in Chelyabinsk; administrative reform reaches +0.35 daily political power, +25% repair and +3% stability. Requires the industrial reconstruction route.",
+      "desc_ru": "Два гражданских завода в Челябинске. Восстановительная администрация даёт +0,75 ПВ в день, +50% ремонта промышленности и +5% стабильности вместо предыдущей ступени. Требуется реальный исходный маршрут восстановления. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Two civilian factories in Chelyabinsk. Reconstruction administration grants +0.75 daily political power, +50% industrial repair and +5% stability instead of the previous stage. Requires the actual native reconstruction route. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "state",
       "row": 11,
       "cost": 5,
@@ -639,8 +639,8 @@
       "id": "hro_sov_foreign_policy_staff",
       "name_ru": "Наркомат иностранных дел: две стратегии",
       "name_en": "Foreign Affairs: Two Strategies",
-      "desc_ru": "Делает выбор коллективной или индивидуальной безопасности частью основной дипломатии. Даёт 60 ПВ на дипломатию и открывает программы внешнего сотрудничества; война с игроком не запускается автоматически.",
-      "desc_en": "Makes collective versus individual security a main diplomatic choice. Gain 60 political power and unlock foreign cooperation programmes; war with the other player remains a real diplomatic outcome.",
+      "desc_ru": "Подготовка внешнеполитических кадров даёт 60 ПВ и открывает программы международного сотрудничества. Ведёт к обычному выбору коллективной или индивидуальной безопасности; война с игроком автоматически не объявляется.",
+      "desc_en": "Foreign-policy staff preparation grants 60 political power and unlocks international cooperation programs. Leads to the ordinary collective or individual security choice; it does not automatically declare war on the other player.",
       "branch": "diplomacy",
       "row": 3,
       "cost": 3,
@@ -661,8 +661,8 @@
       "id": "hro_sov_allied_technical_missions",
       "name_ru": "Закупки станков и технические миссии",
       "name_en": "Machine-Tool Purchases and Technical Missions",
-      "desc_ru": "Сотрудничество даёт два гражданских завода и два бонуса 100% к промышленности. Доступно после реального дипломатического выбора: переговоров с союзниками либо сближения с Германией.",
-      "desc_en": "Cooperation brings two civilian factories and two 100% industry research bonuses. Requires an actual diplomatic strategy: Allied defence negotiations or an approach to Germany.",
+      "desc_ru": "Технические миссии дают два гражданских завода и два бонуса 100% к промышленным исследованиям. Требуется исходный дипломатический выбор переговоров с союзниками либо сближения с Германией. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Technical missions grant two civilian factories and two 100% industry research bonuses. Requires the native diplomatic choice between Allied negotiations and rapprochement with Germany. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "diplomacy",
       "row": 9,
       "cost": 5,
@@ -682,8 +682,8 @@
       "id": "hro_sov_campaign_preparedness",
       "name_ru": "Проверка мобилизационных округов",
       "name_en": "Audit the Mobilization Districts",
-      "desc_ru": "Обязательный подготовительный этап перед чрезвычайными мерами: 35 армейского опыта, 25 командных очков и доступ к военным программам решений. Без большой войны чрезвычайные меры по-прежнему недоступны.",
-      "desc_en": "A required preparation before emergency measures: 35 army experience, 25 command power and access to wartime decision programmes. Native emergency measures still require a major war.",
+      "desc_ru": "Проверка мобилизационных округов даёт 75 армейского опыта, 25 командных очков и доступ к военным программам решений. Обязательный этап перед чрезвычайными мерами, которые по-прежнему требуют большой войны. Подготовка вторжения: снижает новые штрафы первых 120 фактических дней оборонительной войны с Германией с −25% до −10% организации, с −20% до −10% военного выпуска, с +25% до +10% снабжения. После острой фазы снимает остаточные издержки управления.",
+      "desc_en": "Inspection of mobilization districts grants 75 army experience, 25 command power and access to wartime decision programs. A required stage before desperate measures, which still require a major war. Invasion preparation mitigates the new first-120-war-day penalties in a defensive war with Germany: organisation −25% becomes −10%, military output −20% becomes −10%, supply use +25% becomes +10%. After the acute phase, removes residual command strain.",
       "branch": "war",
       "row": 2,
       "cost": 3,
@@ -692,7 +692,7 @@
           "SOV_strengthen_the_mobilization_plan"
         ]
       ],
-      "reward": "army_experience = 35 add_command_power = 25",
+      "reward": "army_experience = 75 add_command_power = 25 hro_war_sov_reorganize_fronts = yes",
       "x": 42,
       "y": 1,
       "icon": "GFX_SOV_strengthen_the_mobilization_plan_ccp_2d_sov_compatibility",
@@ -704,8 +704,8 @@
       "id": "hro_sov_operational_reserves",
       "name_ru": "Резервные армии Ставки",
       "name_en": "Reserve Armies of Stavka",
-      "desc_ru": "Два военных завода в Челябинске и 50 армейского опыта после уроков войны. Открывает крупную позднюю программу вооружений вместо ещё одной малой прибавки к характеристикам.",
-      "desc_en": "Two military factories in Chelyabinsk and 50 army experience after lessons of war. Opens the major late-war armaments programme.",
+      "desc_ru": "Четыре военных завода в Челябинске и 100 армейского опыта после уроков войны. Резервные армии опираются на реальное увеличение выпуска вооружения. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Four military factories in Chelyabinsk and 100 army experience after Lessons of War. Reserve armies rely on an actual increase in armaments capacity. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "war",
       "row": 8,
       "cost": 5,
@@ -714,7 +714,7 @@
           "SOV_lessons_of_war"
         ]
       ],
-      "reward": "if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } army_experience = 50",
+      "reward": "army_experience = 100 if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 4\n            if = { limit = { free_building_slots = { building = arms_factory size > 3 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 4 instant_build = yes } }\n            else = { ROOT = { add_political_power = 100 } } } } else = { add_political_power = 100 }",
       "x": 42,
       "y": 7,
       "icon": "GFX_SOV_the_means_to_wage_war_ccp_2d_sov_compatibility",
@@ -724,8 +724,8 @@
       "id": "hro_sov_science_coordination",
       "name_ru": "Совет прикладной науки",
       "name_en": "Council of Applied Science",
-      "desc_ru": "После обеих научных баз даёт дополнительную исследовательскую ячейку, если их меньше шести, и два бонуса 100% к электронике. Историческая программа поздней прикладной науки, а не мгновенный ранний перевес.",
-      "desc_en": "After establishing both scientific bases, gain one research slot if fewer than six and two 100% electronics research bonuses. A late applied-science programme.",
+      "desc_ru": "После обеих исходных научных баз даёт дополнительную исследовательскую ячейку, если текущих меньше шести, и два бонуса 100% к электронике. Открывается в поздний исторический период.",
+      "desc_en": "After both native science bases, grants an extra research slot if there are currently fewer than six, plus two 100% electronics research bonuses. Unlocks in the later historical period.",
       "branch": "industry",
       "row": 12,
       "cost": 7,
@@ -747,8 +747,8 @@
       "id": "hro_sov_tank_standardization",
       "name_ru": "Т-34: единый промышленный стандарт",
       "name_en": "The T-34: One Industrial Standard",
-      "desc_ru": "Два бонуса 100% к бронетехнике и 40 армейского опыта. Стандартизация становится обязательной частью главной ветки танкостроения и средств ведения войны.",
-      "desc_en": "Two 100% armor research bonuses and 40 army experience. Standardization becomes a required part of the main armor and armaments branches.",
+      "desc_ru": "Два бонуса 100% к бронетехнике со снятием одного года штрафа за опережение времени и 75 армейского опыта. Стандартизация встроена в основную танковую промышленную цепочку.",
+      "desc_en": "Two 100% armor research bonuses with one year of ahead-of-time penalty reduction, plus 75 army experience. Standardization is integrated into the main tank industry route.",
       "branch": "army",
       "row": 4,
       "cost": 4,
@@ -757,7 +757,7 @@
           "SOV_pc_of_mechanical_engineering"
         ]
       ],
-      "reward": "add_tech_bonus = { name = hro_sov_tank_standardization bonus = 1 uses = 2 category = armor } army_experience = 40",
+      "reward": "add_tech_bonus = { name = hro_sov_tank_standardization bonus = 1 uses = 2 category = armor  ahead_reduction = 1 } army_experience = 75",
       "x": 27,
       "y": 3,
       "icon": "GFX_SOV_superior_war_machines_ccp_2d_sov_compatibility"
@@ -766,8 +766,8 @@
       "id": "hro_sov_replacement_weapons",
       "name_ru": "Арсеналы массового вооружения",
       "name_en": "Arsenals of Mass Armament",
-      "desc_ru": "Два военных завода и два бонуса 100% к пехотному оружию перед объединением танковых и артиллерийских предприятий. Укрепляет материальную базу основной военной промышленности.",
-      "desc_en": "Two military factories and two 100% infantry weapon research bonuses before merging tank and materiel plants. Expands the material base of the main armaments route.",
+      "desc_ru": "Четыре военных завода и два бонуса 100% к пехотному оружию перед объединением танковых и артиллерийских предприятий. Эта ступень существенно увеличивает промышленную базу массовой армии. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Four military factories and two 100% infantry weapon research bonuses before combining tank and artillery plants. This stage substantially expands the industrial base of the mass army. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "army",
       "row": 8,
       "cost": 4,
@@ -778,7 +778,7 @@
           "SOV_soviet_artillery"
         ]
       ],
-      "reward": "if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } add_tech_bonus = { name = hro_sov_replacement_weapons bonus = 1 uses = 2 category = infantry_weapons }",
+      "reward": "add_tech_bonus = { name = hro_sov_replacement_weapons bonus = 1 uses = 2 category = infantry_weapons } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 4\n            if = { limit = { free_building_slots = { building = arms_factory size > 3 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 4 instant_build = yes } }\n            else = { ROOT = { add_political_power = 100 } } } } else = { add_political_power = 100 }",
       "x": 27,
       "y": 7,
       "icon": "GFX_SOV_pc_of_mortar_armament_ccp_2d_sov_compatibility"
@@ -787,8 +787,8 @@
       "id": "hro_sov_winter_campaign_services",
       "name_ru": "Зимнее снабжение действующей армии",
       "name_en": "Winter Supply for the Field Army",
-      "desc_ru": "Зимняя кампания превращается в 50 армейского опыта и два бонуса 100% к ротам обеспечения. Дополнительная подготовка конкурирует за время со срочными реформами командования.",
-      "desc_en": "Convert winter campaigning into 50 army experience and two 100% support company research bonuses. An optional preparation competing for time with urgent command reforms.",
+      "desc_ru": "Подготовка действующей армии к зимней кампании даёт 100 армейского опыта и два бонуса 100% к технологиям рот обеспечения. Тратит фокусное время, необходимое также для срочных реформ Генштаба и тыла.",
+      "desc_en": "Winter campaign preparation grants 100 army experience and two 100% support technology research bonuses. Uses focus time also needed for urgent General Staff and logistics reforms.",
       "branch": "war",
       "row": 8,
       "cost": 4,
@@ -797,7 +797,7 @@
           "SOV_the_defense_of_moscow"
         ]
       ],
-      "reward": "army_experience = 50 add_tech_bonus = { name = hro_sov_winter_campaign_services bonus = 1 uses = 2 category = support_tech }",
+      "reward": "army_experience = 100 add_tech_bonus = { name = hro_sov_winter_campaign_services bonus = 1 uses = 2 category = support_tech }",
       "x": 34,
       "y": 7,
       "icon": "GFX_SOV_the_defense_of_moscow_ccp_2d_sov_compatibility",
@@ -808,8 +808,8 @@
       "id": "hro_sov_operational_concentration",
       "name_ru": "Ставка: последовательные наступления",
       "name_en": "Stavka: Successive Offensives",
-      "desc_ru": "После завершения главной армейской реформы — ещё три военных завода в Свердловске и 75 армейского опыта. Усиление наступлений требует всей последовательности реформ, а не отдельной боковой линейки.",
-      "desc_en": "After completing the main army reform, gain three military factories in Sverdlovsk and 75 army experience. Sustained offensives require the full reform route.",
+      "desc_ru": "После основных реформ управления фронтами вводятся четыре военных завода в Свердловске и выдаётся 100 армейского опыта. Масштаб наступлений опирается на завершённые командные и тыловые маршруты. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "After the main front-command reforms, adds four military factories in Sverdlovsk and grants 100 army experience. Large offensives rely on completed command and logistics routes. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "war",
       "row": 14,
       "cost": 6,
@@ -821,7 +821,7 @@
           "hro_sov_operational_reserves"
         ]
       ],
-      "reward": "if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 3 if = { limit = { free_building_slots = { building = arms_factory size > 2 include_locked = yes } } add_building_construction = { type = arms_factory level = 3 instant_build = yes } } else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 } army_experience = 75",
+      "reward": "army_experience = 100 if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 4\n            if = { limit = { free_building_slots = { building = arms_factory size > 3 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 4 instant_build = yes } }\n            else = { ROOT = { add_political_power = 100 } } } } else = { add_political_power = 100 }",
       "x": 41,
       "y": 13,
       "icon": "GFX_SOV_the_glory_of_the_red_army_ccp_2d_sov_compatibility",
@@ -831,8 +831,8 @@
       "id": "hro_sov_jet_conversion_study",
       "name_ru": "Реактивная авиация нового поколения",
       "name_en": "Next-Generation Jet Aviation",
-      "desc_ru": "Два бонуса 100% к реактивной технике и 75 авиационного опыта после нативного реактивного института. Позволяет выбрать позднее технологическое преимущество ценой времени других фокусов.",
-      "desc_en": "Two 100% jet research bonuses and 75 air experience after the native Jet Institute. Choose a late technological advantage at the cost of focus time elsewhere.",
+      "desc_ru": "Два бонуса 100% к реактивным технологиям со снятием одного года штрафа за опережение времени и 100 авиационного опыта. Требует завершения исходного реактивного института.",
+      "desc_en": "Two 100% jet technology research bonuses with one year of ahead-of-time penalty reduction and 100 air experience. Requires completion of the native jet institute.",
       "branch": "air",
       "row": 14,
       "cost": 6,
@@ -841,7 +841,7 @@
           "SOV_found_the_jet_institute"
         ]
       ],
-      "reward": "add_tech_bonus = { name = hro_sov_jet_conversion_study bonus = 1 uses = 2 category = jet_technology } air_experience = 75",
+      "reward": "add_tech_bonus = { name = hro_sov_jet_conversion_study bonus = 1 uses = 2 category = jet_technology  ahead_reduction = 1 } air_experience = 100",
       "x": 8,
       "y": 13,
       "icon": "GFX_SOV_found_the_jet_institute_ccp_2d_sov_compatibility",
@@ -851,8 +851,8 @@
       "id": "hro_sov_armed_forces_1946",
       "name_ru": "Советская армия 1946 года",
       "name_en": "The Soviet Army of 1946",
-      "desc_ru": "Завершает послевоенный переход: 100 армейского и 50 авиационного опыта, 50 командных очков и два бонуса 100% к бронетехнике. Победа и границы определяются результатом партии.",
-      "desc_en": "Complete the postwar transition: 100 army experience, 50 air experience, 50 command power and two 100% armor bonuses. Victory and borders follow the actual campaign.",
+      "desc_ru": "Завершает переход к армии 1946 года: 150 армейского и 100 авиационного опыта, 50 командных очков и два бонуса 100% к бронетехнике. Исход войны и границы по-прежнему определяет партия.",
+      "desc_en": "Completes the transition to the army of 1946: 150 army experience, 100 air experience, 50 command power and two 100% armor research bonuses. The campaign still determines the outcome and borders.",
       "branch": "war",
       "row": 16,
       "cost": 7,
@@ -864,7 +864,7 @@
           "SOV_fourth_five_year_plan"
         ]
       ],
-      "reward": "army_experience = 100 air_experience = 50 add_command_power = 50 add_tech_bonus = { name = hro_sov_armed_forces_1946 bonus = 1 uses = 2 category = armor }",
+      "reward": "army_experience = 150 air_experience = 100 add_command_power = 50 add_tech_bonus = { name = hro_sov_armed_forces_1946 bonus = 1 uses = 2 category = armor }",
       "x": 41,
       "y": 15,
       "icon": "GFX_SOV_the_glory_of_the_red_army_ccp_2d_sov_compatibility",
@@ -874,8 +874,8 @@
       "id": "hro_sov_industrial_restoration",
       "name_ru": "Четвёртая пятилетка: новые мощности",
       "name_en": "The Fourth Plan: New Capacity",
-      "desc_ru": "Два гражданских и два военных завода для восстановления и дальнейшей войны. Новый обязательный этап четвёртой пятилетки связывает позднюю промышленность с военной кампанией.",
-      "desc_en": "Two civilian and two military factories for reconstruction and continued warfare. A new required stage of the Fourth Plan links late industry to the campaign.",
+      "desc_ru": "Три гражданских завода в Свердловске и три военных завода в Челябинске. Обязательный поздний этап четвёртой пятилетки одновременно даёт восстановительные и военные мощности. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Three civilian factories in Sverdlovsk and three military factories in Chelyabinsk. This required late Fourth Plan stage provides reconstruction and military capacity together. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "industry",
       "row": 18,
       "cost": 6,
@@ -884,7 +884,7 @@
           "SOV_restoration_and_development"
         ]
       ],
-      "reward": "if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } } add_building_construction = { type = industrial_complex level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 }",
+      "reward": " if = { limit = { 653 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 653 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = industrial_complex size > 2 include_locked = yes } }\n                add_building_construction = { type = industrial_complex level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 } if = { limit = { 572 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 572 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = arms_factory size > 2 include_locked = yes } }\n                add_building_construction = { type = arms_factory level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 }",
       "x": 2,
       "y": 17,
       "icon": "GFX_SOV_fourth_five_year_plan_ccp_2d_sov_compatibility",
@@ -894,8 +894,8 @@
       "id": "hro_sov_dockyard_programme",
       "name_ru": "Верфи четырёх морей",
       "name_en": "Dockyards of Four Seas",
-      "desc_ru": "Две верфи в Ленинграде и 30 морского опыта. Встроенная ступень основного судостроительного пути; отдельный выбор между эскортами и большим флотом определяет его дальнейшую специализацию.",
-      "desc_en": "Two Leningrad dockyards and 30 navy experience. An integrated stage of the main shipbuilding route; escort versus capital fleet policy determines later specialization.",
+      "desc_ru": "Три верфи в Ленинграде либо во Владивостоке и 60 морского опыта. Обязательная ступень основной судостроительной цепочки перед дальнейшим выбором эскортов или большого флота. Новые предприятия требуют владения областью, полного контроля и свободных мест; недоступная мощность компенсируется по 25 ПВ за предприятие.",
+      "desc_en": "Three dockyards in Leningrad or Vladivostok and 60 navy experience. A required stage of the main shipbuilding route before choosing escorts or a capital fleet. New buildings require ownership, full state control and free slots; unavailable capacity is compensated at 25 political power per building.",
       "branch": "navy",
       "row": 4,
       "cost": 4,
@@ -907,7 +907,7 @@
           "SOV_reinforce_eastern_naval_bases"
         ]
       ],
-      "reward": "if = { limit = { 195 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 195 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = dockyard size > 1 include_locked = yes } } add_building_construction = { type = dockyard level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else_if = { limit = { 408 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 408 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = dockyard size > 1 include_locked = yes } } add_building_construction = { type = dockyard level = 2 instant_build = yes } } else = { ROOT = { add_political_power = 50 } } } } else = { add_political_power = 50 } navy_experience = 30",
+      "reward": "navy_experience = 60 if = { limit = { 195 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 195 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = dockyard size > 2 include_locked = yes } }\n                add_building_construction = { type = dockyard level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else_if = { limit = { 408 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 408 = { add_extra_state_shared_building_slots = 3\n            if = { limit = { free_building_slots = { building = dockyard size > 2 include_locked = yes } }\n                add_building_construction = { type = dockyard level = 3 instant_build = yes } }\n            else = { ROOT = { add_political_power = 75 } } } } else = { add_political_power = 75 }",
       "x": 17,
       "y": 3,
       "icon": "GFX_SOV_expand_shipbuilding_plants_ccp_2d_sov_compatibility"
@@ -937,11 +937,11 @@
       "initial": false,
       "name_ru": "Промышленная координация: подготовленные кадры",
       "name_en": "Industrial Coordination: Trained Workforce",
-      "desc_ru": "выпуск военных заводов: +5%; рост эффективности: +4%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "military factory output: +5%; efficiency growth: +4%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "выпуск военных заводов: +10%; рост эффективности производства: +10%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "military factory output: +10%; production efficiency growth: +10%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "industrial_capacity_factory": 0.05,
-        "production_factory_efficiency_gain_factor": 0.04
+        "industrial_capacity_factory": 0.1,
+        "production_factory_efficiency_gain_factor": 0.1
       }
     },
     {
@@ -952,11 +952,11 @@
       "initial": false,
       "name_ru": "Промышленная координация: освоенные мощности",
       "name_en": "Industrial Coordination: Commissioned Capacity",
-      "desc_ru": "выпуск военных заводов: +8%; рост эффективности: +8%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "military factory output: +8%; efficiency growth: +8%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "выпуск военных заводов: +18%; рост эффективности производства: +18%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "military factory output: +18%; production efficiency growth: +18%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "industrial_capacity_factory": 0.08,
-        "production_factory_efficiency_gain_factor": 0.08
+        "industrial_capacity_factory": 0.18,
+        "production_factory_efficiency_gain_factor": 0.18
       }
     },
     {
@@ -967,11 +967,11 @@
       "initial": false,
       "name_ru": "Промышленная координация: устойчивый выпуск",
       "name_en": "Industrial Coordination: Sustained Output",
-      "desc_ru": "выпуск военных заводов: +12%; рост эффективности: +10%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "military factory output: +12%; efficiency growth: +10%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "выпуск военных заводов: +25%; рост эффективности производства: +25%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "military factory output: +25%; production efficiency growth: +25%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "industrial_capacity_factory": 0.12,
-        "production_factory_efficiency_gain_factor": 0.1
+        "industrial_capacity_factory": 0.25,
+        "production_factory_efficiency_gain_factor": 0.25
       }
     },
     {
@@ -997,10 +997,10 @@
       "initial": false,
       "name_ru": "Подготовка штабов: устойчивая связь",
       "name_en": "Staff Training: Reliable Signals",
-      "desc_ru": "скорость планирования: +5%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "planning speed: +5%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "скорость планирования: +20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "planning speed: +20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "planning_speed": 0.05
+        "planning_speed": 0.2
       }
     },
     {
@@ -1011,11 +1011,11 @@
       "initial": false,
       "name_ru": "Подготовка штабов: отработанное взаимодействие",
       "name_en": "Staff Training: Practised Coordination",
-      "desc_ru": "организация: +5%; скорость планирования: +10%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "organisation: +5%; planning speed: +10%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "организация армии: +8%; скорость планирования: +30%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "army organization: +8%; planning speed: +30%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "army_org_factor": 0.05,
-        "planning_speed": 0.1
+        "army_org_factor": 0.08,
+        "planning_speed": 0.3
       }
     },
     {
@@ -1026,12 +1026,12 @@
       "initial": false,
       "name_ru": "Подготовка штабов: зрелое управление",
       "name_en": "Staff Training: Mature Command",
-      "desc_ru": "организация: +10%; максимум планирования: +10%; время обучения: -8%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "organisation: +10%; maximum planning: +10%; training time: -8%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "организация армии: +15%; максимальный бонус планирования: +25%; время подготовки дивизий: -20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "army organization: +15%; maximum planning bonus: +25%; division training time: -20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "army_org_factor": 0.1,
-        "max_planning_factor": 0.1,
-        "training_time_army_factor": -0.08
+        "army_org_factor": 0.15,
+        "max_planning_factor": 0.25,
+        "training_time_army_factor": -0.2
       }
     },
     {
@@ -1057,10 +1057,12 @@
       "initial": false,
       "name_ru": "Транспортные службы: согласованные графики",
       "name_en": "Transport Services: Coordinated Timetables",
-      "desc_ru": "расход снабжения: +0%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "supply consumption: +0%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "потребление снабжения: -5%; штрафы при недостатке снабжения: -10%; скорость ремонта промышленности: +15%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "supply consumption: -5%; out-of-supply penalties: -10%; industrial repair speed: +15%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "supply_consumption_factor": 0
+        "supply_consumption_factor": -0.05,
+        "out_of_supply_factor": -0.1,
+        "industry_repair_factor": 0.15
       }
     },
     {
@@ -1071,11 +1073,13 @@
       "initial": false,
       "name_ru": "Транспортные службы: ремонтные резервы",
       "name_en": "Transport Services: Maintenance Reserves",
-      "desc_ru": "расход снабжения: -8%; истощение: -5%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "supply consumption: -8%; attrition: -5%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "потребление снабжения: -15%; истощение: -15%; штрафы при недостатке снабжения: -15%; скорость ремонта промышленности: +20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "supply consumption: -15%; attrition: -15%; out-of-supply penalties: -15%; industrial repair speed: +20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "supply_consumption_factor": -0.08,
-        "attrition": -0.05
+        "supply_consumption_factor": -0.15,
+        "attrition": -0.15,
+        "out_of_supply_factor": -0.15,
+        "industry_repair_factor": 0.2
       }
     },
     {
@@ -1086,11 +1090,13 @@
       "initial": false,
       "name_ru": "Транспортные службы: глубокое снабжение",
       "name_en": "Transport Services: Supply in Depth",
-      "desc_ru": "расход снабжения: -14%; истощение: -10%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "supply consumption: -14%; attrition: -10%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "потребление снабжения: -25%; истощение: -25%; штрафы при недостатке снабжения: -20%; скорость ремонта промышленности: +25%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "supply consumption: -25%; attrition: -25%; out-of-supply penalties: -20%; industrial repair speed: +25%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "supply_consumption_factor": -0.14,
-        "attrition": -0.1
+        "supply_consumption_factor": -0.25,
+        "attrition": -0.25,
+        "out_of_supply_factor": -0.2,
+        "industry_repair_factor": 0.25
       }
     },
     {
@@ -1116,10 +1122,10 @@
       "initial": false,
       "name_ru": "Управление: разграничение ответственности",
       "name_en": "Administration: Defined Responsibilities",
-      "desc_ru": "ПВ в день: +0.15. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "daily political power: +0.15. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "политическая власть в день: +0.3. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "daily political power: +0.3. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "political_power_gain": 0.15
+        "political_power_gain": 0.3
       }
     },
     {
@@ -1130,12 +1136,12 @@
       "initial": false,
       "name_ru": "Управление: рабочая координация",
       "name_en": "Administration: Working Coordination",
-      "desc_ru": "ПВ в день: +0.25; строительство: +5%; ремонт промышленности: +15%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "daily political power: +0.25; construction: +5%; industry repair: +15%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "политическая власть в день: +0.5; скорость строительства: +15%; скорость ремонта промышленности: +35%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "daily political power: +0.5; construction speed: +15%; industrial repair speed: +35%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "political_power_gain": 0.25,
-        "production_speed_buildings_factor": 0.05,
-        "industry_repair_factor": 0.15
+        "political_power_gain": 0.5,
+        "production_speed_buildings_factor": 0.15,
+        "industry_repair_factor": 0.35
       }
     },
     {
@@ -1146,12 +1152,12 @@
       "initial": false,
       "name_ru": "Управление: восстановленные институты",
       "name_en": "Administration: Restored Institutions",
-      "desc_ru": "ПВ в день: +0.35; ремонт промышленности: +25%; стабильность: +3%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "daily political power: +0.35; industry repair: +25%; stability: +3%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "политическая власть в день: +0.75; скорость ремонта промышленности: +50%; стабильность: +5%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "daily political power: +0.75; industrial repair speed: +50%; stability: +5%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "political_power_gain": 0.35,
-        "industry_repair_factor": 0.25,
-        "stability_factor": 0.03
+        "political_power_gain": 0.75,
+        "industry_repair_factor": 0.5,
+        "stability_factor": 0.05
       }
     },
     {
@@ -1162,12 +1168,12 @@
       "initial": false,
       "name_ru": "Плановый приоритет: оборонные комбинаты",
       "name_en": "Plan Priority: Defence Combines",
-      "desc_ru": "строительство военных заводов: +15%; гражданское строительство: -8%; ожидаемые потребительские товары: +2%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "military construction: +15%; civilian construction: -8%; expected consumer goods: +2%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "строительство военных заводов: +35%; строительство гражданских заводов: -15%; ожидаемые потребительские товары: +3 п.п.. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "military factory construction: +35%; civilian factory construction: -15%; expected consumer goods: +3 points. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "production_speed_arms_factory_factor": 0.15,
-        "production_speed_industrial_complex_factor": -0.08,
-        "consumer_goods_expected_value": 0.02
+        "production_speed_arms_factory_factor": 0.35,
+        "production_speed_industrial_complex_factor": -0.15,
+        "consumer_goods_expected_value": 0.03
       }
     },
     {
@@ -1178,12 +1184,12 @@
       "initial": false,
       "name_ru": "Плановый приоритет: сбалансированный рост",
       "name_en": "Plan Priority: Balanced Growth",
-      "desc_ru": "гражданское строительство: +12%; строительство военных заводов: -4%; рост эффективности: +5%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "civilian construction: +12%; military construction: -4%; efficiency growth: +5%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "строительство гражданских заводов: +25%; строительство военных заводов: -8%; рост эффективности производства: +10%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "civilian factory construction: +25%; military factory construction: -8%; production efficiency growth: +10%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "production_speed_industrial_complex_factor": 0.12,
-        "production_speed_arms_factory_factor": -0.04,
-        "production_factory_efficiency_gain_factor": 0.05
+        "production_speed_industrial_complex_factor": 0.25,
+        "production_speed_arms_factory_factor": -0.08,
+        "production_factory_efficiency_gain_factor": 0.1
       }
     },
     {
@@ -1194,12 +1200,12 @@
       "initial": false,
       "name_ru": "Плановый приоритет: зрелый оборонный комплекс",
       "name_en": "Plan Priority: Mature Defence Complex",
-      "desc_ru": "строительство военных заводов: +20%; гражданское строительство: -10%; ожидаемые потребительские товары: +2%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "military construction: +20%; civilian construction: -10%; expected consumer goods: +2%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "строительство военных заводов: +45%; строительство гражданских заводов: -20%; ожидаемые потребительские товары: +3 п.п.. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "military factory construction: +45%; civilian factory construction: -20%; expected consumer goods: +3 points. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "production_speed_arms_factory_factor": 0.2,
-        "production_speed_industrial_complex_factor": -0.1,
-        "consumer_goods_expected_value": 0.02
+        "production_speed_arms_factory_factor": 0.45,
+        "production_speed_industrial_complex_factor": -0.2,
+        "consumer_goods_expected_value": 0.03
       }
     },
     {
@@ -1210,12 +1216,12 @@
       "initial": false,
       "name_ru": "Плановый приоритет: зрелая производственная база",
       "name_en": "Plan Priority: Mature Productive Base",
-      "desc_ru": "гражданское строительство: +15%; строительство военных заводов: -4%; рост эффективности: +6%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "civilian construction: +15%; military construction: -4%; efficiency growth: +6%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "строительство гражданских заводов: +35%; строительство военных заводов: -8%; рост эффективности производства: +15%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "civilian factory construction: +35%; military factory construction: -8%; production efficiency growth: +15%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "production_speed_industrial_complex_factor": 0.15,
-        "production_speed_arms_factory_factor": -0.04,
-        "production_factory_efficiency_gain_factor": 0.06
+        "production_speed_industrial_complex_factor": 0.35,
+        "production_speed_arms_factory_factor": -0.08,
+        "production_factory_efficiency_gain_factor": 0.15
       }
     },
     {
@@ -1226,13 +1232,13 @@
       "initial": false,
       "name_ru": "Организация армии: оборона в глубину",
       "name_en": "Army Organisation: Defence in Depth",
-      "desc_ru": "организация: +3%; защита армии: +5%; максимум планирования: +8%; скорость планирования: -10%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "organisation: +3%; army defence: +5%; maximum planning: +8%; planning speed: -10%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "организация армии: +6%; защита армии: +12%; максимальный бонус планирования: +18%; скорость планирования: -20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "army organization: +6%; army defense: +12%; maximum planning bonus: +18%; planning speed: -20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "army_org_factor": 0.03,
-        "army_defence_factor": 0.05,
-        "max_planning_factor": 0.08,
-        "planning_speed": -0.1
+        "army_org_factor": 0.06,
+        "army_defence_factor": 0.12,
+        "max_planning_factor": 0.18,
+        "planning_speed": -0.2
       }
     },
     {
@@ -1243,13 +1249,13 @@
       "initial": false,
       "name_ru": "Организация армии: подвижные группы",
       "name_en": "Army Organisation: Mobile Groups",
-      "desc_ru": "скорость армии: +5%; скорость планирования: +15%; расход снабжения: +5%; время обучения: +5%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "army speed: +5%; planning speed: +15%; supply consumption: +5%; training time: +5%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "скорость дивизий: +10%; скорость планирования: +30%; потребление снабжения: +10%; время подготовки дивизий: +10%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "division speed: +10%; planning speed: +30%; supply consumption: +10%; division training time: +10%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "army_speed_factor": 0.05,
-        "planning_speed": 0.15,
-        "supply_consumption_factor": 0.05,
-        "training_time_army_factor": 0.05
+        "army_speed_factor": 0.1,
+        "planning_speed": 0.3,
+        "supply_consumption_factor": 0.1,
+        "training_time_army_factor": 0.1
       }
     },
     {
@@ -1260,13 +1266,13 @@
       "initial": false,
       "name_ru": "Организация армии: устойчивая оперативная оборона",
       "name_en": "Army Organisation: Sustained Operational Defence",
-      "desc_ru": "организация: +5%; защита армии: +8%; максимум планирования: +10%; скорость планирования: -10%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "organisation: +5%; army defence: +8%; maximum planning: +10%; planning speed: -10%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "организация армии: +10%; защита армии: +20%; максимальный бонус планирования: +25%; скорость планирования: -20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "army organization: +10%; army defense: +20%; maximum planning bonus: +25%; planning speed: -20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "army_org_factor": 0.05,
-        "army_defence_factor": 0.08,
-        "max_planning_factor": 0.1,
-        "planning_speed": -0.1
+        "army_org_factor": 0.1,
+        "army_defence_factor": 0.2,
+        "max_planning_factor": 0.25,
+        "planning_speed": -0.2
       }
     },
     {
@@ -1277,13 +1283,13 @@
       "initial": false,
       "name_ru": "Организация армии: самостоятельные оперативные группы",
       "name_en": "Army Organisation: Independent Operational Groups",
-      "desc_ru": "скорость армии: +8%; скорость планирования: +20%; расход снабжения: +8%; время обучения: +8%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "army speed: +8%; planning speed: +20%; supply consumption: +8%; training time: +8%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "скорость дивизий: +15%; скорость планирования: +40%; потребление снабжения: +12%; время подготовки дивизий: +12%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "division speed: +15%; planning speed: +40%; supply consumption: +12%; division training time: +12%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "army_speed_factor": 0.08,
-        "planning_speed": 0.2,
-        "supply_consumption_factor": 0.08,
-        "training_time_army_factor": 0.08
+        "army_speed_factor": 0.15,
+        "planning_speed": 0.4,
+        "supply_consumption_factor": 0.12,
+        "training_time_army_factor": 0.12
       }
     },
     {
@@ -1294,12 +1300,12 @@
       "initial": false,
       "name_ru": "Авиационная программа: поддержка фронта",
       "name_en": "Air Programme: Front Support",
-      "desc_ru": "поддержка с воздуха: +10%; эффективность миссий: +5%; дальность авиации: -8%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "air support: +10%; mission efficiency: +5%; air range: -8%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "бонус поддержки с воздуха: +20%; эффективность авиационных миссий: +15%; дальность авиации: -15%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "air support bonus: +20%; air mission efficiency: +15%; air range: -15%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "air_cas_present_factor": 0.1,
-        "air_mission_efficiency": 0.05,
-        "air_range_factor": -0.08
+        "air_cas_present_factor": 0.2,
+        "air_mission_efficiency": 0.15,
+        "air_range_factor": -0.15
       }
     },
     {
@@ -1310,12 +1316,12 @@
       "initial": false,
       "name_ru": "Авиационная программа: защита промышленности",
       "name_en": "Air Programme: Industrial Air Defence",
-      "desc_ru": "перехват: +15%; аварийность: -10%; дальность авиации: -5%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "interception: +15%; accidents: -10%; air range: -5%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "эффективность перехвата: +30%; аварийность авиации: -25%; дальность авиации: -10%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "air interception efficiency: +30%; air accidents: -25%; air range: -10%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "air_intercept_efficiency": 0.15,
-        "air_accidents_factor": -0.1,
-        "air_range_factor": -0.05
+        "air_intercept_efficiency": 0.3,
+        "air_accidents_factor": -0.25,
+        "air_range_factor": -0.1
       }
     },
     {
@@ -1326,12 +1332,12 @@
       "initial": false,
       "name_ru": "Авиационная программа: зрелое взаимодействие",
       "name_en": "Air Programme: Mature Front Coordination",
-      "desc_ru": "поддержка с воздуха: +15%; эффективность миссий: +10%; дальность авиации: -8%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "air support: +15%; mission efficiency: +10%; air range: -8%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "бонус поддержки с воздуха: +30%; эффективность авиационных миссий: +25%; дальность авиации: -15%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "air support bonus: +30%; air mission efficiency: +25%; air range: -15%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "air_cas_present_factor": 0.15,
-        "air_mission_efficiency": 0.1,
-        "air_range_factor": -0.08
+        "air_cas_present_factor": 0.3,
+        "air_mission_efficiency": 0.25,
+        "air_range_factor": -0.15
       }
     },
     {
@@ -1342,12 +1348,12 @@
       "initial": false,
       "name_ru": "Авиационная программа: эшелонированная ПВО",
       "name_en": "Air Programme: Layered Air Defence",
-      "desc_ru": "перехват: +20%; аварийность: -15%; дальность авиации: -5%. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "interception: +20%; accidents: -15%; air range: -5%. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "эффективность перехвата: +45%; аварийность авиации: -35%; дальность авиации: -10%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "air interception efficiency: +45%; air accidents: -35%; air range: -10%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "air_intercept_efficiency": 0.2,
-        "air_accidents_factor": -0.15,
-        "air_range_factor": -0.05
+        "air_intercept_efficiency": 0.45,
+        "air_accidents_factor": -0.35,
+        "air_range_factor": -0.1
       }
     },
     {
@@ -1358,12 +1364,12 @@
       "initial": false,
       "name_ru": "Согласованные флотские службы",
       "name_en": "Coordinated Fleet Services",
-      "desc_ru": "эффективность эскорта: +15%; выпуск верфей: +12%; ПВ в день: -0.10. Следующая ступень этой семьи заменяет предыдущую; выбор специализации сохраняется.",
-      "desc_en": "convoy escort efficiency: +15%; dockyard output: +12%; daily political power: -0.10. The next stage replaces the previous family stage and preserves the selected specialization.",
+      "desc_ru": "эффективность сопровождения конвоев: +35%; выпуск верфей: +25%; политическая власть в день: -0.2. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "convoy escort efficiency: +35%; dockyard output: +25%; daily political power: -0.2. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "convoy_escort_efficiency": 0.15,
-        "industrial_capacity_dockyard": 0.12,
-        "political_power_gain": -0.1
+        "convoy_escort_efficiency": 0.35,
+        "industrial_capacity_dockyard": 0.25,
+        "political_power_gain": -0.2
       }
     }
   ],
@@ -2311,7 +2317,9 @@
     "Нативные эвакуация, расход поездов, реабилитация, чистки и год чрезвычайных мер не заменяются параллельными имитациями.",
     "Политические альтернативы DLC сохранены; общие хозяйственные и военные реформы доступны вне сталинского пути.",
     "Вертикальные интервалы в хозяйственной и военной частях расширены для новых промежуточных узлов, а не вынесены вправо отдельными колонками.",
-    "Начальные штрафы HRO не увеличены; сильные поздние модификаторы и заводы требуют реальных фокус-дней и конкурируют между направлениями."
+    "Начальные штрафы HRO не увеличены; сильные поздние модификаторы и заводы требуют реальных фокус-дней и конкурируют между направлениями.",
+    "Версия 0.4: увеличены действительные промышленные, командные, тыловые и авиационные эффекты; специализации сохраняют ощутимые издержки. Основная структура дерева не изменена.",
+    "Версия 0.4: обязательные этапы подготовки и полноценной военной адаптации встроены в награды существующих основных фокусов. Бонусы опыта войны включаются только после фактических дней войны/зимы; исходные эффекты DLC сохранены."
   ],
   "integrated_milestones": [
     {

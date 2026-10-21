@@ -703,7 +703,10 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
             key: sum(operation(i.get('modifiers', {}).get(key, 0) for i in values) for values in final)
             for key, operation in (('industrial_capacity_factory', max), ('army_org_factor', max), ('supply_consumption_factor', min))
         }
-        if worst['industrial_capacity_factory'] > 0.22 + TOLERANCE or worst['army_org_factor'] > 0.20 + TOLERANCE or worst['supply_consumption_factor'] < -0.22 - TOLERANCE:
+        # Major specialisations are intentionally strong in 0.4. These ceilings
+        # bound the whole set of permanent country families, not one spirit.
+        # War adaptation and temporary programme effects are audited separately.
+        if worst['industrial_capacity_factory'] > 0.40 + TOLERANCE or worst['army_org_factor'] > 0.30 + TOLERANCE or worst['supply_consumption_factor'] < -0.35 - TOLERANCE:
             errors.append(f'Final family bonus budget exceeded for {tag}: {worst}')
     for (tag, family), members in families.items():
         ids = {i['id'] for i in members}

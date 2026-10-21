@@ -4,4 +4,5 @@ dist/*
 !dist/mod.zip
 !dist/overhaul.zip
 !dist/rework.zip
+!dist/war.zip
 .pytest_cache/

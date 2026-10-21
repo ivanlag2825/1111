@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.3.0'
+VERSION = '0.4.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -92,7 +92,7 @@ def structural_script(key, value):
     return f'{key} = {number(value) if key in ("x", "y") else value}'
 
 
-def verify_native_preservation(original_nodes, modified_nodes, changes):
+def verify_native_preservation(original_nodes, modified_nodes, changes, continuous_positions=None):
     """Audit declared graph/layout edits and preserve all other native behaviour.
 
     Native rewards, bypasses, political visibility and DLC cleanup remain exact.
@@ -100,6 +100,7 @@ def verify_native_preservation(original_nodes, modified_nodes, changes):
     target before being restored for the full original-source comparison.
     """
     patches = {p['id']: p for p in changes}
+    continuous_positions = continuous_positions or {}
     if len(original_nodes) != len(modified_nodes):
         raise ValueError('Unexpected top-level change in native focus source')
     restored = []
@@ -108,9 +109,18 @@ def verify_native_preservation(original_nodes, modified_nodes, changes):
         if original.key != 'focus_tree':
             restored.append(modified)
             continue
+        panel = continuous_positions.get(original.scalar('id'))
+        if panel is not None:
+            expected = parse(f'continuous_focus_position = {{ x = {panel["x"]} y = {panel["y"]} }}')
+            if signature(modified.all('continuous_focus_position')) != signature(expected):
+                raise ValueError('Continuous focus position differs from declared layout fix')
         original_focuses = {n.scalar('id'): n for n in original.all('focus')}
         children = []
         for node in modified.value:
+            if panel is not None and node.key == 'continuous_focus_position':
+                if previous := original.one('continuous_focus_position'):
+                    children.append(previous)
+                continue
             if node.key == 'shared_focus' and isinstance(node.value, str) and node.value.startswith('hro_'):
                 continue
             if node.key == 'shortcut' and str(node.scalar('name', '')).startswith('hro_'):
@@ -334,7 +344,8 @@ def native_overlay(stage, game, catalogs):
     pacing = json.loads((PROJECT / 'data/historical_gates.json').read_text(encoding='utf-8'))
     native_loc = {'russian': {}, 'english': {}}
     report = {'source_sha256': {}, 'original_focus_counts': {}, 'native_patches': [], 'branch_offsets': offsets,
-              'original_focus_ids_preserved': True, 'native_scripted_effects_preserved': True}
+              'continuous_focus_layout': {}, 'original_focus_ids_preserved': True, 'native_scripted_effects_preserved': True}
+    layout = module('hro_native_layout_fix', OVERHAUL / 'tools/native_layout_fix.py')
     for catalog in catalogs:
         tag = catalog['tag']
         tree, text = trees[tag], texts[tag]
@@ -413,10 +424,28 @@ def native_overlay(stage, game, catalogs):
         modified = edit(text, edits)
         result = parse(modified)
         changed_tree = next(n for n in result if n.key == 'focus_tree' and tree_tag(n) == tag)
+        positioned = {n.scalar('id'): n for n in changed_tree.all('focus')}
+        for authored in catalog['focuses']:
+            x = authored.get('x', offsets[tag] + BRANCHES.index(authored['branch']) * 6 + authored.get('lane', 0) * 2)
+            y = authored.get('y', authored.get('row', 1))
+            anchor = f'relative_position_id = {authored["relative_position_id"]}' if authored.get('relative_position_id') else ''
+            positioned[authored['id']] = parse(f'shared_focus = {{ id = {authored["id"]} x = {x} y = {y} {anchor} }}')[0]
+        previous_panel = changed_tree.one('continuous_focus_position')
+        layout_report = layout.continuous_layout_report(positioned, previous_panel)
+        position = layout_report['position']
+        replacement = f'continuous_focus_position = {{ x = {position["x"]} y = {position["y"]} }}'
+        if previous_panel:
+            modified = edit(modified, [(previous_panel.start, previous_panel.end, replacement)])
+        else:
+            modified = edit(modified, [(changed_tree.value_end - 1, changed_tree.value_end - 1, '\n    ' + replacement + '\n')])
+        result = parse(modified)
+        layout_report['old_position'] = ({'x': previous_panel.scalar('x'), 'y': previous_panel.scalar('y')} if previous_panel else None)
+        report['continuous_focus_layout'][tag] = layout_report
         if {f.scalar('id') for f in changed_tree.all('focus')} != set(originals):
             raise ValueError(f'Native focus IDs changed unexpectedly: {tag}')
         verified = verify_native_preservation(docs[tag], result,
-                                              [p for p in report['native_patches'] if p['tag'] == tag])
+                                              [p for p in report['native_patches'] if p['tag'] == tag],
+                                              {tree.scalar('id'): position})
         if verified != len(originals):
             raise ValueError(f'Native preservation count mismatch: {tag}')
         put(stage, source_paths[tag], modified, bom=True)
@@ -439,7 +468,7 @@ def player_guide(catalogs, gameplay, report):
 
 ## Установка
 
-1. Выключи прежние Historical Reality 0.1/0.2 и другие моды деревьев/баланса GER/SOV.
+1. Выключи прежние Historical Reality 0.1/0.2/0.3 и другие моды деревьев/баланса GER/SOV. При обновлении замени старую папку `historical_reality_overhaul` новой.
 2. Распакуй папку `{FOLDER}` и файл `{FOLDER}.mod` в `Документы/Paradox Interactive/Hearts of Iron IV/mod`.
 3. Включи **{NAME}** в одном и том же наборе у обоих игроков. У обоих должны совпадать версия игры, DLC и checksum.
 4. Начните НОВУЮ кампанию 1936 года. Для стран под управлением ИИ включите исторические фокусы. Правило HRO по умолчанию сохраняет исторические окна подготовки; «Свободные сроки» снимает только добавленные условия даты.
@@ -456,6 +485,20 @@ def player_guide(catalogs, gameplay, report):
 Промышленность, армия, снабжение, авиация, флот, государственное управление, дипломатия и адаптация в войне образуют связанные направления. Не требуется закрыть все ветки до 1946 года: очередь фокусов остаётся ограниченным ресурсом.
 
 Общие программы требуют политической власти и временных издержек. Промышленная, оперативная и управленческая программы выполняются в разных слотах. Полезный результат выдаётся после окончания подготовки; отмена не приносит награду. Фоновые MEFO, паранойя, настоящая эвакуация и политические системы DLC сохранены; старые две шкалы HRS 0.1 не используются.
+
+## Восточный фронт: подготовка, кризис, адаптация
+
+При первом оборонительном вступлении СССР в войну с Германией возникает новый кризис: организация −25%, её восстановление −25%, скорость планирования −35%, военный выпуск −20%, потребление снабжения +25%. Он длится 120 фактических дней войны; в мирное время опыт не накапливается. «Проверка мобилизационных округов» заранее смягчает кризис до −10% организации/выпуска и +10% снабжения. После острой фазы штраф ослабевает даже без реформ.
+
+«Отчёты фронтов вместо сводок» закрепляют полную советскую адаптацию. После накопления опыта новые штрафы снимаются, а страна получает +25% восстановления организации, +35% планирования, +25% максимального плана, +10% военного выпуска и −10% снабжения. При советском наступлении дополнительной внезапности нет; опыт и реформа остаются доступны. Исходные ограничения Красной армии продолжают действовать по правилам DLC.
+
+Германия во время войны с СССР получает зимние ограничения с ноября по март: без подготовки первая зима даёт +30% расхода снабжения, +75% зимнего истощения, −25% восстановления организации, −15% скорости и −30% планирования. «Единый моторный парк» смягчает кризис. «Континентальная система снабжения» вместе с 45 фактическими зимними днями войны снимает новые штрафы и даёт −40% зимнего истощения, +100% холодовой акклиматизации, −10% снабжения и +15% восстановления организации. Летом, в мирное время и после капитуляции сезонные штрафы убираются.
+
+Заранее завершённые реформы запоминаются. Они не требуют повторного прохождения фокуса, но результат опыта включается после нужного числа военных/зимних дней. Ступени штрафов не складываются, повторное вступление в войну не выдаёт вторую награду. Это ежедневная проверка двух стран, поэтому изменение состояния может появиться на следующем игровом дне. Для версии 0.4 нужна новая кампания: старые сохранения не содержат истории новых счётчиков.
+
+Награды основных реформ существенно усилены. Например, поздняя германская серийная школа даёт +25% выпуска и +25% предела эффективности ценой −15% её роста; гибкая школа — +40% роста и +35% сохранения эффективности. Советская промышленная семья достигает +25% выпуска, оборонная строительная школа — +45% военного строительства. Полные пакеты и издержки перечислены в `docs/REWARDS_040_RU.md`.
+
+Панель непрерывных фокусов перемещена ниже всех узлов и положительных условных смещений. Координаты записаны в `OVERHAUL_BUILD_REPORT.json`; схема теперь показывает и панель.
 
 ## Проверка и ограничения
 
@@ -494,6 +537,9 @@ def audit_integrated_layout(game, preview, schematic):
         data = schematic['countries'][tag]
         if data['new_vs_native_collision_candidates'] or data['new_vs_new_collisions']:
             raise ValueError(f'New focus base-layout overlaps: {tag}; inspect preview/layout_report.json')
+        if panel := data.get('continuous_focus_panel'):
+            if not panel['safe_below_all_focuses']:
+                raise ValueError(f'Continuous focus panel can overlap the expanded tree: {tag}')
         original = parse((game / 'common/national_focus' / filename).read_text(encoding='utf-8-sig'))
         tree = next(n for n in original if n.key == 'focus_tree' and tree_tag(n) == tag)
         definitions = {n.scalar('id'): n for n in tree.all('focus')}
@@ -507,9 +553,34 @@ def audit_integrated_layout(game, preview, schematic):
         if introduced := pairs(after) - pairs(before):
             raise ValueError(f'Introduced native base-layout overlaps: {tag}/{sorted(introduced)}')
         counts[tag] = {'new_native_overlaps': 0, 'new_new_overlaps': 0,
-                       'introduced_native_native_overlaps': 0}
+                       'introduced_native_native_overlaps': 0,
+                       'continuous_panel_below_focuses': bool(panel and panel['safe_below_all_focuses'])}
     return {'scope': 'base coordinates; native conditional offsets and visibility require engine review',
             'countries': counts}
+
+
+def permanent_reform_envelopes(catalogs, adaptation):
+    """Bound permanent HRO families plus earned war adaptation together.
+
+    One tier/choice per family can be active. Temporary programmes and the
+    native game's spirits, laws, traits and weather are outside this envelope.
+    """
+    limits = {'industrial_capacity_factory': (.45, max), 'army_org_factor': (.35, max),
+              'supply_consumption_factor': (-.45, min), 'winter_attrition_factor': (-.80, min)}
+    result = {}
+    for catalog in catalogs:
+        grouped = defaultdict(list)
+        for idea in catalog['ideas']:
+            grouped[idea['family']].append(idea['modifiers'])
+        earned = adaptation.get('permanent_rewards', {}).get(catalog['tag'], {})
+        totals = {key: sum(operation(values.get(key, 0) for values in family) for family in grouped.values())
+                  + earned.get(key, 0) for key, (limit, operation) in limits.items()}
+        for key, (limit, operation) in limits.items():
+            if (totals[key] > limit + 1e-8 if operation is max else totals[key] < limit - 1e-8):
+                raise ValueError(f'Combined permanent HRO bonus budget exceeded: {catalog["tag"]}/{key}/{totals[key]}')
+        result[catalog['tag']] = {key: round(value, 6) for key, value in totals.items()}
+    return {'scope': 'one active tier per country family plus earned war adaptation; excludes DLC and temporary programmes',
+            'countries': result}
 
 
 def build(game, output, catalog_dir=None, schema_dir=None):
@@ -528,6 +599,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         author_rules(stage)
         gameplay_module = module('hro_gameplay_generator', OVERHAUL / 'tools/generate_gameplay.py')
         gameplay = gameplay_module.generate(stage)
+        adaptation_module = module('hro_war_adaptation_generator', OVERHAUL / 'tools/generate_war_adaptation.py')
+        war_adaptation = adaptation_module.generate(stage)
+        combined_rewards = permanent_reform_envelopes(catalogs, war_adaptation)
         put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.*"\n')
         report.update(version=VERSION, folder=FOLDER, native_background_systems='preserved',
                       target='1936-1946, two human opponents GER/SOV, all DLC', runtime_verified=False,
@@ -535,6 +609,8 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                                            'historical_default': True, 'allow_deviations': True, 'complexity': 'high'},
                       new_focus_counts={c['tag']: len(c['focuses']) for c in catalogs},
                       family_spirit_counts={c['tag']: len(c['ideas']) for c in catalogs}, gameplay=gameplay,
+                      war_adaptation=war_adaptation,
+                      permanent_reform_envelopes=combined_rewards,
                       country_catalog_sha256={c['tag']: hashlib.sha256((catalog_dir / (c['tag'].lower() + '.json')).read_bytes()).hexdigest() for c in catalogs})
         validator = module('hro_content_validator', OVERHAUL / 'tools/validate_overhaul.py')
         checks = validator.validate(stage, catalog_dir=catalog_dir, schema_dir=schema_dir)
@@ -576,7 +652,8 @@ def package(built, output):
                     f'{NAME} {VERSION}\n\n'
                     f'Распакуй {FOLDER} (папку) и {FOLDER}.mod (файл) в:\n'
                     'Документы/Paradox Interactive/Hearts of Iron IV/mod\n\n'
-                    f'Выключи прежние HRS 0.1 / HRO 0.2 и включи {NAME} 0.3 в лаунчере.\n'
+                    f'Выключи прежние версии и включи {NAME} {VERSION} в лаунчере.\n'
+                    'При обновлении замени старую папку historical_reality_overhaul новой.\n'
                     'Оба игрока используют одинаковый архив, версию игры и DLC. Начните новую кампанию 1936 года.\n'
                     'В папку Steam ничего копировать не нужно. Python и установщик не нужны.\n'
                     f'Подробности и ограничения: {FOLDER}/README_RU.md\n'
