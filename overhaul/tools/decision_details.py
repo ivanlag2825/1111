@@ -1,5 +1,8 @@
 """Player-facing numeric descriptions derived from the actual reward dictionaries."""
 LABELS = {
+ 'army_attack_factor': ('Атака дивизий', 'Division attack'),
+ 'army_speed_factor': ('Скорость дивизий', 'Division speed'),
+ 'attrition': ('Истощение', 'Attrition'),
  'air_accidents_factor': ('Вероятность авиакатастроф', 'Air accident chance'),
  'air_fuel_consumption_factor': ('Расход топлива авиацией', 'Air fuel consumption'),
  'army_org_factor': ('Организация дивизий', 'Division organisation'),

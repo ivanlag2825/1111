@@ -78,7 +78,7 @@ def author_spirit_assets(root):
             for category in section.value:
                 for idea in category.value:
                     if not idea.key.startswith('hro_'):continue
-                    picture=('hro_spirit_crisis' if any(s in idea.key for s in ('_crisis_','_surprise','_shock','_strain','_dislocated','_prepared_fronts','_regrouping','_first_winter','_prepared_winter','_later_winter','_adapted_winter','_working')) else
+                    picture=('hro_spirit_crisis' if idea.key.startswith('hro_ops_idea_exhaustion') or any(s in idea.key for s in ('_crisis_','_surprise','_shock','_strain','_dislocated','_prepared_fronts','_regrouping','_first_winter','_prepared_winter','_later_winter','_adapted_winter','_working')) else
                              'hro_spirit_recovery' if any(s in idea.key for s in ('_mobilization_','_rebuilding_','_liberation_','_adapted','_battle_hardened')) else
                              'hro_spirit_industry' if path.name in ('hro_country_ideas.txt','hro_programme_ideas.txt') else 'hro_spirit_army')
                     if field:=idea.one('picture'):patches.append((field.start,field.end,'picture = '+picture))

@@ -293,9 +293,9 @@ def _keyword_audit(own_docs, all_focuses, effect_defs, trigger_defs, schema, err
             for root in roots:
                 triggers(root.value)
         for n in walk(roots):
-            if n.key in ('available', 'visible', 'allowed', 'trigger', 'target_trigger', 'cancel_trigger', 'remove_trigger') and isinstance(n.value, list):
+            if n.key in ('available', 'visible', 'allowed', 'trigger', 'target_trigger', 'cancel_trigger', 'remove_trigger', 'requirements') and isinstance(n.value, list):
                 triggers(n.value)
-            if n.key in ('completion_reward', 'complete_effect', 'remove_effect', 'cancel_effect', 'select_effect', 'effect', 'immediate') and isinstance(n.value, list):
+            if n.key in ('completion_reward', 'complete_effect', 'remove_effect', 'cancel_effect', 'select_effect', 'effect', 'immediate', 'on_start', 'outcome_execute', 'outcome_extra_execute', 'outcome_potential') and isinstance(n.value, list):
                 effects(n.value)
             if path.startswith('events/') and n.key == 'option' and isinstance(n.value, list) and n.scalar('name'):
                 effects([x for x in n.value if x.key not in ('name', 'trigger', 'ai_chance', 'highlight')])
@@ -413,6 +413,9 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
         if path.startswith('common/game_rules/'):
             rules.update(n.key for n in roots)
 
+    from generate_agency import audit_operations
+    errors.extend(audit_operations(root))
+
     if not own_focuses:
         errors.append('No authored overhaul focuses found')
     # All hro_* country flags belong to this mod. A misspelled unlock flag can
@@ -529,7 +532,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                 errors.append(f'Unsupported script keyword: {n.key}')
             if own_context and n.key in ('declare_war_on', 'annex_country', 'transfer_state'):
                 errors.append(f'New programme forcibly changes war/territory: {n.key}')
-            if own_context and n.key in ('title', 'desc', 'text', 'name', 'group', 'custom_effect_tooltip', 'tooltip', 'custom_cost_text') and isinstance(n.value, str) and n.value.startswith(('hro', 'HRO_')):
+            if own_context and n.key in ('title', 'desc', 'text', 'name', 'group', 'custom_effect_tooltip', 'tooltip', 'custom_cost_text', 'outcome', 'outcome_extra', 'risk_extra') and isinstance(n.value, str) and n.value.startswith(('hro', 'HRO_')):
                 required_loc.add(n.value)
             if n.key == 'unlock_decision_tooltip' and isinstance(n.value, list):
                 value = n.scalar('decision', '')
@@ -778,6 +781,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
         'family_checks': 'bounded budgets and executable upgrade-only setter contracts' if catalogues else 'catalogues not supplied',
         'schema_keyword_audit': schema_dir is not None,
         'national_spirit_asset_audit': spirit_asset_audit,
+        'agency_operation_audit': (root / 'common/operations/hro_agency_operations.txt').is_file(),
         'warnings': warnings,
     }
 

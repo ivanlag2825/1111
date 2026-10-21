@@ -82,36 +82,46 @@ class OperationsTests(unittest.TestCase):
  def test_capture_during_preparation_discards_obsolete_plan(self):
   s=self.country();self.r.choose('prepare_ger_195',s);s['enemy_controlled'].remove(3151);self.r.days(s,35)
   self.assertFalse(self.r.flag(s,'hro_ops_ready'));self.assertNotIn('hro_ops_idea_assault',s['ideas'])
- def test_assault_then_bounded_exhaustion_without_daily_refresh(self):
+ def test_fourteen_day_assault_and_seven_day_exhaustion_steps(self):
   for tag in ('GER','SOV'):
-   s=self.country(tag);self.start(s);self.r.days(s,29);self.assertIn('hro_ops_idea_assault',s['ideas'])
+   s=self.country(tag);self.start(s);self.r.days(s,13);self.assertIn('hro_ops_idea_assault',s['ideas'])
    self.r.days(s,1);self.assertNotIn('hro_ops_idea_assault',s['ideas']);self.assertIn('hro_ops_idea_exhaustion',s['ideas'])
-   expiry=s['expiry']['hro_ops_idea_exhaustion'];self.r.days(s,59);self.assertEqual(s['expiry']['hro_ops_idea_exhaustion'],expiry)
+   for tier in (2,3,4):
+    self.r.days(s,6);self.assertNotIn('hro_ops_idea_exhaustion_'+str(tier),s['ideas'])
+    self.r.days(s,1);self.assertIn('hro_ops_idea_exhaustion_'+str(tier),s['ideas'])
+    self.assertEqual(len([i for i in s['ideas'] if i.startswith('hro_ops_idea_exhaustion')]),1)
+   self.r.days(s,100);self.assertIn('hro_ops_idea_exhaustion_4',s['ideas'])
    self.assertFalse(self.r.choose('prepare_'+tag.lower()+'_219',s))
-   self.r.days(s,1);self.assertNotIn('hro_ops_idea_exhaustion',s['ideas']);self.assertTrue(self.r.choose('prepare_'+tag.lower()+'_219',s))
+ def test_rest_freezes_escalation_has_supply_cost_and_clears_all_tiers(self):
+  s=self.country();self.start(s);self.r.days(s,28)
+  self.assertIn('hro_ops_idea_exhaustion_3',s['ideas']);self.assertTrue(self.r.choose('rest',s))
+  self.r.days(s,20);self.assertIn('hro_ops_idea_exhaustion_3',s['ideas']);self.assertNotIn('hro_ops_idea_exhaustion_4',s['ideas'])
+  self.r.days(s,1);self.assertFalse(any(i.startswith('hro_ops_idea_exhaustion') for i in s['ideas']))
+  ideas=parse((self.output/'common/ideas/hro_operations_ideas.txt').read_text())[0].one('country')
+  self.assertEqual(ideas.one('hro_ops_idea_rest').one('modifier').scalar('supply_consumption_factor'),'0.3')
+ def test_completed_regrouping_unlocks_next_cycle_and_resets_fatigue(self):
+  s=self.country();self.start(s);self.r.days(s,100);self.assertTrue(self.r.choose('rest',s))
+  self.r.days(s,21);self.assertTrue(self.r.choose('prepare_ger_219',s));self.r.days(s,35)
+  self.assertTrue(self.r.choose('launch_ger_219',s));self.r.days(s,14)
+  self.assertIn('hro_ops_idea_exhaustion',s['ideas']);self.assertNotIn('hro_ops_idea_exhaustion_4',s['ideas'])
+ def test_old_thirty_day_assault_is_capped_at_fourteen_days_after_upgrade(self):
+  s=self.country();self.start(s);s['flags']['hro_ops_active']=s['date']+timedelta(days=30);s['expiry']['hro_ops_idea_assault']=s['date']+timedelta(days=30)
+  self.r.days(s,14);self.assertNotIn('hro_ops_idea_assault',s['ideas']);self.assertIn('hro_ops_idea_exhaustion',s['ideas'])
+ def test_old_timed_exhaustion_becomes_persistent_without_resetting_each_day(self):
+  s=self.country();s['flags']['hro_ops_exhaustion']=s['date']+timedelta(days=60);s['ideas'].add('hro_ops_idea_exhaustion')
+  self.r.tick(s);self.assertIsNone(s['flags']['hro_ops_exhaustion']);self.r.days(s,7)
+  self.assertIn('hro_ops_idea_exhaustion_2',s['ideas'])
  def test_rest_cancels_attack_clears_exhaustion_only_on_completion_and_keeps_cooldown(self):
-  s=self.country();self.start(s);self.r.days(s,30);self.assertTrue(self.r.choose('rest',s))
+  s=self.country();self.start(s);self.r.days(s,14);self.assertTrue(self.r.choose('rest',s))
   self.r.days(s,20);self.assertIn('hro_ops_idea_exhaustion',s['ideas'])
   self.r.days(s,1);self.assertNotIn('hro_ops_idea_exhaustion',s['ideas']);self.assertFalse(self.r.choose('prepare_ger_219',s))
   t=self.country();self.start(t);self.assertTrue(self.r.choose('rest',t));self.assertNotIn('hro_ops_idea_assault',t['ideas'])
   self.r.days(t,40);self.assertNotIn('hro_ops_idea_exhaustion',t['ideas'])
- def test_sabotage_pays_before_damage_and_rechecks_control_and_building(self):
-  for invalid in ('control','building',None):
-   s=self.country();self.assertTrue(self.r.choose('sabotage_ger_195_air_base',s));self.assertEqual(s['add_political_power'],1920)
-   self.assertFalse(self.r.choose('sabotage_ger_219_air_base',s));self.r.days(s,20);self.assertEqual(s['damage'],[])
-   if invalid=='control':s['states'][195]['controller']='GER'
-   if invalid=='building':s['states'][195]['air_base']=0
-   self.r.days(s,1);self.assertEqual(s['damage'],[] if invalid else [(195,'air_base',2)])
-   self.r.days(s,30);self.assertEqual(len(s['damage']),0 if invalid else 1)
- def test_security_halves_repairable_infrastructure_damage(self):
-  s=self.country();s['enemy_flags']={'hro_ops_security'}
-  self.r.choose('sabotage_ger_195_infrastructure',s);self.r.days(s,28)
-  self.assertEqual(s['damage'],[(195,'infrastructure',.5)])
- def test_deep_raids_need_agency_but_adjacent_raids_do_not(self):
-  s=self.country();s['agency']=False
-  self.assertFalse(self.r.choose('sabotage_ger_195_air_base',s))
-  s['states'][195]['neighbors']=[219];s['states'][219]['controller']='GER'
-  self.assertTrue(self.r.choose('sabotage_ger_195_air_base',s))
+ def test_legacy_decision_sabotage_is_removed_and_pending_projects_cancelled(self):
+  self.assertFalse(any(key.startswith(('hro_ops_sabotage_', 'hro_ops_status_sabotage_')) for key in self.r.decisions))
+  s=self.country();s['flags'].update({key:None for key in ['hro_ops_sabotage_ger_195_air_base','hro_ops_sabotage_busy','hro_ops_sabotage_wait']})
+  self.r.tick(s);self.assertEqual(s['damage'],[])
+  self.assertFalse(any(self.r.flag(s,key) for key in ['hro_ops_sabotage_ger_195_air_base','hro_ops_sabotage_busy','hro_ops_sabotage_wait']))
  def test_attack_council_success_once_and_no_compulsory_task(self):
   s=self.country();self.r.days(s,10);self.assertFalse(self.r.flag(s,'hro_ops_council_busy'))
   self.assertTrue(self.r.choose('council_attack_ger_195',s));self.assertFalse(self.r.choose('council_attack_ger_219',s))
@@ -134,14 +144,14 @@ class OperationsTests(unittest.TestCase):
   self.assertIn('hro_ops_idea_council_failure',s['ideas']);s['controlled'].add(3151);self.r.days(s,65);self.assertNotIn('army_experience',s)
  def test_peace_capitulation_and_end_date_cancel_without_rewards_or_penalty(self):
   for reason in ('war','capitulated','enemy_capitulated','date'):
-   s=self.country();self.start(s);self.r.choose('council_attack_ger_195',s);self.r.choose('sabotage_ger_195_air_base',s)
+   s=self.country();self.start(s);self.r.choose('council_attack_ger_195',s);self.r.choose('security',s)
    s[reason]=day('1947.1.1') if reason=='date' else False if reason=='war' else True
    self.r.tick(s);self.assertNotIn('hro_ops_idea_assault',s['ideas']);self.assertNotIn('hro_ops_idea_council_failure',s['ideas'])
    self.assertFalse(self.r.flag(s,'hro_ops_council_busy'));self.assertEqual(s['damage'],[]);self.assertIn('native_idea',s['ideas'])
    self.assertEqual(self.r.flag(s,'hro_ops_cooldown'),reason!='date')
  def test_reload_does_not_reset_deadlines(self):
   import copy
-  s=self.country();self.start(s);self.r.days(s,20);saved=copy.deepcopy(s);self.r=OperationsRuntime(self.output)
+  s=self.country();self.start(s);self.r.days(s,10);saved=copy.deepcopy(s);self.r=OperationsRuntime(self.output)
   self.r.days(saved,10);self.assertIn('hro_ops_idea_exhaustion',saved['ideas'])
  def test_foreign_country_and_prewar_actions_unavailable(self):
   s=self.country();s['tag']='USA';self.assertFalse(self.r.choose('prepare_ger_195',s))
