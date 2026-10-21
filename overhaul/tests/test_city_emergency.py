@@ -59,6 +59,8 @@ class Runtime:
             elif n.key=='add_extra_state_shared_building_slots':s['slots']+=int(n.value)
             elif n.key=='add_building_construction':s['factories'].append((scope,n.scalar('type'),int(n.scalar('level'))))
             elif n.key=='country_event':s['events'].append(n.scalar('id'))
+            elif n.key=='hidden_effect':self.execute(n.value,s,scope)
+            elif n.key in ('custom_effect_tooltip','show_ideas_tooltip'):pass
             elif n.key=='ROOT':self.execute(n.value,s,None)
             elif n.key and n.key.isdigit():self.execute(n.value,s,int(n.key))
             elif n.key in self.effects:self.execute(self.effects[n.key].value,s,scope)

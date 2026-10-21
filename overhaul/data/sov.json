@@ -233,8 +233,8 @@
       "id": "hro_sov_front_feedback",
       "name_ru": "Отчёты фронтов вместо сводок",
       "name_en": "Reports from the Fighting Fronts",
-      "desc_ru": "Отчёты действующих фронтов становятся обязательным этапом уроков войны. 100 армейского опыта и два бонуса 100% к технологиям рот обеспечения. Исходный годовой период чрезвычайных мер сохраняется. Военная адаптация: после 120 фактических дней первой войны с Германией снимает новые штрафы вторжения и даёт восстановление организации +25%, скорость планирования +35%, максимальный план +25%, военный выпуск +10%, снабжение −10%. Если реформа завершена заранее, результат включается после накопления военного опыта. Исходные ограничения Красной армии снимаются своими реформами.",
-      "desc_en": "Front-line reports become a required stage of Lessons of War. Grants 100 army experience and two 100% support technology research bonuses. The native year of desperate measures remains in force. War adaptation: after 120 actual days of the first war with Germany, removes the new invasion penalties and grants organisation recovery +25%, planning speed +35%, maximum planning +25%, military output +10%, supply use −10%. A reform completed in advance takes effect once the wartime experience is earned. Native Red Army restrictions still require their own reforms.",
+      "desc_ru": "Обязательный этап «Уроков войны»: 100 армейского опыта и два 100% бонуса обеспечения. Разрешает полную адаптацию после 240 действительных дней войны с Германией: +25% атаки, +20% защиты, +15% организации, +40% восстановления, +50% планирования, +35% максимального плана, +20% военного выпуска и −10% снабжения. Заменяет новые штрафы вторжения и ранний положительный опыт. Заранее выполненная реформа запоминается; исходные ограничения DLC снимаются своими реформами.",
+      "desc_en": "Required for Lessons of War: 100 army experience and two 100% support research bonuses. Authorises full adaptation after 240 actual war days: +25% attack, +20% defence, +15% organisation, +40% recovery, +50% planning speed, +35% maximum planning, +20% output and −10% supply use. Replaces invasion penalties and the earlier positive tier. Prewar reform is remembered; native DLC restrictions retain their own removal rules.",
       "branch": "war",
       "row": 6,
       "cost": 4,
@@ -682,8 +682,8 @@
       "id": "hro_sov_campaign_preparedness",
       "name_ru": "Проверка мобилизационных округов",
       "name_en": "Audit the Mobilization Districts",
-      "desc_ru": "Проверка мобилизационных округов даёт 75 армейского опыта, 25 командных очков и доступ к военным программам решений. Обязательный этап перед чрезвычайными мерами, которые по-прежнему требуют большой войны. Подготовка вторжения: снижает новые штрафы первых 120 фактических дней оборонительной войны с Германией с −25% до −10% организации, с −20% до −10% военного выпуска, с +25% до +10% снабжения. После острой фазы снимает остаточные издержки управления.",
-      "desc_en": "Inspection of mobilization districts grants 75 army experience, 25 command power and access to wartime decision programs. A required stage before desperate measures, which still require a major war. Invasion preparation mitigates the new first-120-war-day penalties in a defensive war with Germany: organisation −25% becomes −10%, military output −20% becomes −10%, supply use +25% becomes +10%. After the acute phase, removes residual command strain.",
+      "desc_ru": "75 армейского опыта, 25 командных очков и доступ к военным программам. Подготовка смягчает каждую ступень первых 240 действительных дней оборонительной войны с Германией: в первые 45 дней организация −22% вместо −35%, выпуск −25% вместо −35%, снабжение +25% вместо +40%. Ограничения ослабевают после 45 и 120 военных дней; срок опыта сохраняется. До войны подготовка запоминается.",
+      "desc_en": "75 army experience, 25 command power and access to wartime programmes. Mitigates all phases of the first 240 actual days of defensive war with Germany: first-phase organisation −22% instead of −35%, output −25% instead of −35%, supply use +25% instead of +40%. Restrictions soften after 45 and 120 war days without skipping experience. Preparation is remembered before war.",
       "branch": "war",
       "row": 2,
       "cost": 3,
@@ -3490,7 +3490,8 @@
     "Начальные штрафы HRO не увеличены; сильные поздние модификаторы и заводы требуют реальных фокус-дней и конкурируют между направлениями.",
     "Версия 0.4: увеличены действительные промышленные, командные, тыловые и авиационные эффекты; специализации сохраняют ощутимые издержки. Основная структура дерева не изменена.",
     "Версия 0.4: обязательные этапы подготовки и полноценной военной адаптации встроены в награды существующих основных фокусов. Бонусы опыта войны включаются только после фактических дней войны/зимы; исходные эффекты DLC сохранены.",
-    "0.5: тематические заголовки, расширенные основные маршруты, крупная кульминация Красной армии и региональная антикризисная ветка. Ступени национальных реформ заменяются, не складываются."
+    "0.5: тематические заголовки, расширенные основные маршруты, крупная кульминация Красной армии и региональная антикризисная ветка. Ступени национальных реформ заменяются, не складываются.",
+    "0.6: публичные реформы показывают положительные параметры, служебная смена идей скрыта; равные и более высокие ступени не понижаются. Пересмотрены кризисы Восточного фронта и добавлены германские наступательные награды."
   ],
   "integrated_milestones": [
     {

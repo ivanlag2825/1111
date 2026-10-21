@@ -6,4 +6,5 @@ dist/*
 !dist/rework.zip
 !dist/war.zip
 !dist/fronts.zip
+!dist/eastern.zip
 .pytest_cache/

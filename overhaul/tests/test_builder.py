@@ -239,7 +239,7 @@ class BuilderTests(unittest.TestCase):
         builder.author_country_content(self.output, catalogs, {'GER': 10, 'SOV': 20})
         document = parse((self.output / 'common/scripted_effects/hro_country_progression.txt').read_text())
         setter = next(n for n in document if n.key == 'hro_set_hro_idea_ger_a')
-        guard = setter.one('if').one('limit')
+        guard = setter.one('hidden_effect').one('if').one('limit')
         references = {n.value for n in walk(guard.value) if n.key == 'has_idea'}
         self.assertEqual(references, {'hro_idea_ger_a', 'hro_idea_ger_b'})
 

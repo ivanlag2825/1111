@@ -11,7 +11,9 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from clausewitz import parse, walk
+from effect_presentation import present_effects
 
 
 def records():
@@ -54,16 +56,16 @@ def generate(output):
         values = ' '.join(f'{k} = {v:g}' for k, v in mods.items())
         ideas.append(f'{identity} = {{ picture = generic_army allowed = {{ original_tag = SOV }} removal_cost = -1 modifier = {{ {values} }} }}')
     for tier, mods in enumerate((
-        {'army_org_factor':-.08,'army_org_regain':-.15,'industrial_capacity_factory':-.10,'supply_consumption_factor':.12},
-        {'army_org_factor':-.15,'army_org_regain':-.25,'industrial_capacity_factory':-.18,'supply_consumption_factor':.20},
-        {'army_org_factor':-.22,'army_org_regain':-.30,'industrial_capacity_factory':-.25,'supply_consumption_factor':.30}), 1):
+        {'army_org_factor':-.10,'army_org_regain':-.20,'industrial_capacity_factory':-.12,'supply_consumption_factor':.15},
+        {'army_org_factor':-.18,'army_org_regain':-.30,'industrial_capacity_factory':-.22,'supply_consumption_factor':.25},
+        {'army_org_factor':-.25,'army_org_regain':-.40,'industrial_capacity_factory':-.30,'supply_consumption_factor':.35}), 1):
         idea(f'hro_idea_city_crisis_{tier}', 'crisis', f'Кризис отступления: ступень {tier}', f'Retreat Crisis: Tier {tier}', mods,
              'Потеря ключевых городов нарушила управление и выпуск. Действует одна ступень, максимум третья. Контрмеры, освобождение города или 90 фактических дней войны ослабляют кризис; в мире и после капитуляции дух снимается.',
              'Lost cities disrupt command and production. Only one tier applies, up to tier three. Countermeasures, liberation or 90 actual war days reduce the crisis; peace and capitulation remove it.')
     for tier, mods in enumerate((
-        {'army_defence_factor':.15,'army_org_regain':.20,'training_time_army_factor':-.20,'land_reinforce_rate':.04},
-        {'army_defence_factor':.25,'army_org_regain':.30,'training_time_army_factor':-.25,'industrial_capacity_factory':.12,'land_reinforce_rate':.06},
-        {'army_defence_factor':.30,'army_org_regain':.35,'training_time_army_factor':-.30,'industrial_capacity_factory':.20,'land_reinforce_rate':.08,'army_org_factor':.10}), 1):
+        {'army_defence_factor':.20,'army_org_regain':.25,'training_time_army_factor':-.20,'land_reinforce_rate':.04},
+        {'army_defence_factor':.30,'army_org_regain':.40,'training_time_army_factor':-.30,'industrial_capacity_factory':.15,'land_reinforce_rate':.06,'army_org_factor':.05},
+        {'army_defence_factor':.40,'army_org_regain':.50,'training_time_army_factor':-.35,'industrial_capacity_factory':.25,'land_reinforce_rate':.08,'army_org_factor':.15}), 1):
         idea(f'hro_idea_city_mobilization_{tier}', 'mobilization', f'Вторая мобилизация: ступень {tier}', f'Second Mobilisation: Tier {tier}', mods,
              'Оплаченные и завершённые контрмеры усиливают мобилизацию. Действует одна ступень. Окно 240 дней начинается с первой контрмеры; новые ступени внутри окна не продлевают его. Повторная потеря одного города наград не даёт.',
              'Paid, completed countermeasures strengthen mobilisation. Only one tier applies. A 240-day window starts with the first response; upgrades do not refresh it. Losing the same city again grants no rewards.')
@@ -212,7 +214,20 @@ hro_city_tick = {{
     hro_city_sync = yes
 }''')
     put('common/ideas/hro_city_ideas.txt','ideas = { country = {\n'+'\n'.join(ideas)+'\n} }')
-    put('common/scripted_effects/hro_city_effects.txt','\n'.join(effects))
+    presentations = {}
+    for city in records():
+        name = 'hro_city_' + city['key'] + '_finish'; key = name + '_tt'
+        text(key,
+             f"Первый ответ на потерю города {city['ru']}: {city['manpower']} людских ресурсов, {city['factories']} новых военных заводов на востоке при доступной мощности и два 100% профильных исследовательских бонуса. Усиливает конечную мобилизационную волну. При недоступной мощности — промышленные исследования. Награда общая с решением; второй раз не выдаётся. Уже полученные сильные ступени не понижаются.",
+             f"First response to the loss of {city['en']}: {city['manpower']} manpower, {city['factories']} new eastern military factories where capacity permits and two 100% research bonuses. Advances the finite mobilisation wave. Unavailable capacity grants industry research. Shared with the decision, never awarded twice; higher tiers are preserved.")
+        presentations[name] = 'custom_effect_tooltip = ' + key
+    for name,ru,en in (
+        ('hro_city_orderly_mobilization','Один раз в действительной войне с Германией: 120 000 людских ресурсов и конечная мобилизационная волна даже без потери городов. Уже полученная более сильная ступень сохраняется, действующее окно не продлевается.',
+         'Once during an active war with Germany: 120,000 manpower and a finite mobilisation wave without losing cities. Existing higher tiers are preserved and an active window is not refreshed.'),
+        ('hro_city_start_liberation_offensive','После первого освобождения крупного города: одно 180-дневное наступательное окно, атака +25%, скорость +15%, восстановление организации +25%. Требуется действительная война с Германией; повторная награда недоступна.',
+         'After the first major-city liberation: one 180-day offensive window, attack +25%, speed +15%, organisation recovery +25%. Requires active war with Germany and cannot be awarded twice.')):
+        text(name+'_tt',ru,en); presentations[name] = 'custom_effect_tooltip = ' + name + '_tt'
+    put('common/scripted_effects/hro_city_effects.txt',present_effects('\n'.join(effects), presentations))
     put('common/on_actions/hro_city_on_actions.txt','on_actions = { on_daily = { effect = { if = { limit = { original_tag = SOV } hro_city_tick = yes } } } }')
     put('common/decisions/categories/hro_city_categories.txt','hro_city_responses = { icon = generic_army allowed = { original_tag = SOV } visible = { original_tag = SOV } visible_when_empty = no }')
     put('common/decisions/hro_city_responses.txt','hro_city_responses = {\n'+'\n'.join(decisions)+'\n}')

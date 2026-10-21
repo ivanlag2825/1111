@@ -183,7 +183,7 @@ def _run_idea_setter(nodes, state, effect_defs, stack=()):
             if n.key in stack:
                 raise ValueError(f'Recursive family setter: {n.key}')
             state = _run_idea_setter(effect_defs[n.key].value, state, effect_defs, stack + (n.key,))
-        elif n.key not in ('custom_effect_tooltip', 'log'):
+        elif n.key not in ('custom_effect_tooltip', 'show_ideas_tooltip', 'log'):
             raise ValueError(f'Unsupported operation in family setter: {n.key}')
     return state
 
@@ -507,7 +507,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                 errors.append(f'Unknown overhaul scripted call: {n.key}')
             if not own_context and not (isinstance(n.value, str) and n.value.startswith(('hro_', 'hro.'))):
                 continue
-            if n.key in ('add_ideas', 'remove_ideas', 'has_idea'):
+            if n.key in ('add_ideas', 'remove_ideas', 'has_idea', 'show_ideas_tooltip'):
                 for value in _scalar_values(n):
                     if value.startswith(PREFIX) and value not in ideas:
                         errors.append(f'Unknown overhaul idea: {value}')
