@@ -175,12 +175,17 @@ def _friendly(identity, loc):
     return re.sub(r'^(?:GER|SOV|hro_ger|hro_sov)_', '', identity).replace('_', ' ')
 
 
-def draw_country(tag, focuses, positions, reworked, loc, continuous_position=None):
+def draw_country(tag, focuses, positions, reworked, loc, continuous_position=None, groups=None):
+    groups = groups or []
     panel = continuous_panel_report(focuses, continuous_position)
     minimum_x = min(x for x, y in positions.values())
     maximum_x = max(x for x, y in positions.values())
     minimum_y = min(y for x, y in positions.values())
     maximum_y = max(y for x, y in positions.values())
+    if groups:
+        minimum_x = min(minimum_x, min(g['x'] for g in groups))
+        minimum_y = min(minimum_y, min(g['y'] for g in groups))
+        maximum_x = max(maximum_x, max(g['x']+g['width'] for g in groups))
     if panel:
         box = panel['grid_bounds']
         minimum_x, maximum_x = min(minimum_x, box['left']), max(maximum_x, box['right'])
@@ -198,6 +203,11 @@ def draw_country(tag, focuses, positions, reworked, loc, continuous_position=Non
               f'<rect width="{width}" height="{height}" fill="#101923"/>',
               f'<text x="30" y="36" fill="#eef3fa" font-family="Arial" font-size="23">{tag} · схема основного расположения</text>',
               '<text x="30" y="60" fill="#b4c3d2" font-family="Arial" font-size="13">Новые — голубые · изменённые исходные — зелёные · исходные — серые · пунктир — OR / взаимоисключение. Условные смещения не вычисляются.</text>']
+    for group in groups:
+        gx = (group['x']-minimum_x)*SCALE_X+MARGIN
+        gy = (group['y']-minimum_y)*SCALE_Y+MARGIN
+        gw = group['width']*SCALE_X-8
+        output.append(f'<g id="chapter-{escape(group["id"])}" class="focus-group" data-name="{escape(group["name_ru"],quote=True)}"><rect x="{gx}" y="{gy}" width="{gw}" height="62" rx="8" fill="#28303c" stroke="#bca25d"/><text x="{gx+gw/2}" y="{gy+25}" text-anchor="middle" fill="#e8cc7c" font-size="15">{escape(group["name_ru"])}</text><text x="{gx+gw/2}" y="{gy+47}" text-anchor="middle" fill="#bdc8d2" font-size="11">Подготовка · Специализация · Военный опыт</text></g>')
     edges = 0
     for identity in sorted(focuses):
         x2, y2 = point(identity)
@@ -311,21 +321,22 @@ def generate(mod_dir, output_dir):
     for tag, focuses in countries.items():
         positions = resolve_positions(focuses)
         panel = panel_positions.get(tag)
-        svg, dimensions = draw_country(tag, focuses, positions, changed, loc, panel)
+        groups = built.get('focus_groups',{}).get(tag,[])
+        svg, dimensions = draw_country(tag, focuses, positions, changed, loc, panel, groups)
         svgs[tag] = svg
         (output_dir / f'{tag}_tree.svg').write_text(svg, encoding='utf-8')
-        report['countries'][tag] = dict(layout_report(focuses, positions), **dimensions)
+        report['countries'][tag] = dict(layout_report(focuses, positions), groups=groups, **dimensions)
         report['countries'][tag]['continuous_focus_panel'] = continuous_panel_report(focuses, panel)
     (output_dir / 'layout_report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     panes = ''.join(f'<div class="country" id="pane-{tag}"{ " hidden" if tag != "GER" else ""}>{svgs[tag]}</div>' for tag in TAGS)
     html = '''<!doctype html><html lang="ru"><meta charset="utf-8"><title>Historical Reality — схема деревьев</title>
 <style>body{margin:0;background:#101923;color:#e5ecf3;font:15px Arial,sans-serif}header{position:sticky;top:0;z-index:5;background:#1d2b39;padding:12px;box-shadow:0 2px 8px #0006}button,input,select{font:inherit;padding:5px}header p{margin:8px 0 0;color:#bfcedb;font-size:13px}.viewport{height:calc(100vh - 114px);overflow:auto}.country svg{display:block}.country[hidden]{display:none}#result{margin-left:12px}a{color:#78d7e7}</style>
-<header><select id="country"><option>GER</option><option>SOV</option></select> <label>Масштаб <input id="zoom" type="range" min="20" max="150" value="65"> <span id="zoomlabel">65%</span></label> <input id="find" placeholder="ID или название фокуса" size="34"> <button id="search">Найти</button> <button id="continuous">Непрерывные фокусы</button><span id="result"></span>
+<header><select id="country"><option>GER</option><option>SOV</option></select> <select id="chapter"><option value="">Раздел дерева</option></select> <label>Масштаб <input id="zoom" type="range" min="20" max="150" value="65"> <span id="zoomlabel">65%</span></label> <input id="find" placeholder="ID или название фокуса" size="34"> <button id="search">Найти</button> <button id="continuous">Непрерывные фокусы</button><span id="result"></span>
 <p>Схема файлов сборки, не снимок из HOI4. Голубые узлы — новые, зелёные — изменённые исходные; золотой контур — приблизительная панель непрерывных фокусов. Наведи курсор на элемент для подробностей. Видимость веток, размеры окон и разрешение игры не эмулируются. <a href="layout_report.json">Отчёт координат</a></p></header>
 <main class="viewport">''' + panes + '''</main>
 <script>const panes=[...document.querySelectorAll('.country')], choice=document.getElementById('country'), zoom=document.getElementById('zoom');
 function resize(){document.getElementById('zoomlabel').textContent=zoom.value+'%';for(const pane of panes){const s=pane.querySelector('svg'),v=s.viewBox.baseVal;s.style.width=v.width*zoom.value/100+'px';s.style.height=v.height*zoom.value/100+'px';}}
-choice.onchange=()=>{for(const p of panes)p.hidden=p.id!=='pane-'+choice.value;document.getElementById('result').textContent='';};zoom.oninput=resize;resize();
+function chapters(){const select=document.getElementById('chapter');select.replaceChildren(new Option('Раздел дерева',''));for(const group of document.querySelectorAll('#pane-'+choice.value+' .focus-group'))select.add(new Option(group.dataset.name,group.id));}document.getElementById('chapter').onchange=e=>{if(e.target.value)document.getElementById(e.target.value).scrollIntoView({block:'start',inline:'center',behavior:'smooth'});};choice.onchange=()=>{for(const p of panes)p.hidden=p.id!=='pane-'+choice.value;document.getElementById('result').textContent='';chapters();};zoom.oninput=resize;resize();chapters();
 function find(){const q=document.getElementById('find').value.toLowerCase().trim(), nodes=[...document.querySelectorAll('#pane-'+choice.value+' .focus')];for(const n of nodes)n.classList.remove('found');const matches=q?nodes.filter(n=>n.dataset.id.toLowerCase().includes(q)||n.dataset.name.toLowerCase().includes(q)):[];for(const n of matches)n.classList.add('found');document.getElementById('result').textContent=matches.length+' найдено';if(matches[0])matches[0].scrollIntoView({block:'center',inline:'center',behavior:'smooth'});}
 document.getElementById('search').onclick=find;document.getElementById('find').onkeydown=e=>{if(e.key==='Enter')find();};
 document.getElementById('continuous').onclick=()=>{const panel=document.querySelector('#pane-'+choice.value+' .continuous-panel');if(panel)panel.scrollIntoView({block:'center',inline:'center',behavior:'smooth'});};</script></html>'''

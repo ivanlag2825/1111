@@ -161,6 +161,21 @@ class BuilderTests(unittest.TestCase):
             builder.verify_native_preservation(parse(original), parse(changed), [],
                 {'SYNTH_GER': {'x': 500, 'y': 999}})
 
+    def test_inner_circle_inlay_follows_its_moved_native_branch(self):
+        path=self.game/'common/national_focus/germany.txt'
+        source=tree('GER').replace('focus_tree = {','''focus_tree = {
+            focus = { id = GER_fuhrerprinzip x = 61 y = 8 cost = 5 }
+            inlay_window = { id = ger_inner_circle_inlay_window position = { x = 4500 y = 1150 } }''',1)
+        path.write_text(source)
+        catalogs=[catalog('GER'),catalog('SOV')]
+        catalogs[0]['native_patches'].append({'id':'GER_fuhrerprinzip','y':24})
+        report,_=builder.native_overlay(self.output,self.game,catalogs)
+        compiled=parse((self.output/'common/national_focus/germany.txt').read_text(encoding='utf-8-sig'))[0]
+        panel=next(n for n in compiled.all('inlay_window') if n.scalar('id')=='ger_inner_circle_inlay_window')
+        self.assertEqual(panel.one('position').scalar('y'),'3230')
+        self.assertEqual(path.read_text(),source)
+        self.assertEqual(report['native_inlay_moves']['GER']['ger_inner_circle_inlay_window']['x'],4500)
+
     def test_combined_reform_envelope_counts_one_tier_and_war_reward(self):
         catalogs = [catalog('GER')]
         catalogs[0]['ideas'] = [
@@ -173,7 +188,16 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(result['countries']['GER']['industrial_capacity_factory'], .40)
         with self.assertRaisesRegex(ValueError, 'Combined permanent HRO bonus budget exceeded'):
             builder.permanent_reform_envelopes(catalogs,
-                {'permanent_rewards': {'GER': {'industrial_capacity_factory': .30}}})
+                {'permanent_rewards': {'GER': {'industrial_capacity_factory': .60}}})
+
+    def test_combined_reforms_reject_excessive_experience_loss_reduction(self):
+        catalogs = [catalog('SOV')]
+        catalogs[0]['ideas'] = [
+            {'family': 'hro_family_a', 'modifiers': {'experience_loss_factor': -.40}},
+            {'family': 'hro_family_b', 'modifiers': {'experience_loss_factor': -.50}},
+        ]
+        with self.assertRaisesRegex(ValueError, 'experience_loss_factor'):
+            builder.permanent_reform_envelopes(catalogs, {})
 
     def test_layout_audit_rejects_new_overlap(self):
         preview = builder.module('hro_preview_for_tests', ROOT / 'overhaul/tools/preview_trees.py')

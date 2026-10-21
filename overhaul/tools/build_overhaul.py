@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.4.0'
+VERSION = '0.5.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -92,7 +92,7 @@ def structural_script(key, value):
     return f'{key} = {number(value) if key in ("x", "y") else value}'
 
 
-def verify_native_preservation(original_nodes, modified_nodes, changes, continuous_positions=None):
+def verify_native_preservation(original_nodes, modified_nodes, changes, continuous_positions=None, inlay_positions=None):
     """Audit declared graph/layout edits and preserve all other native behaviour.
 
     Native rewards, bypasses, political visibility and DLC cleanup remain exact.
@@ -101,6 +101,7 @@ def verify_native_preservation(original_nodes, modified_nodes, changes, continuo
     """
     patches = {p['id']: p for p in changes}
     continuous_positions = continuous_positions or {}
+    inlay_positions = inlay_positions or {}
     if len(original_nodes) != len(modified_nodes):
         raise ValueError('Unexpected top-level change in native focus source')
     restored = []
@@ -117,6 +118,15 @@ def verify_native_preservation(original_nodes, modified_nodes, changes, continuo
         original_focuses = {n.scalar('id'): n for n in original.all('focus')}
         children = []
         for node in modified.value:
+            if node.key == 'inlay_window' and str(node.scalar('id','')).startswith('hro_'):
+                continue
+            if node.key == 'inlay_window' and node.scalar('id') in inlay_positions:
+                identity = node.scalar('id')
+                expected = inlay_positions[identity]
+                if signature(node.all('position')) != signature(parse(f'position = {{ x = {expected["x"]} y = {expected["y"]} }}')):
+                    raise ValueError('Native inlay differs from declared position: ' + identity)
+                previous = next(n for n in original.all('inlay_window') if n.scalar('id') == identity)
+                node = with_value(node, [previous.one('position') if n.key == 'position' else n for n in node.value])
             if panel is not None and node.key == 'continuous_focus_position':
                 if previous := original.one('continuous_focus_position'):
                     children.append(previous)
@@ -232,6 +242,9 @@ def author_country_content(stage, catalogs, offsets):
             mutual = f'mutually_exclusive = {{ {excluded} }}' if excluded else ''
             date = date_gate(f['earliest']) if f.get('earliest') else ''
             flags = ' '.join('set_country_flag = ' + flag for flag in f.get('flags', []))
+            filter_map = {'army':'FOCUS_FILTER_ARMY_XP','logistics':'FOCUS_FILTER_ARMY_XP','war':'FOCUS_FILTER_ARMY_XP',
+                          'industry':'FOCUS_FILTER_INDUSTRY','air':'FOCUS_FILTER_AIR_XP','navy':'FOCUS_FILTER_NAVY_XP',
+                          'state':'FOCUS_FILTER_INTERNAL_AFFAIRS','diplomacy':'FOCUS_FILTER_INTERNATIONAL_TRADE'}
             focuses.append(f'''shared_focus = {{
     id = {f['id']}
     icon = {icon}
@@ -243,6 +256,7 @@ def author_country_content(stage, catalogs, offsets):
     {mutual}
     available = {{ original_tag = {tag} has_capitulated = no {date} {f.get('available', '')} }}
     cancel_if_invalid = yes
+    search_filters = {{ {filter_map[f['branch']]} FOCUS_FILTER_RESEARCH }}
     ai_will_do = {{ factor = 0.5 }}
     completion_reward = {{ {f.get('reward', '')} {flags} }}
 }}
@@ -344,7 +358,7 @@ def native_overlay(stage, game, catalogs):
     pacing = json.loads((PROJECT / 'data/historical_gates.json').read_text(encoding='utf-8'))
     native_loc = {'russian': {}, 'english': {}}
     report = {'source_sha256': {}, 'original_focus_counts': {}, 'native_patches': [], 'branch_offsets': offsets,
-              'continuous_focus_layout': {}, 'original_focus_ids_preserved': True, 'native_scripted_effects_preserved': True}
+              'continuous_focus_layout': {}, 'native_inlay_moves': {}, 'original_focus_ids_preserved': True, 'native_scripted_effects_preserved': True}
     layout = module('hro_native_layout_fix', OVERHAUL / 'tools/native_layout_fix.py')
     for catalog in catalogs:
         tag = catalog['tag']
@@ -415,7 +429,13 @@ def native_overlay(stage, game, catalogs):
                     native_loc[lang][identity + '_desc'] = patch['desc_' + suffix]
             report['native_patches'].append(details)
         attached = ''.join('\n    shared_focus = ' + f['id'] for f in catalog['focuses'])
-        for branch in BRANCHES:
+        attached += ''.join(f'\n    inlay_window = {{ id = {g["id"]} position = {{ x = {g["x"]*80} y = {g["y"]*130} }} }}' for g in catalog.get('groups',[]))
+        for group in catalog.get('groups',[]):
+            target=group['target']
+            if target not in originals and target not in {f['id'] for f in catalog['focuses']}:
+                raise ValueError('Unknown chapter navigation target: '+target)
+            attached += f'\n    shortcut = {{ name = {group["id"]} target = {target} scroll_wheel_factor = 1.0 trigger = {{ always = yes }} }}'
+        for branch in (() if catalog.get('groups') else BRANCHES):
             candidates = [f for f in catalog['focuses'] if f['branch'] == branch]
             if candidates:
                 first = min(candidates, key=lambda f: (f.get('y', f.get('row', 1)), f.get('x', f.get('lane', 0))))
@@ -423,6 +443,24 @@ def native_overlay(stage, game, catalogs):
         edits.append((tree.value_end - 1, tree.value_end - 1, attached + '\n'))
         modified = edit(text, edits)
         result = parse(modified)
+        # Keep the original DLC inner-circle panel with its moved focus root.
+        inlay_positions = {}
+        current_tree = next(n for n in result if n.key == 'focus_tree' and tree_tag(n) == tag)
+        if tag == 'GER' and 'GER_fuhrerprinzip' in originals:
+            old_y = layout.focus_vertical_bounds(originals)['GER_fuhrerprinzip'][0]
+            new_y = layout.focus_vertical_bounds({n.scalar('id'):n for n in current_tree.all('focus')})['GER_fuhrerprinzip'][0]
+            inlay_edits = []
+            for inlay in current_tree.all('inlay_window'):
+                if inlay.scalar('id') != 'ger_inner_circle_inlay_window':
+                    continue
+                old = next(n for n in tree.all('inlay_window') if n.scalar('id') == inlay.scalar('id')).one('position')
+                pos = {'x':int(old.scalar('x')),'y':int(float(old.scalar('y'))+(new_y-old_y)*130)}
+                value = inlay.one('position')
+                inlay_edits.append((value.start,value.end,f'position = {{ x = {pos["x"]} y = {pos["y"]} }}'))
+                inlay_positions[inlay.scalar('id')] = pos
+            modified = edit(modified,inlay_edits)
+            result = parse(modified)
+        report['native_inlay_moves'][tag] = inlay_positions
         changed_tree = next(n for n in result if n.key == 'focus_tree' and tree_tag(n) == tag)
         positioned = {n.scalar('id'): n for n in changed_tree.all('focus')}
         for authored in catalog['focuses']:
@@ -445,7 +483,7 @@ def native_overlay(stage, game, catalogs):
             raise ValueError(f'Native focus IDs changed unexpectedly: {tag}')
         verified = verify_native_preservation(docs[tag], result,
                                               [p for p in report['native_patches'] if p['tag'] == tag],
-                                              {tree.scalar('id'): position})
+                                              {tree.scalar('id'): position}, inlay_positions)
         if verified != len(originals):
             raise ValueError(f'Native preservation count mismatch: {tag}')
         put(stage, source_paths[tag], modified, bom=True)
@@ -468,11 +506,11 @@ def player_guide(catalogs, gameplay, report):
 
 ## Установка
 
-1. Выключи прежние Historical Reality 0.1/0.2/0.3 и другие моды деревьев/баланса GER/SOV. При обновлении замени старую папку `historical_reality_overhaul` новой.
+1. Выключи прежние версии Historical Reality и другие моды деревьев/баланса GER/SOV. При обновлении замени старую папку `historical_reality_overhaul` новой.
 2. Распакуй папку `{FOLDER}` и файл `{FOLDER}.mod` в `Документы/Paradox Interactive/Hearts of Iron IV/mod`.
 3. Включи **{NAME}** в одном и том же наборе у обоих игроков. У обоих должны совпадать версия игры, DLC и checksum.
 4. Начните НОВУЮ кампанию 1936 года. Для стран под управлением ИИ включите исторические фокусы. Правило HRO по умолчанию сохраняет исторические окна подготовки; «Свободные сроки» снимает только добавленные условия даты.
-5. Основные промышленные и военные ветки переработаны прямо в обычных деревьях. Голубые узлы на приложенной схеме — новые; для ключевых исходных реформ они теперь обязательны. Восемь ярлыков помогают перейти к нужному направлению.
+5. Основные промышленные и военные ветки переработаны прямо в обычных деревьях. Голубые узлы на приложенной схеме — новые; для ключевых исходных реформ они теперь обязательны. Заголовки и ярлыки помогают перейти к тематическим разделам; у СССР появился раздел «Оборона и возрождение».
 
 ## Содержание
 
@@ -494,9 +532,19 @@ def player_guide(catalogs, gameplay, report):
 
 Германия во время войны с СССР получает зимние ограничения с ноября по март: без подготовки первая зима даёт +30% расхода снабжения, +75% зимнего истощения, −25% восстановления организации, −15% скорости и −30% планирования. «Единый моторный парк» смягчает кризис. «Континентальная система снабжения» вместе с 45 фактическими зимними днями войны снимает новые штрафы и даёт −40% зимнего истощения, +100% холодовой акклиматизации, −10% снабжения и +15% восстановления организации. Летом, в мирное время и после капитуляции сезонные штрафы убираются.
 
-Заранее завершённые реформы запоминаются. Они не требуют повторного прохождения фокуса, но результат опыта включается после нужного числа военных/зимних дней. Ступени штрафов не складываются, повторное вступление в войну не выдаёт вторую награду. Это ежедневная проверка двух стран, поэтому изменение состояния может появиться на следующем игровом дне. Для версии 0.4 нужна новая кампания: старые сохранения не содержат истории новых счётчиков.
+Заранее завершённые реформы запоминаются. Они не требуют повторного прохождения фокуса, но результат опыта включается после нужного числа военных/зимних дней. Ступени штрафов не складываются, повторное вступление в войну не выдаёт вторую награду. Это ежедневная проверка двух стран, поэтому изменение состояния может появиться на следующем игровом дне. Для версии 0.5 нужна новая кампания: старые сохранения не содержат истории новых счётчиков и контроля городов.
 
-Награды основных реформ существенно усилены. Например, поздняя германская серийная школа даёт +25% выпуска и +25% предела эффективности ценой −15% её роста; гибкая школа — +40% роста и +35% сохранения эффективности. Советская промышленная семья достигает +25% выпуска, оборонная строительная школа — +45% военного строительства. Полные пакеты и издержки перечислены в `docs/REWARDS_040_RU.md`.
+Награды основных реформ существенно усилены. Поздняя германская серийная школа даёт +35% выпуска и +25% предела эффективности ценой −15% её роста; гибкая школа — +28% выпуска, +40% роста и +35% сохранения эффективности. Советская промышленная семья достигает +25% выпуска, оборонная строительная школа — +45% военного строительства. «Слава Красной армии» дополнительно вводит постоянную реформу: +30% атаки, +25% защиты, +15% организации, +30% её восстановления, +8 п.п. подкрепления и −30% потерь опыта при пополнении. Это итоговая ступень семьи, она заменяет ранние ступени.
+
+## Потеря городов и возвращение инициативы
+
+Падение Минска, Киева, Ленинграда, Москвы, Сталинграда или Харькова в войне с Германией вызывает дополнительный кризис. Важен контроль самого города, а не всей области. Общий штраф имеет три ступени: до −22% организации, −30% восстановления, −25% военного выпуска и +30% потребления снабжения. Москва и Ленинград учитываются с двойным весом. Неразрешённый вклад города ослабевает через 90 фактических дней войны.
+
+Региональные решения стоят 60–110 ПВ и требуют 45–75 дней. Одновременно готовится одно; его результат можно также получить соответствующим фокусом. Награда за город общая и одноразовая: 50–120 тысяч людских ресурсов, 2–4 военных завода на востоке при наличии места и исследовательские ускорения. При невозможности строительства выдаются промышленные исследования. Это новые мощности, а не повторение исходной эвакуации.
+
+Ответы открывают 240-дневную мобилизационную волну: до +30% защиты, +35% восстановления, +20% выпуска, +10% организации, −30% времени обучения и +8 п.п. подкрепления. Усиление ступени не продлевает текущее окно. «Общесоюзный стратегический резерв» даёт первую волну и 120 тысяч людских ресурсов без потери городов.
+
+Освобождение города один раз запускает 180-дневное восстановление: до +75% ремонта и +15% строительства. «Вернуть оперативную инициативу» после необходимых реформ и освобождения открывает одно 180-дневное наступательное окно: +25% атаки, +15% скорости и +25% восстановления организации. Повторная сдача города награды не обновляет. Полная таблица — `docs/EXPANSION_050_RU.md`.
 
 Панель непрерывных фокусов перемещена ниже всех узлов и положительных условных смещений. Координаты записаны в `OVERHAUL_BUILD_REPORT.json`; схема теперь показывает и панель.
 
@@ -536,7 +584,8 @@ def audit_integrated_layout(game, preview, schematic):
     for tag, filename in (('GER', 'germany.txt'), ('SOV', 'soviet.txt')):
         data = schematic['countries'][tag]
         if data['new_vs_native_collision_candidates'] or data['new_vs_new_collisions']:
-            raise ValueError(f'New focus base-layout overlaps: {tag}; inspect preview/layout_report.json')
+            conflicts = data['new_vs_native_collision_candidates'] + data['new_vs_new_collisions']
+            raise ValueError(f'New focus base-layout overlaps: {tag}/{conflicts}')
         if panel := data.get('continuous_focus_panel'):
             if not panel['safe_below_all_focuses']:
                 raise ValueError(f'Continuous focus panel can overlap the expanded tree: {tag}')
@@ -565,8 +614,11 @@ def permanent_reform_envelopes(catalogs, adaptation):
     One tier/choice per family can be active. Temporary programmes and the
     native game's spirits, laws, traits and weather are outside this envelope.
     """
-    limits = {'industrial_capacity_factory': (.45, max), 'army_org_factor': (.35, max),
-              'supply_consumption_factor': (-.45, min), 'winter_attrition_factor': (-.80, min)}
+    limits = {'industrial_capacity_factory': (.65, max), 'army_org_factor': (.50, max),
+              'supply_consumption_factor': (-.45, min), 'winter_attrition_factor': (-.80, min),
+              'experience_loss_factor':(-.85,min), 'attrition':(-.80,min),
+              'out_of_supply_factor':(-.75,min), 'army_attack_factor':(.70,max),
+              'army_defence_factor':(1.0,max), 'land_reinforce_rate':(.20,max)}
     result = {}
     for catalog in catalogs:
         grouped = defaultdict(list)
@@ -601,6 +653,11 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         gameplay = gameplay_module.generate(stage)
         adaptation_module = module('hro_war_adaptation_generator', OVERHAUL / 'tools/generate_war_adaptation.py')
         war_adaptation = adaptation_module.generate(stage)
+        emergency_module = module('hro_emergency_generator', OVERHAUL / 'tools/generate_emergency.py')
+        city_geography = emergency_module.validate_geography(game)
+        emergency = emergency_module.generate(stage)
+        groups_module = module('hro_group_generator', OVERHAUL / 'tools/generate_groups.py')
+        focus_groups = groups_module.generate(stage, catalogs)
         combined_rewards = permanent_reform_envelopes(catalogs, war_adaptation)
         put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.*"\n')
         report.update(version=VERSION, folder=FOLDER, native_background_systems='preserved',
@@ -610,6 +667,8 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       new_focus_counts={c['tag']: len(c['focuses']) for c in catalogs},
                       family_spirit_counts={c['tag']: len(c['ideas']) for c in catalogs}, gameplay=gameplay,
                       war_adaptation=war_adaptation,
+                      city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
+                      city_catalog_sha256=hashlib.sha256((OVERHAUL / 'data/cities.json').read_bytes()).hexdigest(),
                       permanent_reform_envelopes=combined_rewards,
                       country_catalog_sha256={c['tag']: hashlib.sha256((catalog_dir / (c['tag'].lower() + '.json')).read_bytes()).hexdigest() for c in catalogs})
         validator = module('hro_content_validator', OVERHAUL / 'tools/validate_overhaul.py')

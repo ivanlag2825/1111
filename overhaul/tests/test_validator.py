@@ -186,6 +186,11 @@ class ValidatorTests(unittest.TestCase):
         self.replace('common/national_focus/hro_focuses.txt', 'army_experience = 10', 'add_ideas = hro_idea_missing')
         self.assert_invalid('Unknown overhaul idea')
 
+    def test_political_power_only_focus_is_rejected(self):
+        self.replace('common/national_focus/hro_focuses.txt','army_experience = 10',
+                     'add_political_power = 25 set_country_flag = hro_pp_only_test')
+        self.assert_invalid('offers only political power or flags')
+
     def test_unwritten_unlock_flag_is_rejected(self):
         self.replace('common/national_focus/hro_focuses.txt',
                      'available = { has_capitulated = no }',
@@ -215,7 +220,7 @@ class ValidatorTests(unittest.TestCase):
         self.assert_invalid('Initial debuff budget exceeded')
 
     def test_final_family_bonus_budget_is_enforced(self):
-        self.ger['ideas'][2]['modifiers']['industrial_capacity_factory'] = 0.50
+        self.ger['ideas'][2]['modifiers']['industrial_capacity_factory'] = 0.80
         fixture(self.base, self.ger, self.sov)
         self.assert_invalid('Final family bonus budget exceeded')
 

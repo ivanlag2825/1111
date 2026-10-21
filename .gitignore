@@ -5,4 +5,5 @@ dist/*
 !dist/overhaul.zip
 !dist/rework.zip
 !dist/war.zip
+!dist/fronts.zip
 .pytest_cache/

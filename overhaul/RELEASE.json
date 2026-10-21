@@ -1,27 +1,31 @@
 {
-  "version": "0.4.0",
-  "archive": "dist/war.zip",
-  "sha256": "d501635ff70f9446d47a3f3329b09f56e4bf860152e8b0646581c7310fb79a79",
-  "bytes": 442403,
+  "version": "0.5.0",
+  "archive": "dist/fronts.zip",
+  "sha256": "2ea66acb97db98911d3be299fb519de8cae7d238e19923ba75c41ab79b38cdf3",
+  "bytes": 496771,
   "runtime_verified": false,
   "new_focus_counts": {
-    "GER": 40,
-    "SOV": 41
+    "GER": 60,
+    "SOV": 73
+  },
+  "added_in_this_version": {
+    "GER": 20,
+    "SOV": 32
   },
   "native_focus_ids_preserved": 749,
-  "native_prerequisite_rewrites": 67,
-  "mandatory_integration_checks": 32,
+  "native_prerequisite_rewrites": 74,
+  "mandatory_integration_checks": 44,
   "continuous_focus_layout": {
     "GER": {
       "position": {
         "x": 500,
-        "y": 3900
+        "y": 4160
       },
-      "max_base_focus_y": 27.0,
-      "max_conditional_focus_y": 27.0,
+      "max_base_focus_y": 29.0,
+      "max_conditional_focus_y": 29.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 478,
+      "focus_count": 498,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "500",
@@ -31,13 +35,13 @@
     "SOV": {
       "position": {
         "x": 55,
-        "y": 3250
+        "y": 3510
       },
-      "max_base_focus_y": 22.0,
-      "max_conditional_focus_y": 22.0,
+      "max_base_focus_y": 24.0,
+      "max_conditional_focus_y": 24.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 352,
+      "focus_count": 384,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "55",
@@ -45,20 +49,203 @@
       }
     }
   },
+  "native_inlay_moves": {
+    "GER": {
+      "ger_inner_circle_inlay_window": {
+        "x": 4500,
+        "y": 3230
+      }
+    },
+    "SOV": {}
+  },
+  "focus_groups": {
+    "GER": [
+      {
+        "id": "hro_group_ger_army",
+        "name_ru": "ШТАБ И СУХОПУТНЫЕ ВОЙСКА",
+        "name_en": "GENERAL STAFF AND LAND WAR",
+        "x": 1,
+        "y": 0,
+        "width": 14,
+        "target": "GER_develop_modern_maneuver_warfare"
+      },
+      {
+        "id": "hro_group_ger_air",
+        "name_ru": "ВОЗДУШНАЯ ВОЙНА",
+        "name_en": "AIR WAR",
+        "x": 15,
+        "y": 0,
+        "width": 11,
+        "target": "GER_expanding_the_luftwaffe"
+      },
+      {
+        "id": "hro_group_ger_navy",
+        "name_ru": "ФЛОТ И КОММУНИКАЦИИ",
+        "name_en": "FLEET AND COMMUNICATIONS",
+        "x": 27,
+        "y": 0,
+        "width": 11,
+        "target": "GER_strengthen_the_kriegsmarine"
+      },
+      {
+        "id": "hro_group_ger_economy",
+        "name_ru": "ВОЕННАЯ ЭКОНОМИКА И ТЫЛ",
+        "name_en": "WAR ECONOMY AND HOME FRONT",
+        "x": 39,
+        "y": 0,
+        "width": 25,
+        "target": "GER_the_four_year_plan"
+      }
+    ],
+    "SOV": [
+      {
+        "id": "hro_group_sov_economy",
+        "name_ru": "ПРОМЫШЛЕННОСТЬ И НАУКА",
+        "name_en": "INDUSTRY AND SCIENCE",
+        "x": 0,
+        "y": 0,
+        "width": 8,
+        "target": "SOV_heavy_industry"
+      },
+      {
+        "id": "hro_group_sov_air",
+        "name_ru": "ВОЗДУШНЫЙ ФРОНТ",
+        "name_en": "AIR FRONT",
+        "x": 8,
+        "y": 0,
+        "width": 7,
+        "target": "SOV_transpolar_flights"
+      },
+      {
+        "id": "hro_group_sov_navy",
+        "name_ru": "МОРСКИЕ КОММУНИКАЦИИ",
+        "name_en": "SEA COMMUNICATIONS",
+        "x": 15,
+        "y": 0,
+        "width": 10,
+        "target": "SOV_expand_the_red_fleet"
+      },
+      {
+        "id": "hro_group_sov_weapons",
+        "name_ru": "ВООРУЖЕНИЕ И ТЫЛ",
+        "name_en": "ARMAMENTS AND LOGISTICS",
+        "x": 25,
+        "y": 0,
+        "width": 12,
+        "target": "SOV_found_the_pcdi"
+      },
+      {
+        "id": "hro_group_sov_army",
+        "name_ru": "КРАСНАЯ АРМИЯ",
+        "name_en": "RED ARMY",
+        "x": 37,
+        "y": 0,
+        "width": 9,
+        "target": "SOV_strengthen_the_mobilization_plan"
+      },
+      {
+        "id": "hro_group_sov_comeback",
+        "name_ru": "ОБОРОНА И ВОЗРОЖДЕНИЕ",
+        "name_en": "DEFENCE AND RECOVERY",
+        "x": 52,
+        "y": 0,
+        "width": 13,
+        "target": "hro_sov_stavka_contingency_plans"
+      },
+      {
+        "id": "hro_group_sov_state",
+        "name_ru": "УПРАВЛЕНИЕ ГОСУДАРСТВОМ",
+        "name_en": "STATE ADMINISTRATION",
+        "x": 97,
+        "y": 0,
+        "width": 7,
+        "target": "SOV_addressing_internal_affairs"
+      },
+      {
+        "id": "hro_group_sov_diplomacy",
+        "name_ru": "ВНЕШНЯЯ ПОЛИТИКА",
+        "name_en": "FOREIGN POLICY",
+        "x": 106,
+        "y": 0,
+        "width": 6,
+        "target": "hro_sov_foreign_policy_staff"
+      },
+      {
+        "id": "hro_group_sov_politics",
+        "name_ru": "ПОЛИТИЧЕСКИЙ КУРС",
+        "name_en": "POLITICAL COURSE",
+        "x": 66,
+        "y": 0,
+        "width": 30,
+        "target": "SOV_the_centre"
+      }
+    ]
+  },
+  "city_emergency": {
+    "cities": 6,
+    "decisions": 6,
+    "events": 12,
+    "ideas": 11,
+    "max_crisis_tier": 3,
+    "crisis_war_days": 90,
+    "mobilization_window_days": 240,
+    "one_response_per_city": true,
+    "recapture_rewards_once": true,
+    "victory_point_control": true,
+    "native_evacuation_duplicated": false
+  },
+  "city_geography": {
+    "minsk": {
+      "state": 206,
+      "province": 11370
+    },
+    "kiev": {
+      "state": 202,
+      "province": 525
+    },
+    "leningrad": {
+      "state": 195,
+      "province": 3151
+    },
+    "moscow": {
+      "state": 219,
+      "province": 6380
+    },
+    "stalingrad": {
+      "state": 217,
+      "province": 3529
+    },
+    "kharkov": {
+      "state": 221,
+      "province": 418
+    }
+  },
   "permanent_reform_envelopes": {
     "scope": "one active tier per country family plus earned war adaptation; excludes DLC and temporary programmes",
     "countries": {
       "GER": {
-        "industrial_capacity_factory": 0.32,
+        "industrial_capacity_factory": 0.54,
         "army_org_factor": 0.23,
         "supply_consumption_factor": -0.36,
-        "winter_attrition_factor": -0.6
+        "winter_attrition_factor": -0.6,
+        "experience_loss_factor": -0.25,
+        "attrition": -0.55,
+        "out_of_supply_factor": 0,
+        "army_attack_factor": 0.5,
+        "army_defence_factor": 0.55,
+        "land_reinforce_rate": 0.06
       },
       "SOV": {
-        "industrial_capacity_factory": 0.35,
-        "army_org_factor": 0.25,
+        "industrial_capacity_factory": 0.5,
+        "army_org_factor": 0.4,
         "supply_consumption_factor": -0.35,
-        "winter_attrition_factor": 0
+        "winter_attrition_factor": 0,
+        "experience_loss_factor": -0.8,
+        "attrition": -0.4,
+        "out_of_supply_factor": -0.45,
+        "army_attack_factor": 0.6,
+        "army_defence_factor": 0.9,
+        "land_reinforce_rate": 0.12
       }
     }
   },
@@ -112,30 +299,35 @@
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 20,
-    "authored_focuses": 81,
+    "script_files": 27,
+    "authored_focuses": 133,
     "focuses_per_country": {
-      "GER": 40,
-      "SOV": 41
+      "GER": 60,
+      "SOV": 73
     },
     "native_focuses": 749,
-    "catalogue_native_patches": 207,
-    "native_prerequisite_patches": 67,
-    "required_integrated_milestones": 32,
-    "ideas": 167,
-    "idea_families": 16,
-    "events": 24,
-    "decisions": 36,
-    "localisation_keys_per_language": 689,
+    "catalogue_native_patches": 209,
+    "native_prerequisite_patches": 74,
+    "required_integrated_milestones": 44,
+    "ideas": 223,
+    "idea_families": 42,
+    "events": 36,
+    "decisions": 42,
+    "localisation_keys_per_language": 985,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
     "warnings": []
   },
+  "country_catalog_sha256": {
+    "GER": "6e5131c04b2eeb394d96cd7ffc80f8c36db0f3809a440e5680401b153f6e6839",
+    "SOV": "136eb216c5437965701996c13500cc8a7deaf2de361f7e02e62ac7399ab5af89"
+  },
+  "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "tests": {
-    "overhaul": 94,
+    "overhaul": 116,
     "legacy_local": 34
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-war-adaptation/dist/war.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-main-tree/dist/rework.zip"
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-fronts-overhaul/dist/fronts.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-war-adaptation/dist/war.zip"
 }

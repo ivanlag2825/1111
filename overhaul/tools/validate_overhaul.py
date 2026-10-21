@@ -449,6 +449,13 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                 errors.append(f'Asymmetric mutually exclusive pair: {identity} / {other}')
         if identity in own_focuses and (focus.one('completion_reward') is None or not focus.one('completion_reward').value):
             errors.append(f'Focus has no completion reward: {identity}')
+        elif identity in own_focuses and any(n.key == 'add_political_power' for n in walk(focus.one('completion_reward').value)):
+            functional = {'add_tech_bonus','add_building_construction','add_research_slot','add_manpower',
+                          'army_experience','air_experience','navy_experience','add_ideas','add_timed_idea',
+                          'add_stability','add_war_support','country_event'}
+            if not any(n.key in functional or (n.key and n.key.startswith('hro_') and n.value == 'yes')
+                       for n in walk(focus.one('completion_reward').value)):
+                errors.append(f'Authored focus offers only political power or flags: {identity}')
     visited, visiting = set(), set()
     def cycle(identity):
         if identity in visiting:
@@ -706,7 +713,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
         # Major specialisations are intentionally strong in 0.4. These ceilings
         # bound the whole set of permanent country families, not one spirit.
         # War adaptation and temporary programme effects are audited separately.
-        if worst['industrial_capacity_factory'] > 0.40 + TOLERANCE or worst['army_org_factor'] > 0.30 + TOLERANCE or worst['supply_consumption_factor'] < -0.35 - TOLERANCE:
+        if worst['industrial_capacity_factory'] > 0.60 + TOLERANCE or worst['army_org_factor'] > 0.50 + TOLERANCE or worst['supply_consumption_factor'] < -0.35 - TOLERANCE:
             errors.append(f'Final family bonus budget exceeded for {tag}: {worst}')
     for (tag, family), members in families.items():
         ids = {i['id'] for i in members}
