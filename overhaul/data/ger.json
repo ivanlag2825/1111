@@ -2883,6 +2883,516 @@
           "build_cost_ic": 0.05
         }
       }
+    },
+    {
+      "id": "hro_idea_ger_native_command_1",
+      "family": "hro_family_ger_native_command",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа штабной работы: 1",
+      "name_en": "Staff Training School: 1",
+      "desc_ru": "Скорость планирования: +10%; Шанс ввода резервов в бой: +1 п.п.. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Planning speed: +10%; Reinforce rate: +1 pp. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "planning_speed": 0.1,
+        "land_reinforce_rate": 0.01
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_command_2",
+      "family": "hro_family_ger_native_command",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа штабной работы: 2",
+      "name_en": "Staff Training School: 2",
+      "desc_ru": "Скорость планирования: +15%; Шанс ввода резервов в бой: +1,5 п.п.. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Planning speed: +15%; Reinforce rate: +1.5 pp. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "planning_speed": 0.15,
+        "land_reinforce_rate": 0.015
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_command_3",
+      "family": "hro_family_ger_native_command",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа штабной работы: 3",
+      "name_en": "Staff Training School: 3",
+      "desc_ru": "Скорость планирования: +20%; Шанс ввода резервов в бой: +2 п.п.. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Planning speed: +20%; Reinforce rate: +2 pp. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "planning_speed": 0.2,
+        "land_reinforce_rate": 0.02
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_motorized_1",
+      "family": "hro_family_ger_native_motorized",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Служба моторизованных войск: 1",
+      "name_en": "Motorised Troops Service: 1",
+      "desc_ru": "Скорость дивизий: +3%; Расход топлива армией: -5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Division speed: +3%; Army fuel use: -5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "army_speed_factor": 0.03,
+        "army_fuel_consumption_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_motorized_2",
+      "family": "hro_family_ger_native_motorized",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Служба моторизованных войск: 2",
+      "name_en": "Motorised Troops Service: 2",
+      "desc_ru": "Скорость дивизий: +5%; Расход топлива армией: -8%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Division speed: +5%; Army fuel use: -8%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "army_speed_factor": 0.05,
+        "army_fuel_consumption_factor": -0.08
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_motorized_3",
+      "family": "hro_family_ger_native_motorized",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Служба моторизованных войск: 3",
+      "name_en": "Motorised Troops Service: 3",
+      "desc_ru": "Скорость дивизий: +7%; Расход топлива армией: -10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Division speed: +7%; Army fuel use: -10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "army_speed_factor": 0.07,
+        "army_fuel_consumption_factor": -0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_firepower_1",
+      "family": "hro_family_ger_native_firepower",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Штурмовые и огневые школы: 1",
+      "name_en": "Assault and Firepower Schools: 1",
+      "desc_ru": "Атака артиллерии: +4%; Атака пехоты: +3%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Artillery attack: +4%; Infantry attack: +3%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "army_artillery_attack_factor": 0.04,
+        "army_infantry_attack_factor": 0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_firepower_2",
+      "family": "hro_family_ger_native_firepower",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Штурмовые и огневые школы: 2",
+      "name_en": "Assault and Firepower Schools: 2",
+      "desc_ru": "Атака артиллерии: +8%; Атака пехоты: +6%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Artillery attack: +8%; Infantry attack: +6%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "army_artillery_attack_factor": 0.08,
+        "army_infantry_attack_factor": 0.06
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_recovery_1",
+      "family": "hro_family_ger_native_recovery",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Система войскового восстановления: 1",
+      "name_en": "Field Recovery System: 1",
+      "desc_ru": "Истощение: -3%; Шанс ввода резервов в бой: +1 п.п.. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Attrition: -3%; Reinforce rate: +1 pp. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "attrition": -0.03,
+        "land_reinforce_rate": 0.01
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_recovery_2",
+      "family": "hro_family_ger_native_recovery",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Система войскового восстановления: 2",
+      "name_en": "Field Recovery System: 2",
+      "desc_ru": "Истощение: -5%; Шанс ввода резервов в бой: +2 п.п.. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Attrition: -5%; Reinforce rate: +2 pp. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "attrition": -0.05,
+        "land_reinforce_rate": 0.02
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_special_1",
+      "family": "hro_family_ger_native_special",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовка специальных частей: 1",
+      "name_en": "Special Troops Training: 1",
+      "desc_ru": "Атака спецназа: +5%; Время обучения спецназа: -10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Special forces attack: +5%; Special forces training time: -10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "special_forces_attack_factor": 0.05,
+        "special_forces_training_time_factor": -0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_special_2",
+      "family": "hro_family_ger_native_special",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовка специальных частей: 2",
+      "name_en": "Special Troops Training: 2",
+      "desc_ru": "Атака спецназа: +8%; Время обучения спецназа: -15%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Special forces attack: +8%; Special forces training time: -15%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "special_forces_attack_factor": 0.08,
+        "special_forces_training_time_factor": -0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_air_command_1",
+      "family": "hro_family_ger_native_air_command",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовка лётных штабов: 1",
+      "name_en": "Air Staff Training: 1",
+      "desc_ru": "Эффективность авиационных миссий: +3%; Вероятность авиакатастроф: -5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Air mission efficiency: +3%; Air accident chance: -5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_mission_efficiency": 0.03,
+        "air_accidents_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_air_command_2",
+      "family": "hro_family_ger_native_air_command",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовка лётных штабов: 2",
+      "name_en": "Air Staff Training: 2",
+      "desc_ru": "Эффективность авиационных миссий: +5%; Вероятность авиакатастроф: -10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Air mission efficiency: +5%; Air accident chance: -10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_mission_efficiency": 0.05,
+        "air_accidents_factor": -0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_air_command_3",
+      "family": "hro_family_ger_native_air_command",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Подготовка лётных штабов: 3",
+      "name_en": "Air Staff Training: 3",
+      "desc_ru": "Эффективность авиационных миссий: +8%; Вероятность авиакатастроф: -15%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Air mission efficiency: +8%; Air accident chance: -15%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_mission_efficiency": 0.08,
+        "air_accidents_factor": -0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_fighter_1",
+      "family": "hro_family_ger_native_fighter",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Служба истребительного наведения: 1",
+      "name_en": "Fighter Control Service: 1",
+      "desc_ru": "Эффективность перехвата: +10%; Эффективность превосходства в воздухе: +4%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Interception efficiency: +10%; Air superiority efficiency: +4%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_intercept_efficiency": 0.1,
+        "air_superiority_efficiency": 0.04
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_fighter_2",
+      "family": "hro_family_ger_native_fighter",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Служба истребительного наведения: 2",
+      "name_en": "Fighter Control Service: 2",
+      "desc_ru": "Эффективность перехвата: +15%; Эффективность превосходства в воздухе: +6%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Interception efficiency: +15%; Air superiority efficiency: +6%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_intercept_efficiency": 0.15,
+        "air_superiority_efficiency": 0.06
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_bomber_1",
+      "family": "hro_family_ger_native_bomber",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа бомбардировочной авиации: 1",
+      "name_en": "Bomber Aviation School: 1",
+      "desc_ru": "Эффективность непосредственной поддержки: +5%; Стратегические бомбардировки: +5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "CAS efficiency: +5%; Strategic bombing: +5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_cas_efficiency": 0.05,
+        "air_strategic_bomber_bombing_factor": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_bomber_2",
+      "family": "hro_family_ger_native_bomber",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа бомбардировочной авиации: 2",
+      "name_en": "Bomber Aviation School: 2",
+      "desc_ru": "Эффективность непосредственной поддержки: +8%; Стратегические бомбардировки: +8%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "CAS efficiency: +8%; Strategic bombing: +8%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_cas_efficiency": 0.08,
+        "air_strategic_bomber_bombing_factor": 0.08
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_air_tech_1",
+      "family": "hro_family_ger_native_air_tech",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Испытания и обслуживание самолётов: 1",
+      "name_en": "Aircraft Testing and Maintenance: 1",
+      "desc_ru": "Дальность авиации: +5%; Расход топлива авиацией: -3%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Aircraft range: +5%; Air fuel consumption: -3%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_range_factor": 0.05,
+        "air_fuel_consumption_factor": -0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_air_tech_2",
+      "family": "hro_family_ger_native_air_tech",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Испытания и обслуживание самолётов: 2",
+      "name_en": "Aircraft Testing and Maintenance: 2",
+      "desc_ru": "Дальность авиации: +8%; Расход топлива авиацией: -5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Aircraft range: +8%; Air fuel consumption: -5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "air_range_factor": 0.08,
+        "air_fuel_consumption_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_naval_air_1",
+      "family": "hro_family_ger_native_naval_air",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа морской авиации: 1",
+      "name_en": "Naval Aviation School: 1",
+      "desc_ru": "Атака морских бомбардировщиков: +10%; Эффективность морских авиационных миссий: +10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Naval strike attack: +10%; Naval air mission efficiency: +10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "naval_strike_attack_factor": 0.1,
+        "air_nav_efficiency": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_naval_air_2",
+      "family": "hro_family_ger_native_naval_air",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа морской авиации: 2",
+      "name_en": "Naval Aviation School: 2",
+      "desc_ru": "Атака морских бомбардировщиков: +15%; Эффективность морских авиационных миссий: +15%; Атака палубной авиации: +10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Naval strike attack: +15%; Naval air mission efficiency: +15%; Carrier air attack: +10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "naval_strike_attack_factor": 0.15,
+        "air_nav_efficiency": 0.15,
+        "navy_carrier_air_attack_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_navy_staff_1",
+      "family": "hro_family_ger_native_navy_staff",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Морской оперативный штаб: 1",
+      "name_en": "Naval Operations Staff: 1",
+      "desc_ru": "Координация флота: +5%; Расход топлива флотом: -5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Naval coordination: +5%; Naval fuel consumption: -5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "naval_coordination": 0.05,
+        "navy_fuel_consumption_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_navy_staff_2",
+      "family": "hro_family_ger_native_navy_staff",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Морской оперативный штаб: 2",
+      "name_en": "Naval Operations Staff: 2",
+      "desc_ru": "Координация флота: +10%; Расход топлива флотом: -10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Naval coordination: +10%; Naval fuel consumption: -10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "naval_coordination": 0.1,
+        "navy_fuel_consumption_factor": -0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_navy_staff_3",
+      "family": "hro_family_ger_native_navy_staff",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Морской оперативный штаб: 3",
+      "name_en": "Naval Operations Staff: 3",
+      "desc_ru": "Координация флота: +15%; Расход топлива флотом: -15%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Naval coordination: +15%; Naval fuel consumption: -15%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "naval_coordination": 0.15,
+        "navy_fuel_consumption_factor": -0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_surface_1",
+      "family": "hro_family_ger_native_surface",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа надводных соединений: 1",
+      "name_en": "Surface Fleet School: 1",
+      "desc_ru": "Атака крупных кораблей: +5%; Эффективность охранения: +5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Capital ship attack: +5%; Screening efficiency: +5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "navy_capital_ship_attack_factor": 0.05,
+        "screening_efficiency": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_surface_2",
+      "family": "hro_family_ger_native_surface",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа надводных соединений: 2",
+      "name_en": "Surface Fleet School: 2",
+      "desc_ru": "Атака крупных кораблей: +10%; Эффективность охранения: +10%; Атака кораблей охранения: +8%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Capital ship attack: +10%; Screening efficiency: +10%; Screen attack: +8%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "navy_capital_ship_attack_factor": 0.1,
+        "screening_efficiency": 0.1,
+        "navy_screen_attack_factor": 0.08
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_submarines_1",
+      "family": "hro_family_ger_native_submarines",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа подводной войны: 1",
+      "name_en": "Submarine Warfare School: 1",
+      "desc_ru": "Эффективность рейдов на конвои: +8%; Атака подводных лодок: +5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Convoy raiding efficiency: +8%; Submarine attack: +5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "convoy_raiding_efficiency_factor": 0.08,
+        "navy_submarine_attack_factor": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_submarines_2",
+      "family": "hro_family_ger_native_submarines",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Школа подводной войны: 2",
+      "name_en": "Submarine Warfare School: 2",
+      "desc_ru": "Эффективность рейдов на конвои: +12%; Атака подводных лодок: +10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Convoy raiding efficiency: +12%; Submarine attack: +10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "convoy_raiding_efficiency_factor": 0.12,
+        "navy_submarine_attack_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_shipbuilding_1",
+      "family": "hro_family_ger_native_shipbuilding",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Развитие военных верфей: 1",
+      "name_en": "Naval Shipyard Development: 1",
+      "desc_ru": "Выпуск верфей: +8%; Строительство верфей: +10%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Dockyard output: +8%; Dockyard construction: +10%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "industrial_capacity_dockyard": 0.08,
+        "production_speed_dockyard_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_shipbuilding_2",
+      "family": "hro_family_ger_native_shipbuilding",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Развитие военных верфей: 2",
+      "name_en": "Naval Shipyard Development: 2",
+      "desc_ru": "Выпуск верфей: +15%; Строительство верфей: +20%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Dockyard output: +15%; Dockyard construction: +20%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "industrial_capacity_dockyard": 0.15,
+        "production_speed_dockyard_factor": 0.2
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_science_1",
+      "family": "hro_family_ger_native_science",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Военные исследовательские институты: 1",
+      "name_en": "Military Research Institutes: 1",
+      "desc_ru": "Скорость исследований: +3%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Research speed: +3%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "research_speed_factor": 0.03
+      }
+    },
+    {
+      "id": "hro_idea_ger_native_science_2",
+      "family": "hro_family_ger_native_science",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Военные исследовательские институты: 2",
+      "name_en": "Military Research Institutes: 2",
+      "desc_ru": "Скорость исследований: +5%. Действует одна ступень этой реформы: улучшение заменяет предыдущую, слабая награда не снимает сильную.",
+      "desc_en": "Research speed: +5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
+      "modifiers": {
+        "research_speed_factor": 0.05
+      }
     }
   ],
   "native_patches": [
@@ -3112,7 +3622,7 @@
     {
       "id": "GER_develop_modern_maneuver_warfare",
       "cost": 3,
-      "extra_reward": "army_experience = 25",
+      "extra_reward": "army_experience = 25 hro_native_reward_develop_modern_maneuver_warfare = yes",
       "x": 8,
       "y": 2,
       "relative_position_id": null
@@ -3120,7 +3630,7 @@
     {
       "id": "GER_the_prussian_legacy",
       "cost": 3,
-      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_the_prussian_legacy bonus = 0.75 uses = 1 category = infantry_weapons }",
+      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_the_prussian_legacy bonus = 0.75 uses = 1 category = infantry_weapons } hro_native_reward_the_prussian_legacy = yes",
       "x": 6,
       "y": 8.0,
       "relative_position_id": null,
@@ -3139,7 +3649,7 @@
     {
       "id": "GER_improve_motorized_troops",
       "cost": 3,
-      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_improve_motorized_troops bonus = 0.75 uses = 1 category = cat_mechanized_equipment }",
+      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_improve_motorized_troops bonus = 0.75 uses = 1 category = cat_mechanized_equipment } hro_native_reward_improve_motorized_troops = yes",
       "x": 3,
       "y": 10.0,
       "relative_position_id": null
@@ -3147,7 +3657,7 @@
     {
       "id": "GER_lessons_of_the_great_war",
       "cost": 3,
-      "extra_reward": "army_experience = 50",
+      "extra_reward": "army_experience = 50 hro_native_reward_lessons_of_the_great_war = yes",
       "x": 5,
       "y": 10.0,
       "relative_position_id": null
@@ -3155,7 +3665,7 @@
     {
       "id": "GER_artillery_bombardment",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_artillery_bombardment bonus = 0.75 uses = 1 category = artillery }",
+      "extra_reward": "add_tech_bonus = { name = GER_artillery_bombardment bonus = 0.75 uses = 1 category = artillery } hro_native_reward_artillery_bombardment = yes",
       "x": 4,
       "y": 16.0,
       "relative_position_id": null
@@ -3163,7 +3673,7 @@
     {
       "id": "GER_stormtroopers",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_stormtroopers bonus = 0.75 uses = 1 category = infantry_weapons }",
+      "extra_reward": "add_tech_bonus = { name = GER_stormtroopers bonus = 0.75 uses = 1 category = infantry_weapons } hro_native_reward_stormtroopers = yes",
       "x": 4,
       "y": 20.0,
       "relative_position_id": null,
@@ -3179,7 +3689,7 @@
     {
       "id": "GER_instill_auftragstaktik",
       "cost": 3,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_army_0 } hro_set_hro_idea_ger_army_1 = yes } army_experience = 40",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_army_0 } hro_set_hro_idea_ger_army_1 = yes } army_experience = 40 hro_native_reward_instill_auftragstaktik = yes",
       "x": 8,
       "y": 16.0,
       "relative_position_id": null,
@@ -3197,7 +3707,7 @@
     {
       "id": "GER_panzergrenadier",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_panzergrenadier bonus = 0.75 uses = 1 category = cat_mechanized_equipment }",
+      "extra_reward": "add_tech_bonus = { name = GER_panzergrenadier bonus = 0.75 uses = 1 category = cat_mechanized_equipment } hro_native_reward_panzergrenadier = yes",
       "x": 8,
       "y": 20.0,
       "relative_position_id": null,
@@ -3213,7 +3723,7 @@
     {
       "id": "GER_kriegslokomotiven",
       "cost": 3,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_kriegslokomotiven bonus = 0.75 uses = 1 category = train_tech }",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_kriegslokomotiven bonus = 0.75 uses = 1 category = train_tech } hro_native_reward_kriegslokomotiven = yes",
       "x": 11,
       "y": 22.0,
       "relative_position_id": null,
@@ -3229,7 +3739,7 @@
     {
       "id": "GER_improve_the_logistics_system",
       "cost": 5,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_political_power = 25",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_political_power = 25 hro_native_reward_improve_the_logistics_system = yes",
       "x": 7,
       "y": 22.0,
       "relative_position_id": null
@@ -3237,7 +3747,7 @@
     {
       "id": "GER_adopt_new_panzer_doctrine",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_adopt_new_panzer_doctrine bonus = 0.75 uses = 1 category = armor }",
+      "extra_reward": "add_tech_bonus = { name = GER_adopt_new_panzer_doctrine bonus = 0.75 uses = 1 category = armor } hro_native_reward_adopt_new_panzer_doctrine = yes",
       "x": 10,
       "y": 8.0,
       "relative_position_id": null,
@@ -3256,7 +3766,7 @@
     {
       "id": "GER_panzer_troops_school",
       "cost": 3,
-      "extra_reward": "army_experience = 50 add_command_power = 5",
+      "extra_reward": "army_experience = 50 add_command_power = 5 hro_native_reward_panzer_troops_school = yes",
       "x": 11,
       "y": 10.0,
       "relative_position_id": null
@@ -3264,7 +3774,7 @@
     {
       "id": "GER_combined_arms",
       "cost": 5,
-      "extra_reward": "army_experience = 50 add_tech_bonus = { name = GER_combined_arms bonus = 0.75 uses = 1 category = support_tech }",
+      "extra_reward": "army_experience = 50 add_tech_bonus = { name = GER_combined_arms bonus = 0.75 uses = 1 category = support_tech } hro_native_reward_combined_arms = yes",
       "x": 14,
       "y": 16.0,
       "relative_position_id": null,
@@ -3283,7 +3793,7 @@
     {
       "id": "GER_expanding_the_luftwaffe",
       "cost": 3,
-      "extra_reward": "air_experience = 25",
+      "extra_reward": "air_experience = 25 hro_native_reward_expanding_the_luftwaffe = yes",
       "x": 20,
       "y": 2,
       "relative_position_id": null
@@ -3291,7 +3801,7 @@
     {
       "id": "GER_aeronautical_research_institute",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_aeronautical_research_institute bonus = 0.75 uses = 1 category = air_equipment }",
+      "extra_reward": "add_tech_bonus = { name = GER_aeronautical_research_institute bonus = 0.75 uses = 1 category = air_equipment } hro_native_reward_aeronautical_research_institute = yes",
       "x": 17,
       "y": 4,
       "relative_position_id": null,
@@ -3307,7 +3817,7 @@
     {
       "id": "GER_dive_bombers",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_dive_bombers bonus = 0.75 uses = 1 category = medium_air }",
+      "extra_reward": "add_tech_bonus = { name = GER_dive_bombers bonus = 0.75 uses = 1 category = medium_air } hro_native_reward_dive_bombers = yes",
       "x": 15,
       "y": 6,
       "relative_position_id": null
@@ -3315,7 +3825,7 @@
     {
       "id": "GER_tactical_bombers",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_tactical_bombers bonus = 0.75 uses = 1 category = air_equipment } air_experience = 25",
+      "extra_reward": "add_tech_bonus = { name = GER_tactical_bombers bonus = 0.75 uses = 1 category = air_equipment } air_experience = 25 hro_native_reward_tactical_bombers = yes",
       "x": 17,
       "y": 6,
       "relative_position_id": null
@@ -3323,7 +3833,7 @@
     {
       "id": "GER_form_the_jagdwaffe",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_form_the_jagdwaffe bonus = 0.75 uses = 1 category = light_air }",
+      "extra_reward": "add_tech_bonus = { name = GER_form_the_jagdwaffe bonus = 0.75 uses = 1 category = light_air } hro_native_reward_form_the_jagdwaffe = yes",
       "x": 23,
       "y": 4,
       "relative_position_id": null,
@@ -3339,7 +3849,7 @@
     {
       "id": "GER_reorganize_the_luftwaffe",
       "cost": 5,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_air_0 } hro_set_hro_idea_ger_air_1 = yes } air_experience = 40",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_air_0 } hro_set_hro_idea_ger_air_1 = yes } air_experience = 40 hro_native_reward_reorganize_the_luftwaffe = yes",
       "x": 21,
       "y": 6,
       "relative_position_id": null
@@ -3347,7 +3857,7 @@
     {
       "id": "GER_solve_the_logistical_bottlenecks",
       "cost": 3,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } air_experience = 25",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } air_experience = 25 hro_native_reward_solve_the_logistical_bottlenecks = yes",
       "x": 20,
       "y": 12.0,
       "relative_position_id": null,
@@ -3364,7 +3874,7 @@
     {
       "id": "GER_defense_of_the_reich",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_defense_of_the_reich bonus = 0.75 uses = 1 category = radar_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_defense_of_the_reich bonus = 0.75 uses = 1 category = radar_tech } hro_native_reward_defense_of_the_reich = yes",
       "x": 23,
       "y": 12.0,
       "relative_position_id": null
@@ -3372,7 +3882,7 @@
     {
       "id": "GER_strengthen_the_kriegsmarine",
       "cost": 3,
-      "extra_reward": "navy_experience = 40",
+      "extra_reward": "navy_experience = 40 hro_native_reward_strengthen_the_kriegsmarine = yes",
       "x": 32,
       "y": 2,
       "relative_position_id": null
@@ -3380,7 +3890,7 @@
     {
       "id": "GER_plan_z",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_plan_z bonus = 0.75 uses = 1 category = bb_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_plan_z bonus = 0.75 uses = 1 category = bb_tech } hro_native_reward_plan_z = yes",
       "x": 30,
       "y": 4,
       "relative_position_id": null,
@@ -3396,7 +3906,7 @@
     {
       "id": "GER_trade_interdiction",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_trade_interdiction bonus = 0.75 uses = 1 category = ss_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_trade_interdiction bonus = 0.75 uses = 1 category = ss_tech } hro_native_reward_trade_interdiction = yes",
       "x": 34,
       "y": 4,
       "relative_position_id": null,
@@ -3412,7 +3922,7 @@
     {
       "id": "GER_wolfpack_tactics",
       "cost": 3,
-      "extra_reward": "navy_experience = 50",
+      "extra_reward": "navy_experience = 50 hro_native_reward_wolfpack_tactics = yes",
       "x": 37,
       "y": 6,
       "relative_position_id": null
@@ -3420,7 +3930,7 @@
     {
       "id": "GER_u_boat_efforts",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_u_boat_efforts bonus = 0.75 uses = 1 category = ss_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_u_boat_efforts bonus = 0.75 uses = 1 category = ss_tech } hro_native_reward_u_boat_efforts = yes",
       "x": 37,
       "y": 8,
       "relative_position_id": null,
@@ -3616,91 +4126,106 @@
       "id": "GER_fortify_the_vaterland",
       "x": 8,
       "y": 4,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_fortify_the_vaterland = yes"
     },
     {
       "id": "GER_all_terrain_military_motorcycle",
       "x": 7,
       "y": 10.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_all_terrain_military_motorcycle = yes"
     },
     {
       "id": "GER_salvage_captured_equipment",
       "x": 9,
       "y": 10.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_salvage_captured_equipment = yes"
     },
     {
       "id": "GER_establish_the_afrikakorps",
       "x": 6,
       "y": 20.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_establish_the_afrikakorps = yes"
     },
     {
       "id": "GER_establish_the_skijager",
       "x": 10,
       "y": 20.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_establish_the_skijager = yes"
     },
     {
       "id": "GER_nationalize_ford_factories",
       "x": 5,
       "y": 22.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_nationalize_ford_factories = yes"
     },
     {
       "id": "GER_defend_the_vaterland",
       "x": 9,
       "y": 22.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_defend_the_vaterland = yes"
     },
     {
       "id": "GER_uranverein",
       "x": 8,
       "y": 24.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_uranverein = yes"
     },
     {
       "id": "GER_advanced_panzer_research",
       "x": 13,
       "y": 10.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_advanced_panzer_research = yes"
     },
     {
       "id": "GER_expand_kummersdorfs_capacity",
       "x": 12,
       "y": 16.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_expand_kummersdorfs_capacity = yes"
     },
     {
       "id": "GER_uralbomber_program",
       "x": 19,
       "y": 6,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_uralbomber_program = yes"
     },
     {
       "id": "GER_rocketry_innovations",
       "x": 17,
       "y": 14.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_rocketry_innovations = yes"
     },
     {
       "id": "GER_fallschirmjager",
       "x": 20,
       "y": 4,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_fallschirmjager = yes"
     },
     {
       "id": "GER_experimental_rotorcrafts",
       "x": 23,
       "y": 6,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_experimental_rotorcrafts = yes"
     },
     {
       "id": "GER_develop_the_knickebein",
       "x": 25,
       "y": 6,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_develop_the_knickebein = yes"
     },
     {
       "id": "GER_construct_the_kammhuber_line",
@@ -3714,25 +4239,29 @@
         [
           "hro_ger_air_battle_network"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_construct_the_kammhuber_line = yes"
     },
     {
       "id": "GER_establish_night_fighter_squadrons",
       "x": 24,
       "y": 14.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_establish_night_fighter_squadrons = yes"
     },
     {
       "id": "GER_torpedobomber",
       "x": 25,
       "y": 10.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_torpedobomber = yes"
     },
     {
       "id": "GER_establish_carrier_groups",
       "x": 26,
       "y": 12.0,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_establish_carrier_groups = yes"
     },
     {
       "id": "GER_aerodynamic_research_institute",
@@ -3751,7 +4280,8 @@
         [
           "hro_ger_mature_air_operations"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_aerodynamic_research_institute = yes"
     },
     {
       "id": "GER_amerikabomber",
@@ -3765,13 +4295,15 @@
         [
           "hro_ger_jet_rearmament"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_amerikabomber = yes"
     },
     {
       "id": "GER_expand_kriegsmarinewerft",
       "x": 28,
       "y": 6,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_expand_kriegsmarinewerft = yes"
     },
     {
       "id": "GER_construct_aircraft_carriers",
@@ -3785,7 +4317,8 @@
         [
           "hro_ger_balanced_task_force"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_construct_aircraft_carriers = yes"
     },
     {
       "id": "GER_grosskampfschiff_construction",
@@ -3799,31 +4332,36 @@
         [
           "hro_ger_balanced_task_force"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_grosskampfschiff_construction = yes"
     },
     {
       "id": "GER_high_seas_fleet",
       "x": 28,
       "y": 10,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_high_seas_fleet = yes"
     },
     {
       "id": "GER_re_establish_the_seekriegsleitung",
       "x": 32,
       "y": 6,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_re_establish_the_seekriegsleitung = yes"
     },
     {
       "id": "GER_marinestosstrupp",
       "x": 31,
       "y": 8,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_marinestosstrupp = yes"
     },
     {
       "id": "GER_atlantic_naval_bases",
       "x": 33,
       "y": 8,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_atlantic_naval_bases = yes"
     },
     {
       "id": "GER_atlantic_naval_dominance",
@@ -3838,25 +4376,29 @@
         [
           "hro_ger_mature_maritime_programme"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_atlantic_naval_dominance = yes"
     },
     {
       "id": "GER_cruiser_warfare",
       "x": 35,
       "y": 6,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_cruiser_warfare = yes"
     },
     {
       "id": "GER_panzerschiff_raiders",
       "x": 35,
       "y": 8,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_panzerschiff_raiders = yes"
     },
     {
       "id": "GER_unrestricted_convoy_raiding",
       "x": 36,
       "y": 10,
-      "relative_position_id": null
+      "relative_position_id": null,
+      "extra_reward": "hro_native_reward_unrestricted_convoy_raiding = yes"
     },
     {
       "id": "GER_seeherrschaft",
@@ -3873,7 +4415,8 @@
         [
           "hro_ger_naval_supply_tenders"
         ]
-      ]
+      ],
+      "extra_reward": "hro_native_reward_seeherrschaft = yes"
     },
     {
       "id": "GER_fuhrerprinzip",
@@ -3898,7 +4441,8 @@
     "Версия 0.4: обязательные этапы подготовки и полноценной военной адаптации встроены в награды существующих основных фокусов. Бонусы опыта войны включаются только после фактических дней войны/зимы; исходные эффекты DLC сохранены.",
     "0.5: тематические заголовки, расширенные основные маршруты, крупная кульминация Красной армии и региональная антикризисная ветка. Ступени национальных реформ заменяются, не складываются.",
     "0.6: публичные реформы показывают положительные параметры, служебная смена идей скрыта; равные и более высокие ступени не понижаются. Пересмотрены кризисы Восточного фронта и добавлены германские наступательные награды.",
-    "1.0.0: промышленный пакет доступен в1938–1939, германская команда1940; Total War сохраняет награды, но использует явно заменённые условия."
+    "1.0.0: промышленный пакет доступен в1938–1939, германская команда1940; Total War сохраняет награды, но использует явно заменённые условия.",
+    "1.1.0: 59ванильных военных фокусов получили профильные реформы и120-дневную подготовку; исходные наградыDLCсохранены."
   ],
   "integrated_milestones": [
     {

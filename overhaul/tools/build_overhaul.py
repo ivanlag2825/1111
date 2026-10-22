@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,7 +552,15 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Баланс Восточной кампании и MEFO 1.0.0
+## Военные фокусы Германии 1.1.0
+
+Усилены59исходных фокусов:23армейских,19авиационных,17морских. Добавлены15профильных реформ с заменой ступеней, один50%-ный исследовательский бонус за фокус и120-дневная подготовка по его ветке. Исходные наградыDLCсохранены. Поздняя слабая награда не снимает сильную ступень. Временная подготовка одной ветки обновляет срок, не складывается; загрузка не повторяет исследования и окна.
+
+Примеры итоговых дополнительных реформ: артиллерия+8%и пехота+6%атаки; авиационные миссии+8%; крупные корабли/подлодки+10%атаки; выпуск верфей+15%. Общая атака/защита всей армии и выпуск военных заводов не увеличены этой версией. Промышленность,MEFOи этапы Восточной кампании1.0.0сохраняются. [Полная таблица](docs/NATIVE_MILITARY_110_RU.md).
+
+Завершённые старые фокусы получают постоянные реформы при ежедневной проверке, без исследований и временных окон задним числом. Можно продолжить1.0.0после перезапуска. Полностью удалите старую папкумода перед установкой; оба игрока устанавливают одинаковый архив. ДвижокHOI4здесь не запускался.
+
+## История: баланс Восточной кампании и MEFO1.0.0
 
 Промышленная цепочка Германии перенесена в1938–1939: Тотальная война, арсенал, кластеры и распределение ресурсов доступны до вторжения. Проверенный приоритетный маршрут завершается весной1939при обеспечении поддержки войны. Развитая экономика даёт до+58%выпуска военных заводов от мода. Три этапа войны усиливают Германию вначале, сближают развитые реформы1942и дают преимущество СССР с1943; переходы требуют180/540военных дней. Ранние советские защитные духи уменьшены, мобилизация ограничена ступенью этапа, поздняя СлаваКраснойармииоткрывается1943.
 
@@ -776,6 +784,8 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         campaign_balance = balance_module.generate(stage)
         mefo_module = module('hro_mefo_relief_generator', OVERHAUL / 'tools/generate_mefo_relief.py')
         mefo_relief = mefo_module.generate(stage)
+        native_military_module = module('hro_native_military_generator', OVERHAUL / 'tools/generate_native_military.py')
+        native_military = native_military_module.generate(stage, catalogs)
         runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -791,7 +801,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, runtime=runtime,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},

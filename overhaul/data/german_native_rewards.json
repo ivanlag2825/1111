@@ -1,0 +1,415 @@
+[
+  {
+    "focus": "GER_develop_modern_maneuver_warfare",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_command_1",
+    "effect": "hro_native_reward_develop_modern_maneuver_warfare",
+    "tech": "support_tech"
+  },
+  {
+    "focus": "GER_fortify_the_vaterland",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_recovery_1",
+    "effect": "hro_native_reward_fortify_the_vaterland",
+    "tech": "cat_fortification"
+  },
+  {
+    "focus": "GER_the_prussian_legacy",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_command_2",
+    "effect": "hro_native_reward_the_prussian_legacy",
+    "tech": "infantry_weapons"
+  },
+  {
+    "focus": "GER_improve_motorized_troops",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_motorized_1",
+    "effect": "hro_native_reward_improve_motorized_troops",
+    "tech": "cat_mechanized_equipment"
+  },
+  {
+    "focus": "GER_lessons_of_the_great_war",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_firepower_1",
+    "effect": "hro_native_reward_lessons_of_the_great_war",
+    "tech": "artillery"
+  },
+  {
+    "focus": "GER_artillery_bombardment",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_firepower_2",
+    "effect": "hro_native_reward_artillery_bombardment",
+    "tech": "artillery"
+  },
+  {
+    "focus": "GER_stormtroopers",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_firepower_2",
+    "effect": "hro_native_reward_stormtroopers",
+    "tech": "infantry_weapons"
+  },
+  {
+    "focus": "GER_all_terrain_military_motorcycle",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_motorized_2",
+    "effect": "hro_native_reward_all_terrain_military_motorcycle",
+    "tech": "motorized_equipment"
+  },
+  {
+    "focus": "GER_salvage_captured_equipment",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_recovery_2",
+    "effect": "hro_native_reward_salvage_captured_equipment",
+    "tech": "support_tech"
+  },
+  {
+    "focus": "GER_instill_auftragstaktik",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_command_3",
+    "effect": "hro_native_reward_instill_auftragstaktik",
+    "tech": "support_tech"
+  },
+  {
+    "focus": "GER_establish_the_afrikakorps",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_special_1",
+    "effect": "hro_native_reward_establish_the_afrikakorps",
+    "tech": "infantry_weapons"
+  },
+  {
+    "focus": "GER_establish_the_skijager",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_special_2",
+    "effect": "hro_native_reward_establish_the_skijager",
+    "tech": "infantry_weapons"
+  },
+  {
+    "focus": "GER_panzergrenadier",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_motorized_3",
+    "effect": "hro_native_reward_panzergrenadier",
+    "tech": "cat_mechanized_equipment"
+  },
+  {
+    "focus": "GER_nationalize_ford_factories",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_motorized_3",
+    "effect": "hro_native_reward_nationalize_ford_factories",
+    "tech": "motorized_equipment"
+  },
+  {
+    "focus": "GER_kriegslokomotiven",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_recovery_2",
+    "effect": "hro_native_reward_kriegslokomotiven",
+    "tech": "train_tech"
+  },
+  {
+    "focus": "GER_improve_the_logistics_system",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_recovery_2",
+    "effect": "hro_native_reward_improve_the_logistics_system",
+    "tech": "support_tech"
+  },
+  {
+    "focus": "GER_defend_the_vaterland",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_recovery_2",
+    "effect": "hro_native_reward_defend_the_vaterland",
+    "tech": "cat_fortification"
+  },
+  {
+    "focus": "GER_uranverein",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_science_1",
+    "effect": "hro_native_reward_uranverein",
+    "tech": "nuclear"
+  },
+  {
+    "focus": "GER_adopt_new_panzer_doctrine",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_command_2",
+    "effect": "hro_native_reward_adopt_new_panzer_doctrine",
+    "tech": "armor"
+  },
+  {
+    "focus": "GER_panzer_troops_school",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_motorized_2",
+    "effect": "hro_native_reward_panzer_troops_school",
+    "tech": "armor"
+  },
+  {
+    "focus": "GER_advanced_panzer_research",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_science_1",
+    "effect": "hro_native_reward_advanced_panzer_research",
+    "tech": "armor"
+  },
+  {
+    "focus": "GER_expand_kummersdorfs_capacity",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_science_2",
+    "effect": "hro_native_reward_expand_kummersdorfs_capacity",
+    "tech": "armor"
+  },
+  {
+    "focus": "GER_combined_arms",
+    "branch": "army",
+    "idea": "hro_idea_ger_native_command_3",
+    "effect": "hro_native_reward_combined_arms",
+    "tech": "support_tech"
+  },
+  {
+    "focus": "GER_expanding_the_luftwaffe",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_air_command_1",
+    "effect": "hro_native_reward_expanding_the_luftwaffe",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_aeronautical_research_institute",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_air_tech_1",
+    "effect": "hro_native_reward_aeronautical_research_institute",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_dive_bombers",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_bomber_1",
+    "effect": "hro_native_reward_dive_bombers",
+    "tech": "light_air"
+  },
+  {
+    "focus": "GER_tactical_bombers",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_bomber_1",
+    "effect": "hro_native_reward_tactical_bombers",
+    "tech": "medium_air"
+  },
+  {
+    "focus": "GER_uralbomber_program",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_bomber_2",
+    "effect": "hro_native_reward_uralbomber_program",
+    "tech": "heavy_air"
+  },
+  {
+    "focus": "GER_rocketry_innovations",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_science_2",
+    "effect": "hro_native_reward_rocketry_innovations",
+    "tech": "rocketry"
+  },
+  {
+    "focus": "GER_fallschirmjager",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_special_1",
+    "effect": "hro_native_reward_fallschirmjager",
+    "tech": "infantry_weapons"
+  },
+  {
+    "focus": "GER_form_the_jagdwaffe",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_fighter_1",
+    "effect": "hro_native_reward_form_the_jagdwaffe",
+    "tech": "light_air"
+  },
+  {
+    "focus": "GER_reorganize_the_luftwaffe",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_air_command_2",
+    "effect": "hro_native_reward_reorganize_the_luftwaffe",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_solve_the_logistical_bottlenecks",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_air_tech_2",
+    "effect": "hro_native_reward_solve_the_logistical_bottlenecks",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_experimental_rotorcrafts",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_air_tech_2",
+    "effect": "hro_native_reward_experimental_rotorcrafts",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_develop_the_knickebein",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_bomber_2",
+    "effect": "hro_native_reward_develop_the_knickebein",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_defense_of_the_reich",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_fighter_1",
+    "effect": "hro_native_reward_defense_of_the_reich",
+    "tech": "radar_tech"
+  },
+  {
+    "focus": "GER_construct_the_kammhuber_line",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_fighter_2",
+    "effect": "hro_native_reward_construct_the_kammhuber_line",
+    "tech": "radar_tech"
+  },
+  {
+    "focus": "GER_establish_night_fighter_squadrons",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_fighter_2",
+    "effect": "hro_native_reward_establish_night_fighter_squadrons",
+    "tech": "light_air"
+  },
+  {
+    "focus": "GER_torpedobomber",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_naval_air_1",
+    "effect": "hro_native_reward_torpedobomber",
+    "tech": "naval_air"
+  },
+  {
+    "focus": "GER_establish_carrier_groups",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_naval_air_2",
+    "effect": "hro_native_reward_establish_carrier_groups",
+    "tech": "naval_air"
+  },
+  {
+    "focus": "GER_aerodynamic_research_institute",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_air_command_3",
+    "effect": "hro_native_reward_aerodynamic_research_institute",
+    "tech": "air_equipment"
+  },
+  {
+    "focus": "GER_amerikabomber",
+    "branch": "air",
+    "idea": "hro_idea_ger_native_science_2",
+    "effect": "hro_native_reward_amerikabomber",
+    "tech": "heavy_air"
+  },
+  {
+    "focus": "GER_strengthen_the_kriegsmarine",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_navy_staff_1",
+    "effect": "hro_native_reward_strengthen_the_kriegsmarine",
+    "tech": "naval_equipment"
+  },
+  {
+    "focus": "GER_plan_z",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_surface_1",
+    "effect": "hro_native_reward_plan_z",
+    "tech": "bb_tech"
+  },
+  {
+    "focus": "GER_expand_kriegsmarinewerft",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_shipbuilding_1",
+    "effect": "hro_native_reward_expand_kriegsmarinewerft",
+    "tech": "naval_equipment"
+  },
+  {
+    "focus": "GER_construct_aircraft_carriers",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_naval_air_2",
+    "effect": "hro_native_reward_construct_aircraft_carriers",
+    "tech": "cv_tech"
+  },
+  {
+    "focus": "GER_grosskampfschiff_construction",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_surface_2",
+    "effect": "hro_native_reward_grosskampfschiff_construction",
+    "tech": "bb_tech"
+  },
+  {
+    "focus": "GER_high_seas_fleet",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_surface_2",
+    "effect": "hro_native_reward_high_seas_fleet",
+    "tech": "naval_equipment"
+  },
+  {
+    "focus": "GER_re_establish_the_seekriegsleitung",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_navy_staff_2",
+    "effect": "hro_native_reward_re_establish_the_seekriegsleitung",
+    "tech": "naval_equipment"
+  },
+  {
+    "focus": "GER_marinestosstrupp",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_special_2",
+    "effect": "hro_native_reward_marinestosstrupp",
+    "tech": "infantry_weapons"
+  },
+  {
+    "focus": "GER_atlantic_naval_bases",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_shipbuilding_2",
+    "effect": "hro_native_reward_atlantic_naval_bases",
+    "tech": "naval_equipment"
+  },
+  {
+    "focus": "GER_atlantic_naval_dominance",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_navy_staff_3",
+    "effect": "hro_native_reward_atlantic_naval_dominance",
+    "tech": "naval_equipment"
+  },
+  {
+    "focus": "GER_trade_interdiction",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_submarines_1",
+    "effect": "hro_native_reward_trade_interdiction",
+    "tech": "ss_tech"
+  },
+  {
+    "focus": "GER_cruiser_warfare",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_surface_1",
+    "effect": "hro_native_reward_cruiser_warfare",
+    "tech": "cl_tech"
+  },
+  {
+    "focus": "GER_panzerschiff_raiders",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_surface_2",
+    "effect": "hro_native_reward_panzerschiff_raiders",
+    "tech": "ca_tech"
+  },
+  {
+    "focus": "GER_wolfpack_tactics",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_submarines_1",
+    "effect": "hro_native_reward_wolfpack_tactics",
+    "tech": "ss_tech"
+  },
+  {
+    "focus": "GER_u_boat_efforts",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_shipbuilding_2",
+    "effect": "hro_native_reward_u_boat_efforts",
+    "tech": "ss_tech"
+  },
+  {
+    "focus": "GER_unrestricted_convoy_raiding",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_submarines_2",
+    "effect": "hro_native_reward_unrestricted_convoy_raiding",
+    "tech": "ss_tech"
+  },
+  {
+    "focus": "GER_seeherrschaft",
+    "branch": "navy",
+    "idea": "hro_idea_ger_native_navy_staff_3",
+    "effect": "hro_native_reward_seeherrschaft",
+    "tech": "naval_equipment"
+  }
+]

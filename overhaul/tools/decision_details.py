@@ -1,5 +1,6 @@
 """Player-facing numeric descriptions derived from the actual reward dictionaries."""
 LABELS = {
+ 'naval_coordination': ('Координация флота', 'Naval coordination'),
  'army_attack_factor': ('Атака дивизий', 'Division attack'),
  'army_speed_factor': ('Скорость дивизий', 'Division speed'),
  'attrition': ('Истощение', 'Attrition'),

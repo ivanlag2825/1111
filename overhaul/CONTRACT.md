@@ -105,3 +105,7 @@ Explicit available_override is authorised for GER_zentrale_planung and GER_total
 Campaign stages require calendar AND bounded active-war experience for advancement; exactly one per country, peace pauses, either capitulation/1947cleans, reload and rewar cannot reset or replay rewards. City mobilisation caps1/2/3at these stages; actual grant and UI preview use identical guards and keep original window expiry. Old capped counters are migrated by a documented approximate calendar inference; new games track540days.
 
 MEFO relief is conditional on the native dynamic modifier or legacy idea, removed when inactive/ended, replaces tiers without stacking and never writes native debt variables or repeats material rewards. Tier2/3unlock on the existing supplier/mature-industrial focuses. Consumer-goods modifiers are not a promise of an exact number of free factories.
+
+##1.1.0 Native German military rewards
+
+Exactly59native military focuses map to15bounded permanent families in german_native_rewards.json. Append source-audited effects without changing native rewards/availability/positions. One monotone tier per family; existing stronger tiers survive. Each first new completion grants one50%research use and a120-day branch window; distinct focuses may refresh that single window, repeated same reward/load may not. Daily reconciliation derives permanent reforms only from completed focuses, including older saves; never replay research or training windows. No extra global army attack/defence/organisation or military-factory output in these families.
