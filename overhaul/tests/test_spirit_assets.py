@@ -16,6 +16,7 @@ from generate_last_chance import generate as last_generate
 from generate_campaign_balance import generate as balance_generate
 from generate_mefo_relief import generate as mefo_generate
 from generate_native_military import generate as military_generate
+from generate_war_stories import generate as stories_generate
 spec=importlib.util.spec_from_file_location('spirit_asset_builder',ROOT/'overhaul/tools/build_overhaul.py')
 builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
 
@@ -25,7 +26,7 @@ class SpiritAssetTests(unittest.TestCase):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name)
         builder.author_country_content(self.root,builder.read_catalogs(ROOT/'overhaul/data'),{'GER':0,'SOV':0})
         war_generate(self.root);city_generate(self.root);offensive_generate(self.root);programmes_generate(self.root)
-        reserves_generate(self.root);operations_generate(self.root);aid_generate(self.root);last_generate(self.root);balance_generate(self.root);mefo_generate(self.root);military_generate(self.root)
+        reserves_generate(self.root);operations_generate(self.root);aid_generate(self.root);last_generate(self.root);balance_generate(self.root);mefo_generate(self.root);military_generate(self.root);stories_generate(self.root)
     def modifiers(self):
         result={}
         for p in (self.root/'common/ideas').glob('hro*.txt'):
@@ -33,9 +34,9 @@ class SpiritAssetTests(unittest.TestCase):
                 if n.key and n.key.startswith('hro_') and n.one('modifier'):
                     result[n.key]=[(m.key,m.value) for m in n.one('modifier').value]
         return result
-    def test_all_329_spirits_are_visible_self_contained_and_keep_their_modifiers(self):
+    def test_all_346_spirits_are_visible_self_contained_and_keep_their_modifiers(self):
         before=self.modifiers();summary=author_spirit_assets(self.root)
-        self.assertEqual(summary['visible_spirits'],329)
+        self.assertEqual(summary['visible_spirits'],346)
         self.assertEqual(audit_spirit_assets(self.root),[])
         self.assertEqual(self.modifiers(),before)
     def test_owned_dds_headers_include_real_pixels_and_alpha(self):

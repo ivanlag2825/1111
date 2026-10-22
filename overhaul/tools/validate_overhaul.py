@@ -318,7 +318,7 @@ def _keyword_audit(own_docs, all_focuses, effect_defs, trigger_defs, schema, err
                         if equipment.key not in equipment_types:errors.append(f'Unknown documented equipment group: {equipment.key}')
                         for stat in equipment.value:
                             if stat.key!='instant' and stat.key not in stat_keys:errors.append(f'Unknown equipment stat: {equipment.key}/{stat.key}')
-    modifier_keys = set(re.findall(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?:country|army|aggressive|defensive|naval|air|state)\s*$', text, re.M))
+    modifier_keys = set(re.findall(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?:country|army|aggressive|defensive|naval|air|state|intelligence_agency)\s*$', text, re.M))
     buildings = ('arms_factory', 'industrial_complex', 'dockyard', 'infrastructure', 'rail_way', 'supply_node', 'air_base', 'anti_air', 'radar_station', 'fuel_silo', 'synthetic_refinery', 'bunker', 'coastal_bunker')
     modifier_keys.update('production_speed_' + b + '_factor' for b in buildings)
     for path, roots in own_docs.items():

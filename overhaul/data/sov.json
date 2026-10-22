@@ -1882,6 +1882,90 @@
         "hro_sov_specialize_medium_tank"
       ],
       "reward": "hro_set_hro_idea_sov_specialize_medium_td = yes army_experience = 50"
+    },
+    {
+      "id": "hro_sov_modular_fortification_lines",
+      "name_ru": "Железобетонные рубежи",
+      "name_en": "Reinforced Concrete Lines",
+      "desc_ru": "Строительство сухопутных укреплений +40%, береговых +25%, скорость окапывания +20%. Нужно выделять фабрики на строительство: готовые укрепления не выдаются. Один 50%-ный профильный исследовательский бонус.",
+      "desc_en": "Land fort construction +40%, coastal forts +25%, entrenchment speed +20%. Factories must still build the forts. One 50% matching research bonus.",
+      "branch": "army",
+      "x": 36,
+      "y": 13,
+      "cost": 4,
+      "prerequisites": [
+        [
+          "hro_sov_defence_in_depth",
+          "hro_sov_mobile_groups"
+        ]
+      ],
+      "earliest": "1939.1.1",
+      "reward": "hro_set_hro_idea_sov_story_fortifications = yes add_tech_bonus = { name = hro_sov_modular_fortification_lines bonus = 0.5 uses = 1 category = cat_fortification }",
+      "icon": "GFX_SOV_the_molotov_line_ccp_2d_sov_compatibility",
+      "available": ""
+    },
+    {
+      "id": "hro_sov_front_recon_rebuild",
+      "name_ru": "Вернуть глаза фронту",
+      "name_en": "Give the Front Its Eyes Back",
+      "desc_ru": "После первых 21 военных дней позволяет закончить восстановление фронтовой разведки раньше автоматических 60 дней. В продолжающейся войне после восстановления: разведка +10%, армейские разведданные +10%. Первые 21 день провала не пропускаются. Один 50%-ный бонус технологий поддержки.",
+      "desc_en": "After 21 war days, this reform can finish intelligence recovery before the automatic 60-day deadline. Restored wartime reconnaissance and army intelligence +10%. It cannot skip the initial 21-day blackout. One 50% support research bonus.",
+      "branch": "army",
+      "x": 45,
+      "y": 7,
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_sov_signals_procedures"
+        ]
+      ],
+      "earliest": "1941.1.1",
+      "reward": "hro_story_recon_reform = yes add_tech_bonus = { name = hro_sov_front_recon_rebuild bonus = 0.5 uses = 1 category = support_tech }",
+      "icon": "GFX_SOV_strengthen_the_mobilization_plan_ccp_2d_sov_compatibility",
+      "available": "hro_war_eastern_war = yes check_variable = { hro_war_sov_war_days > 20 }"
+    },
+    {
+      "id": "hro_sov_tank_ambush_manuals",
+      "name_ru": "Танковые засады",
+      "name_en": "Tank Ambush Manuals",
+      "desc_ru": "Защита бронетанковых частей +8%, потери опытных бойцов −5%. Опыт танковых засад превращается в постоянную подготовку, даже если событие Колобанова в этой партии не произошло. Один 50%-ный танковый исследовательский бонус.",
+      "desc_en": "Armour defence +8%, experience losses −5%. Ambush experience becomes permanent training even if the Kolobanov event did not occur. One 50% armour research bonus.",
+      "branch": "army",
+      "x": 25,
+      "y": 21,
+      "cost": 4,
+      "prerequisites": [
+        [
+          "hro_sov_tank_standardization"
+        ],
+        [
+          "hro_sov_front_recon_rebuild"
+        ]
+      ],
+      "earliest": "1942.1.1",
+      "reward": "hro_set_hro_idea_sov_story_ambush = yes add_tech_bonus = { name = hro_sov_tank_ambush_manuals bonus = 0.5 uses = 1 category = armor }",
+      "icon": "GFX_SOV_superior_war_machines_ccp_2d_sov_compatibility",
+      "available": ""
+    },
+    {
+      "id": "hro_sov_field_workshops",
+      "name_ru": "Самовар, сварка и ремонт",
+      "name_en": "Samovar, Welding and Repairs",
+      "desc_ru": "Истощение −3%, зимнее истощение −10%. В первую подходящую зиму Восточной войны возможно одно событие о горячем чае для экипажей. Один 50%-ный бонус технологий поддержки.",
+      "desc_en": "Attrition −3%, winter attrition −10%. One hot-tea story may occur in a suitable Eastern-war winter. One 50% support research bonus.",
+      "branch": "army",
+      "x": 31,
+      "y": 23,
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_sov_armored_recovery_echelons"
+        ]
+      ],
+      "earliest": "1942.1.1",
+      "reward": "hro_set_hro_idea_sov_story_workshops = yes add_tech_bonus = { name = hro_sov_field_workshops bonus = 0.5 uses = 1 category = support_tech }",
+      "icon": "GFX_SOV_development_of_tankograd_ccp_2d_sov_compatibility",
+      "available": ""
     }
   ],
   "ideas": [
@@ -3120,6 +3204,52 @@
           "hard_attack": -0.05,
           "build_cost_ic": 0.05
         }
+      }
+    },
+    {
+      "id": "hro_idea_sov_story_fortifications",
+      "family": "hro_family_sov_story_fortifications",
+      "stage": 1,
+      "tag": "SOV",
+      "initial": false,
+      "name_ru": "Сборные оборонительные рубежи",
+      "name_en": "Prefabricated Defensive Lines",
+      "desc_ru": "Строительство сухопутных укреплений +40%, береговых +25%, окапывание +20%.",
+      "desc_en": "Land fort construction +40%, coastal forts +25%, entrenchment speed +20%.",
+      "modifiers": {
+        "production_speed_bunker_factor": 0.4,
+        "production_speed_coastal_bunker_factor": 0.25,
+        "dig_in_speed_factor": 0.2
+      }
+    },
+    {
+      "id": "hro_idea_sov_story_ambush",
+      "family": "hro_family_sov_story_ambush",
+      "stage": 1,
+      "tag": "SOV",
+      "initial": false,
+      "name_ru": "Школа танковой засады",
+      "name_en": "Tank Ambush School",
+      "desc_ru": "Защита бронетанковых частей +8%, потери опытных бойцов −5%. Не даёт защиты всей армии.",
+      "desc_en": "Armour defence +8%, experience losses −5%. This is not general army defence.",
+      "modifiers": {
+        "army_armor_defence_factor": 0.08,
+        "experience_loss_factor": -0.05
+      }
+    },
+    {
+      "id": "hro_idea_sov_story_workshops",
+      "family": "hro_family_sov_story_workshops",
+      "stage": 1,
+      "tag": "SOV",
+      "initial": false,
+      "name_ru": "Зимние фронтовые мастерские",
+      "name_en": "Winter Front Workshops",
+      "desc_ru": "Истощение −3%, зимнее истощение −10%.",
+      "desc_en": "Attrition −3%, winter attrition −10%.",
+      "modifiers": {
+        "attrition": -0.03,
+        "winter_attrition_factor": -0.1
       }
     }
   ],

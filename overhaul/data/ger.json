@@ -1644,6 +1644,88 @@
         "hro_ger_specialize_medium_tank"
       ],
       "reward": "hro_set_hro_idea_ger_specialize_medium_td = yes army_experience = 50"
+    },
+    {
+      "id": "hro_ger_dora_programme",
+      "name_ru": "Осадное орудие «Дора»",
+      "name_en": "Dora Siege Gun Programme",
+      "desc_ru": "Технология железнодорожных орудий, один прототип «Дора» в Берлине и постоянная эффективность обстрела железнодорожными орудиями +15%. Испытания на 90 дней снижают выпуск военных заводов на 3%. Нужен контроль Берлина. Модель орудия использует штатное железнодорожное орудие игры.",
+      "desc_en": "Unlock railway guns, one Dora prototype in Berlin and permanent railway bombardment +15%. Trials cost −3% military factory output for 90 days. Requires Berlin control. The prototype uses the native railway gun model.",
+      "branch": "army",
+      "x": 2,
+      "y": 25,
+      "cost": 5,
+      "prerequisites": [
+        [
+          "GER_artillery_bombardment",
+          "GER_expand_kummersdorfs_capacity"
+        ]
+      ],
+      "earliest": "1940.1.1",
+      "reward": "hro_story_dora_complete = yes",
+      "icon": "GFX_focus_SWE_let_fly_all_guns",
+      "available": "controls_province = 6521"
+    },
+    {
+      "id": "hro_ger_modular_fortifications",
+      "name_ru": "Бетон по расписанию",
+      "name_en": "Concrete on Schedule",
+      "desc_ru": "Строительство сухопутных укреплений +35%, береговых +25%, скорость окапывания +15%. Бонус действует на строительство, готовые линии бесплатно не появляются. Один 50%-ный бонус исследований укреплений.",
+      "desc_en": "Land fort construction +35%, coastal forts +25%, entrenchment speed +15%. No free completed fort lines. One 50% fortification research bonus.",
+      "branch": "army",
+      "x": 2,
+      "y": 5,
+      "cost": 4,
+      "prerequisites": [
+        [
+          "GER_fortify_the_vaterland"
+        ]
+      ],
+      "earliest": "1938.1.1",
+      "reward": "hro_set_hro_idea_ger_story_fortifications = yes add_tech_bonus = { name = hro_ger_modular_fortifications bonus = 0.5 uses = 1 category = cat_fortification }",
+      "icon": "GFX_goal_fortify_the_westwall",
+      "available": ""
+    },
+    {
+      "id": "hro_ger_dummy_positions",
+      "name_ru": "Макеты на ложных позициях",
+      "name_en": "Dummy Positions",
+      "desc_ru": "Разведданные об армии и авиации для других стран −10%, разведка +10%. Ложные позиции затрудняют оценку сил, но не скрывают фронт полностью. Один 50%-ный бонус технологий поддержки.",
+      "desc_en": "Army/air intel to others −10%, reconnaissance +10%. Dummy positions complicate estimates without hiding the whole front. One 50% support research bonus.",
+      "branch": "army",
+      "x": 12,
+      "y": 25,
+      "cost": 3,
+      "prerequisites": [
+        [
+          "GER_salvage_captured_equipment",
+          "hro_ger_corps_signals"
+        ]
+      ],
+      "earliest": "1941.1.1",
+      "reward": "hro_set_hro_idea_ger_story_decoys = yes add_tech_bonus = { name = hro_ger_dummy_positions bonus = 0.5 uses = 1 category = support_tech }",
+      "icon": "GFX_goal_generic_intelligence_exchange",
+      "available": ""
+    },
+    {
+      "id": "hro_ger_field_kitchens",
+      "name_ru": "Горячее снабжение",
+      "name_en": "Hot Meals at the Front",
+      "desc_ru": "Зимнее истощение −10%, расход снабжения −3%. В первую действительную зиму Восточной войны возможно одно событие о полевых кухнях. Один 50%-ный бонус технологий поддержки.",
+      "desc_en": "Winter attrition −10%, supply use −3%. One field-kitchen story can occur during an Eastern-war winter. One 50% support research bonus.",
+      "branch": "logistics",
+      "x": 49,
+      "y": 15,
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_strategic_stockpiles"
+        ]
+      ],
+      "earliest": "1940.1.1",
+      "reward": "hro_set_hro_idea_ger_story_kitchens = yes add_tech_bonus = { name = hro_ger_field_kitchens bonus = 0.5 uses = 1 category = support_tech }",
+      "icon": "GFX_focus_generic_reinforcing_the_supply_network",
+      "available": ""
     }
   ],
   "ideas": [
@@ -3392,6 +3474,67 @@
       "desc_en": "Research speed: +5%. One tier per reform: upgrades replace earlier tiers and weaker rewards never remove stronger benefits.",
       "modifiers": {
         "research_speed_factor": 0.05
+      }
+    },
+    {
+      "id": "hro_idea_ger_story_dora",
+      "family": "hro_family_ger_story_dora",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Тяжёлая осадная артиллерия",
+      "name_en": "Heavy Siege Artillery",
+      "desc_ru": "Эффективность обстрела железнодорожными орудиями +15%. Это общая подготовка тяжёлой железнодорожной артиллерии, не отдельная 3D модель.",
+      "desc_en": "Railway gun bombardment +15%. This is heavy railway artillery training, not a separate 3D model.",
+      "modifiers": {
+        "railway_gun_bombardment_factor": 0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_story_fortifications",
+      "family": "hro_family_ger_story_fortifications",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Модульные инженерные позиции",
+      "name_en": "Modular Engineer Positions",
+      "desc_ru": "Строительство сухопутных укреплений +35%, береговых +25%, окапывание +15%.",
+      "desc_en": "Land fort construction +35%, coastal forts +25%, entrenchment speed +15%.",
+      "modifiers": {
+        "production_speed_bunker_factor": 0.35,
+        "production_speed_coastal_bunker_factor": 0.25,
+        "dig_in_speed_factor": 0.15
+      }
+    },
+    {
+      "id": "hro_idea_ger_story_decoys",
+      "family": "hro_family_ger_story_decoys",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Ложные позиции и маскировка",
+      "name_en": "Dummy Positions and Camouflage",
+      "desc_ru": "Разведданные об армии/авиации для других стран −10%; разведка +10%.",
+      "desc_en": "Army/air intelligence to others −10%; reconnaissance +10%.",
+      "modifiers": {
+        "army_intel_to_others": -0.1,
+        "airforce_intel_to_others": -0.1,
+        "recon_factor": 0.1
+      }
+    },
+    {
+      "id": "hro_idea_ger_story_kitchens",
+      "family": "hro_family_ger_story_kitchens",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Горячая еда на передовой",
+      "name_en": "Hot Meals on the Front Line",
+      "desc_ru": "Зимнее истощение −10%, расход снабжения −3%.",
+      "desc_en": "Winter attrition −10%, supply use −3%.",
+      "modifiers": {
+        "winter_attrition_factor": -0.1,
+        "supply_consumption_factor": -0.03
       }
     }
   ],

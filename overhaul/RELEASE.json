@@ -1,28 +1,28 @@
 {
-  "version": "1.1.1",
+  "version": "1.2.0",
   "runtime_verified": false,
   "new_focus_counts": {
-    "GER": 72,
-    "SOV": 85
+    "GER": 76,
+    "SOV": 89
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 52,
-    "authored_focuses": 157,
+    "script_files": 57,
+    "authored_focuses": 165,
     "focuses_per_country": {
-      "GER": 72,
-      "SOV": 85
+      "GER": 76,
+      "SOV": 89
     },
     "native_focuses": 749,
     "catalogue_native_patches": 209,
     "native_prerequisite_patches": 74,
     "required_integrated_milestones": 44,
     "required_choice_milestones": 11,
-    "ideas": 329,
-    "idea_families": 65,
-    "events": 50,
-    "decisions": 131,
-    "localisation_keys_per_language": 1828,
+    "ideas": 346,
+    "idea_families": 72,
+    "events": 55,
+    "decisions": 135,
+    "localisation_keys_per_language": 1923,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -149,7 +149,7 @@
       "sequential": 21
     },
     "direct_regrouping_completion_days": 21,
-    "merged_daily_sources": 12
+    "merged_daily_sources": 13
   },
   "allied_aid": {
     "duration_days": 365,
@@ -186,8 +186,8 @@
     ]
   },
   "country_catalog_sha256": {
-    "GER": "672c8117413b96f5719d74915608af3a704748eb4974214c8d1333e4ac6acbb1",
-    "SOV": "89f9cf0a8d461eb8bd3b3fb18b17ac5addc78e4b856544a59786807a91d8c639"
+    "GER": "4c467aa02ba9865a16bb2b355d028f4ebf750605835bfb4cfc1e15eb72b9affd",
+    "SOV": "f79e44a0d86d22b2cff88cf6ef4e69b5973ce7c49e6053d1728bf0eaac79cddd"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "material_reserves": {
@@ -224,7 +224,7 @@
       "max_conditional_focus_y": 31.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 510,
+      "focus_count": 514,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "500",
@@ -240,7 +240,7 @@
       "max_conditional_focus_y": 26.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 396,
+      "focus_count": 400,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "55",
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/signals.zip",
-  "sha256": "c099eef15b51e9513fa7719ccd4fe4c9782267ca3b465c988c32f24631086fb4",
-  "bytes": 645748,
+  "archive": "dist/stories.zip",
+  "sha256": "2cde80361cf0df7eb4c4c09c5f57b2e625298b54a0e285a7c2b0dddb547d327b",
+  "bytes": 666520,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
   "german_native_duration_factor": 0.8,
   "tests": {
-    "overhaul": 247
+    "overhaul": 261
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-soviet-signals-balance/dist/signals.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-german-native-military/dist/military.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-war-stories/dist/stories.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-soviet-signals-balance/dist/signals.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -278,7 +278,8 @@
     "doctrine": "e47195bd47a3ea36fc58a3e8520651da3f22ac1aad9ee88a19588089b07d1e1a",
     "lastchance": "af13122b753d8ae07fab7c9eb388947453aaff958e9edd24a6503cfd1d1c8058",
     "eastbalance": "dad53fdee6c2ef4be4156f7177946db021853f671e97258309a5432c48b64c70",
-    "military": "a5abbfe5dac986aeda754fa4a50075daa7bbdfdf5fde28ae2682f30ae91d82d1"
+    "military": "a5abbfe5dac986aeda754fa4a50075daa7bbdfdf5fde28ae2682f30ae91d82d1",
+    "signals": "c099eef15b51e9513fa7719ccd4fe4c9782267ca3b465c988c32f24631086fb4"
   },
   "saved_game_update": {
     "from_versions": [
@@ -294,7 +295,8 @@
       "0.9.0",
       "0.9.1",
       "1.0.0",
-      "1.1.0"
+      "1.1.0",
+      "1.1.1"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,
@@ -304,7 +306,9 @@
     "new_campaign_recommended_for_balance": true,
     "old_capped_phase_clock_uses_documented_calendar_estimate": true,
     "native_military_permanent_backfill": true,
-    "native_military_research_or_timer_replay": false
+    "native_military_research_or_timer_replay": false,
+    "war_story_age_uses_existing_soviet_counter": true,
+    "old_wars_after_day60_do_not_get_new_blackout": true
   },
   "decision_presentation": {
     "numeric_programmes": 36,
@@ -475,8 +479,8 @@
       "GER": {
         "industrial_capacity_factory": 0.6,
         "army_org_factor": 0.23,
-        "supply_consumption_factor": -0.36,
-        "winter_attrition_factor": -0.6,
+        "supply_consumption_factor": -0.39,
+        "winter_attrition_factor": -0.7,
         "experience_loss_factor": -0.25,
         "attrition": -0.6,
         "out_of_supply_factor": 0,
@@ -488,9 +492,9 @@
         "industrial_capacity_factory": 0.6,
         "army_org_factor": 0.55,
         "supply_consumption_factor": -0.35,
-        "winter_attrition_factor": 0,
-        "experience_loss_factor": -0.8,
-        "attrition": -0.4,
+        "winter_attrition_factor": -0.1,
+        "experience_loss_factor": -0.85,
+        "attrition": -0.43,
         "out_of_supply_factor": -0.45,
         "army_attack_factor": 0.87,
         "army_defence_factor": 1.05,
@@ -649,5 +653,19 @@
     "save_reconciliation": "permanent reforms only; no research or timer replay",
     "global_army_attack_or_defence_added": false
   },
-  "native_military_catalog_sha256": "d4672673c0268befb227ecd20201a0f9e6d034ec7749c908847375a6f5ebf4a8"
+  "native_military_catalog_sha256": "d4672673c0268befb227ecd20201a0f9e6d034ec7749c908847375a6f5ebf4a8",
+  "war_stories": {
+    "focuses": 8,
+    "events": 5,
+    "decisions": 4,
+    "runtime_ideas": 10,
+    "blackout_days": 21,
+    "automatic_recovery_day": 60,
+    "recon_minimum_days_not_skippable": true,
+    "one_dora_prototype": true,
+    "kolobanov_choice_days": 180,
+    "kolobanov_requires_leningrad": true,
+    "jokes_have_small_finite_rewards": true,
+    "runtime_verified": false
+  }
 }

@@ -109,3 +109,9 @@ MEFO relief is conditional on the native dynamic modifier or legacy idea, remove
 ##1.1.0 Native German military rewards
 
 Exactly59native military focuses map to15bounded permanent families in german_native_rewards.json. Append source-audited effects without changing native rewards/availability/positions. One monotone tier per family; existing stronger tiers survive. Each first new completion grants one50%research use and a120-day branch window; distinct focuses may refresh that single window, repeated same reward/load may not. Daily reconciliation derives permanent reforms only from completed focuses, including older saves; never replay research or training windows. No extra global army attack/defence/organisation or military-factory output in these families.
+
+## 1.2.0 War stories
+
+Eight additional focuses link to existing branches. Native railway_gun technology and create_railway_gun produce exactly one named prototype at controlled Berlin; pending delivery survives reload, is blocked by capitulation/enemy control, and never repeats. No custom 3D model is claimed. The first Soviet defensive-war recon blackout uses saved war age: days0–20 full modifiers,21–59 partial,60 automatic end; reform cannot skip21days. Intel modifiers do not guarantee literal zero UI intelligence. Stories run after the war tick in the consolidated dispatcher.
+
+Kolobanov requires defensive war, held Leningrad and bounded dates/war age; options share a permanent chosen flag and recheck conditions before awarding. Winter food stories are once per country. Decisions have PP costs, fixed120/90-day effects and180-day activation cooldowns; replay and stale events cannot duplicate rewards. Validate VP geography, stage boundaries, pause/rewar, prototype, exclusive choices, expired popups and programme costs. Historical narrative is conditional flavour, not a claim of actual player tank kills.

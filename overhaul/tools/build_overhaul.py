@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.1.1'
+VERSION = '1.2.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,7 +552,15 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Советская связь 1.1.1
+## Фронтовые истории 1.2.0
+
+Добавлены восемь связанных с основными ветками фокусов: «Дора», ускоренное строительство укреплений, ложные позиции, горячее снабжение; советские инженерные рубежи, восстановление разведки, танковые засады и зимние мастерские. «Дора» открывает штатную железнодорожную артиллерию и один именованный прототип с издержками испытаний. Событие Колобанова предлагает один из двух уроков, если Ленинград удерживается в подходящий период оборонительной войны. Пять событий и четыре платных решения имеют сроки и защиту от повторных наград.
+
+В первые 21 день первой оборонительной войны СССР действуют −100%-ные модификаторы фронтовой разведки; затем −50% до 60-го дня. Фокус может ускорить восстановление после первых 21 дня. Это модификаторы, не принудительное обнуление всех источников информации агентства. Добавлены небольшие одноразовые зимние истории про полевые кухни и самовар. [Полные условия и числа](docs/WAR_STORIES_120_RU.md).
+
+Сохранение 1.1.1 можно продолжить после перезапуска; оба игрока устанавливают один архив. Полностью удалите старую папку мода перед установкой. Движок HOI4 здесь не запускался.
+
+## История: советская связь 1.1.1
 
 У «Оперативных резервов связи» бонус духа «Оперативные узлы связи» уменьшен: координация+10%вместо+20%. Планирование+30%, исследования и другие награды сохранены. Германия не изменена. Существующий дух в сохранении получает новое значение после перезапуска игры.
 
@@ -790,6 +798,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         mefo_relief = mefo_module.generate(stage)
         native_military_module = module('hro_native_military_generator', OVERHAUL / 'tools/generate_native_military.py')
         native_military = native_military_module.generate(stage, catalogs)
+        stories_module = module('hro_war_stories_generator', OVERHAUL / 'tools/generate_war_stories.py')
+        stories_module.validate_geography(game)
+        war_stories = stories_module.generate(stage)
         runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -805,7 +816,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, runtime=runtime,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, war_stories=war_stories, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},

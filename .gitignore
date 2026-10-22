@@ -26,3 +26,5 @@ dist/*
 !dist/military.zip
 
 !dist/signals.zip
+
+!dist/stories.zip

@@ -41,7 +41,7 @@ class FocusGroupTests(unittest.TestCase):
         for catalog in self.catalogs:
             for focus in catalog['focuses']:
                 keys={n.key for n in walk(parse(focus['reward']))}
-                useful={'add_tech_bonus','add_research_slot','add_building_construction','add_timed_idea'}
+                useful={'add_tech_bonus','add_research_slot','add_building_construction','add_timed_idea','hro_story_dora_complete'}
                 spirits={('hro_set_'+i['id']):i for i in catalog['ideas']}
                 reforms=[spirits[k] for k in keys if k in spirits]
                 real_reform=any(i.get('modifiers') or i.get('equipment_bonus') for i in reforms)
