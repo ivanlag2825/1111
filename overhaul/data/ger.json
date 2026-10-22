@@ -307,7 +307,7 @@
       "branch": "logistics",
       "row": 13,
       "x": 10,
-      "y": 15,
+      "y": 21.0,
       "icon": "GFX_focus_generic_reinforcing_the_supply_network",
       "cost": 5,
       "prerequisites": [
@@ -354,13 +354,17 @@
       "branch": "army",
       "row": 5,
       "x": 6,
-      "y": 7,
+      "y": 9.0,
       "icon": "GFX_goal_generic_axis_build_infantry",
       "cost": 4,
       "prerequisites": [
         [
           "GER_the_prussian_legacy",
           "GER_adopt_new_panzer_doctrine"
+        ],
+        [
+          "hro_ger_specialize_decisive",
+          "hro_ger_specialize_sequential"
         ]
       ],
       "reward": "hro_set_hro_idea_ger_army_mission_2 = yes army_experience = 75 add_tech_bonus = { name = hro_ger_mission_command bonus = 1 uses = 2 category = infantry_weapons }",
@@ -381,13 +385,17 @@
       "branch": "army",
       "row": 5,
       "x": 10,
-      "y": 7,
+      "y": 9.0,
       "icon": "GFX_focus_generic_military_mission",
       "cost": 4,
       "prerequisites": [
         [
           "GER_the_prussian_legacy",
           "GER_adopt_new_panzer_doctrine"
+        ],
+        [
+          "hro_ger_specialize_decisive",
+          "hro_ger_specialize_sequential"
         ]
       ],
       "reward": "hro_set_hro_idea_ger_army_staff_2 = yes army_experience = 75 add_tech_bonus = { name = hro_ger_standard_staff bonus = 1 uses = 2 category = infantry_weapons }",
@@ -408,7 +416,7 @@
       "branch": "army",
       "row": 7,
       "x": 12,
-      "y": 9,
+      "y": 11.0,
       "icon": "GFX_focus_generic_combined_arms",
       "cost": 5,
       "prerequisites": [
@@ -429,12 +437,16 @@
       "branch": "army",
       "row": 9,
       "x": 8,
-      "y": 11,
+      "y": 15.0,
       "icon": "GFX_focus_generic_tank_assembly",
       "cost": 4,
       "prerequisites": [
         [
           "GER_instill_auftragstaktik"
+        ],
+        [
+          "hro_ger_specialize_heavy",
+          "hro_ger_specialize_medium"
         ]
       ],
       "reward": "add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 2 category = support_tech } add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 1 category = cat_mechanized_equipment } army_experience = 75",
@@ -449,7 +461,7 @@
       "branch": "army",
       "row": 15,
       "x": 7,
-      "y": 17,
+      "y": 23.0,
       "icon": "GFX_focus_GER_german_army_invincible",
       "cost": 5,
       "prerequisites": [
@@ -469,7 +481,7 @@
       "branch": "army",
       "row": 17,
       "x": 10,
-      "y": 19,
+      "y": 25.0,
       "icon": "GFX_focus_generic_university_2",
       "cost": 7,
       "prerequisites": [
@@ -493,7 +505,7 @@
       "branch": "army",
       "row": 19,
       "x": 8,
-      "y": 21,
+      "y": 27.0,
       "icon": "GFX_focus_generic_combined_arms",
       "cost": 7,
       "prerequisites": [
@@ -592,7 +604,7 @@
       "branch": "air",
       "row": 7,
       "x": 20,
-      "y": 9,
+      "y": 11.0,
       "icon": "GFX_focus_generic_aircraft_production",
       "cost": 5,
       "prerequisites": [
@@ -602,6 +614,10 @@
         ],
         [
           "GER_aeronautical_research_institute"
+        ],
+        [
+          "hro_ger_specialize_fighter",
+          "hro_ger_specialize_cas"
         ]
       ],
       "reward": "if = { limit = { has_country_flag = hro_ger_front_air_program } hro_set_hro_idea_ger_air_front_3 = yes } else = { hro_set_hro_idea_ger_air_defence_3 = yes } if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 3 if = { limit = { free_building_slots = { building = arms_factory size > 2 include_locked = yes } } add_building_construction = { type = arms_factory level = 3 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_mature_air_operations bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_mature_air_operations bonus = 1 uses = 2 category = industry } }",
@@ -616,7 +632,7 @@
       "branch": "air",
       "row": 9,
       "x": 14,
-      "y": 11,
+      "y": 15.0,
       "icon": "GFX_focus_generic_tank_air_support",
       "cost": 5,
       "prerequisites": [
@@ -640,7 +656,7 @@
       "branch": "air",
       "row": 15,
       "x": 20,
-      "y": 17,
+      "y": 19.0,
       "icon": "GFX_focus_GER_amerikabomber",
       "cost": 7,
       "prerequisites": [
@@ -967,7 +983,7 @@
       "name_en": "Corps Signals",
       "branch": "army",
       "x": 6,
-      "y": 9,
+      "y": 11.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -986,7 +1002,7 @@
       "name_en": "Panzer Repair Columns",
       "branch": "logistics",
       "x": 12,
-      "y": 13,
+      "y": 19.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1007,12 +1023,16 @@
       "name_en": "March Replacement Battalions",
       "branch": "army",
       "x": 4,
-      "y": 15,
+      "y": 21.0,
       "cost": 4,
       "prerequisites": [
         [
           "GER_panzergrenadier",
           "GER_stormtroopers"
+        ],
+        [
+          "hro_ger_specialize_infantry",
+          "hro_ger_specialize_artillery"
         ]
       ],
       "icon": "GFX_focus_generic_heavy_tank",
@@ -1027,7 +1047,7 @@
       "name_en": "Assault Group Engineers",
       "branch": "army",
       "x": 4,
-      "y": 11,
+      "y": 15.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1045,7 +1065,7 @@
       "name_en": "Army Recovery Network",
       "branch": "logistics",
       "x": 4,
-      "y": 17,
+      "y": 23.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1067,7 +1087,7 @@
       "name_en": "General Staff: War of Attrition",
       "branch": "army",
       "x": 7,
-      "y": 23,
+      "y": 29.0,
       "cost": 5,
       "prerequisites": [
         [
@@ -1089,7 +1109,7 @@
       "name_en": "Elastic Front Lines",
       "branch": "army",
       "x": 3,
-      "y": 19,
+      "y": 25.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1111,7 +1131,7 @@
       "name_en": "Deep Exploitation",
       "branch": "army",
       "x": 5,
-      "y": 19,
+      "y": 25.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1133,7 +1153,7 @@
       "name_en": "Corps Counteroffensive Groups",
       "branch": "army",
       "x": 4,
-      "y": 21,
+      "y": 27.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1234,7 +1254,7 @@
       "name_en": "Air Battle Control Network",
       "branch": "air",
       "x": 20,
-      "y": 11,
+      "y": 13.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1253,7 +1273,7 @@
       "name_en": "Jet Fighter Regiments",
       "branch": "air",
       "x": 22,
-      "y": 19,
+      "y": 21.0,
       "cost": 4,
       "prerequisites": [
         [
@@ -1349,6 +1369,192 @@
       "desc_ru": "Программа «Штаб национального восстановления». Национальная служба восстановления: ремонт +75%; строительство +25%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
       "desc_en": "National Reconstruction Command. industry repair factor +75%; production speed buildings factor +25%. Research, capacity and manpower rewards are shown in the completion effects.",
       "earliest": "1945.1.1"
+    },
+    {
+      "id": "hro_ger_specialize_decisive",
+      "name_ru": "Доктрина решительного прорыва",
+      "name_en": "Decisive Breakthrough Doctrine",
+      "desc_ru": "Постоянно: планирование+30%, максимальный бонус планирования+15%, расход снабжения+10%, восстановление организации−10%. Новые операции:14дней атаки+50%, скорости+20%, планирования+50%, восстановления+15%, снабжения−5%. Отрицательные эффекты усталости на25%тяжелее, шаг7дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Permanent: planning +30%, maximum planning +15%, supply use +10%, organisation recovery −10%. New operations: 14 days of attack +50%, speed +20%, planning +50%, recovery +15%, supply use −5%. Negative fatigue effects are 25% worse, with 7-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "army",
+      "row": 7,
+      "x": 6,
+      "y": 7,
+      "icon": "GFX_goal_generic_major_war",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_command_post_exercises"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_sequential"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_decisive = yes army_experience = 50 add_tech_bonus = { name = hro_ger_specialize_decisive bonus = 1 uses = 2 category = support_tech }",
+      "flags": [
+        "hro_strategy_decisive"
+      ]
+    },
+    {
+      "id": "hro_ger_specialize_sequential",
+      "name_ru": "Доктрина последовательных операций",
+      "name_en": "Successive Operations Doctrine",
+      "desc_ru": "Постоянно: планирование+15%, восстановление организации+20%, скорость дивизий−5%. Новые операции:21день атаки+20%, скорости+5%, планирования+25%, восстановления+35%, снабжения−15%. Отрицательные эффекты усталости на25%мягче, шаг10дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Permanent: planning +15%, organisation recovery +20%, division speed −5%. New operations: 21 days of attack +20%, speed +5%, planning +25%, recovery +35%, supply use −15%. Negative fatigue effects are 25% milder, with 10-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "army",
+      "row": 7,
+      "x": 10,
+      "y": 7,
+      "icon": "GFX_goal_generic_position_armies",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_command_post_exercises"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_decisive"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_sequential = yes army_experience = 50 add_tech_bonus = { name = hro_ger_specialize_sequential bonus = 1 uses = 2 category = support_tech }",
+      "flags": [
+        "hro_strategy_sequential"
+      ]
+    },
+    {
+      "id": "hro_ger_specialize_heavy",
+      "name_ru": "Ставка на тяжёлые танки",
+      "name_en": "Heavy Tank Priority",
+      "desc_ru": "Тяжёлые танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака +30%, Противотанковая атака +30%, Броня +25%, Стоимость производства -15%, Расход топлива +15%. Средние танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака -15%, Противотанковая атака -15%, Стоимость производства +20%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Heavy tank chassis and variants: Soft attack +30%, Hard attack +30%, Armour +25%, Production cost -15%, Fuel consumption +15%. Medium tank chassis and variants: Soft attack -15%, Hard attack -15%, Production cost +20%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "army",
+      "row": 13,
+      "x": 10,
+      "y": 13,
+      "icon": "GFX_focus_generic_tank_assembly",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_combined_exercises"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_medium"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_heavy = yes army_experience = 50 add_tech_bonus = { name = hro_ger_specialize_heavy bonus = 1 uses = 2 category = armor }"
+    },
+    {
+      "id": "hro_ger_specialize_medium",
+      "name_ru": "Ставка на средние танки",
+      "name_en": "Medium Tank Priority",
+      "desc_ru": "Тяжёлые танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака -15%, Противотанковая атака -15%, Стоимость производства +25%. Средние танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака +25%, Прорыв +25%, Скорость +15%, Стоимость производства -20%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Heavy tank chassis and variants: Soft attack -15%, Hard attack -15%, Production cost +25%. Medium tank chassis and variants: Soft attack +25%, Breakthrough +25%, Speed +15%, Production cost -20%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "army",
+      "row": 13,
+      "x": 14,
+      "y": 13,
+      "icon": "GFX_focus_generic_tank_assembly",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_combined_exercises"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_heavy"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_medium = yes army_experience = 50 add_tech_bonus = { name = hro_ger_specialize_medium bonus = 1 uses = 2 category = armor }"
+    },
+    {
+      "id": "hro_ger_specialize_infantry",
+      "name_ru": "Пехота — основа армии",
+      "name_en": "Infantry as the Army Backbone",
+      "desc_ru": "Пехотное снаряжение: Противопехотная атака +25%, Противотанковая атака +25%, Защита +20%, Стоимость производства -15%. Буксируемая артиллерия: Противопехотная атака -20%, Стоимость производства +25%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Infantry equipment: Soft attack +25%, Hard attack +25%, Defence +20%, Production cost -15%. Towed artillery: Soft attack -20%, Production cost +25%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "army",
+      "row": 17,
+      "x": 2,
+      "y": 17,
+      "icon": "GFX_goal_generic_axis_build_infantry",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_assault_engineering",
+          "hro_ger_armour_maintenance_school"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_artillery"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_infantry = yes army_experience = 50 add_tech_bonus = { name = hro_ger_specialize_infantry bonus = 1 uses = 2 category = infantry_weapons }"
+    },
+    {
+      "id": "hro_ger_specialize_artillery",
+      "name_ru": "Артиллерия решает исход боя",
+      "name_en": "Artillery Decides the Battle",
+      "desc_ru": "Пехотное снаряжение: Противопехотная атака -15%, Защита -10%, Стоимость производства +15%. Буксируемая артиллерия: Противопехотная атака +40%, Стоимость производства -20%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Infantry equipment: Soft attack -15%, Defence -10%, Production cost +15%. Towed artillery: Soft attack +40%, Production cost -20%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "army",
+      "row": 17,
+      "x": 6,
+      "y": 17,
+      "icon": "GFX_focus_GER_army",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_assault_engineering",
+          "hro_ger_armour_maintenance_school"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_infantry"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_artillery = yes army_experience = 50 add_tech_bonus = { name = hro_ger_specialize_artillery bonus = 1 uses = 2 category = artillery }"
+    },
+    {
+      "id": "hro_ger_specialize_fighter",
+      "name_ru": "Господство истребительной авиации",
+      "name_en": "Fighter Superiority",
+      "desc_ru": "Лёгкие истребительные планеры: Воздушная атака +35%, Манёвренность +20%, Стоимость производства -15%. Лёгкие штурмовые планеры: Наземная атака -25%, Стоимость производства +20%. Эффективность выбранной миссии+20%, альтернативной−15%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Small fighter airframes: Air attack +35%, Agility +20%, Production cost -15%. Small CAS airframes: Ground attack -25%, Production cost +20%. Preferred mission efficiency +20%, alternative −15%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "air",
+      "row": 9,
+      "x": 18,
+      "y": 9,
+      "icon": "GFX_focus_GER_airforce",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_front_air_programme",
+          "hro_ger_industrial_air_defence"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_cas"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_fighter = yes air_experience = 50 add_tech_bonus = { name = hro_ger_specialize_fighter bonus = 1 uses = 2 category = light_air }"
+    },
+    {
+      "id": "hro_ger_specialize_cas",
+      "name_ru": "Штурмовая авиация поля боя",
+      "name_en": "Battlefield Close Air Support",
+      "desc_ru": "Лёгкие истребительные планеры: Воздушная атака -20%, Манёвренность -10%, Стоимость производства +15%. Лёгкие штурмовые планеры: Наземная атака +35%, Воздушная защита +20%, Стоимость производства -20%. Эффективность выбранной миссии+20%, альтернативной−15%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Small fighter airframes: Air attack -20%, Agility -10%, Production cost +15%. Small CAS airframes: Ground attack +35%, Air defence +20%, Production cost -20%. Preferred mission efficiency +20%, alternative −15%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "branch": "air",
+      "row": 9,
+      "x": 22,
+      "y": 9,
+      "icon": "GFX_focus_generic_cas_aircraft",
+      "cost": 3,
+      "prerequisites": [
+        [
+          "hro_ger_front_air_programme",
+          "hro_ger_industrial_air_defence"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_ger_specialize_fighter"
+      ],
+      "reward": "hro_set_hro_idea_ger_specialize_cas = yes air_experience = 50 add_tech_bonus = { name = hro_ger_specialize_cas bonus = 1 uses = 2 category = light_air }"
     }
   ],
   "ideas": [
@@ -2237,6 +2443,261 @@
         "industry_repair_factor": 0.75,
         "production_speed_buildings_factor": 0.25
       }
+    },
+    {
+      "id": "hro_idea_ger_specialize_decisive",
+      "family": "hro_family_ger_specialize_operations",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Доктрина решительного прорыва",
+      "name_en": "Decisive Breakthrough Doctrine",
+      "desc_ru": "Постоянно: планирование+30%, максимальный бонус планирования+15%, расход снабжения+10%, восстановление организации−10%. Новые операции:14дней атаки+50%, скорости+20%, планирования+50%, восстановления+15%, снабжения−5%. Отрицательные эффекты усталости на25%тяжелее, шаг7дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Permanent: planning +30%, maximum planning +15%, supply use +10%, organisation recovery −10%. New operations: 14 days of attack +50%, speed +20%, planning +50%, recovery +15%, supply use −5%. Negative fatigue effects are 25% worse, with 7-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {
+        "planning_speed": 0.3,
+        "max_planning_factor": 0.15,
+        "supply_consumption_factor": 0.1,
+        "army_org_regain": -0.1
+      },
+      "equipment_bonus": {}
+    },
+    {
+      "id": "hro_idea_ger_specialize_sequential",
+      "family": "hro_family_ger_specialize_operations",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Доктрина последовательных операций",
+      "name_en": "Successive Operations Doctrine",
+      "desc_ru": "Постоянно: планирование+15%, восстановление организации+20%, скорость дивизий−5%. Новые операции:21день атаки+20%, скорости+5%, планирования+25%, восстановления+35%, снабжения−15%. Отрицательные эффекты усталости на25%мягче, шаг10дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Permanent: planning +15%, organisation recovery +20%, division speed −5%. New operations: 21 days of attack +20%, speed +5%, planning +25%, recovery +35%, supply use −15%. Negative fatigue effects are 25% milder, with 10-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {
+        "planning_speed": 0.15,
+        "army_org_regain": 0.2,
+        "army_speed_factor": -0.05
+      },
+      "equipment_bonus": {}
+    },
+    {
+      "id": "hro_idea_ger_specialize_heavy",
+      "family": "hro_family_ger_specialize_armour",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Ставка на тяжёлые танки",
+      "name_en": "Heavy Tank Priority",
+      "desc_ru": "Тяжёлые танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака +30%, Противотанковая атака +30%, Броня +25%, Стоимость производства -15%, Расход топлива +15%. Средние танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака -15%, Противотанковая атака -15%, Стоимость производства +20%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Heavy tank chassis and variants: Soft attack +30%, Hard attack +30%, Armour +25%, Production cost -15%, Fuel consumption +15%. Medium tank chassis and variants: Soft attack -15%, Hard attack -15%, Production cost +20%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {},
+      "equipment_bonus": {
+        "heavy_tank_chassis": {
+          "soft_attack": 0.3,
+          "hard_attack": 0.3,
+          "armor_value": 0.25,
+          "build_cost_ic": -0.15,
+          "fuel_consumption": 0.15
+        },
+        "heavy_tank_destroyer_chassis": {
+          "soft_attack": 0.3,
+          "hard_attack": 0.3,
+          "armor_value": 0.25,
+          "build_cost_ic": -0.15,
+          "fuel_consumption": 0.15
+        },
+        "heavy_tank_artillery_chassis": {
+          "soft_attack": 0.3,
+          "hard_attack": 0.3,
+          "armor_value": 0.25,
+          "build_cost_ic": -0.15,
+          "fuel_consumption": 0.15
+        },
+        "heavy_tank_aa_chassis": {
+          "soft_attack": 0.3,
+          "hard_attack": 0.3,
+          "armor_value": 0.25,
+          "build_cost_ic": -0.15,
+          "fuel_consumption": 0.15
+        },
+        "medium_tank_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.2
+        },
+        "medium_tank_destroyer_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.2
+        },
+        "medium_tank_artillery_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.2
+        },
+        "medium_tank_aa_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.2
+        }
+      }
+    },
+    {
+      "id": "hro_idea_ger_specialize_medium",
+      "family": "hro_family_ger_specialize_armour",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Ставка на средние танки",
+      "name_en": "Medium Tank Priority",
+      "desc_ru": "Тяжёлые танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака -15%, Противотанковая атака -15%, Стоимость производства +25%. Средние танковые шасси и САУ/ПТ/ЗСУ: Противопехотная атака +25%, Прорыв +25%, Скорость +15%, Стоимость производства -20%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Heavy tank chassis and variants: Soft attack -15%, Hard attack -15%, Production cost +25%. Medium tank chassis and variants: Soft attack +25%, Breakthrough +25%, Speed +15%, Production cost -20%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {},
+      "equipment_bonus": {
+        "medium_tank_chassis": {
+          "soft_attack": 0.25,
+          "breakthrough": 0.25,
+          "maximum_speed": 0.15,
+          "build_cost_ic": -0.2
+        },
+        "medium_tank_destroyer_chassis": {
+          "soft_attack": 0.25,
+          "breakthrough": 0.25,
+          "maximum_speed": 0.15,
+          "build_cost_ic": -0.2
+        },
+        "medium_tank_artillery_chassis": {
+          "soft_attack": 0.25,
+          "breakthrough": 0.25,
+          "maximum_speed": 0.15,
+          "build_cost_ic": -0.2
+        },
+        "medium_tank_aa_chassis": {
+          "soft_attack": 0.25,
+          "breakthrough": 0.25,
+          "maximum_speed": 0.15,
+          "build_cost_ic": -0.2
+        },
+        "heavy_tank_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.25
+        },
+        "heavy_tank_destroyer_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.25
+        },
+        "heavy_tank_artillery_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.25
+        },
+        "heavy_tank_aa_chassis": {
+          "soft_attack": -0.15,
+          "hard_attack": -0.15,
+          "build_cost_ic": 0.25
+        }
+      }
+    },
+    {
+      "id": "hro_idea_ger_specialize_infantry",
+      "family": "hro_family_ger_specialize_firepower",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Пехота — основа армии",
+      "name_en": "Infantry as the Army Backbone",
+      "desc_ru": "Пехотное снаряжение: Противопехотная атака +25%, Противотанковая атака +25%, Защита +20%, Стоимость производства -15%. Буксируемая артиллерия: Противопехотная атака -20%, Стоимость производства +25%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Infantry equipment: Soft attack +25%, Hard attack +25%, Defence +20%, Production cost -15%. Towed artillery: Soft attack -20%, Production cost +25%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {},
+      "equipment_bonus": {
+        "infantry_equipment": {
+          "soft_attack": 0.25,
+          "hard_attack": 0.25,
+          "defense": 0.2,
+          "build_cost_ic": -0.15
+        },
+        "artillery_equipment": {
+          "soft_attack": -0.2,
+          "build_cost_ic": 0.25
+        }
+      }
+    },
+    {
+      "id": "hro_idea_ger_specialize_artillery",
+      "family": "hro_family_ger_specialize_firepower",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Артиллерия решает исход боя",
+      "name_en": "Artillery Decides the Battle",
+      "desc_ru": "Пехотное снаряжение: Противопехотная атака -15%, Защита -10%, Стоимость производства +15%. Буксируемая артиллерия: Противопехотная атака +40%, Стоимость производства -20%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Infantry equipment: Soft attack -15%, Defence -10%, Production cost +15%. Towed artillery: Soft attack +40%, Production cost -20%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {},
+      "equipment_bonus": {
+        "artillery_equipment": {
+          "soft_attack": 0.4,
+          "build_cost_ic": -0.2
+        },
+        "infantry_equipment": {
+          "soft_attack": -0.15,
+          "defense": -0.1,
+          "build_cost_ic": 0.15
+        }
+      }
+    },
+    {
+      "id": "hro_idea_ger_specialize_fighter",
+      "family": "hro_family_ger_specialize_aircraft",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Господство истребительной авиации",
+      "name_en": "Fighter Superiority",
+      "desc_ru": "Лёгкие истребительные планеры: Воздушная атака +35%, Манёвренность +20%, Стоимость производства -15%. Лёгкие штурмовые планеры: Наземная атака -25%, Стоимость производства +20%. Эффективность выбранной миссии+20%, альтернативной−15%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Small fighter airframes: Air attack +35%, Agility +20%, Production cost -15%. Small CAS airframes: Ground attack -25%, Production cost +20%. Preferred mission efficiency +20%, alternative −15%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {
+        "air_superiority_efficiency": 0.2,
+        "air_cas_efficiency": -0.15
+      },
+      "equipment_bonus": {
+        "small_plane_airframe": {
+          "air_attack": 0.35,
+          "air_agility": 0.2,
+          "build_cost_ic": -0.15
+        },
+        "small_plane_cas_airframe": {
+          "air_ground_attack": -0.25,
+          "build_cost_ic": 0.2
+        }
+      }
+    },
+    {
+      "id": "hro_idea_ger_specialize_cas",
+      "family": "hro_family_ger_specialize_aircraft",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Штурмовая авиация поля боя",
+      "name_en": "Battlefield Close Air Support",
+      "desc_ru": "Лёгкие истребительные планеры: Воздушная атака -20%, Манёвренность -10%, Стоимость производства +15%. Лёгкие штурмовые планеры: Наземная атака +35%, Воздушная защита +20%, Стоимость производства -20%. Эффективность выбранной миссии+20%, альтернативной−15%. Выбор постоянный и исключает противоположную специализацию. 50 опыта и два100%-х исследовательских бонуса; параметры техники действуют на существующие и новые варианты соответствующего класса.",
+      "desc_en": "Small fighter airframes: Air attack -20%, Agility -10%, Production cost +15%. Small CAS airframes: Ground attack +35%, Air defence +20%, Production cost -20%. Preferred mission efficiency +20%, alternative −15%. Permanent mutually exclusive choice. Grants 50 experience and two100% research bonuses; equipment stats apply to existing and new variants of the matching class.",
+      "modifiers": {
+        "air_cas_efficiency": 0.2,
+        "air_superiority_efficiency": -0.15
+      },
+      "equipment_bonus": {
+        "small_plane_cas_airframe": {
+          "air_ground_attack": 0.35,
+          "air_defence": 0.2,
+          "build_cost_ic": -0.2
+        },
+        "small_plane_airframe": {
+          "air_attack": -0.2,
+          "air_agility": -0.1,
+          "build_cost_ic": 0.15
+        }
+      }
     }
   ],
   "native_patches": [
@@ -2472,7 +2933,7 @@
       "cost": 3,
       "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_the_prussian_legacy bonus = 0.75 uses = 1 category = infantry_weapons }",
       "x": 6,
-      "y": 6,
+      "y": 8.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2491,7 +2952,7 @@
       "cost": 3,
       "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_improve_motorized_troops bonus = 0.75 uses = 1 category = cat_mechanized_equipment }",
       "x": 3,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
@@ -2499,7 +2960,7 @@
       "cost": 3,
       "extra_reward": "army_experience = 50",
       "x": 5,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
@@ -2507,7 +2968,7 @@
       "cost": 3,
       "extra_reward": "add_tech_bonus = { name = GER_artillery_bombardment bonus = 0.75 uses = 1 category = artillery }",
       "x": 4,
-      "y": 10,
+      "y": 14.0,
       "relative_position_id": null
     },
     {
@@ -2515,7 +2976,7 @@
       "cost": 3,
       "extra_reward": "add_tech_bonus = { name = GER_stormtroopers bonus = 0.75 uses = 1 category = infantry_weapons }",
       "x": 4,
-      "y": 12,
+      "y": 18.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2531,7 +2992,7 @@
       "cost": 3,
       "extra_reward": "if = { limit = { has_idea = hro_idea_ger_army_0 } hro_set_hro_idea_ger_army_1 = yes } army_experience = 40",
       "x": 8,
-      "y": 10,
+      "y": 14.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2549,7 +3010,7 @@
       "cost": 5,
       "extra_reward": "add_tech_bonus = { name = GER_panzergrenadier bonus = 0.75 uses = 1 category = cat_mechanized_equipment }",
       "x": 8,
-      "y": 12,
+      "y": 18.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2565,7 +3026,7 @@
       "cost": 3,
       "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_kriegslokomotiven bonus = 0.75 uses = 1 category = train_tech }",
       "x": 11,
-      "y": 14,
+      "y": 20.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2581,7 +3042,7 @@
       "cost": 5,
       "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_political_power = 25",
       "x": 7,
-      "y": 14,
+      "y": 20.0,
       "relative_position_id": null
     },
     {
@@ -2589,7 +3050,7 @@
       "cost": 5,
       "extra_reward": "add_tech_bonus = { name = GER_adopt_new_panzer_doctrine bonus = 0.75 uses = 1 category = armor }",
       "x": 10,
-      "y": 6,
+      "y": 8.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2608,7 +3069,7 @@
       "cost": 3,
       "extra_reward": "army_experience = 50 add_command_power = 5",
       "x": 11,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
@@ -2616,7 +3077,7 @@
       "cost": 5,
       "extra_reward": "army_experience = 50 add_tech_bonus = { name = GER_combined_arms bonus = 0.75 uses = 1 category = support_tech }",
       "x": 14,
-      "y": 10,
+      "y": 14.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2699,7 +3160,7 @@
       "cost": 3,
       "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } air_experience = 25",
       "x": 20,
-      "y": 10,
+      "y": 12.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -2716,7 +3177,7 @@
       "cost": 5,
       "extra_reward": "add_tech_bonus = { name = GER_defense_of_the_reich bonus = 0.75 uses = 1 category = radar_tech }",
       "x": 23,
-      "y": 10,
+      "y": 12.0,
       "relative_position_id": null
     },
     {
@@ -2971,55 +3432,55 @@
     {
       "id": "GER_all_terrain_military_motorcycle",
       "x": 7,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
       "id": "GER_salvage_captured_equipment",
       "x": 9,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
       "id": "GER_establish_the_afrikakorps",
       "x": 6,
-      "y": 12,
+      "y": 18.0,
       "relative_position_id": null
     },
     {
       "id": "GER_establish_the_skijager",
       "x": 10,
-      "y": 12,
+      "y": 18.0,
       "relative_position_id": null
     },
     {
       "id": "GER_nationalize_ford_factories",
       "x": 5,
-      "y": 14,
+      "y": 20.0,
       "relative_position_id": null
     },
     {
       "id": "GER_defend_the_vaterland",
       "x": 9,
-      "y": 14,
+      "y": 20.0,
       "relative_position_id": null
     },
     {
       "id": "GER_uranverein",
       "x": 8,
-      "y": 16,
+      "y": 22.0,
       "relative_position_id": null
     },
     {
       "id": "GER_advanced_panzer_research",
       "x": 13,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
       "id": "GER_expand_kummersdorfs_capacity",
       "x": 12,
-      "y": 10,
+      "y": 14.0,
       "relative_position_id": null
     },
     {
@@ -3031,7 +3492,7 @@
     {
       "id": "GER_rocketry_innovations",
       "x": 17,
-      "y": 12,
+      "y": 14.0,
       "relative_position_id": null
     },
     {
@@ -3055,7 +3516,7 @@
     {
       "id": "GER_construct_the_kammhuber_line",
       "x": 22,
-      "y": 12,
+      "y": 14.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -3069,25 +3530,25 @@
     {
       "id": "GER_establish_night_fighter_squadrons",
       "x": 24,
-      "y": 12,
+      "y": 14.0,
       "relative_position_id": null
     },
     {
       "id": "GER_torpedobomber",
       "x": 25,
-      "y": 8,
+      "y": 10.0,
       "relative_position_id": null
     },
     {
       "id": "GER_establish_carrier_groups",
       "x": 26,
-      "y": 10,
+      "y": 12.0,
       "relative_position_id": null
     },
     {
       "id": "GER_aerodynamic_research_institute",
       "x": 20,
-      "y": 14,
+      "y": 16.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -3106,7 +3567,7 @@
     {
       "id": "GER_amerikabomber",
       "x": 20,
-      "y": 18,
+      "y": 20.0,
       "relative_position_id": null,
       "prerequisites": [
         [
@@ -3378,5 +3839,42 @@
     }
   ],
   "expansion_050": true,
-  "native_duration_factor": 0.8
+  "native_duration_factor": 0.8,
+  "choice_milestones": [
+    {
+      "target": "hro_ger_mission_command",
+      "alternatives": [
+        "hro_ger_specialize_decisive",
+        "hro_ger_specialize_sequential"
+      ]
+    },
+    {
+      "target": "hro_ger_standard_staff",
+      "alternatives": [
+        "hro_ger_specialize_decisive",
+        "hro_ger_specialize_sequential"
+      ]
+    },
+    {
+      "target": "hro_ger_armour_maintenance_school",
+      "alternatives": [
+        "hro_ger_specialize_heavy",
+        "hro_ger_specialize_medium"
+      ]
+    },
+    {
+      "target": "hro_ger_replacement_march_battalions",
+      "alternatives": [
+        "hro_ger_specialize_infantry",
+        "hro_ger_specialize_artillery"
+      ]
+    },
+    {
+      "target": "hro_ger_mature_air_operations",
+      "alternatives": [
+        "hro_ger_specialize_fighter",
+        "hro_ger_specialize_cas"
+      ]
+    }
+  ]
 }

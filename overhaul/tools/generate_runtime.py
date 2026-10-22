@@ -51,4 +51,4 @@ def generate(output):
  for lang,title in [('russian','Служебная проверка'),('english','Lifecycle check')]:
   path=output/f'localisation/{lang}/hro_runtime_l_{lang}.yml';path.parent.mkdir(parents=True,exist_ok=True)
   path.write_text(f'l_{lang}:\n hro_runtime_hidden:0 "{title}"\n',encoding='utf-8-sig')
- return {'country_hooks':['on_daily_GER','on_daily_SOV'],'saved_daily_event':'hro.800','duplicate_guard_days':1,'direct_assault_transition_days':14,'direct_regrouping_completion_days':21,'merged_daily_sources':len(hooks['on_daily'])}
+ return {'country_hooks':['on_daily_GER','on_daily_SOV'],'saved_daily_event':'hro.800','duplicate_guard_days':1,'direct_assault_transition_days':14,'profile_assault_transition_days':{'decisive':14,'sequential':21},'direct_regrouping_completion_days':21,'merged_daily_sources':len(hooks['on_daily'])}

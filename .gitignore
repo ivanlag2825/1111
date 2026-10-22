@@ -16,3 +16,5 @@ dist/*
 !dist/balance.zip
 !dist/attack.zip
 .pytest_cache/
+
+!dist/doctrine.zip

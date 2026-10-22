@@ -299,6 +299,25 @@ def _keyword_audit(own_docs, all_focuses, effect_defs, trigger_defs, schema, err
                 effects(n.value)
             if path.startswith('events/') and n.key == 'option' and isinstance(n.value, list) and n.scalar('name'):
                 effects([x for x in n.value if x.key not in ('name', 'trigger', 'ai_chance', 'highlight')])
+    equipment_types=set()
+    documentation=config/'script_documentation.json'
+    if documentation.exists():
+        def collect(value):
+            if isinstance(value,dict):
+                equipment_types.update(v for v in value.get('modifiers',[]) if isinstance(v,str))
+                for v in value.values():collect(v)
+            elif isinstance(value,list):
+                for v in value:collect(v)
+        collect(json.loads(documentation.read_text()))
+    stat_keys=set(re.findall(r'alias\[(?:unit_stat|air_stat|naval_stat):([A-Za-z_][A-Za-z0-9_]*)\]',text))
+    for path,roots in own_docs.items():
+        if path.startswith('common/ideas/'):
+            for node in walk(roots):
+                if node.key=='equipment_bonus':
+                    for equipment in node.value:
+                        if equipment.key not in equipment_types:errors.append(f'Unknown documented equipment group: {equipment.key}')
+                        for stat in equipment.value:
+                            if stat.key!='instant' and stat.key not in stat_keys:errors.append(f'Unknown equipment stat: {equipment.key}/{stat.key}')
     modifier_keys = set(re.findall(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?:country|army|aggressive|defensive|naval|air|state)\s*$', text, re.M))
     buildings = ('arms_factory', 'industrial_complex', 'dockyard', 'infrastructure', 'rail_way', 'supply_node', 'air_base', 'anti_air', 'radar_station', 'fuel_silo', 'synthetic_refinery', 'bunker', 'coastal_bunker')
     modifier_keys.update('production_speed_' + b + '_factor' for b in buildings)
@@ -630,6 +649,21 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                             not math.isclose(actual.get(key, 0), value, rel_tol=TOLERANCE, abs_tol=TOLERANCE)
                             for key, value in expected.items())):
                     errors.append(f'Compiled idea modifiers differ from catalogue: {identity}')
+                expected_equipment = idea.get('equipment_bonus', {})
+                equipment_node = ideas[identity].one('equipment_bonus')
+                actual_equipment = {}
+                if equipment_node:
+                    for equipment in equipment_node.value:
+                        if equipment.scalar('instant') != 'yes':
+                            errors.append(f'Equipment specialization must affect existing variants: {identity}/{equipment.key}')
+                        actual_equipment[equipment.key] = {n.key:float(n.value) for n in equipment.value if n.key!='instant'}
+                if actual_equipment != expected_equipment:
+                    errors.append(f'Compiled equipment bonuses differ from catalogue: {identity}')
+                for equipment, stats in expected_equipment.items():
+                    if not stats or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or abs(v)>1 for v in stats.values()):
+                        errors.append(f'Invalid equipment specialization values: {identity}/{equipment}')
+                    if stats.get('build_cost_ic',0) <= -1:
+                        errors.append(f'Equipment specialization permits zero-cost production: {identity}/{equipment}')
         for patch in catalogue['native_patches']:
             patch_count += 1
             identity = patch.get('id', '')
@@ -658,6 +692,16 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
             for key in ('relative_position_id', 'icon'):
                 if key in patch and patch[key] != actual.scalar(key):
                     errors.append(f'Compiled native {key} differs from catalogue: {identity}')
+        for milestone in catalogue.get('choice_milestones', []):
+            target, alternatives = milestone['target'], milestone['alternatives']
+            if target not in all_focuses or len(alternatives) != 2 or any(a not in own_focuses for a in alternatives):
+                errors.append(f'Invalid specialization milestone: {target}')
+                continue
+            if _compatible_plan(target, groups, exclusions, forbidden=frozenset(alternatives)) is not None:
+                errors.append(f'Specialization choice can be skipped: {target}')
+            for blocked in alternatives:
+                if _compatible_plan(target, groups, exclusions, forbidden=frozenset({blocked})) is None:
+                    errors.append(f'Specialization alternative blocks continuation: {target}/{blocked}')
         milestones = catalogue.get('integrated_milestones', [])
         if not isinstance(milestones, list):
             errors.append(f'Integrated milestones must be a list: {tag}')
@@ -776,6 +820,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
         'catalogue_native_patches': patch_count,
         'native_prerequisite_patches': graph_patch_count,
         'required_integrated_milestones': integrated_count,
+        'required_choice_milestones': sum(len(c.get('choice_milestones', [])) for c in (catalogues or [])),
         'ideas': len(ideas),
         'idea_families': len(families),
         'events': len(events),

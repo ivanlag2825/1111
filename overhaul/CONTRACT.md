@@ -89,3 +89,7 @@ Agency on_start is treated as preparation: no busy/cooldown lock. Execution poll
 Mongolian assistance: one365-day idea with modifier_army_sub_unit_cavalry_attack_factor=.20. Romanian assistance: one365-day idea with army_fuel_consumption_factor=-.20. First active Eastern-war observation marks eligibility once; donor must exist, not capitulate or fight the recipient, revalidated at delivery. Never refresh or repay through options/reloads/renewed war. Existing wartime saves can receive the new aid once.
 
 Reject numeric scalar tokens without a leading zero, including appended native rewards; keep raw native source unchanged. No top-level game-rule desc after engine rejection; keep option descriptions. Use three-part descriptor supported_version. Preserve agency.zip and every prior archive; publish repair.zip separately. No claim of HOI4 runtime verification from scripted tests or CWTools alone.
+
+## Specializations 0.9.0
+
+Optional equipment_bonus maps documented equipment archetypes to finite stat modifiers; compiled ideas must preserve the mapping and instant=yes. Cost reductions cannot reach free production. Each choice_milestones continuation must be unreachable with both alternatives forbidden and reachable with either one forbidden. Reciprocal exclusions and upgrade-only spirit setters prevent stacking opposing choices. Operation style is snapshotted at launch, with14/7 or21/10day durations; all fatigue variants share a removal pool.

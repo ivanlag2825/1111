@@ -59,7 +59,7 @@ class EmittedLifecycle:
                     identity = n.scalar('flag')
                     if not self.flag(state, identity):
                         return False
-                    age = (state['date'] - state['flag_dates'][identity]).days
+                    age = (state['date'] - state.get('flag_dates', {}).get(identity, day('1936.1.1'))).days
                     for child in n.value:
                         if child.key == 'days':
                             target = int(child.value)

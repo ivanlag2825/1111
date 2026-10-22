@@ -29,9 +29,9 @@ class SpiritAssetTests(unittest.TestCase):
                 if n.key and n.key.startswith('hro_') and n.one('modifier'):
                     result[n.key]=[(m.key,m.value) for m in n.one('modifier').value]
         return result
-    def test_all_247_spirits_are_visible_self_contained_and_keep_their_modifiers(self):
+    def test_all_273_spirits_are_visible_self_contained_and_keep_their_modifiers(self):
         before=self.modifiers();summary=author_spirit_assets(self.root)
-        self.assertEqual(summary['visible_spirits'],247)
+        self.assertEqual(summary['visible_spirits'],273)
         self.assertEqual(audit_spirit_assets(self.root),[])
         self.assertEqual(self.modifiers(),before)
     def test_owned_dds_headers_include_real_pixels_and_alpha(self):
