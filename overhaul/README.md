@@ -1,4 +1,4 @@
-# Historical Reality: Total War 1936–1946 — 0.8.1
+# Historical Reality: Total War 1936–1946 — 0.8.2
 
 Исторические маршруты Германии и СССР для двух игроков, все DLC, исторические условия и свободный исход. 133 новых фокуса встроены в обычные деревья; изменены предпосылки 74 исходных узлов, для 44 ключевых переходов проверена обязательность нового этапа. Все 749 исходных ID, награды и вызовы DLC сохранены.
 
@@ -19,7 +19,7 @@
 Python 3.10+, без сторонних пакетов. Исходные `common/national_focus/germany.txt`, `soviet.txt` и `history/states/*.txt` должны соответствовать игре. Сборщик только читает их; проверяет принадлежность городских провинций областям и реальные победные очки. Архивы пользователя служат исходными данными.
 
 ```bash
-python3 overhaul/tools/build_overhaul.py --game-dir /path/to/hoi4 --output-dir /path/to/new-build --schema-dir /path/to/cwtools-hoi4-config --archive /path/to/repair.zip
+python3 overhaul/tools/build_overhaul.py --game-dir /path/to/hoi4 --output-dir /path/to/new-build --schema-dir /path/to/cwtools-hoi4-config --archive /path/to/balance.zip
 python3 -m unittest discover -s overhaul/tests -v
 ```
 
