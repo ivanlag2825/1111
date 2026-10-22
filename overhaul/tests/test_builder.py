@@ -80,6 +80,22 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(focus.one('bypass').scalar('has_capitulated'), 'yes')
         self.assertIsNotNone(focus.one('available').one('OR'))
 
+    def test_explicit_availability_override_is_audited_and_original_rewards_are_kept(self):
+        catalogs=[catalog('GER'),catalog('SOV')]
+        patch=catalogs[0]['native_patches'][0];patch['available_override']='has_war_support > 0.49'
+        report,_=builder.native_overlay(self.output,self.game,catalogs)
+        document=parse((self.output/'common/national_focus/germany.txt').read_text())
+        focus=next(n for n in walk(document) if n.key=='focus' and n.scalar('id')=='GER_anchor')
+        self.assertIsNone(focus.one('available').one('has_war'))
+        self.assertEqual(focus.one('available').scalar('has_war_support'),'0.49')
+        self.assertEqual(focus.one('completion_reward').scalar('add_political_power'),'13')
+        change=next(p for p in report['native_patches'] if p['id']=='GER_anchor')
+        self.assertIn('has_war',change['old_available'])
+        modified=parse((self.output/'common/national_focus/germany.txt').read_text().replace('has_war_support > 0.49','has_war_support > 0.1'))
+        original=parse((self.game/'common/national_focus/germany.txt').read_text())
+        with self.assertRaisesRegex(ValueError,'availability differs'):
+            builder.verify_native_preservation(original,modified,report['native_patches'])
+
     def test_german_pacing_preserves_conditions_symbolic_costs_and_soviet_durations(self):
         directory = self.game / 'common/national_focus'
         path = directory / 'germany.txt'

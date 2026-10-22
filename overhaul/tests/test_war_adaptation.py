@@ -113,7 +113,10 @@ class EmittedLifecycle:
                 state['flags'].pop(n.value, None)
             elif n.key in ('set_variable', 'add_to_variable'):
                 for child in n.value:
-                    value = float(child.value)
+                    try:
+                        value = float(child.value)
+                    except ValueError:
+                        value = state['variables'].get(child.value, 0)
                     state['variables'][child.key] = value if n.key == 'set_variable' else state['variables'].get(child.key, 0) + value
             elif n.key == 'add_ideas':
                 state['ideas'].add(n.value)

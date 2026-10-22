@@ -183,8 +183,8 @@
       "id": "hro_sov_defence_in_depth",
       "name_ru": "Эшелонированная оборона фронтов",
       "name_en": "Defence in Depth",
-      "desc_ru": "Специализация эшелонированной обороны: +6% организации, +12% защиты и +18% максимального бонуса планирования ценой −20% скорости планирования; 75 армейского опыта. Исключает самостоятельные механизированные группы. Дополнительно два 100% профильных исследовательских бонуса.",
-      "desc_en": "Defence-in-depth specialization: +6% organization, +12% army defense and +18% maximum planning bonus at the cost of −20% planning speed; 75 army experience. Excludes independent mechanized groups. Also grants two 100% research bonuses in its field.",
+      "desc_ru": "Ранняя реформа с ограниченными бонусами. Точные эффекты показаны в результате; сильные военные ступени открываются позднее.",
+      "desc_en": "An early reform with limited bonuses. Exact effects are shown in the completion tooltip; stronger wartime tiers unlock later.",
       "branch": "army",
       "row": 8,
       "cost": 4,
@@ -993,7 +993,7 @@
       "reward": "hro_set_hro_idea_sov_guards_1 = yes add_tech_bonus = { name = hro_sov_guards_training_centres bonus = 1 uses = 2 category = infantry_weapons }",
       "desc_ru": "Программа «Учебные центры гвардии». Школа гвардейских частей: атака пехоты +20%; защита армий +15%; потери опыта при пополнении -10%. Исследовательские и ресурсные награды показаны отдельно.",
       "desc_en": "Guards Training Centres. army infantry attack factor +20%; army defence factor +15%; experience loss factor -10%. Research, capacity and manpower rewards are shown in the completion effects.",
-      "earliest": "1941.1.1"
+      "earliest": "1942.1.1"
     },
     {
       "id": "hro_sov_artillery_breakthrough_groups",
@@ -1031,8 +1031,8 @@
       ],
       "icon": "GFX_goal_generic_fortify_city",
       "reward": "hro_set_hro_idea_sov_engineers_1 = yes add_tech_bonus = { name = hro_sov_assault_engineer_brigades bonus = 1 uses = 2 category = cat_fortification }",
-      "desc_ru": "Программа «Штурмовые инженерные бригады». Инженерно-сапёрные бригады: скорость окапывания +50%; максимум укрепления 5; защита армий +10%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Assault Engineer Brigades. dig in speed factor +50%; max dig in +500%; army defence factor +10%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Ранняя реформа с ограниченными бонусами. Точные эффекты показаны в результате; сильные военные ступени открываются позднее.",
+      "desc_en": "An early reform with limited bonuses. Exact effects are shown in the completion tooltip; stronger wartime tiers unlock later."
     },
     {
       "id": "hro_sov_operational_signal_reserves",
@@ -1372,8 +1372,8 @@
       ],
       "icon": "GFX_SOV_desperate_measures_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_crisis_preparation_1 = yes add_tech_bonus = { name = hro_sov_stavka_contingency_plans bonus = 1 uses = 2 category = support_tech }",
-      "desc_ru": "Программа «Ставка: сценарии отступления». Ставка: резервные сценарии: защита армий +10%; восстановление организации +15%; скорость окапывания +30%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Stavka Contingency Plans. army defence factor +10%; army org regain +15%; dig in speed factor +30%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Ранняя реформа с ограниченными бонусами. Точные эффекты показаны в результате; сильные военные ступени открываются позднее.",
+      "desc_en": "An early reform with limited bonuses. Exact effects are shown in the completion tooltip; stronger wartime tiers unlock later."
     },
     {
       "id": "hro_sov_hold_city_belt",
@@ -1564,7 +1564,8 @@
       "reward": "hro_set_hro_idea_sov_officer_pool_3 = yes add_tech_bonus = { name = hro_sov_gather_second_echelon bonus = 1 uses = 2 category = support_tech } add_manpower = 150000",
       "desc_ru": "Программа «Собрать второй стратегический эшелон». Командные кадры второго эшелона: восстановление организации +35%; потери опыта при пополнении -20%; время обучения -25%. Исследовательские и ресурсные награды показаны отдельно.",
       "desc_en": "Gather the Second Strategic Echelon. army org regain +35%; experience loss factor -20%; training time army factor -25%. Research, capacity and manpower rewards are shown in the completion effects.",
-      "available": "hro_war_eastern_war = yes check_variable = { hro_city_responses_completed > 1 }"
+      "available": "hro_war_eastern_war = yes check_variable = { hro_city_responses_completed > 1 } check_variable = { hro_war_sov_war_days > 179 }",
+      "earliest": "1942.1.1"
     },
     {
       "id": "hro_sov_all_union_reserve",
@@ -2202,11 +2203,11 @@
       "initial": false,
       "name_ru": "Организация армии: оборона в глубину",
       "name_en": "Army Organisation: Defence in Depth",
-      "desc_ru": "организация армии: +6%; защита армии: +12%; максимальный бонус планирования: +18%; скорость планирования: -20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
-      "desc_en": "army organization: +6%; army defense: +12%; maximum planning bonus: +18%; planning speed: -20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
+      "desc_ru": "Организация дивизий: +6%; Защита дивизий: +8%; Максимальный бонус планирования: +18%; Скорость планирования: -20%. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
+      "desc_en": "Division organisation: +6%; Division defence: +8%; Maximum planning bonus: +18%; Planning speed: -20%. Early reform stage; later tiers require wartime experience.",
       "modifiers": {
         "army_org_factor": 0.06,
-        "army_defence_factor": 0.12,
+        "army_defence_factor": 0.08,
         "max_planning_factor": 0.18,
         "planning_speed": -0.2
       }
@@ -2350,11 +2351,11 @@
       "initial": false,
       "name_ru": "Красная армия: профессиональные кадры",
       "name_en": "Red Army: Professional Cadres",
-      "desc_ru": "восстановление организации +15%; защита армий +10%; шанс вступления резервов в бой +2%.",
-      "desc_en": "army org regain +15%; army defence factor +10%; land reinforce rate +2%.",
+      "desc_ru": "Восстановление организации: +10%; Защита дивизий: +5%; Скорость пополнения: +2 п.п.. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
+      "desc_en": "Organisation recovery: +10%; Division defence: +5%; Reinforce rate: +2 pp. Early reform stage; later tiers require wartime experience.",
       "modifiers": {
-        "army_org_regain": 0.15,
-        "army_defence_factor": 0.1,
+        "army_org_regain": 0.1,
+        "army_defence_factor": 0.05,
         "land_reinforce_rate": 0.02
       }
     },
@@ -2481,12 +2482,12 @@
       "initial": false,
       "name_ru": "Инженерно-сапёрные бригады",
       "name_en": "Assault Engineer Brigades",
-      "desc_ru": "скорость окапывания +50%; максимум укрепления 5; защита армий +10%.",
-      "desc_en": "dig in speed factor +50%; max dig in +5; army defence factor +10%",
+      "desc_ru": "Скорость окапывания: +50%; Максимальное окапывание: +5; Защита дивизий: +5%. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
+      "desc_en": "Entrenchment speed: +50%; Maximum entrenchment: +5; Division defence: +5%. Early reform stage; later tiers require wartime experience.",
       "modifiers": {
         "dig_in_speed_factor": 0.5,
         "max_dig_in": 5,
-        "army_defence_factor": 0.1
+        "army_defence_factor": 0.05
       }
     },
     {
@@ -2716,11 +2717,11 @@
       "initial": false,
       "name_ru": "Ставка: резервные сценарии",
       "name_en": "Stavka Contingency Plans",
-      "desc_ru": "защита армий +10%; восстановление организации +15%; скорость окапывания +30%.",
-      "desc_en": "army defence factor +10%; army org regain +15%; dig in speed factor +30%.",
+      "desc_ru": "Защита дивизий: +5%; Восстановление организации: +10%; Скорость окапывания: +30%. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
+      "desc_en": "Division defence: +5%; Organisation recovery: +10%; Entrenchment speed: +30%. Early reform stage; later tiers require wartime experience.",
       "modifiers": {
-        "army_defence_factor": 0.1,
-        "army_org_regain": 0.15,
+        "army_defence_factor": 0.05,
+        "army_org_regain": 0.1,
         "dig_in_speed_factor": 0.3
       }
     },
@@ -4087,7 +4088,8 @@
       "name_ru": "Слава Красной армии",
       "name_en": "Glory of the Red Army",
       "desc_ru": "Главная награда армейского пути: постоянные +30% атаки, +25% защиты, +15% организации, +30% восстановления организации, +8 пунктов вступления резервов в бой и −30% потерь опыта при пополнении. Предыдущая ступень военной школы заменяется. Все исходные эффекты фокуса сохранены.",
-      "desc_en": "Culmination of army reform: permanent +30% attack, +25% defence, +15% organisation, +30% recovery, +8 points reinforcement rate and −30% experience loss. Replaces the previous Red Army reform tier. Retains all native effects."
+      "desc_en": "Culmination of army reform: permanent +30% attack, +25% defence, +15% organisation, +30% recovery, +8 points reinforcement rate and −30% experience loss. Replaces the previous Red Army reform tier. Retains all native effects.",
+      "earliest": "1943.1.1"
     },
     {
       "id": "SOV_the_glory_of_the_red_army_alt",
@@ -4098,7 +4100,8 @@
       "name_ru": "Слава Красной армии",
       "name_en": "Glory of the Red Army",
       "desc_ru": "Главная награда армейского пути: постоянные +30% атаки, +25% защиты, +15% организации, +30% восстановления организации, +8 пунктов вступления резервов в бой и −30% потерь опыта при пополнении. Предыдущая ступень военной школы заменяется. Все исходные эффекты фокуса сохранены.",
-      "desc_en": "Culmination of army reform: permanent +30% attack, +25% defence, +15% organisation, +30% recovery, +8 points reinforcement rate and −30% experience loss. Replaces the previous Red Army reform tier. Retains all native effects."
+      "desc_en": "Culmination of army reform: permanent +30% attack, +25% defence, +15% organisation, +30% recovery, +8 points reinforcement rate and −30% experience loss. Replaces the previous Red Army reform tier. Retains all native effects.",
+      "earliest": "1943.1.1"
     },
     {
       "id": "SOV_nkvd_primacy",
@@ -4136,7 +4139,8 @@
     "Версия 0.4: увеличены действительные промышленные, командные, тыловые и авиационные эффекты; специализации сохраняют ощутимые издержки. Основная структура дерева не изменена.",
     "Версия 0.4: обязательные этапы подготовки и полноценной военной адаптации встроены в награды существующих основных фокусов. Бонусы опыта войны включаются только после фактических дней войны/зимы; исходные эффекты DLC сохранены.",
     "0.5: тематические заголовки, расширенные основные маршруты, крупная кульминация Красной армии и региональная антикризисная ветка. Ступени национальных реформ заменяются, не складываются.",
-    "0.6: публичные реформы показывают положительные параметры, служебная смена идей скрыта; равные и более высокие ступени не понижаются. Пересмотрены кризисы Восточного фронта и добавлены германские наступательные награды."
+    "0.6: публичные реформы показывают положительные параметры, служебная смена идей скрыта; равные и более высокие ступени не понижаются. Пересмотрены кризисы Восточного фронта и добавлены германские наступательные награды.",
+    "1.0.0: ранняя защита сокращена, гвардия1942, полная СлаваКраснойармии1943; опыт и временные городские эффекты ограничиваются этапом войны."
   ],
   "integrated_milestones": [
     {

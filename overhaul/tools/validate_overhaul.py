@@ -671,6 +671,11 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                 errors.append(f'Native patch target missing: {identity}')
                 continue
             actual = all_focuses[identity]
+            if patch.get('available_override') is not None:
+                declared = parse(patch['available_override'])
+                actual_condition = actual.one('available')
+                if actual_condition is None or [_signature(n) for n in actual_condition.value[:len(declared)]] != [_signature(n) for n in declared]:
+                    errors.append(f'Compiled native availability differs from explicit override: {identity}')
             if 'prerequisites' in patch:
                 graph_patch_count += 1
                 declared = patch['prerequisites']

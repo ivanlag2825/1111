@@ -23,11 +23,11 @@ def generate(output):
         body=' '.join(f'{k} = {v:g}' for k,v in mods.items())
         ideas.append(f'{identity} = {{ picture = generic_army allowed = {{ original_tag = GER }} removal_cost = -1 modifier = {{ {body} }} }}')
     idea(LAUNCH_IDEAS[0],'Первый удар Восточной кампании','Opening Blow of the Eastern Campaign',
-         {'army_attack_factor':.35,'army_speed_factor':.20,'planning_speed':.30,'army_org_regain':.20,'supply_consumption_factor':-.10},
+         {'army_attack_factor':.45,'army_speed_factor':.20,'planning_speed':.30,'army_org_regain':.20,'supply_consumption_factor':-.10},
          'Первые 60 действительных дней первой наступательной войны Германии против СССР. Затем сменяется меньшим темпом преследования до 120-го дня. В ноябре–марте не действует; дни войны продолжают расходовать окно. Мир приостанавливает военный счётчик, повторная война его не сбрасывает.',
          'The first 60 actual days of Germany’s first offensive war against the USSR. A milder pursuit tier lasts until day 120. Inactive in November–March while war days continue consuming the window. Peace pauses the clock; rewar does not reset it.')
     idea(LAUNCH_IDEAS[1],'Развитие первоначального прорыва','Exploiting the Initial Breakthrough',
-         {'army_attack_factor':.20,'army_speed_factor':.10,'planning_speed':.20,'army_org_regain':.10,'supply_consumption_factor':-.05},
+         {'army_attack_factor':.25,'army_speed_factor':.10,'planning_speed':.20,'army_org_regain':.10,'supply_consumption_factor':-.05},
          'Дни 60–119 первой наступательной войны против СССР. После 120 военных дней первоначальное преимущество заканчивается. Зимой не действует.',
          'Days 60–119 of the first offensive war against the USSR. Initial advantages end after 120 war days and are inactive in winter.')
     for tier,values in enumerate(((.10,.05,.10,.20),(.15,.10,.15,.30),(.20,.15,.20,.40)),1):

@@ -39,23 +39,23 @@ def generate(output: Path):
     records=[]
     def idea(identity,ru,en,mods,dr,de):records.append((identity,ru,en,dr,de,mods))
     idea(SOV_PENALTIES[0],'Срыв приграничного развёртывания','Disrupted Frontier Deployment',
-         {'army_org_factor':-.35,'army_org_regain':-.45,'planning_speed':-.60,'industrial_capacity_factory':-.35,'supply_consumption_factor':.40,'army_speed_factor':-.15},
-         'Первая ступень кризиса: первые 45 действительных дней оборонительной войны с Германией. Затем автоматически сменяется меньшими ограничениями. Подготовка округов смягчает каждую ступень; родные штрафы DLC действуют отдельно.',
+         {'army_defence_factor':-.25,'army_org_factor':-.35,'army_org_regain':-.45,'planning_speed':-.60,'industrial_capacity_factory':-.35,'supply_consumption_factor':.40,'army_speed_factor':-.15},
+         'Защита дивизий−25%. Первая ступень кризиса: первые 45 действительных дней оборонительной войны с Германией. Затем автоматически сменяется меньшими ограничениями. Подготовка округов смягчает каждую ступень; родные штрафы DLC действуют отдельно.',
          'The first 45 actual days of defensive war with Germany. Automatically replaced by milder phases. District preparation mitigates each phase; native DLC penalties remain separate.')
     idea(SOV_PENALTIES[1],'Подготовленное отражение вторжения','Prepared Response to Invasion',
-         {'army_org_factor':-.22,'army_org_regain':-.30,'planning_speed':-.40,'industrial_capacity_factory':-.25,'supply_consumption_factor':.25,'army_speed_factor':-.05},
-         'Подготовленные округа смягчают первые 45 дней, но не отменяют кризис. После 45 и 120 военных дней ограничения автоматически уменьшаются.',
+         {'army_defence_factor':-.15,'army_org_factor':-.22,'army_org_regain':-.30,'planning_speed':-.40,'industrial_capacity_factory':-.25,'supply_consumption_factor':.25,'army_speed_factor':-.05},
+         'Защита дивизий−15%. Подготовленные округа смягчают первые45дней, но не отменяют кризис. После 45 и 120 военных дней ограничения автоматически уменьшаются.',
          'Prepared districts mitigate the first 45 days without removing the crisis. Restrictions soften automatically after 45 and 120 war days.')
     idea(SOV_PENALTIES[2],'Стратегическая перегруппировка','Strategic Regrouping',
          {'army_org_factor':-.12,'army_org_regain':-.15,'planning_speed':-.20,'industrial_capacity_factory':-.12,'supply_consumption_factor':.15},
          'Дни 120–239 войны: острый кризис ослаб, но восстановление фронтов ещё требует времени. На 240-й день отрицательная ступень сменяется положительным опытом; завершённая реформа даст более сильный результат.',
          'War days 120–239: the acute crisis has eased. At day 240 restrictions become positive experience; the completed reform earns a stronger result.')
     idea(SOV_PENALTIES[3],'Расстроенные фронты','Dislocated Fronts',
-         {'army_org_factor':-.25,'army_org_regain':-.30,'planning_speed':-.40,'industrial_capacity_factory':-.25,'supply_consumption_factor':.30,'army_speed_factor':-.10},
+         {'army_defence_factor':-.15,'army_org_factor':-.25,'army_org_regain':-.30,'planning_speed':-.40,'industrial_capacity_factory':-.25,'supply_consumption_factor':.30,'army_speed_factor':-.10},
          'Дни 45–119 войны: первая катастрофа преодолена, управление ещё нарушено. В 120 дней начинается стратегическая перегруппировка.',
          'War days 45–119: the initial catastrophe has passed, but command remains disrupted. Strategic regrouping starts at day 120.')
     idea(SOV_PENALTIES[4],'Фронты подготовленных округов','Prepared District Fronts',
-         {'army_org_factor':-.15,'army_org_regain':-.20,'planning_speed':-.25,'industrial_capacity_factory':-.18,'supply_consumption_factor':.18},
+         {'army_defence_factor':-.10,'army_org_factor':-.15,'army_org_regain':-.20,'planning_speed':-.25,'industrial_capacity_factory':-.18,'supply_consumption_factor':.18},
          'Смягчённая подготовкой вторая ступень кризиса: дни 45–119 войны.',
          'The prepared second phase of the crisis: war days 45–119.')
     idea(SOV_PENALTIES[5],'Плановая перегруппировка фронтов','Orderly Front Regrouping',

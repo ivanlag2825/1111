@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.9.1'
+VERSION = '1.0.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -154,15 +154,21 @@ def verify_native_preservation(original_nodes, modified_nodes, changes, continuo
                     continue
                 if field.key == 'cost' and 'new_cost' in patch:
                     field = with_value(field, old.one('cost').value)
-                elif field.key == 'available' and (patch.get('earliest') or patch.get('require')):
+                elif field.key == 'available' and (patch.get('earliest') or patch.get('require') or patch.get('available_override') is not None):
                     expected = []
                     if patch.get('earliest'):
                         expected.extend(parse(date_gate(patch['earliest'])))
                     if patch.get('require'):
                         expected.extend(parse(patch['require']))
-                    if signature(field.value[-len(expected):]) != signature(expected):
+                    if expected and signature(field.value[-len(expected):]) != signature(expected):
                         raise ValueError(f'Native conditions modified outside declared additions: {identity}')
-                    value = field.value[:-len(expected)]
+                    value = field.value[:-len(expected)] if expected else field.value
+                    if patch.get('available_override') is not None:
+                        if signature(value) != signature(parse(patch['available_override'])):
+                            raise ValueError('Native availability differs from explicit replacement: ' + identity)
+                        if old.one('available') is not None:
+                            fields.append(old.one('available'))
+                        continue
                     if old.one('available') is None:
                         if value:
                             raise ValueError(f'Unexpected native conditions: {identity}')
@@ -439,7 +445,18 @@ def native_overlay(stage, game, catalogs):
                 parse(patch['require'])
                 conditions.append(patch['require'])
                 details['require'] = patch['require']
-            if conditions:
+            if patch.get('available_override') is not None:
+                replacement = patch['available_override']
+                parse(replacement)
+                available = focus.one('available')
+                compiled = 'available = { ' + replacement + '\n' + '\n'.join(conditions) + ' }'
+                if available:
+                    edits.append((available.start, available.end, compiled))
+                else:
+                    edits.append((focus.value_end-1, focus.value_end-1, '\n'+compiled+'\n'))
+                details['available_override'] = replacement
+                details['old_available'] = text[available.value_start+1:available.value_end-1] if available else None
+            elif conditions:
                 available = focus.one('available')
                 addition = '\n    # HRO preparation conditions\n    ' + '\n    '.join(conditions) + '\n'
                 if available:
@@ -535,7 +552,15 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Изменения 0.9.1
+## Баланс Восточной кампании и MEFO 1.0.0
+
+Промышленная цепочка Германии перенесена в1938–1939: Тотальная война, арсенал, кластеры и распределение ресурсов доступны до вторжения. Проверенный приоритетный маршрут завершается весной1939при обеспечении поддержки войны. Развитая экономика даёт до+58%выпуска военных заводов от мода. Три этапа войны усиливают Германию вначале, сближают развитые реформы1942и дают преимущество СССР с1943; переходы требуют180/540военных дней. Ранние советские защитные духи уменьшены, мобилизация ограничена ступенью этапа, поздняя СлаваКраснойармииоткрывается1943.
+
+Помощь при активныхMEFO:−20/−35/−50%кмножителю потребительских товаров и−2/−3/−4п.п.кожидаемойдоле по мере промышленных реформ. Действует одна ступень, после окончанияMEFOснимается; исходные долг и выплаты сохранены. [Точные правила и ограничения](docs/BALANCE_100_RU.md).
+
+Для полного нового баланса рекомендуется новая кампания1936. Полностью удалите прежнюю папкумода перед распаковкой. Оба игрока устанавливают один архив. ДвижокHOI4здесьне запускался.
+
+## История изменений0.9.1
 
 Перебалансированы специализации по списку: доктрины без исследований поддержки; решительный прорыв дополнительно +5% скорости и +2% атаки. Танки теперь имеют второй выбор танки/ПТ-САУ, итог +5% обеих атак, +10% брони, −5% стоимости и только один50%-ный бонус исследования на первом этапе. Уменьшены эффекты пехоты/артиллерии, все бонусы и штрафы авиационных духов поделены на3. Всего157авторских фокусов.
 
@@ -747,6 +772,10 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         last_chance_module = module('hro_last_chance_generator', OVERHAUL / 'tools/generate_last_chance.py')
         last_chance_module.validate_geography(game)
         last_chance = last_chance_module.generate(stage)
+        balance_module = module('hro_balance_generator', OVERHAUL / 'tools/generate_campaign_balance.py')
+        campaign_balance = balance_module.generate(stage)
+        mefo_module = module('hro_mefo_relief_generator', OVERHAUL / 'tools/generate_mefo_relief.py')
+        mefo_relief = mefo_module.generate(stage)
         runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -762,7 +791,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, runtime=runtime,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},

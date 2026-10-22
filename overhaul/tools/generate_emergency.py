@@ -65,8 +65,8 @@ def generate(output):
              'Потеря ключевых городов нарушила управление и выпуск. Действует одна ступень, максимум третья. Контрмеры, освобождение города или 90 фактических дней войны ослабляют кризис; в мире и после капитуляции дух снимается.',
              'Lost cities disrupt command and production. Only one tier applies, up to tier three. Countermeasures, liberation or 90 actual war days reduce the crisis; peace and capitulation remove it.')
     for tier, mods in enumerate((
-        {'army_defence_factor':.20,'army_org_regain':.25,'training_time_army_factor':-.20,'land_reinforce_rate':.04},
-        {'army_defence_factor':.30,'army_org_regain':.40,'training_time_army_factor':-.30,'industrial_capacity_factory':.15,'land_reinforce_rate':.06,'army_org_factor':.05},
+        {'army_defence_factor':.08,'army_org_regain':.15,'training_time_army_factor':-.10,'land_reinforce_rate':.02,'industrial_capacity_factory':.05},
+        {'army_defence_factor':.25,'army_org_regain':.35,'training_time_army_factor':-.25,'industrial_capacity_factory':.15,'land_reinforce_rate':.05,'army_org_factor':.08},
         {'army_defence_factor':.40,'army_org_regain':.50,'training_time_army_factor':-.35,'industrial_capacity_factory':.25,'land_reinforce_rate':.08,'army_org_factor':.15}), 1):
         idea(f'hro_idea_city_mobilization_{tier}', 'mobilization', f'Вторая мобилизация: ступень {tier}', f'Second Mobilisation: Tier {tier}', mods,
              'Оплаченные и завершённые контрмеры усиливают мобилизацию. Действует одна ступень. Окно 240 дней начинается с первой контрмеры; новые ступени внутри окна не продлевают его. Повторная потеря одного города наград не даёт.',
@@ -98,6 +98,14 @@ def generate(output):
     text('hro_city_mobilization_details',
          'Во время подготовки: ' + describe(working, 'russian') + '. После завершения повышается одна общая ступень второй мобилизации. ' + tier_ru + ' Ступени заменяют друг друга, не складываются. Окно 240 дней начинается с первой контрмеры и не продлевается. Подсказка ниже показывает следующую ступень при текущем числе ответов.',
          'During preparation: ' + describe(working, 'english') + '. Completion upgrades one shared mobilisation tier. ' + tier_en + ' Tiers replace each other without stacking. The 240-day window begins with the first response and is never extended. The tooltip below previews the next tier using current responses.')
+    opening = 'OR = { date < 1942.1.1 check_variable = { hro_balance_war_days < 180 } }'
+    parity = 'OR = { date < 1943.1.1 check_variable = { hro_balance_war_days < 540 } }'
+    rule_ru = ' До1942года или180военных дней — максимум первая ступень; до1943года или540дней — максимум вторая. Дата и опыт не продлевают240-дневное окно.'
+    rule_en = ' Before1942 or180war days: tier1maximum; before1943 or540days: tier2maximum. Unlocking a phase never extends the240-day window.'
+    for lang in loc:
+        for key in list(loc[lang]):
+            if key in ('hro_city_mobilization_details','hro_city_reward_preview') or key.startswith('hro_idea_city_mobilization_') and key.endswith('_desc'):
+                loc[lang][key] += rule_ru if lang=='russian' else rule_en
     effects=[];decisions=[];events=['add_namespace = hro'];daily=[]
     def notification(identity, ru, en, dr, de):
         text(identity+'.t',ru,en);text(identity+'.d',dr,de);text(identity+'.a','К исполнению.','Proceed.')
@@ -150,7 +158,8 @@ def generate(output):
     available = {{ hro_war_eastern_war = yes NOT = {{ has_country_flag = hro_city_response_busy }} }}
     complete_effect = {{ set_country_flag = hro_city_response_busy set_country_flag = {p}_active add_ideas = hro_idea_city_response_working
         custom_effect_tooltip = hro_city_reward_preview
-        if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 1 }} }} show_ideas_tooltip = hro_idea_city_mobilization_3 }}
+        if = {{ limit = {{ {opening} }} show_ideas_tooltip = hro_idea_city_mobilization_1 }}
+        else_if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 1 }} NOT = {{ {parity} }} }} show_ideas_tooltip = hro_idea_city_mobilization_3 }}
         else_if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 0 }} }} show_ideas_tooltip = hro_idea_city_mobilization_2 }}
         else = {{ show_ideas_tooltip = hro_idea_city_mobilization_1 }}
     }}
@@ -214,7 +223,8 @@ hro_city_sync = {
         else_if = {{ limit = {{ check_variable = {{ hro_city_unresolved > 0 }} }} {select('crisis',1)} }}
         else = {{ {remove(groups['crisis'])} }}
         if = {{ limit = {{ has_country_flag = hro_city_mobilization_active }}
-            if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 2 }} }} {select('mobilization',3)} }}
+            if = {{ limit = {{ {opening} }} {select('mobilization',1)} }}
+            else_if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 2 }} NOT = {{ {parity} }} }} {select('mobilization',3)} }}
             else_if = {{ limit = {{ check_variable = {{ hro_city_responses_completed > 1 }} }} {select('mobilization',2)} }}
             else = {{ {select('mobilization',1)} }}
         }} else = {{ {remove(groups['mobilization'])} }}
@@ -257,5 +267,5 @@ hro_city_tick = {{
     for language, entries in loc.items():
         put(f'localisation/{language}/hro_city_l_{language}.yml',f'l_{language}:\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
     return {'cities':len(records()),'decisions':len(decisions),'events':len(events)-1,'ideas':len(ideas),
-            'max_crisis_tier':3,'crisis_war_days':90,'mobilization_window_days':240,'one_response_per_city':True,
+            'max_crisis_tier':3,'crisis_war_days':90,'mobilization_window_days':240,'phase_caps':{'opening':1,'parity':2,'mature':3},'one_response_per_city':True,
             'recapture_rewards_once':True,'victory_point_control':True,'native_evacuation_duplicated':False}

@@ -20,6 +20,9 @@ class Runtime:
             if n.key in ('AND','limit'):return self.condition(n.value,s,enemy)
             if n.key=='OR':return any(one(c) for c in n.value)
             if n.key=='NOT':return not self.condition(n.value,s,enemy)
+            if n.key=='date':
+                target=date(*map(int,n.value.split('.')))
+                return {'<':s['date']<target,'>':s['date']>target,'=':s['date']==target}[n.op]
             if n.key=='original_tag':return (('GER' if enemy else s['tag'])==n.value)
             if n.key=='hro_war_eastern_war':return (s['war'] and not s['capitulated'] and not s['enemy_capitulated'] and s['date']<date(1947,1,1))==(n.value=='yes')
             if n.key=='controls_province':return int(n.value) in s['enemy' if enemy else 'controlled']
@@ -172,6 +175,7 @@ class CityEmergencyTests(unittest.TestCase):
         self.assertEqual((self.s['manpower'],len(self.s['events']),self.s['vars']['hro_city_liberated_total']),before)
 
     def test_mobilisation_tiers_do_not_stack_or_refresh_active_window(self):
+        self.s['date']=date(1943,1,1);self.s['vars']['hro_balance_war_days']=540
         self.lose('minsk');self.r.call('hro_city_minsk_finish',self.s);expiry=self.s['flags']['hro_city_mobilization_active']
         self.r.advance(self.s,10)
         for key in ('kiev','kharkov'):self.lose(key);self.r.call('hro_city_'+key+'_finish',self.s)
@@ -194,6 +198,7 @@ class CityEmergencyTests(unittest.TestCase):
         self.assertEqual(before,(self.s['manpower'],self.s['factories'],self.s['research']))
 
     def test_mobilisation_upgrade_and_final_day_repair_keep_the_original_deadline(self):
+        self.s['date']=date(1943,1,1);self.s['vars']['hro_balance_war_days']=540
         self.lose('minsk');self.r.call('hro_city_minsk_finish',self.s)
         deadline=self.s['flags']['hro_city_mobilization_active'];self.r.advance(self.s,40)
         self.lose('kiev');self.r.call('hro_city_kiev_finish',self.s)

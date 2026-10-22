@@ -97,3 +97,11 @@ Optional equipment_bonus maps documented equipment archetypes to finite stat mod
 ##0.9.1 emergency and specializations
 
 Tank roles upgrade the same family from stage1to2, never stack or downgrade. A single50%armour research bonus is awarded on the first stage. Last-chance decisions require two simultaneously enemy-held valid cities, active war, no capitulation, and a permanent never-repeated flag. Vienna needs prior control or ownership. A182-day spirit owns all costs and rewards; minimum_training_level−.19modifies the base20%threshold rather than hard-setting a universal1%. Validate VP geography, pair eligibility, re-control, save/reload, expiry and repeat protection.
+
+##1.0.0 PvP timing and consumer-goods relief
+
+Explicit available_override is authorised for GER_zentrale_planung and GER_totaler_krieg only. The source audit checks the declared exact replacement, logs original availability, restores it for the complete source comparison, and preserves rewards/bypasses/DLC cleanup. No other native availability changes. Industrial prerequisites/dates must admit a sequential compatible route before1940.
+
+Campaign stages require calendar AND bounded active-war experience for advancement; exactly one per country, peace pauses, either capitulation/1947cleans, reload and rewar cannot reset or replay rewards. City mobilisation caps1/2/3at these stages; actual grant and UI preview use identical guards and keep original window expiry. Old capped counters are migrated by a documented approximate calendar inference; new games track540days.
+
+MEFO relief is conditional on the native dynamic modifier or legacy idea, removed when inactive/ended, replaces tiers without stacking and never writes native debt variables or repeats material rewards. Tier2/3unlock on the existing supplier/mature-industrial focuses. Consumer-goods modifiers are not a promise of an exact number of free factories.

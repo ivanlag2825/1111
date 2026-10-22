@@ -20,3 +20,5 @@ dist/*
 !dist/doctrine.zip
 
 !dist/lastchance.zip
+
+!dist/eastbalance.zip
