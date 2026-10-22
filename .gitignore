@@ -24,3 +24,5 @@ dist/*
 !dist/eastbalance.zip
 
 !dist/military.zip
+
+!dist/signals.zip

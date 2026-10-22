@@ -1052,8 +1052,8 @@
       ],
       "icon": "GFX_SOV_strengthen_the_mobilization_plan_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_radio_network_1 = yes add_tech_bonus = { name = hro_sov_operational_signal_reserves bonus = 1 uses = 2 category = electronics }",
-      "desc_ru": "Программа «Оперативные резервы связи». Оперативные узлы связи: скорость планирования +30%; координация +20%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Operational Signals Reserves. planning speed +30%; coordination bonus +20%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Программа «Оперативные резервы связи». Оперативные узлы связи: скорость планирования +30%; координация +10%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
+      "desc_en": "Operational Signals Reserves. planning speed +30%; coordination bonus +10%. Research, capacity and manpower rewards are shown in the completion effects."
     },
     {
       "id": "hro_sov_armored_recovery_echelons",
@@ -2498,11 +2498,11 @@
       "initial": false,
       "name_ru": "Оперативные узлы связи",
       "name_en": "Operational Signals Nodes",
-      "desc_ru": "скорость планирования +30%; координация +20%.",
-      "desc_en": "planning speed +30%; coordination bonus +20%",
+      "desc_ru": "скорость планирования +30%; координация +10%.",
+      "desc_en": "planning speed +30%; coordination bonus +10%",
       "modifiers": {
         "planning_speed": 0.3,
-        "coordination_bonus": 0.2
+        "coordination_bonus": 0.1
       }
     },
     {

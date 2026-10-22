@@ -1,3 +1,15 @@
+# Historical Reality — 1.1.1
+
+[Скачать signals.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-soviet-signals-balance/dist/signals.zip)
+
+## Советская связь 1.1.1
+
+У «Оперативных резервов связи» бонус духа «Оперативные узлы связи» уменьшен: координация+10%вместо+20%. Планирование+30%, исследования и другие награды сохранены. Германия не изменена. Существующий дух в сохранении получает новое значение после перезапуска игры.
+
+Полностью замените прежнюю папку мода новой. Оба игрока устанавливают один архив.
+
+## Предыдущие версии
+
 # Historical Reality: Total War1936–1946 — 1.1.0
 
 [Скачать military.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-german-native-military/dist/military.zip)

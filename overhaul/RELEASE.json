@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.1",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 72,
@@ -187,7 +187,7 @@
   },
   "country_catalog_sha256": {
     "GER": "672c8117413b96f5719d74915608af3a704748eb4974214c8d1333e4ac6acbb1",
-    "SOV": "bf08b9dde49eded9586ad6b0169a6ae96f76f55b749c11f957569f61f5f47fef"
+    "SOV": "89f9cf0a8d461eb8bd3b3fb18b17ac5addc78e4b856544a59786807a91d8c639"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "material_reserves": {
@@ -248,9 +248,9 @@
       }
     }
   },
-  "archive": "dist/military.zip",
-  "sha256": "a5abbfe5dac986aeda754fa4a50075daa7bbdfdf5fde28ae2682f30ae91d82d1",
-  "bytes": 644840,
+  "archive": "dist/signals.zip",
+  "sha256": "c099eef15b51e9513fa7719ccd4fe4c9782267ca3b465c988c32f24631086fb4",
+  "bytes": 645748,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
@@ -258,8 +258,8 @@
   "tests": {
     "overhaul": 247
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-german-native-military/dist/military.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-eastern-balance/dist/eastbalance.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-soviet-signals-balance/dist/signals.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-german-native-military/dist/military.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -277,7 +277,8 @@
     "attack": "d7a354da0d81db64ac9b3064c3b5f919d9b5b88bab4b2ae3a8570292f6a0092b",
     "doctrine": "e47195bd47a3ea36fc58a3e8520651da3f22ac1aad9ee88a19588089b07d1e1a",
     "lastchance": "af13122b753d8ae07fab7c9eb388947453aaff958e9edd24a6503cfd1d1c8058",
-    "eastbalance": "dad53fdee6c2ef4be4156f7177946db021853f671e97258309a5432c48b64c70"
+    "eastbalance": "dad53fdee6c2ef4be4156f7177946db021853f671e97258309a5432c48b64c70",
+    "military": "a5abbfe5dac986aeda754fa4a50075daa7bbdfdf5fde28ae2682f30ae91d82d1"
   },
   "saved_game_update": {
     "from_versions": [
@@ -292,7 +293,8 @@
       "0.8.3",
       "0.9.0",
       "0.9.1",
-      "1.0.0"
+      "1.0.0",
+      "1.1.0"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,

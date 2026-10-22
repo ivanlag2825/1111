@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.1.0'
+VERSION = '1.1.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,7 +552,11 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Военные фокусы Германии 1.1.0
+## Советская связь 1.1.1
+
+У «Оперативных резервов связи» бонус духа «Оперативные узлы связи» уменьшен: координация+10%вместо+20%. Планирование+30%, исследования и другие награды сохранены. Германия не изменена. Существующий дух в сохранении получает новое значение после перезапуска игры.
+
+## История: военные фокусы Германии1.1.0
 
 Усилены59исходных фокусов:23армейских,19авиационных,17морских. Добавлены15профильных реформ с заменой ступеней, один50%-ный исследовательский бонус за фокус и120-дневная подготовка по его ветке. Исходные наградыDLCсохранены. Поздняя слабая награда не снимает сильную ступень. Временная подготовка одной ветки обновляет срок, не складывается; загрузка не повторяет исследования и окна.
 
