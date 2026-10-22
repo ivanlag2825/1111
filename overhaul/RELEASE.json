@@ -1,28 +1,28 @@
 {
-  "version": "0.9.0",
+  "version": "0.9.1",
   "runtime_verified": false,
   "new_focus_counts": {
-    "GER": 68,
-    "SOV": 81
+    "GER": 72,
+    "SOV": 85
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 41,
-    "authored_focuses": 149,
+    "script_files": 46,
+    "authored_focuses": 157,
     "focuses_per_country": {
-      "GER": 68,
-      "SOV": 81
+      "GER": 72,
+      "SOV": 85
     },
     "native_focuses": 749,
     "catalogue_native_patches": 209,
     "native_prerequisite_patches": 74,
     "required_integrated_milestones": 44,
     "required_choice_milestones": 11,
-    "ideas": 273,
+    "ideas": 283,
     "idea_families": 50,
     "events": 50,
-    "decisions": 129,
-    "localisation_keys_per_language": 1531,
+    "decisions": 131,
+    "localisation_keys_per_language": 1581,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -149,7 +149,7 @@
       "sequential": 21
     },
     "direct_regrouping_completion_days": 21,
-    "merged_daily_sources": 8
+    "merged_daily_sources": 9
   },
   "allied_aid": {
     "duration_days": 365,
@@ -186,8 +186,8 @@
     ]
   },
   "country_catalog_sha256": {
-    "GER": "0d9a360f1f0daf2bf3f4b46a5f7fb2502eea7052d32daf0f03b9c9143cd91a9d",
-    "SOV": "cebc0d1c5f0997cc969c02359eea3f2301ddeb165ed58a37e6cef408e5be0dc6"
+    "GER": "aea4001ba94850dab095f0c02398c0fdc16cba21942b1f9a072faf114e54df8d",
+    "SOV": "1879d5b53640bad0031f500e3bc1caa7c7f252893b13b9979dccc5e112d82551"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "material_reserves": {
@@ -218,13 +218,13 @@
     "GER": {
       "position": {
         "x": 500,
-        "y": 4160
+        "y": 4420
       },
-      "max_base_focus_y": 29.0,
-      "max_conditional_focus_y": 29.0,
+      "max_base_focus_y": 31.0,
+      "max_conditional_focus_y": 31.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 506,
+      "focus_count": 510,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "500",
@@ -240,7 +240,7 @@
       "max_conditional_focus_y": 26.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 392,
+      "focus_count": 396,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "55",
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/doctrine.zip",
-  "sha256": "e47195bd47a3ea36fc58a3e8520651da3f22ac1aad9ee88a19588089b07d1e1a",
-  "bytes": 597780,
+  "archive": "dist/lastchance.zip",
+  "sha256": "af13122b753d8ae07fab7c9eb388947453aaff958e9edd24a6503cfd1d1c8058",
+  "bytes": 609301,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 376,
   "german_native_duration_factor": 0.8,
   "tests": {
-    "overhaul": 215
+    "overhaul": 223
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-doctrine-specializations/dist/doctrine.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-third-fatigue-attack/dist/attack.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-last-chance-balance/dist/lastchance.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-doctrine-specializations/dist/doctrine.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -274,7 +274,8 @@
     "agency": "307c34e7bf9a4b690ba5362a3d58d1443d233cdefc3fce3488ce5d47e2a76407",
     "repair": "d410bef6e142a99e88ecb543d2ba4aa7aa9e302434176c87c6f1810046be73fc",
     "balance": "e2aec93c604d7d882c3cdf9dd9d9379ed6face8ee936ba6839230c3d500de313",
-    "attack": "d7a354da0d81db64ac9b3064c3b5f919d9b5b88bab4b2ae3a8570292f6a0092b"
+    "attack": "d7a354da0d81db64ac9b3064c3b5f919d9b5b88bab4b2ae3a8570292f6a0092b",
+    "doctrine": "e47195bd47a3ea36fc58a3e8520651da3f22ac1aad9ee88a19588089b07d1e1a"
   },
   "saved_game_update": {
     "from_versions": [
@@ -286,7 +287,8 @@
       "0.8.0",
       "0.8.1",
       "0.8.2",
-      "0.8.3"
+      "0.8.3",
+      "0.9.0"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,
@@ -302,9 +304,87 @@
     "runtime_verified": false
   },
   "specializations": {
-    "new_focuses": 16,
-    "mutually_exclusive_pairs_per_country": 4,
-    "equipment_ideas": 12,
+    "added_tank_role_focuses": 8,
+    "mutually_exclusive_pairs_per_country": 6,
+    "tank_final_stats": {
+      "soft_attack": 0.05,
+      "hard_attack": 0.05,
+      "armor_value": 0.1,
+      "build_cost_ic": -0.05
+    },
+    "tank_research_uses": 1,
+    "tank_research_bonus": 0.5,
+    "air_stat_divisor": 3,
     "choice_milestones": 11
+  },
+  "last_chance": {
+    "duration_days": 182,
+    "one_time": true,
+    "cities": {
+      "SOV": [
+        [
+          219,
+          6380,
+          "Москва",
+          "Moscow"
+        ],
+        [
+          195,
+          3151,
+          "Ленинград",
+          "Leningrad"
+        ],
+        [
+          202,
+          525,
+          "Киев",
+          "Kyiv"
+        ],
+        [
+          217,
+          3529,
+          "Сталинград",
+          "Stalingrad"
+        ]
+      ],
+      "GER": [
+        [
+          64,
+          6521,
+          "Берлин",
+          "Berlin"
+        ],
+        [
+          58,
+          9347,
+          "Гамбург",
+          "Hamburg"
+        ],
+        [
+          4,
+          11666,
+          "Вена",
+          "Vienna"
+        ],
+        [
+          52,
+          692,
+          "Мюнхен",
+          "Munich"
+        ]
+      ]
+    },
+    "modifiers": {
+      "training_time_army_factor": -0.9,
+      "minimum_training_level": -0.19,
+      "conscription": 0.05,
+      "stability_factor": -0.3,
+      "war_support_factor": -0.4,
+      "industrial_capacity_factory": -0.8
+    },
+    "simultaneous_enemy_losses": 2,
+    "base_training_level": 0.2,
+    "minimum_training_level_delta": -0.19,
+    "runtime_verified": false
   }
 }

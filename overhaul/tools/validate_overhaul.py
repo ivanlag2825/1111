@@ -694,7 +694,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                     errors.append(f'Compiled native {key} differs from catalogue: {identity}')
         for milestone in catalogue.get('choice_milestones', []):
             target, alternatives = milestone['target'], milestone['alternatives']
-            if target not in all_focuses or len(alternatives) != 2 or any(a not in own_focuses for a in alternatives):
+            if target not in all_focuses or len(alternatives) < 2 or any(a not in own_focuses for a in alternatives):
                 errors.append(f'Invalid specialization milestone: {target}')
                 continue
             if _compatible_plan(target, groups, exclusions, forbidden=frozenset(alternatives)) is not None:

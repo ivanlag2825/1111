@@ -33,12 +33,12 @@ class SpecializationTests(unittest.TestCase):
   self.assertTrue(self.r.choose('launch_'+stem,state))
  def test_four_reciprocal_pairs_per_country_have_real_rewards_and_twentyone_day_cost(self):
   for catalogue in self.catalogues:
-   focuses=[f for f in catalogue['focuses'] if '_specialize_' in f['id']];self.assertEqual(len(focuses),8)
+   focuses=[f for f in catalogue['focuses'] if '_specialize_' in f['id']];self.assertEqual(len(focuses),12)
    for f in focuses:
     self.assertEqual(f['cost'],3)
     other=self.focuses[f['mutually_exclusive'][0]]
     self.assertEqual(other.one('mutually_exclusive').scalar('focus'),f['id'])
-    self.assertIn('hro_set_hro_idea_',f['reward']);self.assertIn('bonus = 1',f['reward'])
+    self.assertIn('hro_set_hro_idea_',f['reward'])
  def test_every_declared_continuation_requires_one_of_its_specializations(self):
   for catalogue in self.catalogues:
    entries={f['id']:f for f in catalogue['focuses']+catalogue['native_patches']}
@@ -86,7 +86,7 @@ class SpecializationTests(unittest.TestCase):
    heavy=self.ideas.one(f'hro_idea_{tag}_specialize_heavy')
    medium=self.ideas.one(f'hro_idea_{tag}_specialize_medium')
    self.assertIsNone(heavy.one('modifier').one('army_attack_factor'))
-   self.assertEqual(float(heavy.one('equipment_bonus').one('heavy_tank_chassis').scalar('soft_attack')),.30)
+   self.assertEqual(float(heavy.one('equipment_bonus').one('heavy_tank_chassis').scalar('soft_attack')),.025)
    self.assertGreater(float(heavy.one('equipment_bonus').one('medium_tank_chassis').scalar('build_cost_ic')),0)
    self.assertGreater(float(medium.one('equipment_bonus').one('heavy_tank_chassis').scalar('build_cost_ic')),0)
  def test_air_and_weapon_specializations_have_real_positive_and_negative_equipment_stats(self):
@@ -96,11 +96,31 @@ class SpecializationTests(unittest.TestCase):
     costs=[float(group.scalar('build_cost_ic')) for group in eq.value]
     self.assertTrue(any(v<0 for v in costs));self.assertTrue(any(v>0 for v in costs))
     self.assertTrue(all(group.scalar('instant')=='yes' for group in eq.value))
+ def test_tank_role_upgrades_replace_initial_spirit_and_cannot_stack_or_downgrade(self):
+  for tag in ('ger','sov'):
+   for weight in ('heavy','medium'):
+    for role in ('tank','td'):
+     s=self.country(tag.upper());base=f'hro_idea_{tag}_specialize_{weight}';final=base+'_'+role
+     self.r.execute(self.focuses[f'hro_{tag}_specialize_{weight}'].one('completion_reward').value,s)
+     self.r.execute(self.focuses[f'hro_{tag}_specialize_{weight}_{role}'].one('completion_reward').value,s)
+     self.assertNotIn(base,s['ideas']);self.assertIn(final,s['ideas']);self.assertEqual(s['research'],[('armor',1)])
+     self.r.execute(self.focuses[f'hro_{tag}_specialize_{weight}'].one('completion_reward').value,s)
+     self.assertNotIn(base,s['ideas']);self.assertIn(final,s['ideas'])
+     eq=self.ideas.one(final).one('equipment_bonus');chosen=weight+'_tank'+('_destroyer' if role=='td' else '')+'_chassis'
+     stats={n.key:float(n.value) for n in eq.one(chosen).value if n.key!='instant'}
+     self.assertEqual(stats,{'soft_attack':.05,'hard_attack':.05,'armor_value':.10,'build_cost_ic':-.05})
+ def test_doctrines_have_no_support_research_and_decisive_has_requested_permanent_combat_bonus(self):
+  for tag in ('ger','sov'):
+   for style in ('decisive','sequential'):
+    reward=self.focuses[f'hro_{tag}_specialize_{style}'].one('completion_reward')
+    self.assertIsNone(reward.one('add_tech_bonus'))
+   mods=self.ideas.one(f'hro_idea_{tag}_specialize_decisive').one('modifier')
+   self.assertEqual(float(mods.scalar('army_speed_factor')),.05);self.assertEqual(float(mods.scalar('army_attack_factor')),.02)
  def test_sprite_authoring_preserves_equipment_bonuses(self):
   def snapshot():
    ideas=parse((self.output/'common/ideas/hro_country_ideas.txt').read_text())[0].one('country')
    return {i.key:{g.key:[(n.key,n.value) for n in g.value] for g in i.one('equipment_bonus').value} for i in ideas.value if i.one('equipment_bonus')}
-  before=snapshot();self.assertEqual(len(before),12);author_spirit_assets(self.output);self.assertEqual(before,snapshot())
+  before=snapshot();self.assertEqual(len(before),20);author_spirit_assets(self.output);self.assertEqual(before,snapshot())
 
 
 if __name__=='__main__':unittest.main()

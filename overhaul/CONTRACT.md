@@ -93,3 +93,7 @@ Reject numeric scalar tokens without a leading zero, including appended native r
 ## Specializations 0.9.0
 
 Optional equipment_bonus maps documented equipment archetypes to finite stat modifiers; compiled ideas must preserve the mapping and instant=yes. Cost reductions cannot reach free production. Each choice_milestones continuation must be unreachable with both alternatives forbidden and reachable with either one forbidden. Reciprocal exclusions and upgrade-only spirit setters prevent stacking opposing choices. Operation style is snapshotted at launch, with14/7 or21/10day durations; all fatigue variants share a removal pool.
+
+##0.9.1 emergency and specializations
+
+Tank roles upgrade the same family from stage1to2, never stack or downgrade. A single50%armour research bonus is awarded on the first stage. Last-chance decisions require two simultaneously enemy-held valid cities, active war, no capitulation, and a permanent never-repeated flag. Vienna needs prior control or ownership. A182-day spirit owns all costs and rewards; minimum_training_level−.19modifies the base20%threshold rather than hard-setting a universal1%. Validate VP geography, pair eligibility, re-control, save/reload, expiry and repeat protection.

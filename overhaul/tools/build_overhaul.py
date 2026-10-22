@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.9.0'
+VERSION = '0.9.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -535,7 +535,13 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Развилки специализаций 0.9.0
+## Изменения 0.9.1
+
+Перебалансированы специализации по списку: доктрины без исследований поддержки; решительный прорыв дополнительно +5% скорости и +2% атаки. Танки теперь имеют второй выбор танки/ПТ-САУ, итог +5% обеих атак, +10% брони, −5% стоимости и только один50%-ный бонус исследования на первом этапе. Уменьшены эффекты пехоты/артиллерии, все бонусы и штрафы авиационных духов поделены на3. Всего157авторских фокусов.
+
+Добавлены два бесплатных одноразовых решения «Агония правительства: последний шанс» за потерю двух указанных городов. На182дня: обучение−90%, порог развёртывания−19процентных пунктов (базовые20%→1%), военнообязанные+5п.п., стабильность−30%, поддержка войны−40%, выпуск военных заводов−80%. Другие модификаторы складываются. Полные правила: docs/BALANCE_091_RU.md.
+
+## История изменений: развилки специализаций 0.9.0
 
 Добавлено16фокусов: по8Германии и СССР, четыре взаимоисключающие пары по21дню. Они встроены в армейские и авиационные ветки; дальнейшие этапы требуют выбора. Выбранное направление получает постоянный дух, альтернативное вооружение — штрафы. Переключения между парой нет.
 
@@ -738,6 +744,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         focus_groups = groups_module.generate(stage, catalogs)
         aid_module = module('hro_aid_generator', OVERHAUL / 'tools/generate_allied_aid.py')
         allied_aid = aid_module.generate(stage)
+        last_chance_module = module('hro_last_chance_generator', OVERHAUL / 'tools/generate_last_chance.py')
+        last_chance_module.validate_geography(game)
+        last_chance = last_chance_module.generate(stage)
         runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -753,7 +762,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, runtime=runtime,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},
