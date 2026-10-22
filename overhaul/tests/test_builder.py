@@ -104,6 +104,23 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(sov.scalar('cost'), '5')
         self.assertEqual(len(report['german_native_pacing']), 2)
 
+    def test_game_rule_has_no_engine_rejected_top_level_description(self):
+        builder.author_rules(self.output)
+        rule = parse((self.output / 'common/game_rules/hro_rules.txt').read_text())[0]
+        self.assertIsNone(rule.one('desc'))
+        self.assertIsNotNone(rule.one('default').one('desc'))
+        self.assertIsNotNone(rule.one('option').one('desc'))
+
+    def test_authored_script_numbers_have_leading_zeroes(self):
+        import re
+        catalogs = builder.read_catalogs(ROOT / 'overhaul/data')
+        for catalogue in catalogs:
+            for record in catalogue['focuses'] + catalogue['native_patches']:
+                for key in ('reward','extra_reward','available','require'):
+                    for node in walk(parse(record.get(key,''))):
+                        if isinstance(node.value,str):
+                            self.assertIsNone(re.fullmatch(r'[+-]?\.\d+',node.value), record['id'])
+
     def test_unknown_native_id_stops_overlay(self):
         changed = catalog('GER')
         changed['native_patches'][0]['id'] = 'GER_does_not_exist'

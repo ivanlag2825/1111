@@ -58,7 +58,7 @@ def generate(output):
   categories[category].append(key)
   decisions.append(f'''{key} = {{ icon = generic_army cost = {cost} visible = {{ {visible} }}
    available = {{ hro_war_eastern_war = yes {available} }}
-   complete_effect = {{ {body} }} ai_will_do = {{ factor = 0 }} }}''')
+   complete_effect = {{ hidden_effect = {{ hro_runtime_seed = yes }} {body} }} ai_will_do = {{ factor = 0 }} }}''')
  text('hro_ops_rear_category','Штаб: действия в тылу','Headquarters: Rear Area Operations','Диверсии перенесены в разведывательное агентство. Здесь доступна охрана объектов.','Sabotage is now launched through the intelligence agency. Site security remains available here.')
  text('hro_ops_council_category','Штаб: военные совещания','Headquarters: War Councils','Добровольные задачи на захват или удержание города. Отдельный общий слот и срок между совещаниями.','Voluntary capture or hold objectives. One shared council slot and acceptance cooldown.')
  text('hro_ops_category','Штаб: крупные операции','Headquarters: Major Operations',
@@ -88,7 +88,7 @@ def generate(output):
     {clear(pending)} if = {{ limit = {{ {enemy(vp)} }} {flag('ready',45)} {flag(ready,45)} }} }}''')
    decision('launch_'+stem,'Начать операцию: '+ru,'Launch Operation: '+en,30,
     has('ready')+' '+has(ready)+' '+enemy(vp),
-    clear('ready')+' '+clear(ready)+' '+flag('active',14)+' '+flag('assault_started')+' '+flag('cooldown',90)+' '+idea('assault',14),
+    clear('ready')+' '+clear(ready)+' '+flag('active',14)+' '+flag('assault_started')+' '+flag('cooldown',90)+' '+idea('assault',14)+' hidden_effect = { country_event = { id = hro.810 days = 14 } }',
     'На 14 дней: атака +30%, скорость +15%, восстановление организации +20%, планирование +40%, расход снабжения −10%. Затем четыре ступени истощения: первая сразу, последующие каждые 7 дней. Максимум: атака −30%, организация −25%, восстановление −55%, скорость −30%, снабжение +70%, истощение +25%. Без перегруппировки не снимаются. Повторный запуск не раньше 90 дней. Бонус действует на всю армию страны.',
     '14 days: attack +30%, speed +15%, organisation recovery +20%, planning +40%, supply use −10%. Four exhaustion tiers follow: the first immediately, then upgrades every 7 days, capped at attack −30%, organisation −25%, recovery −55%, speed −30%, supply use +70%, attrition +25%. Regrouping is required to clear them. 90-day launch cooldown. Bonuses affect the national army.',vis+' '+has(ready))
    for mode,duration in [('attack',75),('hold',60)]:
@@ -113,7 +113,7 @@ def generate(output):
      f'Elapsed days: [?hro_ops_council_days|0]. Deadline: {duration} days. Losing a defended city fails its objective at the next daily check.',vis+' '+has(task))
  decision('rest','Остановить наступление и перегруппироваться','Halt Offensive and Regroup',40,
   no('rest')+' OR = { '+has('active')+' '+has('exhaustion')+' }',
-  clear('active')+' '+clear('assault_started')+' remove_ideas = hro_ops_idea_assault '+flag('rest',21)+' '+flag('rest_pending')+' '+idea('rest',21),
+  clear('active')+' '+clear('assault_started')+' remove_ideas = hro_ops_idea_assault '+flag('rest',21)+' '+flag('rest_pending')+' '+idea('rest',21)+' hidden_effect = { country_event = { id = hro.811 days = 21 } }',
   '21 день: атака −15%, восстановление организации +30%, выпуск −5%, расход снабжения +30%. Текущая ступень истощения сохраняется до завершения, но больше не растёт; штрафы складываются с издержками перегруппировки. Затем истощение снимается. Срок запрета новой операции сохраняется.',
   '21 days: attack −15%, organisation recovery +30%, output −5%, supply use +30%. Existing exhaustion remains until completion, but stops escalating; its penalties stack with regrouping costs. Clears exhaustion on completion. Operation cooldown remains.')
  decision('security','Усилить охрану военных объектов','Strengthen Military Site Security',60,no('security'),flag('security',90)+' '+idea('security',90),
@@ -151,7 +151,18 @@ def generate(output):
    all_flags += ['prep_'+stem,'ready_'+stem,'council_attack_'+stem,'council_hold_'+stem]+[f'sabotage_{stem}_{b}' for b in ['air_base','infrastructure']]
  cleanup=' '.join(clear(f) for f in all_flags)+' '+' '.join('remove_ideas = hro_ops_idea_'+k for k in MODS if k!='security')
  legacy = ' '.join(clear(f'sabotage_{tag.lower()}_{state}_{b}') for tag,targets in TARGETS.items() for state,*_ in targets for b in ['air_base','infrastructure']) + ' ' + ' '.join(clear(f) for f in ['sabotage_busy','sabotage_wait','sabotage_cooldown'])
- put('common/scripted_effects/hro_operations_effects.txt','hro_ops_daily = { '+legacy+' if = { limit = { hro_war_eastern_war = yes } '+'\n'.join(effects)+' } else = { '+cleanup+' } }')
+ direct = f'''hro_ops_begin_exhaustion = {{
+ if = {{ limit = {{ hro_war_eastern_war = yes {has('assault_started')} {no('rest')} }}
+  {clear('assault_started')} {clear('active')} remove_ideas = hro_ops_idea_assault
+  {flag('exhaustion')} {flag('exhaustion_initialized')} set_variable = {{ hro_ops_exhaustion_days = 0 }}
+  {_remove(fatigue_ids)} add_ideas = {fatigue_ids[0]}
+ }}
+ }}
+ hro_ops_finish_rest = {{
+ if = {{ limit = {{ {has('rest_pending')} {no('rest')} }} {clear('rest_pending')} {clear('exhaustion')} {clear('exhaustion_initialized')} {_remove(fatigue_ids)} }}
+ }}
+ '''
+ put('common/scripted_effects/hro_operations_effects.txt',direct+'hro_ops_daily = { '+legacy+' if = { limit = { hro_war_eastern_war = yes } '+'\n'.join(effects)+' } else = { '+cleanup+' } }')
  put('common/on_actions/hro_operations_on_actions.txt','on_actions = { on_daily = { effect = { if = { limit = { OR = { original_tag = GER original_tag = SOV } } hro_ops_daily = yes } } } }')
  put('common/ideas/hro_operations_ideas.txt','ideas = { country = { '+'\n'.join(ideas)+' } }')
  put('common/decisions/categories/hro_operations_categories.txt','\n'.join(key+' = { icon = generic_army allowed = { OR = { original_tag = GER original_tag = SOV } } visible = { has_war = yes } }' for key in categories))

@@ -2259,7 +2259,7 @@
     {
       "id": "GER_construct_the_reichsautobahn",
       "cost": 3,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_construct_the_reichsautobahn bonus = .75 uses = 1 category = train_tech }",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_construct_the_reichsautobahn bonus = 0.75 uses = 1 category = train_tech }",
       "x": 48,
       "y": 4,
       "relative_position_id": null,
@@ -2276,7 +2276,7 @@
     {
       "id": "GER_autarky_efforts",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_autarky_efforts bonus = .75 uses = 1 category = excavation_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_autarky_efforts bonus = 0.75 uses = 1 category = excavation_tech }",
       "x": 53,
       "y": 4,
       "relative_position_id": null,
@@ -2300,7 +2300,7 @@
     {
       "id": "GER_establish_the_reichswerke",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_establish_the_reichswerke bonus = .75 uses = 1 category = industry }",
+      "extra_reward": "add_tech_bonus = { name = GER_establish_the_reichswerke bonus = 0.75 uses = 1 category = industry }",
       "x": 52,
       "y": 8,
       "relative_position_id": null,
@@ -2319,7 +2319,7 @@
     {
       "id": "GER_coal_liquefaction",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_coal_liquefaction bonus = .75 uses = 1 category = synth_resources }",
+      "extra_reward": "add_tech_bonus = { name = GER_coal_liquefaction bonus = 0.75 uses = 1 category = synth_resources }",
       "x": 54,
       "y": 8,
       "relative_position_id": null
@@ -2327,7 +2327,7 @@
     {
       "id": "GER_subsidize_hoesch_benzin",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_subsidize_hoesch_benzin bonus = .75 uses = 1 category = excavation_tech } add_political_power = 15",
+      "extra_reward": "add_tech_bonus = { name = GER_subsidize_hoesch_benzin bonus = 0.75 uses = 1 category = excavation_tech } add_political_power = 15",
       "x": 53,
       "y": 10,
       "relative_position_id": null,
@@ -2343,7 +2343,7 @@
     {
       "id": "GER_establish_buna_werke",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_establish_buna_werke bonus = .75 uses = 1 category = synth_resources }",
+      "extra_reward": "add_tech_bonus = { name = GER_establish_buna_werke bonus = 0.75 uses = 1 category = synth_resources }",
       "x": 55,
       "y": 10,
       "relative_position_id": null,
@@ -2359,7 +2359,7 @@
     {
       "id": "GER_accelerate_the_rearmament_program",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_accelerate_the_rearmament_program bonus = .75 uses = 1 category = industry }",
+      "extra_reward": "add_tech_bonus = { name = GER_accelerate_the_rearmament_program bonus = 0.75 uses = 1 category = industry }",
       "x": 57,
       "y": 4,
       "relative_position_id": null,
@@ -2375,7 +2375,7 @@
     {
       "id": "GER_establish_production_targets",
       "cost": 3,
-      "extra_reward": "add_political_power = 25 add_tech_bonus = { name = GER_establish_production_targets bonus = .75 uses = 1 category = industry }",
+      "extra_reward": "add_political_power = 25 add_tech_bonus = { name = GER_establish_production_targets bonus = 0.75 uses = 1 category = industry }",
       "x": 58,
       "y": 6,
       "relative_position_id": null,
@@ -2392,7 +2392,7 @@
     {
       "id": "GER_zentrale_planung",
       "cost": 5,
-      "extra_reward": "add_political_power = 35 add_tech_bonus = { name = GER_zentrale_planung bonus = .75 uses = 1 category = electronics }",
+      "extra_reward": "add_political_power = 35 add_tech_bonus = { name = GER_zentrale_planung bonus = 0.75 uses = 1 category = electronics }",
       "x": 57,
       "y": 10,
       "relative_position_id": null,
@@ -2409,7 +2409,7 @@
     {
       "id": "GER_create_rustungsstab",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_create_rustungsstab bonus = .75 uses = 1 category = industry } add_political_power = 15",
+      "extra_reward": "add_tech_bonus = { name = GER_create_rustungsstab bonus = 0.75 uses = 1 category = industry } add_political_power = 15",
       "x": 58,
       "y": 12,
       "relative_position_id": null,
@@ -2425,7 +2425,7 @@
     {
       "id": "GER_armament_rationalization",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_armament_rationalization bonus = .75 uses = 1 category = industry }",
+      "extra_reward": "add_tech_bonus = { name = GER_armament_rationalization bonus = 0.75 uses = 1 category = industry }",
       "x": 56,
       "y": 12,
       "relative_position_id": null,
@@ -2470,7 +2470,7 @@
     {
       "id": "GER_the_prussian_legacy",
       "cost": 3,
-      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_the_prussian_legacy bonus = .75 uses = 1 category = infantry_weapons }",
+      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_the_prussian_legacy bonus = 0.75 uses = 1 category = infantry_weapons }",
       "x": 6,
       "y": 6,
       "relative_position_id": null,
@@ -2489,7 +2489,7 @@
     {
       "id": "GER_improve_motorized_troops",
       "cost": 3,
-      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_improve_motorized_troops bonus = .75 uses = 1 category = cat_mechanized_equipment }",
+      "extra_reward": "army_experience = 25 add_tech_bonus = { name = GER_improve_motorized_troops bonus = 0.75 uses = 1 category = cat_mechanized_equipment }",
       "x": 3,
       "y": 8,
       "relative_position_id": null
@@ -2505,7 +2505,7 @@
     {
       "id": "GER_artillery_bombardment",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_artillery_bombardment bonus = .75 uses = 1 category = artillery }",
+      "extra_reward": "add_tech_bonus = { name = GER_artillery_bombardment bonus = 0.75 uses = 1 category = artillery }",
       "x": 4,
       "y": 10,
       "relative_position_id": null
@@ -2513,7 +2513,7 @@
     {
       "id": "GER_stormtroopers",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_stormtroopers bonus = .75 uses = 1 category = infantry_weapons }",
+      "extra_reward": "add_tech_bonus = { name = GER_stormtroopers bonus = 0.75 uses = 1 category = infantry_weapons }",
       "x": 4,
       "y": 12,
       "relative_position_id": null,
@@ -2547,7 +2547,7 @@
     {
       "id": "GER_panzergrenadier",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_panzergrenadier bonus = .75 uses = 1 category = cat_mechanized_equipment }",
+      "extra_reward": "add_tech_bonus = { name = GER_panzergrenadier bonus = 0.75 uses = 1 category = cat_mechanized_equipment }",
       "x": 8,
       "y": 12,
       "relative_position_id": null,
@@ -2563,7 +2563,7 @@
     {
       "id": "GER_kriegslokomotiven",
       "cost": 3,
-      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_kriegslokomotiven bonus = .75 uses = 1 category = train_tech }",
+      "extra_reward": "if = { limit = { has_idea = hro_idea_ger_logistics_0 } hro_set_hro_idea_ger_logistics_1 = yes } add_tech_bonus = { name = GER_kriegslokomotiven bonus = 0.75 uses = 1 category = train_tech }",
       "x": 11,
       "y": 14,
       "relative_position_id": null,
@@ -2587,7 +2587,7 @@
     {
       "id": "GER_adopt_new_panzer_doctrine",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_adopt_new_panzer_doctrine bonus = .75 uses = 1 category = armor }",
+      "extra_reward": "add_tech_bonus = { name = GER_adopt_new_panzer_doctrine bonus = 0.75 uses = 1 category = armor }",
       "x": 10,
       "y": 6,
       "relative_position_id": null,
@@ -2614,7 +2614,7 @@
     {
       "id": "GER_combined_arms",
       "cost": 5,
-      "extra_reward": "army_experience = 50 add_tech_bonus = { name = GER_combined_arms bonus = .75 uses = 1 category = support_tech }",
+      "extra_reward": "army_experience = 50 add_tech_bonus = { name = GER_combined_arms bonus = 0.75 uses = 1 category = support_tech }",
       "x": 14,
       "y": 10,
       "relative_position_id": null,
@@ -2641,7 +2641,7 @@
     {
       "id": "GER_aeronautical_research_institute",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_aeronautical_research_institute bonus = .75 uses = 1 category = air_equipment }",
+      "extra_reward": "add_tech_bonus = { name = GER_aeronautical_research_institute bonus = 0.75 uses = 1 category = air_equipment }",
       "x": 17,
       "y": 4,
       "relative_position_id": null,
@@ -2657,7 +2657,7 @@
     {
       "id": "GER_dive_bombers",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_dive_bombers bonus = .75 uses = 1 category = medium_air }",
+      "extra_reward": "add_tech_bonus = { name = GER_dive_bombers bonus = 0.75 uses = 1 category = medium_air }",
       "x": 15,
       "y": 6,
       "relative_position_id": null
@@ -2665,7 +2665,7 @@
     {
       "id": "GER_tactical_bombers",
       "cost": 3,
-      "extra_reward": "add_tech_bonus = { name = GER_tactical_bombers bonus = .75 uses = 1 category = air_equipment } air_experience = 25",
+      "extra_reward": "add_tech_bonus = { name = GER_tactical_bombers bonus = 0.75 uses = 1 category = air_equipment } air_experience = 25",
       "x": 17,
       "y": 6,
       "relative_position_id": null
@@ -2673,7 +2673,7 @@
     {
       "id": "GER_form_the_jagdwaffe",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_form_the_jagdwaffe bonus = .75 uses = 1 category = light_air }",
+      "extra_reward": "add_tech_bonus = { name = GER_form_the_jagdwaffe bonus = 0.75 uses = 1 category = light_air }",
       "x": 23,
       "y": 4,
       "relative_position_id": null,
@@ -2714,7 +2714,7 @@
     {
       "id": "GER_defense_of_the_reich",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_defense_of_the_reich bonus = .75 uses = 1 category = radar_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_defense_of_the_reich bonus = 0.75 uses = 1 category = radar_tech }",
       "x": 23,
       "y": 10,
       "relative_position_id": null
@@ -2730,7 +2730,7 @@
     {
       "id": "GER_plan_z",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_plan_z bonus = .75 uses = 1 category = bb_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_plan_z bonus = 0.75 uses = 1 category = bb_tech }",
       "x": 30,
       "y": 4,
       "relative_position_id": null,
@@ -2746,7 +2746,7 @@
     {
       "id": "GER_trade_interdiction",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_trade_interdiction bonus = .75 uses = 1 category = ss_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_trade_interdiction bonus = 0.75 uses = 1 category = ss_tech }",
       "x": 34,
       "y": 4,
       "relative_position_id": null,
@@ -2770,7 +2770,7 @@
     {
       "id": "GER_u_boat_efforts",
       "cost": 5,
-      "extra_reward": "add_tech_bonus = { name = GER_u_boat_efforts bonus = .75 uses = 1 category = ss_tech }",
+      "extra_reward": "add_tech_bonus = { name = GER_u_boat_efforts bonus = 0.75 uses = 1 category = ss_tech }",
       "x": 37,
       "y": 8,
       "relative_position_id": null,

@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.8.1",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 60,
@@ -7,7 +7,7 @@
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 43,
+    "script_files": 41,
     "authored_focuses": 133,
     "focuses_per_country": {
       "GER": 60,
@@ -17,11 +17,11 @@
     "catalogue_native_patches": 209,
     "native_prerequisite_patches": 74,
     "required_integrated_milestones": 44,
-    "ideas": 245,
+    "ideas": 247,
     "idea_families": 42,
-    "events": 45,
+    "events": 50,
     "decisions": 129,
-    "localisation_keys_per_language": 1420,
+    "localisation_keys_per_language": 1431,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -56,8 +56,9 @@
       35
     ],
     "final_wave": "native outcome_execute",
-    "states_per_wave": 3,
-    "start_cooldown_days": 150,
+    "states_per_wave": 6,
+    "completion_cooldown_days": 150,
+    "preparation_does_not_lock_execution": true,
     "missions": {
       "air": {
         "ru": "Разгром аэродромной сети",
@@ -72,7 +73,7 @@
         "factories": 4,
         "preparation": 35,
         "damage": {
-          "air_base": 4
+          "air_base": 6
         },
         "picture": "army"
       },
@@ -90,8 +91,8 @@
         "factories": 5,
         "preparation": 45,
         "damage": {
-          "infrastructure": 2,
-          "rail_way": 3,
+          "infrastructure": 3,
+          "rail_way": 5,
           "supply_node": 1
         },
         "picture": "industry"
@@ -101,8 +102,53 @@
     "risk_handled_by_engine": true,
     "ai_enabled": false
   },
+  "runtime": {
+    "country_hooks": [
+      "on_daily_GER",
+      "on_daily_SOV"
+    ],
+    "saved_daily_event": "hro.800",
+    "duplicate_guard_days": 1,
+    "direct_assault_transition_days": 14,
+    "direct_regrouping_completion_days": 21,
+    "merged_daily_sources": 8
+  },
+  "allied_aid": {
+    "duration_days": 365,
+    "one_time_per_country": true,
+    "donor_exists_not_capitulated_not_enemy": true,
+    "ideas": 2,
+    "aid": [
+      {
+        "actor": "SOV",
+        "donor": "MON",
+        "key": "mongolian_horses",
+        "event": "hro.820",
+        "ru": "Монголия поставляет нам коней для армии",
+        "en": "Mongolia Supplies Horses for Our Army",
+        "dr": "Монгольские поставки лошадей помогают снабдить и пополнить кавалерийские части Красной армии. На 365 дней: атака кавалерии +20%. Бонус относится к кавалерии, не ко всей армии. Помощь выдаётся один раз.",
+        "de": "Mongolian horse deliveries support Red Army cavalry. For 365 days: cavalry attack +20%, not a national army-wide attack bonus. This aid is granted once.",
+        "mods": {
+          "modifier_army_sub_unit_cavalry_attack_factor": 0.2
+        }
+      },
+      {
+        "actor": "GER",
+        "donor": "ROM",
+        "key": "romanian_fuel",
+        "event": "hro.821",
+        "ru": "Румыния помогает нам",
+        "en": "Romania Helps Us",
+        "dr": "Румынские поставки нефти поддерживают сухопутные операции. На 365 дней: расход топлива армией −20%. Расход топлива авиацией и флотом не меняется. Помощь выдаётся один раз.",
+        "de": "Romanian oil deliveries support land operations. For 365 days: army fuel consumption −20%. Air and naval fuel consumption are unchanged. This aid is granted once.",
+        "mods": {
+          "army_fuel_consumption_factor": -0.2
+        }
+      }
+    ]
+  },
   "country_catalog_sha256": {
-    "GER": "948d0d4a09147ae2c4dd16a93b17d409f15b100472069e1071a39a4116b89a97",
+    "GER": "4dbb85f62b08b3d06262ac997532f3ba829e73ef8ffa9562a12888c2778e8796",
     "SOV": "10fb6b297e3c8aba9dcdf9a55fadb5cb36c5d13705fbb8c2859359ee665da1b5"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
@@ -164,18 +210,18 @@
       }
     }
   },
-  "archive": "dist/agency.zip",
-  "sha256": "307c34e7bf9a4b690ba5362a3d58d1443d233cdefc3fce3488ce5d47e2a76407",
-  "bytes": 568428,
+  "archive": "dist/repair.zip",
+  "sha256": "d410bef6e142a99e88ecb543d2ba4aa7aa9e302434176c87c6f1810046be73fc",
+  "bytes": 576615,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 376,
   "german_native_duration_factor": 0.8,
   "tests": {
-    "overhaul": 188
+    "overhaul": 204
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-agency-sabotage/dist/agency.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-operations-war-councils/dist/briefing.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-runtime-aid-fix/dist/repair.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-agency-sabotage/dist/agency.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -186,7 +232,8 @@
     "fix": "db640812f5da95e2506bdf6180a435a572a05e5e9459e17d186abaa10695b805",
     "coal": "2b1d07e30aa81ba05923a2783f2c585553177d44aad14462cbdf794665416979",
     "operations": "f8cb18f10b8f35231edf33fab341256b8d846059cd35c429609588e9f15d085c",
-    "briefing": "c4c3faa3ccc449f27495e7cb009f294b426a6c94e12b4155b8452413187318cc"
+    "briefing": "c4c3faa3ccc449f27495e7cb009f294b426a6c94e12b4155b8452413187318cc",
+    "agency": "307c34e7bf9a4b690ba5362a3d58d1443d233cdefc3fce3488ce5d47e2a76407"
   },
   "saved_game_update": {
     "from_versions": [
@@ -194,13 +241,14 @@
       "0.6.1",
       "0.6.2",
       "0.7.0",
-      "0.7.1"
+      "0.7.1",
+      "0.8.0"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,
-    "legacy_sabotage_cancelled_without_reward_or_refund": true,
-    "old_assault_capped_at_14_days": true,
-    "old_exhaustion_migrated_once": true
+    "legacy_agency_lock_released_once": true,
+    "old_active_preparation_migrated_to_planned": true,
+    "existing_eastern_war_receives_new_aid_once": true
   },
   "decision_presentation": {
     "numeric_programmes": 36,

@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.8.0'
+VERSION = '0.8.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -329,7 +329,6 @@ def author_country_content(stage, catalogs, offsets):
 def author_rules(stage):
     put(stage, 'common/game_rules/hro_rules.txt', '''HRO_PACING = {
     name = HRO_PACING
-    desc = HRO_PACING_DESC
     group = HRO_RULES
     default = { name = HRO_HISTORICAL text = HRO_HISTORICAL desc = HRO_HISTORICAL_DESC allow_achievements = no }
     option = { name = HRO_OPEN text = HRO_OPEN desc = HRO_OPEN_DESC allow_achievements = no }
@@ -533,15 +532,15 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Агентство и недельное истощение 0.8.0
+## Исправления и помощь союзников 0.8.1
 
-Диверсии запускаются в разведывательном агентстве против Германии или СССР. Две операции: «Разгром аэродромной сети» (2 агента, сеть60%, базовое выполнение60дней) и «Парализовать военную логистику» (2 агента, сеть70%, выполнение75дней). Подготовка требует снаряжения и гражданских фабрик. Волны ударов — после15 и35дней выполнения и при завершении; каждая поражает до3подходящих областей противника. Авиабазы: до4уровней повреждения на область за волну. Логистика: инфраструктура2, железные дороги3, узел снабжения1. Всё ремонтируется; охрана уменьшает урон вдвое. Отмена прекращает будущие волны. Один слот,150дней между запусками. Старые диверсионные решения удалены.
+После запуска наземной операции усиление действует14дней, затем появляется первая ступень истощения; каждые7дней — более тяжёлая, максимум четвёртая. Для этого есть прямое событие14-го дня, единый страновый диспетчер и резервная сохраняемая цепочка. Перегруппировка40ПВ/21день сохраняет текущую ступень, останавливает её рост и даёт расход снабжения+30%, после завершения снимает истощение.90-дневный срок повторного запуска сохраняется.
 
-Наземная крупная операция: подготовка35дней/90ПВ, затем45дней для запуска за30ПВ. Запуск даёт всей армии на14дней атаку+30%, скорость+15%, восстановление организации+20%, планирование+40%, расход снабжения−10%. Затем истощение: четыре ступени с усилением каждые7дней, максимум атака−30%, организация−25%, восстановление−55%, скорость−30%, снабжение+70%, истощение+25%. Ступени заменяют друг друга. Без перегруппировки штрафы не истекают.
+Диверсии агентства требуют2агентов, сеть60/70%, снаряжение и гражданские фабрики. Подготовка не включает кулдаун. Кулдаун150дней отсчитывается после завершения отдельно для каждой миссии, также после отмены уже выполнявшейся миссии. Волны после15/35дней выполнения и при завершении поражают до6областей: авиабазы до6уровней либо инфраструктура3, железные дороги5, узел1. Урон ремонтируемый, охрана уменьшает его вдвое; одноразовые метки не дают повторить выплату одной волны.
 
-Перегруппировка40ПВ/21день: атака−15%, восстановление+30%, выпуск−5%, расход снабжения+30%. Текущая ступень истощения сохраняется, но не растёт; штрафы складываются до завершения. После21дня истощение снимается.90-дневный запрет повторного запуска наземной операции сохраняется. Подробности, таблицы и обновление сохранения: docs/AGENCY_080_RU.md.
+При начале войны СССР получает событие о монгольских конях: атака кавалерии+20% на365дней. Германия получает помощь Румынии: расход топлива сухопутной армией−20% на365дней. Проверяется существование, отсутствие капитуляции и войны донора с получателем. Каждая помощь выдаётся один раз. При обновлении уже воюющего сохранения допустимая помощь придёт при первой проверке.
 
-Военные совещания сохранены: добровольный захват города за75дней или оборона60дней; успех даёт80ПВ,50опыта и45дней бонусов, провал —30дней ограниченного штрафа. Все36программ показывают числовые издержки и будущие награды. Длинные ванильные фокусы Германии сокращены примерно на20%, даты и специальные сроки внутреннего круга сохранены.
+Исправлены отвергнутые движком числовые токены.75, описание игрового правила и формат supported_version. Подробности и ограничения проверки: docs/FIXES_081_RU.md. Предыдущие документы0.8.0 описывают старый кулдаун и масштаб диверсий, заменённые этим обновлением.
 
 Германия против СССР, два игрока, все DLC, исторические условия и свободный исход до 1946 года.
 
@@ -696,10 +695,14 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         agency = agency_module.generate(stage)
         groups_module = module('hro_group_generator', OVERHAUL / 'tools/generate_groups.py')
         focus_groups = groups_module.generate(stage, catalogs)
+        aid_module = module('hro_aid_generator', OVERHAUL / 'tools/generate_allied_aid.py')
+        allied_aid = aid_module.generate(stage)
+        runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
+        runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
         spirit_assets = spirit_module.author_spirit_assets(stage)
         combined_rewards = permanent_reform_envelopes(catalogs, war_adaptation)
-        put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.*"\n')
+        put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.*.*"\n')
         report.update(version=VERSION, folder=FOLDER, native_background_systems='preserved',
                       target='1936-1946, two human opponents GER/SOV, all DLC', runtime_verified=False,
                       player_requirements={'players': 2, 'countries': ['GER', 'SOV'], 'campaign_end_year': 1946,
@@ -709,7 +712,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
                                        'native_timed_ideas':True,'restore_active_060_windows':True,
                                        'replays_material_rewards':False},

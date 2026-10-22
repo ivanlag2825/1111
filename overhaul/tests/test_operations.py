@@ -13,6 +13,7 @@ from test_war_adaptation import EmittedLifecycle,day
 class OperationsRuntime(EmittedLifecycle):
  def __init__(self,output):
   super().__init__(output)
+  self.effects['hro_runtime_seed']=parse('hro_runtime_seed = { }')[0]  # Full dispatcher tested separately.
   self.effects.update({n.key:n for n in parse((output/'common/scripted_effects/hro_operations_effects.txt').read_text())})
   self.daily=parse((output/'common/on_actions/hro_operations_on_actions.txt').read_text())[0].one('on_daily').one('effect').value
   self.decisions={n.key:n for category in parse((output/'common/decisions/hro_operations.txt').read_text()) for n in category.value}

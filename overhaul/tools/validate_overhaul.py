@@ -384,7 +384,9 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                 if identity in events:
                     errors.append(f'Duplicate event ID: {identity}')
                 events[identity] = event
-                if event.scalar('is_triggered_only') != 'yes' or event.scalar('fire_only_once') != 'yes':
+                from generate_runtime import REPEATABLE
+                repeatable = path == 'events/hro_runtime_events.txt' and identity in REPEATABLE and event.scalar('hidden') == 'yes'
+                if event.scalar('is_triggered_only') != 'yes' or (event.scalar('fire_only_once') != 'yes' and not repeatable):
                     errors.append(f'Event must be triggered and one-shot: {identity}')
                 options = event.all('option')
                 if not options:
@@ -506,6 +508,8 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
     for path, roots in documents.items():
         for n in walk(roots):
             own_context = path in own_docs
+            if isinstance(n.value, str) and re.fullmatch(r'[+-]?\.\d+(?:[eE][+-]?\d+)?', n.value):
+                errors.append(f'Numeric token needs a leading zero: {path}/{n.key} = {n.value}')
             if n.key and n.key.startswith(PREFIX) and n.value in ('yes', 'no') and n.key not in effect_defs and n.key not in trigger_defs:
                 errors.append(f'Unknown overhaul scripted call: {n.key}')
             if not own_context and not (isinstance(n.value, str) and n.value.startswith(('hro_', 'hro.'))):
