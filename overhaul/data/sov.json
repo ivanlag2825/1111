@@ -142,8 +142,8 @@
       "id": "hro_sov_staff_college",
       "name_ru": "Академия Генерального штаба",
       "name_en": "The General Staff Academy",
-      "desc_ru": "Первый обязательный этап реформы Генштаба снимает штрафы HRO и даёт +20% скорости планирования и 75 армейского опыта. Последствия чисток остаются за исходными реабилитацией и уроками войны. Дополнительно два 100% исследовательских бонуса профильного направления.",
-      "desc_en": "The first required General Staff reform removes HRO penalties and grants +20% planning speed and 75 army experience. Native purge consequences remain governed by rehabilitation and Lessons of War. Also grants two 100% research bonuses in its field.",
+      "desc_ru": "Результат реформы: Скорость планирования: +15%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Planning speed: +15%. Research and one-time rewards are listed in completion effects.",
       "branch": "army",
       "row": 2,
       "cost": 3,
@@ -164,8 +164,8 @@
       "id": "hro_sov_signals_procedures",
       "name_ru": "Радиосети Генерального штаба",
       "name_en": "General Staff Radio Networks",
-      "desc_ru": "Радиосети после реабилитации повышают организацию на 8% и скорость планирования на 30%, заменяя прежнюю штабную ступень. Два бонуса 75% к электронике; следующий основной этап — реорганизация Красной армии.",
-      "desc_en": "Post-rehabilitation radio networks grant +8% organization and +30% planning speed, replacing the previous staff stage. Two 75% electronics research bonuses; the next main stage is Red Army reorganization.",
+      "desc_ru": "Результат реформы: Организация дивизий: +6%; Скорость планирования: +20%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Division organisation: +6%; Planning speed: +20%. Research and one-time rewards are listed in completion effects.",
       "branch": "army",
       "row": 6,
       "cost": 4,
@@ -183,8 +183,8 @@
       "id": "hro_sov_defence_in_depth",
       "name_ru": "Эшелонированная оборона фронтов",
       "name_en": "Defence in Depth",
-      "desc_ru": "Ранняя реформа с ограниченными бонусами. Точные эффекты показаны в результате; сильные военные ступени открываются позднее.",
-      "desc_en": "An early reform with limited bonuses. Exact effects are shown in the completion tooltip; stronger wartime tiers unlock later.",
+      "desc_ru": "Результат реформы: Организация дивизий: +5%; Защита дивизий: +6%; Максимальный бонус планирования: +15%; Скорость планирования: -20%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Division organisation: +5%; Division defence: +6%; Maximum planning bonus: +15%; Planning speed: -20%. Research and one-time rewards are listed in completion effects.",
       "branch": "army",
       "row": 8,
       "cost": 4,
@@ -212,8 +212,8 @@
       "id": "hro_sov_mobile_groups",
       "name_ru": "Самостоятельные механизированные группы",
       "name_en": "Independent Mechanized Groups",
-      "desc_ru": "Подвижная специализация: +10% скорости дивизий и +30% скорости планирования ценой +10% потребления снабжения и +10% времени подготовки; 75 армейского опыта. Исключает специализацию глубокой обороны. Дополнительно два 100% профильных исследовательских бонуса.",
-      "desc_en": "Mobile specialization: +10% division speed and +30% planning speed at the cost of +10% supply consumption and +10% training time; 75 army experience. Excludes the defense-in-depth specialization. Also grants two 100% research bonuses in its field.",
+      "desc_ru": "Результат реформы: Скорость дивизий: +8%; Скорость планирования: +20%; Расход снабжения: +10%; Время подготовки дивизий: +10%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Division speed: +8%; Planning speed: +20%; Supply consumption: +10%; Division training time: +10%. Research and one-time rewards are listed in completion effects.",
       "branch": "army",
       "row": 8,
       "cost": 4,
@@ -241,8 +241,8 @@
       "id": "hro_sov_front_feedback",
       "name_ru": "Отчёты фронтов вместо сводок",
       "name_en": "Reports from the Fighting Fronts",
-      "desc_ru": "Обязательный этап «Уроков войны»: 100 армейского опыта и два 100% бонуса обеспечения. Разрешает полную адаптацию после 240 действительных дней войны с Германией: +25% атаки, +20% защиты, +15% организации, +40% восстановления, +50% планирования, +35% максимального плана, +20% военного выпуска и −10% снабжения. Заменяет новые штрафы вторжения и ранний положительный опыт. Заранее выполненная реформа запоминается; исходные ограничения DLC снимаются своими реформами.",
-      "desc_en": "Required for Lessons of War: 100 army experience and two 100% support research bonuses. Authorises full adaptation after 240 actual war days: +25% attack, +20% defence, +15% organisation, +40% recovery, +50% planning speed, +35% maximum planning, +20% output and −10% supply use. Replaces invasion penalties and the earlier positive tier. Prewar reform is remembered; native DLC restrictions retain their own removal rules.",
+      "desc_ru": "Доступен с 1942 года после 240 действительных дней войны с Германией. Полная адаптация: атака +15%, защита +10%, организация +10%, восстановление организации +20%, планирование +25%, максимальный план +15%, военный выпуск +10%, расход снабжения −5%. Заменяет кризис и ранний положительный опыт; ступени не складываются. Также 100 опыта армии и два 100% бонуса обеспечения.",
+      "desc_en": "Available from 1942 after 240 actual war days against Germany. Full adaptation: attack +15%, defence +10%, organisation +10%, recovery +20%, planning +25%, maximum planning +15%, military output +10%, supply use −5%. Replaces crisis and earlier experience without stacking. Also 100 army XP and two 100% support research bonuses.",
       "branch": "war",
       "row": 6,
       "cost": 4,
@@ -254,7 +254,9 @@
       "reward": "army_experience = 100 add_tech_bonus = { name = hro_sov_front_feedback bonus = 1 uses = 2 category = support_tech } hro_war_sov_complete_adaptation = yes",
       "x": 42,
       "y": 7,
-      "icon": "GFX_SOV_an_adaptable_army_ccp_2d_sov_compatibility"
+      "icon": "GFX_SOV_an_adaptable_army_ccp_2d_sov_compatibility",
+      "earliest": "1942.1.1",
+      "available": "hro_war_eastern_war = yes check_variable = { hro_war_sov_war_days > 239 }"
     },
     {
       "id": "hro_sov_mature_command",
@@ -588,8 +590,8 @@
       "id": "hro_sov_gosplan_responsibility",
       "name_ru": "Госплан: ответственность за результат",
       "name_en": "Gosplan: Responsibility for Results",
-      "desc_ru": "Основная административная реформа снимает стартовые ограничения и меняет бюрократические потери на +0,30 ПВ в день. Ещё 50 ПВ и два бонуса 75% к промышленным исследованиям помогают выбирать кадры и отраслевые программы.",
-      "desc_en": "The main administrative reform removes initial restrictions and replaces bureaucratic losses with +0.30 daily political power. Another 50 political power and two 75% industry research bonuses support appointments and industrial programs.",
+      "desc_ru": "Административная реформа: +0,30 ПВ в день и 50 ПВ. Промышленные исследовательские бонусы убраны.",
+      "desc_en": "Administrative reform: +0.30 daily political power and 50 PP. No industrial research bonuses.",
       "branch": "state",
       "row": 3,
       "cost": 3,
@@ -598,7 +600,7 @@
           "SOV_addressing_internal_affairs"
         ]
       ],
-      "reward": "hro_set_hro_idea_sov_administration_1 = yes add_political_power = 50 add_tech_bonus = { name = hro_sov_gosplan_responsibility bonus = 0.75 uses = 2 category = industry }",
+      "reward": "hro_set_hro_idea_sov_administration_1 = yes add_political_power = 50",
       "x": 99,
       "y": 4,
       "icon": "GFX_focus_SOV_organization_centralization_discipline",
@@ -655,8 +657,8 @@
       "id": "hro_sov_foreign_policy_staff",
       "name_ru": "Наркомат иностранных дел: две стратегии",
       "name_en": "Foreign Affairs: Two Strategies",
-      "desc_ru": "Подготовка внешнеполитических кадров даёт 60 ПВ и открывает программы международного сотрудничества. Ведёт к обычному выбору коллективной или индивидуальной безопасности; война с игроком автоматически не объявляется. Технические миссии: −35% цены лицензий, +30% лицензионного выпуска, +8% скорости исследований и три 100% промышленных ускорения.",
-      "desc_en": "Foreign-policy staff preparation grants 60 political power and unlocks international cooperation programs. Leads to the ordinary collective or individual security choice; it does not automatically declare war on the other player. Technical missions grant licence and research advantages plus three 100% industry research bonuses.",
+      "desc_ru": "60 ПВ, снижение стоимости лицензий на 35% и доступ к дипломатическим программам. Промышленного выпуска и ускорений исследований этот фокус не даёт.",
+      "desc_en": "60 PP, licence purchase cost −35% and access to diplomatic programmes. This focus grants no production or research acceleration.",
       "branch": "diplomacy",
       "row": 3,
       "cost": 3,
@@ -665,7 +667,7 @@
           "SOV_the_comintern"
         ]
       ],
-      "reward": "add_political_power = 60 hro_set_hro_idea_sov_foreign_tooling_1 = yes add_tech_bonus = { name = hro_sov_foreign_policy_staff bonus = 1 uses = 3 category = industry }",
+      "reward": "add_political_power = 60 hro_set_hro_idea_sov_foreign_tooling_1 = yes",
       "x": 108,
       "y": 4,
       "icon": "GFX_SOV_policy_of_collective_security_ccp_2d_sov_compatibility",
@@ -951,8 +953,8 @@
       ],
       "icon": "GFX_SOV_rehabilitated_military_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_officer_pool_1 = yes add_tech_bonus = { name = hro_sov_officer_reserve bonus = 1 uses = 2 category = support_tech }",
-      "desc_ru": "Программа «Резерв командных кадров». Резерв командных кадров: восстановление организации +15%; потери опыта при пополнении -10%; шанс вступления резервов в бой +2%. Исследовательские и ресурсные награды показаны отдельно.",
-      "desc_en": "Officer Reserve. army org regain +15%; experience loss factor -10%; land reinforce rate +2%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Результат реформы: Восстановление организации: +10%; Потери опытных бойцов: -10%; Скорость пополнения: +1,5 п.п.. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Organisation recovery: +10%; Experience losses: -10%; Reinforce rate: +1.5 pp. Research and one-time rewards are listed in completion effects."
     },
     {
       "id": "hro_sov_combined_staff_exercises",
@@ -972,8 +974,8 @@
       ],
       "icon": "GFX_SOV_military_reorganization_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_officer_pool_2 = yes add_tech_bonus = { name = hro_sov_combined_staff_exercises bonus = 1 uses = 3 category = support_tech ahead_reduction = 1 }",
-      "desc_ru": "Программа «Общевойсковые штабные учения». Подготовленный командный резерв: восстановление организации +25%; потери опыта при пополнении -15%; шанс вступления резервов в бой +4%. Исследовательские и ресурсные награды показаны отдельно.",
-      "desc_en": "Combined Staff Exercises. army org regain +25%; experience loss factor -15%; land reinforce rate +4%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Результат реформы: Восстановление организации: +18%; Потери опытных бойцов: -15%; Скорость пополнения: +3 п.п.. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Organisation recovery: +18%; Experience losses: -15%; Reinforce rate: +3 pp. Research and one-time rewards are listed in completion effects."
     },
     {
       "id": "hro_sov_guards_training_centres",
@@ -1010,8 +1012,8 @@
       ],
       "icon": "GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_fire_control_1 = yes add_tech_bonus = { name = hro_sov_artillery_breakthrough_groups bonus = 1 uses = 2 category = artillery }",
-      "desc_ru": "Программа «Артиллерийские группы прорыва». Артиллерия прорыва: атака артиллерии +25%; атака армий +5%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Breakthrough Artillery Groups. army artillery attack factor +25%; army attack factor +5%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Результат реформы: Атака артиллерии: +20%; Атака дивизий: +3%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Artillery attack: +20%; Division attack: +3%. Research and one-time rewards are listed in completion effects."
     },
     {
       "id": "hro_sov_assault_engineer_brigades",
@@ -1031,8 +1033,8 @@
       ],
       "icon": "GFX_goal_generic_fortify_city",
       "reward": "hro_set_hro_idea_sov_engineers_1 = yes add_tech_bonus = { name = hro_sov_assault_engineer_brigades bonus = 1 uses = 2 category = cat_fortification }",
-      "desc_ru": "Ранняя реформа с ограниченными бонусами. Точные эффекты показаны в результате; сильные военные ступени открываются позднее.",
-      "desc_en": "An early reform with limited bonuses. Exact effects are shown in the completion tooltip; stronger wartime tiers unlock later."
+      "desc_ru": "Результат реформы: Скорость окапывания: +35%; Максимальная укреплённость: +3; Защита дивизий: +3%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Entrenchment speed: +35%; Maximum entrenchment: +3; Division defence: +3%. Research and one-time rewards are listed in completion effects."
     },
     {
       "id": "hro_sov_operational_signal_reserves",
@@ -1052,8 +1054,8 @@
       ],
       "icon": "GFX_SOV_strengthen_the_mobilization_plan_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_radio_network_1 = yes add_tech_bonus = { name = hro_sov_operational_signal_reserves bonus = 1 uses = 2 category = electronics }",
-      "desc_ru": "Программа «Оперативные резервы связи». Оперативные узлы связи: скорость планирования +30%; координация +10%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Operational Signals Reserves. planning speed +30%; coordination bonus +10%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Результат реформы: Скорость планирования: +20%; Координация: +10%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Planning speed: +20%; Coordination: +10%. Research and one-time rewards are listed in completion effects."
     },
     {
       "id": "hro_sov_armored_recovery_echelons",
@@ -1372,8 +1374,8 @@
       ],
       "icon": "GFX_SOV_desperate_measures_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_crisis_preparation_1 = yes add_tech_bonus = { name = hro_sov_stavka_contingency_plans bonus = 1 uses = 2 category = support_tech }",
-      "desc_ru": "Ранняя реформа с ограниченными бонусами. Точные эффекты показаны в результате; сильные военные ступени открываются позднее.",
-      "desc_en": "An early reform with limited bonuses. Exact effects are shown in the completion tooltip; stronger wartime tiers unlock later."
+      "desc_ru": "Результат реформы: Защита дивизий: +3%; Восстановление организации: +8%; Скорость окапывания: +20%. Исследовательские и разовые награды указаны в эффектах.",
+      "desc_en": "Reform effects: Division defence: +3%; Organisation recovery: +8%; Entrenchment speed: +20%. Research and one-time rewards are listed in completion effects."
     },
     {
       "id": "hro_sov_hold_city_belt",
@@ -1389,13 +1391,14 @@
         ]
       ],
       "icon": "GFX_goal_generic_fortify_city",
-      "reward": "hro_set_hro_idea_sov_hold_city_belt = yes add_tech_bonus = { name = hro_sov_hold_city_belt bonus = 1 uses = 2 category = cat_fortification }",
-      "desc_ru": "Программа «Удержать городской пояс». Удержание городского пояса: защита армий +20%; максимум укрепления 5; защита на своей территории +10%. Исследовательские и ресурсные награды показаны отдельно.",
-      "desc_en": "Hold the City Belt. army defence factor +20%; max dig in +500%; army core defence factor +10%. Research, capacity and manpower rewards are shown in the completion effects.",
-      "available": "hro_war_eastern_war = yes",
+      "reward": "hro_story_city_belt_apply = yes add_tech_bonus = { name = hro_sov_hold_city_belt bonus = 1 uses = 2 category = cat_fortification }",
+      "desc_ru": "С 1942 года, после 180 действительных дней войны с Германией: Защита дивизий: +8%; Максимальная укреплённость: +3; Защита на национальной территории: +5%.",
+      "desc_en": "From 1942, after 180 actual war days against Germany: Division defence: +8%; Maximum entrenchment: +3; Core territory defence: +5%.",
+      "available": "hro_war_eastern_war = yes check_variable = { hro_war_sov_war_days > 179 }",
       "mutually_exclusive": [
         "hro_sov_save_cadres"
-      ]
+      ],
+      "earliest": "1942.1.1"
     },
     {
       "id": "hro_sov_save_cadres",
@@ -2052,10 +2055,10 @@
       "initial": false,
       "name_ru": "Подготовка штабов: устойчивая связь",
       "name_en": "Staff Training: Reliable Signals",
-      "desc_ru": "скорость планирования: +20%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
-      "desc_en": "planning speed: +20%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
+      "desc_ru": "Скорость планирования: +15%.",
+      "desc_en": "Planning speed: +15%.",
       "modifiers": {
-        "planning_speed": 0.2
+        "planning_speed": 0.15
       }
     },
     {
@@ -2066,11 +2069,11 @@
       "initial": false,
       "name_ru": "Подготовка штабов: отработанное взаимодействие",
       "name_en": "Staff Training: Practised Coordination",
-      "desc_ru": "организация армии: +8%; скорость планирования: +30%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
-      "desc_en": "army organization: +8%; planning speed: +30%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
+      "desc_ru": "Организация дивизий: +6%; Скорость планирования: +20%.",
+      "desc_en": "Division organisation: +6%; Planning speed: +20%.",
       "modifiers": {
-        "army_org_factor": 0.08,
-        "planning_speed": 0.3
+        "army_org_factor": 0.06,
+        "planning_speed": 0.2
       }
     },
     {
@@ -2287,12 +2290,12 @@
       "initial": false,
       "name_ru": "Организация армии: оборона в глубину",
       "name_en": "Army Organisation: Defence in Depth",
-      "desc_ru": "Организация дивизий: +6%; Защита дивизий: +8%; Максимальный бонус планирования: +18%; Скорость планирования: -20%. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
-      "desc_en": "Division organisation: +6%; Division defence: +8%; Maximum planning bonus: +18%; Planning speed: -20%. Early reform stage; later tiers require wartime experience.",
+      "desc_ru": "Организация дивизий: +5%; Защита дивизий: +6%; Максимальный бонус планирования: +15%; Скорость планирования: -20%.",
+      "desc_en": "Division organisation: +5%; Division defence: +6%; Maximum planning bonus: +15%; Planning speed: -20%.",
       "modifiers": {
-        "army_org_factor": 0.06,
-        "army_defence_factor": 0.08,
-        "max_planning_factor": 0.18,
+        "army_org_factor": 0.05,
+        "army_defence_factor": 0.06,
+        "max_planning_factor": 0.15,
         "planning_speed": -0.2
       }
     },
@@ -2304,11 +2307,11 @@
       "initial": false,
       "name_ru": "Организация армии: подвижные группы",
       "name_en": "Army Organisation: Mobile Groups",
-      "desc_ru": "скорость дивизий: +10%; скорость планирования: +30%; потребление снабжения: +10%; время подготовки дивизий: +10%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
-      "desc_en": "division speed: +10%; planning speed: +30%; supply consumption: +10%; division training time: +10%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
+      "desc_ru": "Скорость дивизий: +8%; Скорость планирования: +20%; Расход снабжения: +10%; Время подготовки дивизий: +10%.",
+      "desc_en": "Division speed: +8%; Planning speed: +20%; Supply consumption: +10%; Division training time: +10%.",
       "modifiers": {
-        "army_speed_factor": 0.1,
-        "planning_speed": 0.3,
+        "army_speed_factor": 0.08,
+        "planning_speed": 0.2,
         "supply_consumption_factor": 0.1,
         "training_time_army_factor": 0.1
       }
@@ -2487,12 +2490,12 @@
       "initial": false,
       "name_ru": "Резерв командных кадров",
       "name_en": "Officer Reserve",
-      "desc_ru": "восстановление организации +15%; потери опыта при пополнении -10%; шанс вступления резервов в бой +2%.",
-      "desc_en": "army org regain +15%; experience loss factor -10%; land reinforce rate +2%.",
+      "desc_ru": "Восстановление организации: +10%; Потери опытных бойцов: -10%; Скорость пополнения: +1,5 п.п..",
+      "desc_en": "Organisation recovery: +10%; Experience losses: -10%; Reinforce rate: +1.5 pp.",
       "modifiers": {
-        "army_org_regain": 0.15,
+        "army_org_regain": 0.1,
         "experience_loss_factor": -0.1,
-        "land_reinforce_rate": 0.02
+        "land_reinforce_rate": 0.015
       }
     },
     {
@@ -2503,12 +2506,12 @@
       "initial": false,
       "name_ru": "Подготовленный командный резерв",
       "name_en": "Trained Officer Reserve",
-      "desc_ru": "восстановление организации +25%; потери опыта при пополнении -15%; шанс вступления резервов в бой +4%.",
-      "desc_en": "army org regain +25%; experience loss factor -15%; land reinforce rate +4%.",
+      "desc_ru": "Восстановление организации: +18%; Потери опытных бойцов: -15%; Скорость пополнения: +3 п.п..",
+      "desc_en": "Organisation recovery: +18%; Experience losses: -15%; Reinforce rate: +3 pp.",
       "modifiers": {
-        "army_org_regain": 0.25,
+        "army_org_regain": 0.18,
         "experience_loss_factor": -0.15,
-        "land_reinforce_rate": 0.04
+        "land_reinforce_rate": 0.03
       }
     },
     {
@@ -2551,11 +2554,11 @@
       "initial": false,
       "name_ru": "Артиллерия прорыва",
       "name_en": "Breakthrough Artillery",
-      "desc_ru": "атака артиллерии +25%; атака армий +5%.",
-      "desc_en": "army artillery attack factor +25%; army attack factor +5%",
+      "desc_ru": "Атака артиллерии: +20%; Атака дивизий: +3%.",
+      "desc_en": "Artillery attack: +20%; Division attack: +3%.",
       "modifiers": {
-        "army_artillery_attack_factor": 0.25,
-        "army_attack_factor": 0.05
+        "army_artillery_attack_factor": 0.2,
+        "army_attack_factor": 0.03
       }
     },
     {
@@ -2566,12 +2569,12 @@
       "initial": false,
       "name_ru": "Инженерно-сапёрные бригады",
       "name_en": "Assault Engineer Brigades",
-      "desc_ru": "Скорость окапывания: +50%; Максимальное окапывание: +5; Защита дивизий: +5%. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
-      "desc_en": "Entrenchment speed: +50%; Maximum entrenchment: +5; Division defence: +5%. Early reform stage; later tiers require wartime experience.",
+      "desc_ru": "Скорость окапывания: +35%; Максимальная укреплённость: +3; Защита дивизий: +3%.",
+      "desc_en": "Entrenchment speed: +35%; Maximum entrenchment: +3; Division defence: +3%.",
       "modifiers": {
-        "dig_in_speed_factor": 0.5,
-        "max_dig_in": 5,
-        "army_defence_factor": 0.05
+        "dig_in_speed_factor": 0.35,
+        "max_dig_in": 3,
+        "army_defence_factor": 0.03
       }
     },
     {
@@ -2582,10 +2585,10 @@
       "initial": false,
       "name_ru": "Оперативные узлы связи",
       "name_en": "Operational Signals Nodes",
-      "desc_ru": "скорость планирования +30%; координация +10%.",
-      "desc_en": "planning speed +30%; coordination bonus +10%",
+      "desc_ru": "Скорость планирования: +20%; Координация: +10%.",
+      "desc_en": "Planning speed: +20%; Coordination: +10%.",
       "modifiers": {
-        "planning_speed": 0.3,
+        "planning_speed": 0.2,
         "coordination_bonus": 0.1
       }
     },
@@ -2801,12 +2804,12 @@
       "initial": false,
       "name_ru": "Ставка: резервные сценарии",
       "name_en": "Stavka Contingency Plans",
-      "desc_ru": "Защита дивизий: +5%; Восстановление организации: +10%; Скорость окапывания: +30%. Ранний этап реформы; дальнейшие ступени требуют опыта войны.",
-      "desc_en": "Division defence: +5%; Organisation recovery: +10%; Entrenchment speed: +30%. Early reform stage; later tiers require wartime experience.",
+      "desc_ru": "Защита дивизий: +3%; Восстановление организации: +8%; Скорость окапывания: +20%.",
+      "desc_en": "Division defence: +3%; Organisation recovery: +8%; Entrenchment speed: +20%.",
       "modifiers": {
-        "army_defence_factor": 0.05,
-        "army_org_regain": 0.1,
-        "dig_in_speed_factor": 0.3
+        "army_defence_factor": 0.03,
+        "army_org_regain": 0.08,
+        "dig_in_speed_factor": 0.2
       }
     },
     {
@@ -2817,12 +2820,12 @@
       "initial": false,
       "name_ru": "Удержание городского пояса",
       "name_en": "Holding the City Belt",
-      "desc_ru": "защита армий +20%; максимум укрепления 5; защита на своей территории +10%.",
-      "desc_en": "army defence factor +20%; max dig in 5; army core defence factor +10%.",
+      "desc_ru": "Защита дивизий: +8%; Максимальная укреплённость: +3; Защита на национальной территории: +5%.",
+      "desc_en": "Division defence: +8%; Maximum entrenchment: +3; Core territory defence: +5%.",
       "modifiers": {
-        "army_defence_factor": 0.2,
-        "max_dig_in": 5,
-        "army_core_defence_factor": 0.1
+        "army_defence_factor": 0.08,
+        "max_dig_in": 3,
+        "army_core_defence_factor": 0.05
       }
     },
     {
@@ -2849,12 +2852,10 @@
       "initial": false,
       "name_ru": "Технические миссии и лицензии",
       "name_en": "Technical Missions and Licences",
-      "desc_ru": "цена лицензий -35%; лицензионный выпуск +30%; скорость исследований +8%.",
-      "desc_en": "Licence cost −35%; licensed production +30%; research speed +8%.",
+      "desc_ru": "Стоимость лицензий: -35%.",
+      "desc_en": "Licence purchase cost: -35%.",
       "modifiers": {
-        "license_purchase_cost": -0.35,
-        "license_production_speed": 0.3,
-        "research_speed_factor": 0.08
+        "license_purchase_cost": -0.35
       }
     },
     {

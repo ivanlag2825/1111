@@ -58,12 +58,12 @@ def generate(output):
         values = ' '.join(f'{k} = {v:g}' for k, v in mods.items())
         ideas.append(f'{identity} = {{ picture = generic_army allowed = {{ original_tag = SOV }} removal_cost = -1 modifier = {{ {values} }} }}')
     for tier, mods in enumerate((
-        {'army_org_factor':-.10,'army_org_regain':-.20,'industrial_capacity_factory':-.12,'supply_consumption_factor':.15},
-        {'army_org_factor':-.18,'army_org_regain':-.30,'industrial_capacity_factory':-.22,'supply_consumption_factor':.25},
-        {'army_org_factor':-.25,'army_org_regain':-.40,'industrial_capacity_factory':-.30,'supply_consumption_factor':.35}), 1):
-        idea(f'hro_idea_city_crisis_{tier}', 'crisis', f'Кризис отступления: ступень {tier}', f'Retreat Crisis: Tier {tier}', mods,
-             'Потеря ключевых городов нарушила управление и выпуск. Действует одна ступень, максимум третья. Контрмеры, освобождение города или 90 фактических дней войны ослабляют кризис; в мире и после капитуляции дух снимается.',
-             'Lost cities disrupt command and production. Only one tier applies, up to tier three. Countermeasures, liberation or 90 actual war days reduce the crisis; peace and capitulation remove it.')
+        {'army_attack_factor':-.05,'army_defence_factor':-.05,'army_org_factor':-.08,'army_org_regain':-.15,'supply_consumption_factor':.10},
+        {'army_attack_factor':-.10,'army_defence_factor':-.08,'army_org_factor':-.12,'army_org_regain':-.20,'supply_consumption_factor':.15},
+        {'army_attack_factor':-.15,'army_defence_factor':-.10,'army_org_factor':-.15,'army_org_regain':-.25,'supply_consumption_factor':.20}), 1):
+        idea(f'hro_idea_city_crisis_{tier}', 'crisis', f'Армия теряет веру в победу: {tier}', f'The Army Loses Faith in Victory: {tier}', mods,
+             'Потеря ключевых городов подорвала уверенность армии. Действует одна ступень, максимум третья. Контрмеры, освобождение города или 90 фактических дней войны ослабляют кризис; в мире и после капитуляции дух снимается.',
+             'Lost cities undermine army confidence. Only one tier applies, up to tier three. Countermeasures, liberation or 90 actual war days reduce the crisis; peace and capitulation remove it.')
     for tier, mods in enumerate((
         {'army_defence_factor':.08,'army_org_regain':.15,'training_time_army_factor':-.10,'land_reinforce_rate':.02,'industrial_capacity_factory':.05},
         {'army_defence_factor':.25,'army_org_regain':.35,'training_time_army_factor':-.25,'industrial_capacity_factory':.15,'land_reinforce_rate':.05,'army_org_factor':.08},
@@ -119,9 +119,9 @@ def generate(output):
              f"Cost {city['cost']} PP; duration {city['days']} days. Completion: {n} new eastern military factories, {city['manpower']} manpower, two 100% research bonuses and a mobilisation tier. Shared with this city's focus, never awarded twice. Unavailable factory capacity grants extra research instead. These are new facilities, not duplicated evacuation.")
         for language in loc:
             loc[language][response+'_desc'] += '\n\n' + loc[language]['hro_city_mobilization_details']
-        notification(f'hro.{500+index}', city['ru']+': стратегический кризис',city['en']+': Strategic Crisis',
-                     'Противник контролирует город. Появляется национальный дух «Кризис отступления»: одна из трёх общих ступеней по тяжести потерь. Решение или городской фокус дают контрмеры и положительный дух «Вторая мобилизация». Мир и капитуляция снимают временные военные духи; повторная потеря не создаёт наград.',
-                     'The enemy controls the city. The Retreat Crisis national spirit applies one of three shared tiers. A regional decision or focus grants countermeasures and the positive Second Mobilisation spirit. Peace and capitulation remove temporary war spirits; repeated losses grant nothing.')
+        notification(f'hro.{500+index}', 'Армия теряет веру в победу', 'The Army Loses Faith in Victory',
+                     f"Потерян город {city['ru']}. Появляется национальный дух «Армия теряет веру в победу»: атака −5/10/15%, защита −5/8/10%, организация −8/12/15%, восстановление −15/20/25%, снабжение +10/15/20%. Ступени заменяются, не складываются. Кризис каждого города длится максимум 90 действительных дней войны. Решение или городской фокус дают контрмеры и положительный дух «Вторая мобилизация». Мир и капитуляция снимают временные военные духи; повторная потеря не создаёт наград.",
+                     'A major city has fallen. The Army Loses Faith in Victory applies one non-stacking army penalty tier: attack −5/10/15%, defence −5/8/10%, organisation −8/12/15%, recovery −15/20/25%, supply use +10/15/20%. Each city crisis lasts at most 90 actual war days. A regional decision or focus grants countermeasures and the positive Second Mobilisation spirit. Peace and capitulation remove temporary war spirits; repeated losses grant nothing.')
         notification(f'hro.{510+index}',city['ru']+': освобождение',city['en']+': Liberation',
                      'Город вновь под нашим контролем. Его вклад в кризис снят, открыто ограниченное окно восстановления. Прежний выпуск и повреждённые предприятия восстанавливаются по обычным правилам игры.',
                      'The city is under our control again. Its crisis contribution is removed and a finite rebuilding window opens. Production and damaged factories recover under normal game rules.')

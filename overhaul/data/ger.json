@@ -5,8 +5,8 @@
       "id": "hro_ger_procurement_register",
       "name_ru": "Промышленность на военном учёте",
       "name_en": "Industry under Military Audit",
-      "desc_ru": "Снимает дезорганизацию заказов, вводит +8% выпуска и +10% роста эффективности. Создаёт 3 гражданских завода в Южном Ганновере; этот этап нужен для штатного перевооружения. При недоступной мощности выдаются два 100% промышленных исследовательских бонуса.",
-      "desc_en": "Clear procurement disorder, gain +8% military output and +10% efficiency growth, and build 3 civilian factories in South Hannover. Required for native rearmament. Unavailable capacity grants two 100% industry research bonuses.",
+      "desc_ru": "Снимает дезорганизацию заказов, вводит +8% выпуска и +10% роста эффективности. Создаёт 3 гражданских завода в Южном Ганновере; этот этап нужен для штатного перевооружения. При недоступной мощности выдаются два 100% промышленных исследовательских бонуса. Скорость строительства гражданских фабрик +15%; ступени не складываются.",
+      "desc_en": "Clear procurement disorder, gain +8% military output and +10% efficiency growth, and build 3 civilian factories in South Hannover. Required for native rearmament. Unavailable capacity grants two 100% industry research bonuses. Civilian factory construction +15%; tiers do not stack.",
       "branch": "industry",
       "row": 1,
       "x": 55,
@@ -19,7 +19,7 @@
           "GER_prioritize_economic_growth"
         ]
       ],
-      "reward": "hro_set_hro_idea_ger_industry_1 = yes if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 3 if = { limit = { free_building_slots = { building = industrial_complex size > 2 include_locked = yes } } add_building_construction = { type = industrial_complex level = 3 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_procurement_register bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_procurement_register bonus = 1 uses = 2 category = industry } }",
+      "reward": "hro_set_hro_idea_ger_industry_1 = yes if = { limit = { 60 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 60 = { add_extra_state_shared_building_slots = 3 if = { limit = { free_building_slots = { building = industrial_complex size > 2 include_locked = yes } } add_building_construction = { type = industrial_complex level = 3 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_procurement_register bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_procurement_register bonus = 1 uses = 2 category = industry } } hro_set_hro_idea_ger_civilian_builders_1 = yes",
       "earliest": "1936.1.1",
       "flags": [
         "hro_ger_industry_unlocked"
@@ -29,8 +29,8 @@
       "id": "hro_ger_tooling_audit",
       "name_ru": "Станкостроительная программа",
       "name_en": "Machine-Tool Programme",
-      "desc_ru": "2 военных завода в Восточном Ганновере и два 100%-х промышленных бонуса. Производственная база открывает дальнейшее расширение Reichswerke. При недоступной мощности выдаются два 100% промышленных исследовательских бонуса.",
-      "desc_en": "Build 2 military factories in East Hannover and gain two 100% industry research bonuses before expanding the Reichswerke. Unavailable capacity grants two 100% industry research bonuses.",
+      "desc_ru": "2 военных завода в Восточном Ганновере и два 100%-х промышленных бонуса. Производственная база открывает дальнейшее расширение Reichswerke. При недоступной мощности выдаются два 100% промышленных исследовательских бонуса. Скорость строительства гражданских фабрик +25%; ступени не складываются.",
+      "desc_en": "Build 2 military factories in East Hannover and gain two 100% industry research bonuses before expanding the Reichswerke. Unavailable capacity grants two 100% industry research bonuses. Civilian factory construction +25%; tiers do not stack.",
       "branch": "industry",
       "row": 3,
       "x": 52,
@@ -42,7 +42,7 @@
           "GER_autarky_efforts"
         ]
       ],
-      "reward": "add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } }",
+      "reward": "add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } if = { limit = { 59 = { is_owned_by = ROOT is_fully_controlled_by = ROOT } } 59 = { add_extra_state_shared_building_slots = 2 if = { limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } } add_building_construction = { type = arms_factory level = 2 instant_build = yes } } else = { ROOT = { add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } } } } } else = { add_tech_bonus = { name = hro_ger_tooling_audit bonus = 1 uses = 2 category = industry } } hro_set_hro_idea_ger_civilian_builders_2 = yes",
       "earliest": "1936.1.1"
     },
     {
@@ -122,8 +122,8 @@
       "id": "hro_ger_rationalized_designs",
       "name_ru": "Комиссия стандартных конструкций",
       "name_en": "Standard Designs Commission",
-      "desc_ru": "Ранняя программа военной мобилизации. Доступна с1938.1.1. Численные эффекты реформы и строительные/исследовательские награды показаны в результате фокуса; ступени одного духа не складываются.",
-      "desc_en": "Early military mobilisation programme. Available from 1938.1.1. The completion tooltip lists the actual reform, construction and research rewards; family tiers do not stack.",
+      "desc_ru": "Ранняя программа военной мобилизации. Доступна с1937.1.1. Численные эффекты реформы и строительные/исследовательские награды показаны в результате фокуса; ступени одного духа не складываются.",
+      "desc_en": "Early military mobilisation programme. Available from 1937.1.1. The completion tooltip lists the actual reform, construction and research rewards; family tiers do not stack.",
       "branch": "industry",
       "row": 9,
       "x": 56,
@@ -136,7 +136,7 @@
         ]
       ],
       "reward": "add_tech_bonus = { name = hro_ger_rationalized_designs bonus = 1 uses = 2 category = armor  ahead_reduction = 1 } add_tech_bonus = { name = hro_ger_rationalized_designs bonus = 1 uses = 1 category = cat_mechanized_equipment  ahead_reduction = 1 }",
-      "earliest": "1938.1.1"
+      "earliest": "1937.1.1"
     },
     {
       "id": "hro_ger_emergency_dispersal",
@@ -212,7 +212,7 @@
       "x": 48,
       "y": 3,
       "icon": "GFX_focus_GER_kriegslokomotive",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_the_four_year_plan",
@@ -236,7 +236,7 @@
       "x": 47,
       "y": 7,
       "icon": "GFX_focus_GER_kriegslokomotive",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_kdf_wagen_factories"
@@ -262,7 +262,7 @@
       "x": 49,
       "y": 7,
       "icon": "GFX_focus_generic_truck",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_kdf_wagen_factories"
@@ -288,7 +288,7 @@
       "x": 48,
       "y": 9,
       "icon": "GFX_focus_generic_motor_cycle",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "hro_ger_railway_timetable",
@@ -309,7 +309,7 @@
       "x": 10,
       "y": 23.0,
       "icon": "GFX_focus_generic_reinforcing_the_supply_network",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_kriegslokomotiven"
@@ -320,7 +320,7 @@
         ]
       ],
       "reward": "hro_set_hro_idea_ger_logistics_3 = yes add_tech_bonus = { name = hro_ger_sustained_supply bonus = 1 uses = 2 category = support_tech } hro_war_ger_complete_winter_adaptation = yes",
-      "earliest": "1941.1.1"
+      "earliest": "1940.1.1"
     },
     {
       "id": "hro_ger_staff_curriculum",
@@ -333,7 +333,7 @@
       "x": 8,
       "y": 3,
       "icon": "GFX_focus_GER_army",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_develop_modern_maneuver_warfare"
@@ -356,7 +356,7 @@
       "x": 6,
       "y": 9.0,
       "icon": "GFX_goal_generic_axis_build_infantry",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_the_prussian_legacy",
@@ -387,7 +387,7 @@
       "x": 10,
       "y": 9.0,
       "icon": "GFX_focus_generic_military_mission",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_the_prussian_legacy",
@@ -411,35 +411,35 @@
       "id": "hro_ger_combined_exercises",
       "name_ru": "Общевойсковые манёвры",
       "name_en": "Combined Arms Field Exercises",
-      "desc_ru": "100%-е бонусы бронетехники и пехотного вооружения, 75 опыта армии. Общевойсковые испытания обязательны для штатного взаимодействия танков и авиации.",
-      "desc_en": "Gain 100% armor and infantry-weapons bonuses and 75 army experience. Combined-arms trials are required for native tank-air coordination.",
+      "desc_ru": "100%-е бонусы бронетехники и пехотного вооружения, 75 опыта армии. Общевойсковые испытания обязательны для штатного взаимодействия танков и авиации. Перенесённая из городских наград постоянная школа блицкрига: Атака бронетанковых частей: +10%; Защита дивизий: +5%; Восстановление организации: +10%; Скорость планирования: +20%. Ступени заменяются, не складываются.",
+      "desc_en": "Gain 100% armor and infantry-weapons bonuses and 75 army experience. Combined-arms trials are required for native tank-air coordination.Permanent blitzkrieg school, transferred from city rewards: Armour attack: +10%; Division defence: +5%; Organisation recovery: +10%; Planning speed: +20%. Tiers replace each other without stacking.",
       "branch": "army",
       "row": 7,
       "x": 12,
       "y": 11.0,
       "icon": "GFX_focus_generic_combined_arms",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_panzer_troops_school",
           "GER_improve_motorized_troops"
         ]
       ],
-      "reward": "add_tech_bonus = { name = hro_ger_combined_exercises bonus = 1 uses = 1 category = armor } add_tech_bonus = { name = hro_ger_combined_exercises bonus = 1 uses = 1 category = infantry_weapons } army_experience = 75",
+      "reward": "add_tech_bonus = { name = hro_ger_combined_exercises bonus = 1 uses = 1 category = armor } add_tech_bonus = { name = hro_ger_combined_exercises bonus = 1 uses = 1 category = infantry_weapons } army_experience = 75 hro_set_hro_idea_ger_blitzkrieg_1 = yes add_political_power = 80",
       "earliest": "1937.1.1"
     },
     {
       "id": "hro_ger_armour_maintenance_school",
       "name_ru": "Корпус ремонта и пополнений",
       "name_en": "Maintenance and Replacement Corps",
-      "desc_ru": "Два 100%-х бонуса обеспечения, 100%-й бонус механизации и 75 опыта армии. Корпус ремонта становится необходимым шагом к штатным Panzergrenadier.",
-      "desc_en": "Gain two 100% support bonuses, a 100% mechanization bonus and 75 army experience. The repair corps is required before native Panzergrenadier.",
+      "desc_ru": "Два 100%-х бонуса обеспечения, 100%-й бонус механизации и 75 опыта армии. Корпус ремонта становится необходимым шагом к штатным Panzergrenadier. Перенесённая из городских наград постоянная школа блицкрига: Атака бронетанковых частей: +20%; Защита дивизий: +10%; Восстановление организации: +15%; Скорость планирования: +30%. Ступени заменяются, не складываются.",
+      "desc_en": "Gain two 100% support bonuses, a 100% mechanization bonus and 75 army experience. The repair corps is required before native Panzergrenadier.Permanent blitzkrieg school, transferred from city rewards: Armour attack: +20%; Division defence: +10%; Organisation recovery: +15%; Planning speed: +30%. Tiers replace each other without stacking.",
       "branch": "army",
       "row": 9,
       "x": 8,
       "y": 17.0,
       "icon": "GFX_focus_generic_tank_assembly",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_instill_auftragstaktik"
@@ -451,27 +451,27 @@
           "hro_ger_specialize_medium_td"
         ]
       ],
-      "reward": "add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 2 category = support_tech } add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 1 category = cat_mechanized_equipment } army_experience = 75",
+      "reward": "add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 2 category = support_tech } add_tech_bonus = { name = hro_ger_armour_maintenance_school bonus = 1 uses = 1 category = cat_mechanized_equipment } army_experience = 75 hro_set_hro_idea_ger_blitzkrieg_2 = yes add_political_power = 100",
       "earliest": "1938.1.1"
     },
     {
       "id": "hro_ger_operational_command_system",
       "name_ru": "Оперативные резервы фронта",
       "name_en": "Operational Front Reserves",
-      "desc_ru": "Ранняя программа военной мобилизации. Доступна с1940.1.1. Численные эффекты реформы и строительные/исследовательские награды показаны в результате фокуса; ступени одного духа не складываются.",
-      "desc_en": "Early military mobilisation programme. Available from 1940.1.1. The completion tooltip lists the actual reform, construction and research rewards; family tiers do not stack.",
+      "desc_ru": "Ранняя программа военной мобилизации. Доступна с1940.1.1. Численные эффекты реформы и строительные/исследовательские награды показаны в результате фокуса; ступени одного духа не складываются. Перенесённая из городских наград постоянная школа блицкрига: Атака бронетанковых частей: +30%; Защита дивизий: +15%; Восстановление организации: +20%; Скорость планирования: +40%. Ступени заменяются, не складываются.",
+      "desc_en": "Early military mobilisation programme. Available from 1940.1.1. The completion tooltip lists the actual reform, construction and research rewards; family tiers do not stack.Permanent blitzkrieg school, transferred from city rewards: Armour attack: +30%; Division defence: +15%; Organisation recovery: +20%; Planning speed: +40%. Tiers replace each other without stacking.",
       "branch": "army",
       "row": 15,
       "x": 7,
       "y": 25.0,
       "icon": "GFX_focus_GER_german_army_invincible",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "hro_ger_sustained_supply"
         ]
       ],
-      "reward": "if = { limit = { has_country_flag = hro_ger_mission_command_program } hro_set_hro_idea_ger_army_mission_3 = yes } else = { hro_set_hro_idea_ger_army_staff_3 = yes } army_experience = 100 add_command_power = 50 add_tech_bonus = { name = hro_ger_operational_command_system bonus = 1 uses = 2 category = infantry_weapons }",
+      "reward": "if = { limit = { has_country_flag = hro_ger_mission_command_program } hro_set_hro_idea_ger_army_mission_3 = yes } else = { hro_set_hro_idea_ger_army_staff_3 = yes } army_experience = 100 add_command_power = 50 add_tech_bonus = { name = hro_ger_operational_command_system bonus = 1 uses = 2 category = infantry_weapons } hro_set_hro_idea_ger_blitzkrieg_3 = yes add_political_power = 150",
       "earliest": "1940.1.1"
     },
     {
@@ -532,7 +532,7 @@
       "x": 20,
       "y": 3,
       "icon": "GFX_focus_GER_airforce",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_expanding_the_luftwaffe"
@@ -555,7 +555,7 @@
       "x": 16,
       "y": 7,
       "icon": "GFX_focus_generic_cas_aircraft",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_dive_bombers",
@@ -582,7 +582,7 @@
       "x": 22,
       "y": 7,
       "icon": "GFX_focus_generic_energy",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_form_the_jagdwaffe"
@@ -608,7 +608,7 @@
       "x": 20,
       "y": 11.0,
       "icon": "GFX_focus_generic_aircraft_production",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "hro_ger_front_air_programme",
@@ -636,7 +636,7 @@
       "x": 14,
       "y": 17.0,
       "icon": "GFX_focus_generic_tank_air_support",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_combined_arms"
@@ -683,7 +683,7 @@
       "x": 32,
       "y": 3,
       "icon": "GFX_focus_GER_navy",
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_strengthen_the_kriegsmarine"
@@ -706,7 +706,7 @@
       "x": 30,
       "y": 7,
       "icon": "GFX_focus_generic_cruiser2",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_expand_kriegsmarinewerft"
@@ -726,7 +726,7 @@
       "x": 36,
       "y": 7,
       "icon": "GFX_goal_generic_navy_submarine",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_wolfpack_tactics"
@@ -746,7 +746,7 @@
       "x": 32,
       "y": 9,
       "icon": "GFX_focus_GER_high_seas_fleet",
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "hro_ger_balanced_task_force",
@@ -967,7 +967,7 @@
       "branch": "army",
       "x": 8,
       "y": 5,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_fortify_the_vaterland"
@@ -985,7 +985,7 @@
       "branch": "army",
       "x": 6,
       "y": 11.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "hro_ger_mission_command",
@@ -1004,7 +1004,7 @@
       "branch": "logistics",
       "x": 12,
       "y": 21.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "hro_ger_armour_maintenance_school"
@@ -1025,7 +1025,7 @@
       "branch": "army",
       "x": 4,
       "y": 23.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_panzergrenadier",
@@ -1049,7 +1049,7 @@
       "branch": "army",
       "x": 4,
       "y": 17.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_artillery_bombardment"
@@ -1067,7 +1067,7 @@
       "branch": "logistics",
       "x": 4,
       "y": 25.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "hro_ger_replacement_march_battalions"
@@ -1111,7 +1111,7 @@
       "branch": "army",
       "x": 3,
       "y": 27.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_defend_the_vaterland"
@@ -1256,7 +1256,7 @@
       "branch": "air",
       "x": 20,
       "y": 13.0,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_defense_of_the_reich",
@@ -1294,7 +1294,7 @@
       "branch": "navy",
       "x": 32,
       "y": 11,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_atlantic_naval_dominance"
@@ -1334,7 +1334,7 @@
       "branch": "logistics",
       "x": 49,
       "y": 13,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "hro_ger_motor_transport_standards"
@@ -1375,8 +1375,8 @@
       "id": "hro_ger_specialize_decisive",
       "name_ru": "Доктрина решительного прорыва",
       "name_en": "Decisive Breakthrough Doctrine",
-      "desc_ru": "Постоянно: планирование+30%, максимальный бонус планирования+15%, расход снабжения+10%, восстановление организации−10%. Новые операции:14дней атаки+50%, скорости+20%, планирования+50%, восстановления+15%, снабжения−5%. Отрицательные эффекты усталости на25%тяжелее, шаг7дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет. Скорость дивизий +5%, атака дивизий +2%.",
-      "desc_en": "Permanent: planning +30%, maximum planning +15%, supply use +10%, organisation recovery −10%. New operations: 14 days of attack +50%, speed +20%, planning +50%, recovery +15%, supply use −5%. Negative fatigue effects are 25% worse, with 7-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus. Division speed +5%, division attack +2%.",
+      "desc_ru": "Постоянно: планирование+30%, максимальный бонус планирования+15%, расход снабжения+10%, восстановление организации+10%. Новые операции:14дней атаки+50%, скорости+20%, планирования+50%, восстановления+15%, снабжения−5%. Отрицательные эффекты усталости на25%тяжелее, шаг7дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет. Скорость дивизий +5%, атака дивизий +10%.",
+      "desc_en": "Permanent: planning +30%, maximum planning +15%, supply use +10%, organisation recovery +10%. New operations: 14 days of attack +50%, speed +20%, planning +50%, recovery +15%, supply use −5%. Negative fatigue effects are 25% worse, with 7-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus. Division speed +5%, division attack +10%.",
       "branch": "army",
       "row": 7,
       "x": 6,
@@ -1400,8 +1400,8 @@
       "id": "hro_ger_specialize_sequential",
       "name_ru": "Доктрина последовательных операций",
       "name_en": "Successive Operations Doctrine",
-      "desc_ru": "Постоянно: планирование+15%, восстановление организации+20%, скорость дивизий−5%. Новые операции:21день атаки+20%, скорости+5%, планирования+25%, восстановления+35%, снабжения−15%. Отрицательные эффекты усталости на25%мягче, шаг10дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет.",
-      "desc_en": "Permanent: planning +15%, organisation recovery +20%, division speed −5%. New operations: 21 days of attack +20%, speed +5%, planning +25%, recovery +35%, supply use −15%. Negative fatigue effects are 25% milder, with 10-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus.",
+      "desc_ru": "Постоянно: планирование+15%, восстановление организации+20%, скорость дивизий−5%. Новые операции:21день атаки+20%, скорости+5%, планирования+25%, восстановления+35%, снабжения−15%. Отрицательные эффекты усталости на25%мягче, шаг10дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет. Постоянно: организация дивизий +15%, атака +5%.",
+      "desc_en": "Permanent: planning +15%, organisation recovery +20%, division speed −5%. New operations: 21 days of attack +20%, speed +5%, planning +25%, recovery +35%, supply use −15%. Negative fatigue effects are 25% milder, with 10-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus. Permanent: division organisation +15%, attack +5%.",
       "branch": "army",
       "row": 7,
       "x": 10,
@@ -1649,12 +1649,12 @@
       "id": "hro_ger_dora_programme",
       "name_ru": "Осадное орудие «Дора»",
       "name_en": "Dora Siege Gun Programme",
-      "desc_ru": "Технология железнодорожных орудий, один прототип «Дора» в Берлине и постоянная эффективность обстрела железнодорожными орудиями +15%. Испытания на 90 дней снижают выпуск военных заводов на 3%. Нужен контроль Берлина. Модель орудия использует штатное железнодорожное орудие игры.",
-      "desc_en": "Unlock railway guns, one Dora prototype in Berlin and permanent railway bombardment +15%. Trials cost −3% military factory output for 90 days. Requires Berlin control. The prototype uses the native railway gun model.",
+      "desc_ru": "Технология железнодорожных орудий и один прототип в Берлине. Постоянно: обстрел +50%, максимальный бонус планирования +15%. Испытания: военный выпуск −3% на 90 дней.",
+      "desc_en": "Railway gun technology and one prototype in Berlin. Permanent bombardment +50%, maximum planning +15%. Trials: military output −3% for 90 days.",
       "branch": "army",
       "x": 2,
       "y": 25,
-      "cost": 5,
+      "cost": 4,
       "prerequisites": [
         [
           "GER_artillery_bombardment",
@@ -1675,7 +1675,7 @@
       "branch": "army",
       "x": 2,
       "y": 5,
-      "cost": 4,
+      "cost": 3,
       "prerequisites": [
         [
           "GER_fortify_the_vaterland"
@@ -1726,6 +1726,44 @@
       "reward": "hro_set_hro_idea_ger_story_kitchens = yes add_tech_bonus = { name = hro_ger_field_kitchens bonus = 0.5 uses = 1 category = support_tech }",
       "icon": "GFX_focus_generic_reinforcing_the_supply_network",
       "available": ""
+    },
+    {
+      "id": "hro_ger_blitzkrieg_air_coordination",
+      "name_ru": "Воздушный кулак блицкрига",
+      "name_en": "Blitzkrieg Air Spearhead",
+      "desc_ru": "Воздушная атака: +15%; Эффективность непосредственной авиаподдержки: +20%; Атака авиации по наземным целям: +15%.",
+      "desc_en": "Air attack: +15%; Close air support efficiency: +20%; Air ground attack: +15%.",
+      "branch": "air",
+      "x": 16,
+      "y": 9,
+      "cost": 3,
+      "earliest": "1938.1.1",
+      "prerequisites": [
+        [
+          "hro_ger_front_air_programme"
+        ]
+      ],
+      "icon": "GFX_focus_generic_combined_arms",
+      "reward": "hro_set_hro_idea_ger_blitzkrieg_air_coordination = yes air_experience = 50"
+    },
+    {
+      "id": "hro_ger_elite_panzer_crews",
+      "name_ru": "Элитные танковые подразделения",
+      "name_en": "Elite Panzer Formations",
+      "desc_ru": "Потери опытных бойцов: -40%; Защита бронетанковых частей: +10%. Сохранение опытных кадров действует на всю армию: у игры нет отдельного модификатора потери опыта только для танков.",
+      "desc_en": "Experience losses: -40%; Armour defence: +10%. Experience retention affects the entire army; the native experience-loss modifier cannot be limited to tanks.",
+      "branch": "army",
+      "x": 12,
+      "y": 19,
+      "cost": 3,
+      "earliest": "1939.1.1",
+      "prerequisites": [
+        [
+          "hro_ger_armour_maintenance_school"
+        ]
+      ],
+      "icon": "GFX_focus_generic_tank_assembly",
+      "reward": "hro_set_hro_idea_ger_elite_panzer_crews = yes army_experience = 50"
     }
   ],
   "ideas": [
@@ -2625,15 +2663,15 @@
       "initial": false,
       "name_ru": "Доктрина решительного прорыва",
       "name_en": "Decisive Breakthrough Doctrine",
-      "desc_ru": "Постоянно: планирование+30%, максимальный бонус планирования+15%, расход снабжения+10%, восстановление организации−10%. Новые операции:14дней атаки+50%, скорости+20%, планирования+50%, восстановления+15%, снабжения−5%. Отрицательные эффекты усталости на25%тяжелее, шаг7дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет. Скорость дивизий +5%, атака дивизий +2%.",
-      "desc_en": "Permanent: planning +30%, maximum planning +15%, supply use +10%, organisation recovery −10%. New operations: 14 days of attack +50%, speed +20%, planning +50%, recovery +15%, supply use −5%. Negative fatigue effects are 25% worse, with 7-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus. Division speed +5%, division attack +2%.",
+      "desc_ru": "Постоянно: планирование+30%, максимальный бонус планирования+15%, расход снабжения+10%, восстановление организации+10%. Новые операции:14дней атаки+50%, скорости+20%, планирования+50%, восстановления+15%, снабжения−5%. Отрицательные эффекты усталости на25%тяжелее, шаг7дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет. Скорость дивизий +5%, атака дивизий +10%.",
+      "desc_en": "Permanent: planning +30%, maximum planning +15%, supply use +10%, organisation recovery +10%. New operations: 14 days of attack +50%, speed +20%, planning +50%, recovery +15%, supply use −5%. Negative fatigue effects are 25% worse, with 7-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus. Division speed +5%, division attack +10%.",
       "modifiers": {
         "planning_speed": 0.3,
         "max_planning_factor": 0.15,
         "supply_consumption_factor": 0.1,
-        "army_org_regain": -0.1,
+        "army_org_regain": 0.1,
         "army_speed_factor": 0.05,
-        "army_attack_factor": 0.02
+        "army_attack_factor": 0.1
       },
       "equipment_bonus": {}
     },
@@ -2645,12 +2683,14 @@
       "initial": false,
       "name_ru": "Доктрина последовательных операций",
       "name_en": "Successive Operations Doctrine",
-      "desc_ru": "Постоянно: планирование+15%, восстановление организации+20%, скорость дивизий−5%. Новые операции:21день атаки+20%, скорости+5%, планирования+25%, восстановления+35%, снабжения−15%. Отрицательные эффекты усталости на25%мягче, шаг10дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет.",
-      "desc_en": "Permanent: planning +15%, organisation recovery +20%, division speed −5%. New operations: 21 days of attack +20%, speed +5%, planning +25%, recovery +35%, supply use −15%. Negative fatigue effects are 25% milder, with 10-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus.",
+      "desc_ru": "Постоянно: планирование+15%, восстановление организации+20%, скорость дивизий−5%. Новые операции:21день атаки+20%, скорости+5%, планирования+25%, восстановления+35%, снабжения−15%. Отрицательные эффекты усталости на25%мягче, шаг10дней. Положительная атака второй/третьей ступени остаётся+30%/+5%. Постоянный выбор. 50 опыта армии; исследовательского бонуса нет. Постоянно: организация дивизий +15%, атака +5%.",
+      "desc_en": "Permanent: planning +15%, organisation recovery +20%, division speed −5%. New operations: 21 days of attack +20%, speed +5%, planning +25%, recovery +35%, supply use −15%. Negative fatigue effects are 25% milder, with 10-day steps. Positive tier-two/three attack stays +30%/+5%. Permanent choice. 50 army experience; no research bonus. Permanent: division organisation +15%, attack +5%.",
       "modifiers": {
         "planning_speed": 0.15,
         "army_org_regain": 0.2,
-        "army_speed_factor": -0.05
+        "army_speed_factor": -0.05,
+        "army_org_factor": 0.15,
+        "army_attack_factor": 0.05
       },
       "equipment_bonus": {}
     },
@@ -3484,10 +3524,11 @@
       "initial": false,
       "name_ru": "Тяжёлая осадная артиллерия",
       "name_en": "Heavy Siege Artillery",
-      "desc_ru": "Эффективность обстрела железнодорожными орудиями +15%. Это общая подготовка тяжёлой железнодорожной артиллерии, не отдельная 3D модель.",
-      "desc_en": "Railway gun bombardment +15%. This is heavy railway artillery training, not a separate 3D model.",
+      "desc_ru": "Эффективность обстрела железнодорожными орудиями +50%, максимальный бонус планирования +15%. Обучение осадной артиллерии; прототип использует стандартную модель игры.",
+      "desc_en": "Railway gun bombardment +50%, maximum planning +15%. Siege artillery training; the prototype uses the native game model.",
       "modifiers": {
-        "railway_gun_bombardment_factor": 0.15
+        "railway_gun_bombardment_factor": 0.5,
+        "max_planning_factor": 0.15
       }
     },
     {
@@ -3536,6 +3577,116 @@
         "winter_attrition_factor": -0.1,
         "supply_consumption_factor": -0.03
       }
+    },
+    {
+      "id": "hro_idea_ger_blitzkrieg_1",
+      "family": "hro_family_ger_blitzkrieg",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Блицкриг: оперативная школа 1",
+      "name_en": "Blitzkrieg: Operational School 1",
+      "modifiers": {
+        "army_armor_attack_factor": 0.1,
+        "army_defence_factor": 0.05,
+        "army_org_regain": 0.1,
+        "planning_speed": 0.2
+      },
+      "desc_ru": "Атака бронетанковых частей: +10%; Защита дивизий: +5%; Восстановление организации: +10%; Скорость планирования: +20%.",
+      "desc_en": "Armour attack: +10%; Division defence: +5%; Organisation recovery: +10%; Planning speed: +20%."
+    },
+    {
+      "id": "hro_idea_ger_blitzkrieg_2",
+      "family": "hro_family_ger_blitzkrieg",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Блицкриг: оперативная школа 2",
+      "name_en": "Blitzkrieg: Operational School 2",
+      "modifiers": {
+        "army_armor_attack_factor": 0.2,
+        "army_defence_factor": 0.1,
+        "army_org_regain": 0.15,
+        "planning_speed": 0.3
+      },
+      "desc_ru": "Атака бронетанковых частей: +20%; Защита дивизий: +10%; Восстановление организации: +15%; Скорость планирования: +30%.",
+      "desc_en": "Armour attack: +20%; Division defence: +10%; Organisation recovery: +15%; Planning speed: +30%."
+    },
+    {
+      "id": "hro_idea_ger_blitzkrieg_3",
+      "family": "hro_family_ger_blitzkrieg",
+      "stage": 3,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Блицкриг: оперативная школа 3",
+      "name_en": "Blitzkrieg: Operational School 3",
+      "modifiers": {
+        "army_armor_attack_factor": 0.3,
+        "army_defence_factor": 0.15,
+        "army_org_regain": 0.2,
+        "planning_speed": 0.4
+      },
+      "desc_ru": "Атака бронетанковых частей: +30%; Защита дивизий: +15%; Восстановление организации: +20%; Скорость планирования: +40%.",
+      "desc_en": "Armour attack: +30%; Division defence: +15%; Organisation recovery: +20%; Planning speed: +40%."
+    },
+    {
+      "id": "hro_idea_ger_civilian_builders_1",
+      "family": "hro_family_ger_civilian_builders",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Гражданские строительные консорциумы 1",
+      "name_en": "Civilian Construction Consortia 1",
+      "modifiers": {
+        "production_speed_industrial_complex_factor": 0.15
+      },
+      "desc_ru": "Строительство гражданских фабрик: +15%.",
+      "desc_en": "Civilian factory construction: +15%."
+    },
+    {
+      "id": "hro_idea_ger_civilian_builders_2",
+      "family": "hro_family_ger_civilian_builders",
+      "stage": 2,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Гражданские строительные консорциумы 2",
+      "name_en": "Civilian Construction Consortia 2",
+      "modifiers": {
+        "production_speed_industrial_complex_factor": 0.25
+      },
+      "desc_ru": "Строительство гражданских фабрик: +25%.",
+      "desc_en": "Civilian factory construction: +25%."
+    },
+    {
+      "id": "hro_idea_ger_blitzkrieg_air_coordination",
+      "family": "hro_family_ger_blitzkrieg_air_coordination",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Воздушный кулак блицкрига",
+      "name_en": "Blitzkrieg Air Spearhead",
+      "modifiers": {
+        "air_attack_factor": 0.15,
+        "air_cas_efficiency": 0.2,
+        "ground_attack_factor": 0.15
+      },
+      "desc_ru": "Воздушная атака: +15%; Эффективность непосредственной авиаподдержки: +20%; Атака авиации по наземным целям: +15%.",
+      "desc_en": "Air attack: +15%; Close air support efficiency: +20%; Air ground attack: +15%."
+    },
+    {
+      "id": "hro_idea_ger_elite_panzer_crews",
+      "family": "hro_family_ger_elite_panzer_crews",
+      "stage": 1,
+      "tag": "GER",
+      "initial": false,
+      "name_ru": "Элитные танковые подразделения",
+      "name_en": "Elite Panzer Formations",
+      "modifiers": {
+        "experience_loss_factor": -0.4,
+        "army_armor_defence_factor": 0.1
+      },
+      "desc_ru": "Потери опытных бойцов: -40%; Защита бронетанковых частей: +10%. Сохранение опытных кадров действует на всю армию: у игры нет отдельного модификатора потери опыта только для танков.",
+      "desc_en": "Experience losses: -40%; Armour defence: +10%. Experience retention affects the entire army; the native experience-loss modifier cannot be limited to tanks."
     }
   ],
   "native_patches": [
@@ -4716,7 +4867,7 @@
     }
   ],
   "expansion_050": true,
-  "native_duration_factor": 0.8,
+  "native_duration_factor": 0.7,
   "choice_milestones": [
     {
       "target": "hro_ger_mission_command",

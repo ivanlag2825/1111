@@ -115,7 +115,10 @@ class SpecializationTests(unittest.TestCase):
     reward=self.focuses[f'hro_{tag}_specialize_{style}'].one('completion_reward')
     self.assertIsNone(reward.one('add_tech_bonus'))
    mods=self.ideas.one(f'hro_idea_{tag}_specialize_decisive').one('modifier')
-   self.assertEqual(float(mods.scalar('army_speed_factor')),.05);self.assertEqual(float(mods.scalar('army_attack_factor')),.02)
+   self.assertEqual(float(mods.scalar('army_speed_factor')),.05);self.assertEqual(float(mods.scalar('army_attack_factor')),.10 if tag=='ger' else .02)
+   self.assertEqual(float(mods.scalar('army_org_regain')),.10 if tag=='ger' else -.10)
+   seq=self.ideas.one(f'hro_idea_{tag}_specialize_sequential').one('modifier')
+   self.assertEqual(float(seq.scalar('army_org_factor','0')),.15 if tag=='ger' else 0);self.assertEqual(float(seq.scalar('army_attack_factor','0')),.05 if tag=='ger' else 0)
  def test_sprite_authoring_preserves_equipment_bonuses(self):
   def snapshot():
    ideas=parse((self.output/'common/ideas/hro_country_ideas.txt').read_text())[0].one('country')

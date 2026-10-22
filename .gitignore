@@ -28,3 +28,5 @@ dist/*
 !dist/signals.zip
 
 !dist/stories.zip
+
+!dist/blitzkrieg.zip

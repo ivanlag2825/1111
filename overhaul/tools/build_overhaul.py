@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.2.0'
+VERSION = '1.3.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,7 +552,17 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Фронтовые истории 1.2.0
+## Баланс и темп Германии 1.3.0
+
+Немецкие доктрины усилены: решительный прорыв даёт +10% атаки и +10% восстановления организации; последовательные операции дополнительно +15% организации и +5% атаки. Городские награды Германии перенесены в три постоянные ступени блицкрига, до +30% атаки бронетанковых частей. Добавлены воздушный кулак, сохранение опытных кадров и два платных решения с издержками. «Дора»: +50% железнодорожного обстрела, +15% максимального плана. Ранние гражданские строительные консорциумы дают +15%, затем +25% строительства фабрик.
+
+Послабления действуют и при MEFO, и при «Экономике завоевания»; после арсенала положительная нагрузка этой системы и её месячный рост ограничиваются нулём. Это не обнуление всех товаров народного потребления от законов и других источников. Комиссия стандартных конструкций доступна в 1937 году. Длительность предвоенных немецких веток сокращена. Один общий план из 70 фокусов завершается 16 ноября 1940 года, оставляя 217,5 дня до 22 июня 1941-го; политические и военные условия игрок обеспечивает самостоятельно.
+
+СССР: городской пояс требует 1942 год и 180 дней войны, полная адаптация — 1942 год и 240 дней; бонусы обеих реформ уменьшены. Ранняя армия ослаблена, промышленная помощь двух административно-дипломатических фокусов убрана. Потери городов вызывают «Армия теряет веру в победу» с конечным армейским штрафом. Провал разведки дополнен штрафами планирования и восстановления; контактные значки дивизий на фронте могут оставаться видимыми.
+
+[Все изменения, ограничения и числа](docs/BLITZKRIEG_BALANCE_130_RU.md). Расписание: docs/GER_TIMETABLE_130.json. Полностью замените старую папку; оба игрока устанавливают один архив. Для полного сравнения ранней экономики рекомендуется новая кампания. Движок HOI4 в облачной среде не запускался.
+
+## История: фронтовые истории 1.2.0
 
 Добавлены восемь связанных с основными ветками фокусов: «Дора», ускоренное строительство укреплений, ложные позиции, горячее снабжение; советские инженерные рубежи, восстановление разведки, танковые засады и зимние мастерские. «Дора» открывает штатную железнодорожную артиллерию и один именованный прототип с издержками испытаний. Событие Колобанова предлагает один из двух уроков, если Ленинград удерживается в подходящий период оборонительной войны. Пять событий и четыре платных решения имеют сроки и защиту от повторных наград.
 
@@ -817,8 +827,8 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
                       material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, war_stories=war_stories, runtime=runtime,
-                      spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':True,
-                                       'native_timed_ideas':True,'restore_active_060_windows':True,
+                      spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':False,
+                                       'native_timed_ideas':True,'restore_active_soviet_response_windows':True,
                                        'replays_material_rewards':False},
                       city_catalog_sha256=hashlib.sha256((OVERHAUL / 'data/cities.json').read_bytes()).hexdigest(),
                       permanent_reform_envelopes=combined_rewards,
@@ -830,6 +840,13 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         preview = module('hro_tree_preview', OVERHAUL / 'tools/preview_trees.py')
         schematic = preview.generate(stage, stage / 'preview')
         report['layout_audit'] = audit_integrated_layout(game, preview, schematic)
+        timetable_module = module('hro_focus_timetable', OVERHAUL / 'tools/focus_timetable.py')
+        timetable = timetable_module.schedule(stage, timetable_module.CORE_GOALS + timetable_module.NEW_GOALS)
+        if not timetable['feasible']:
+            raise ValueError('German prewar timetable no longer fits its declared goals')
+        put(stage, 'docs/GER_TIMETABLE_130.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
+        report['german_prewar_timetable'] = {key:timetable[key] for key in ('completed','focus_days','idle_days','spare_days','feasible','targets','engine_verified','limitations')}
+        report['german_prewar_timetable']['focuses'] = timetable['route']['focuses']
         put(stage, 'OVERHAUL_BUILD_REPORT.json', json.dumps(report, ensure_ascii=False, indent=2) + '\n')
         put(stage, 'README_RU.md', player_guide(catalogs, gameplay, report))
         documentation = OVERHAUL / 'docs'

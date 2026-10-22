@@ -5,8 +5,8 @@ from generate_war_adaptation import _select,_remove
 from effect_presentation import present_effects
 RECON_IDS=['hro_story_recon_blind','hro_story_recon_recovering','hro_story_recon_restored']
 MODIFIERS={
- RECON_IDS[0]:{'recon_factor':-1.0,'army_intel_factor':-1.0,'intel_from_combat_factor':-1.0},
- RECON_IDS[1]:{'recon_factor':-.50,'army_intel_factor':-.50,'intel_from_combat_factor':-.50},
+ RECON_IDS[0]:{'recon_factor':-1.0,'army_intel_factor':-1.0,'intel_from_combat_factor':-1.0,'intel_from_operatives_factor':-1.0,'army_org_regain':-.15,'planning_speed':-.25},
+ RECON_IDS[1]:{'recon_factor':-.50,'army_intel_factor':-.50,'intel_from_combat_factor':-.50,'intel_from_operatives_factor':-.50,'army_org_regain':-.05,'planning_speed':-.10},
  RECON_IDS[2]:{'recon_factor':.10,'army_intel_factor':.10},
  'hro_story_dora_trials':{'industrial_capacity_factory':-.03},
  'hro_story_kolobanov_ambush':{'army_armor_defence_factor':.10,'recon_factor_while_entrenched':.15},
@@ -14,8 +14,12 @@ MODIFIERS={
  'hro_story_hot_tea':{'army_org_regain':.05,'supply_consumption_factor':-.05},
  'hro_story_fort_builders':{'production_speed_bunker_factor':.50,'production_speed_coastal_bunker_factor':.40,'industrial_capacity_factory':-.03},
  'hro_story_combat_recon':{'recon_factor':.15,'intel_from_combat_factor':.25},
- 'hro_story_captured_maps':{'army_intel_factor':.15,'recon_factor':.10}}
+ 'hro_story_captured_maps':{'army_intel_factor':.15,'recon_factor':.10},
+ 'hro_story_panzer_drill':{'army_armor_attack_factor':.10,'supply_consumption_factor':.15},
+ 'hro_story_veteran_instructors':{'experience_loss_factor':-.15,'training_time_army_factor':.10}}
 NAMES={
+ 'hro_story_panzer_drill':('Слаживание танковых боевых групп','Panzer Battle Group Drills'),
+ 'hro_story_veteran_instructors':('Ветераны обучают пополнения','Veterans Train the Replacements'),
  RECON_IDS[0]:('Штаб без сводок','Headquarters Without Reports'),RECON_IDS[1]:('Обрывочные донесения фронтов','Fragmented Front Reports'),RECON_IDS[2]:('Сводки, которым можно верить','Reports We Can Trust'),
  'hro_story_dora_trials':('Полигонные испытания «Доры»','Dora Proving-Ground Trials'),
  'hro_story_kolobanov_ambush':('Урок танковой засады','Lessons of a Tank Ambush'),'hro_story_kolobanov_cadres':('Сохранённые экипажи','Preserved Crews'),
@@ -23,8 +27,10 @@ NAMES={
  'hro_story_fort_builders':('Ускоренный инженерный подряд','Accelerated Engineer Contracts'),
  'hro_story_combat_recon':('Разведка боем','Reconnaissance in Force'),'hro_story_captured_maps':('Охота за фронтовыми сводками','Hunting Front Reports')}
 DESCS={
- RECON_IDS[0]:('Первые21день оборонительной войны с Германией: разведка−100%, армейские разведданные−100%, данные из боёв−100%. Это модификаторы, не жёсткое обнуление всех источников агентства. Подготовка не пропускает первые21день.','First21days of defensive war with Germany: reconnaissance, army intelligence and combat intel−100%. These are modifiers, not a hard zero of every agency source. The initial21days cannot be skipped.'),
- RECON_IDS[1]:('Дни21–59первой оборонительной войны: разведка, армейские данные и сведения из боёв−50%. Фокус восстановления может завершить эту стадию раньше; после60дней она исчезает сама.','War days21–59: reconnaissance, army and combat intel−50%. The recovery focus can end this stage early; it automatically ends at day60.'),
+ 'hro_story_panzer_drill':('60 дней: атака бронетанковых частей +10%, расход снабжения всей армии +15%. Сильнее удар, выше нагрузка на тыл.','60 days: armour attack +10%, army-wide supply use +15%. A stronger strike strains logistics.'),
+ 'hro_story_veteran_instructors':('90 дней: потери опытных бойцов −15%, время обучения новых дивизий +10%. Сохранение опыта действует на всю армию.','90 days: experience losses −15%, training time +10%. Experience retention affects the entire army.'),
+ RECON_IDS[0]:('Первые21день оборонительной войны с Германией: разведка, армейские данные, сведения из боёв и от агентов −100%; восстановление организации −15%, планирование −25%. Контактные значки дивизий на фронте не скрываются. Это модификаторы, не жёсткое обнуление всех источников агентства. Подготовка не пропускает первые21день.','First21days of defensive war with Germany: reconnaissance, army intelligence, combat and operative intel −100%; organisation recovery −15%, planning −25%. Frontline contact counters remain visible. These are modifiers, not a hard zero of every agency source. The initial21days cannot be skipped.'),
+ RECON_IDS[1]:('Дни21–59первой оборонительной войны: разведка, армейские данные и сведения из боёв и от агентов −50%; восстановление организации −5%, планирование −10%. Фокус восстановления может завершить эту стадию раньше; после60дней она исчезает сама.','War days21–59: reconnaissance, army and combat and operative intel −50%; organisation recovery −5%, planning −10%. The recovery focus can end this stage early; it automatically ends at day60.'),
  RECON_IDS[2]:('После реформы связи и первых21военных дней: разведка+10%, армейские разведданные+10%. В мире и после капитуляции снимается, разрешение реформы сохраняется.','After the reform and21war days: reconnaissance and army intelligence+10%. Removed in peace/capitulation; reform authorisation remains.'),
  'hro_story_dora_trials':('90дней: выпуск военных заводов−3%. Проект требует испытаний и железнодорожной подготовки. Один прототип выдаётся отдельно и не повторяется при загрузке.','90days: military factory output−3%. Trials and railway preparation have costs; the separate prototype is never replayed on load.'),
  'hro_story_kolobanov_ambush':('180дней: защита бронетанковых частей+10%, разведка при окапывании+15%. Один из двух взаимоисключающих уроков события.','180days: armour defence+10%, entrenched reconnaissance+15%. One of two mutually exclusive event lessons.'),
@@ -55,13 +61,13 @@ def generate(output):
  def text(key,ru,en):loc['russian'][key]=tidy(ru);loc['english'][key]=tidy(en)
  idea_defs=[]
  for key,mods in MODIFIERS.items():
-  owner='SOV' if key in RECON_IDS or 'kolobanov' in key or key=='hro_story_combat_recon' else 'GER' if key in ('hro_story_dora_trials','hro_story_captured_maps') else None
+  owner='SOV' if key in RECON_IDS or 'kolobanov' in key or key=='hro_story_combat_recon' else 'GER' if key in ('hro_story_dora_trials','hro_story_captured_maps','hro_story_panzer_drill','hro_story_veteran_instructors') else None
   allowed='original_tag = '+owner if owner else 'OR = { original_tag = GER original_tag = SOV }'
   idea_defs.append(f'{key} = {{ picture = generic_army allowed = {{ {allowed} }} removal_cost = -1 modifier = {{ '+' '.join(f'{k} = {v:g}' for k,v in mods.items())+' } }')
   text(key,*NAMES[key]);text(key+'_desc',*DESCS[key])
  text('hro_story_projects','Инженеры, разведка и фронтовые истории','Engineers, Intelligence and War Stories')
  text('hro_story_projects_desc','Ограниченные программы с ценой, сроком и ясным результатом.','Limited programmes with explicit costs, durations and rewards.')
- text('hro_story_dora_tt','Один раз: технология железнодорожных орудий и прототип «Дора» в контролируемом Берлине; обстрел+15%. Испытания: выпуск военных заводов−3%на90дней. Если Берлин временно недоступен, прототип ожидает восстановления контроля.','Once: railway gun technology and a Dora prototype in controlled Berlin, bombardment+15%. Trials cost−3%military output for90days. If Berlin is unavailable the prototype waits for control to return.')
+ text('hro_story_dora_tt','Один раз: технология железнодорожных орудий и прототип «Дора» в контролируемом Берлине; обстрел +50%, максимальный бонус планирования +15%. Испытания: выпуск военных заводов−3%на90дней. Если Берлин временно недоступен, прототип ожидает восстановления контроля.','Once: railway gun technology and a Dora prototype in controlled Berlin, bombardment +50%, maximum planning +15%. Trials cost−3%military output for90days. If Berlin is unavailable the prototype waits for control to return.')
  text('hro_story_recon_tt','После21военного дня завершает восстановление разведки и открывает+10%разведки/армейских данных в продолжающейся войне. До21дня провал сохраняется.','After21war days, completes recovery and enables+10%reconnaissance/army intel during the war. It cannot skip the initial21days.')
  effects.append('''hro_story_dora_deliver = {
  if = { limit = { original_tag = GER has_capitulated = no has_country_flag = hro_story_dora_pending NOT = { has_country_flag = hro_story_dora_delivered } controls_province = 6521 }
@@ -135,6 +141,8 @@ hro_story_recon_sync = {
    'The quartermaster wants a form for the extra thermos. The mechanic suggests serving the people changing tracks at night first. Paperwork can wait. If the war continues: organisation recovery+5%, supply use−5%for30days. Once only.',
    [('Внести самовар в штат.','Put the samovar on the establishment.','hro_story_tea_'+tag+'_reward = yes')])
  configs=[
+ ('ger_panzer_drill','GER','hro_ger_combined_exercises','hro_story_panzer_drill',70,60,'Слаживание танковых боевых групп','Panzer Battle Group Drills',False),
+ ('ger_veteran_instructors','GER','hro_ger_elite_panzer_crews','hro_story_veteran_instructors',60,90,'Ветераны обучают пополнения','Veterans Train Replacements',False),
  ('ger_fort_builders','GER','hro_ger_modular_fortifications','hro_story_fort_builders',60,120,'Инженерный подряд: бетон по расписанию','Engineer Contracts: Concrete on Schedule',False),
  ('sov_fort_builders','SOV','hro_sov_modular_fortification_lines','hro_story_fort_builders',60,120,'Стройбат: сборные огневые точки','Construction Troops: Prefabricated Positions',False),
  ('sov_combat_recon','SOV','hro_sov_front_recon_rebuild','hro_story_combat_recon',50,90,'Разведка боем','Reconnaissance in Force',True),
@@ -150,8 +158,26 @@ hro_story_recon_sync = {
  tea=[]
  for tag,focus,eventid in [('GER','hro_ger_field_kitchens','hro.913'),('SOV','hro_sov_field_workshops','hro.914')]:
   tea.append(f'if = {{ limit = {{ original_tag = {tag} hro_war_eastern_war = yes hro_war_winter_season = yes has_completed_focus = {focus} NOT = {{ has_country_flag = hro_story_tea_{tag.lower()}_seen }} }} set_country_flag = hro_story_tea_{tag.lower()}_seen country_event = {{ id = {eventid} days = 1 }} }}')
+ # Permanent-only reconciliation for saves with already completed milestones.
+ # It never replays PP, XP, factories or research rewards.
+ restore=[]
+ for focus,idea in [
+  ('hro_ger_combined_exercises','hro_idea_ger_blitzkrieg_1'),
+  ('hro_ger_armour_maintenance_school','hro_idea_ger_blitzkrieg_2'),
+  ('hro_ger_operational_command_system','hro_idea_ger_blitzkrieg_3'),
+  ('hro_ger_procurement_register','hro_idea_ger_civilian_builders_1'),
+  ('hro_ger_tooling_audit','hro_idea_ger_civilian_builders_2')]:
+  restore.append(f'if = {{ limit = {{ original_tag = GER has_completed_focus = {focus} }} hro_set_{idea} = yes }}')
+ belt='original_tag = SOV hro_war_eastern_war = yes date > 1941.12.31 check_variable = { hro_war_sov_war_days > 179 }'
+ text('hro_story_city_belt_tt','Только с 1942 года и после 180 действительных дней войны с Германией: защита +8%, защита на национальной территории +5%, максимальная укреплённость +3. В мире дух снимается.','Only from 1942 after 180 actual war days against Germany: defence +8%, core defence +5%, maximum entrenchment +3. Removed in peace.')
+ effects.append(f'hro_story_city_belt_apply = {{ custom_effect_tooltip = hro_story_city_belt_tt show_ideas_tooltip = hro_idea_sov_hold_city_belt hidden_effect = {{ if = {{ limit = {{ {belt} }} hro_set_hro_idea_sov_hold_city_belt = yes }} }} }}')
  effects.append(f'''hro_war_stories_daily = {{
  hro_story_dora_deliver = yes hro_story_recon_sync = yes
+ {" ".join(restore)}
+ if = {{ limit = {{ original_tag = SOV }}
+  if = {{ limit = {{ {belt} has_completed_focus = hro_sov_hold_city_belt }} hro_story_city_belt_apply = yes }}
+  else = {{ remove_ideas = hro_idea_sov_hold_city_belt }}
+ }}
  if = {{ limit = {{ original_tag = SOV hro_war_eastern_war = yes has_country_flag = hro_war_sov_surprised check_variable = {{ hro_war_sov_war_days < 21 }} NOT = {{ has_country_flag = hro_story_map_seen }} }} set_country_flag = hro_story_map_seen country_event = {{ id = hro.911 days = 1 }} }}
  if = {{ limit = {{ {eligible} NOT = {{ has_country_flag = hro_story_kolobanov_seen }} }} set_country_flag = hro_story_kolobanov_seen country_event = {{ id = hro.912 days = 1 }} }}
  {' '.join(tea)}
@@ -171,4 +197,4 @@ hro_story_recon_sync = {
  put('common/decisions/categories/hro_war_stories_categories.txt','hro_story_projects = { icon = generic_army allowed = { OR = { original_tag = GER original_tag = SOV } } }')
  put('common/decisions/hro_war_stories.txt','hro_story_projects = { '+'\n'.join(decisions)+' }')
  for lang,entries in loc.items():put(f'localisation/{lang}/hro_war_stories_l_{lang}.yml','l_'+lang+':\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
- return {'focuses':8,'events':5,'decisions':4,'runtime_ideas':len(MODIFIERS),'blackout_days':21,'automatic_recovery_day':60,'recon_minimum_days_not_skippable':True,'one_dora_prototype':True,'kolobanov_choice_days':180,'kolobanov_requires_leningrad':True,'jokes_have_small_finite_rewards':True,'runtime_verified':False}
+ return {'focuses':10,'events':5,'decisions':6,'runtime_ideas':len(MODIFIERS),'blackout_days':21,'automatic_recovery_day':60,'recon_minimum_days_not_skippable':True,'one_dora_prototype':True,'kolobanov_choice_days':180,'kolobanov_requires_leningrad':True,'jokes_have_small_finite_rewards':True,'runtime_verified':False}

@@ -63,74 +63,13 @@ class GermanOffensiveTests(unittest.TestCase):
         self.r.advance(s,'1942.4.1');self.assertEqual(s['variables']['hro_off_ger_campaign_days'],120)
         self.assertFalse(set(offensive.LAUNCH_IDEAS)&s['ideas'])
 
-    def test_city_requires_actual_german_vp_control_and_recorded_soviet_loss(self):
-        self.s['controlled'].add(193);self.s['enemy_flags'].add('hro_city_kiev_lost');self.r.tick(self.s)
-        self.assertNotIn('hro_off_ger_kiev_awarded',self.s['flags'])
-        self.s['controlled'].add(525);self.s['enemy_flags'].clear();self.r.tick(self.s)
-        self.assertNotIn('hro_off_ger_kiev_awarded',self.s['flags'])
-        self.capture('kiev');self.assertIn('hro_off_ger_kiev_awarded',self.s['flags'])
 
-    def test_repeat_capture_cannot_farm_city_rewards_or_notifications(self):
-        self.capture('minsk');before=(self.s['add_political_power'],self.s['army_experience'],len(self.s['research']))
-        for _ in range(3):
-            self.s['controlled'].discard(11370);self.r.tick(self.s);self.capture('minsk')
-        self.assertEqual(before,(self.s['add_political_power'],self.s['army_experience'],len(self.s['research'])))
-        self.assertEqual(self.s['events'].count('hro.611'),1)
-        self.assertEqual(self.s['variables']['hro_off_ger_cities'],1)
 
-    def test_capture_effect_itself_grants_a_visible_timed_spirit_before_notification(self):
-        self.s['controlled'].add(3151);self.s['enemy_flags'].add('hro_city_leningrad_lost')
-        self.r.call('hro_off_ger_leningrad_capture',self.s)
-        self.assertIn(offensive.CITY_IDEAS[0],self.s['ideas'])
-        self.assertEqual(self.s['expiry'][offensive.CITY_IDEAS[0]],self.s['flags']['hro_off_ger_city_window'])
-        self.assertIn('hro.613',self.s['events'])
 
-    def test_missing_active_city_spirit_is_repaired_with_original_expiry_and_no_repayment(self):
-        self.capture('minsk');deadline=self.s['expiry'][offensive.CITY_IDEAS[0]]
-        self.r.advance(self.s,'1941.8.1')
-        before=(self.s['add_political_power'],self.s['army_experience'],list(self.s['research']),list(self.s['events']))
-        self.s['ideas'].difference_update(offensive.CITY_IDEAS);self.s['expiry'].clear()
-        self.r.call('hro_off_ger_sync',self.s)
-        self.assertIn(offensive.CITY_IDEAS[0],self.s['ideas'])
-        self.assertEqual(self.s['expiry'][offensive.CITY_IDEAS[0]],deadline)
-        self.assertEqual(before,(self.s['add_political_power'],self.s['army_experience'],self.s['research'],self.s['events']))
 
-    def test_city_upgrade_keeps_native_timer_and_expired_window_cannot_be_repaired(self):
-        self.capture('minsk');deadline=self.s['expiry'][offensive.CITY_IDEAS[0]]
-        self.r.advance(self.s,'1941.8.1');self.capture('kiev')
-        self.assertEqual(self.s['expiry'][offensive.CITY_IDEAS[1]],deadline)
-        self.r.advance(self.s,'1941.10.20');self.r.call('hro_off_ger_sync',self.s)
-        self.assertFalse(set(offensive.CITY_IDEAS)&self.s['ideas'])
 
-    def test_capture_event_immediate_and_button_restore_only_spirits(self):
-        self.capture('minsk');before=(self.s['add_political_power'],self.s['army_experience'],len(self.s['research']))
-        event=next(n for n in parse((Path(self.temp.name)/'events/hro_offensive_events.txt').read_text()) if n.scalar('id')=='hro.611')
-        for node in [event.one('immediate'),event.one('option')]:
-            self.s['ideas'].difference_update(offensive.CITY_IDEAS)
-            self.r.execute([n for n in node.value if n.key!='name'],self.s)
-            self.assertIn(offensive.CITY_IDEAS[0],self.s['ideas'])
-        self.assertEqual(before,(self.s['add_political_power'],self.s['army_experience'],len(self.s['research'])))
 
-    def test_actual_soviet_city_loss_script_unlocks_the_german_capture_reward(self):
-        output=Path(self.temp.name);city_generate(output);sov_runtime=SovietCityLifecycle(output)
-        sov=dict(tag='SOV',date=day('1941.6.22'),war=True,capitulated=False,enemy_capitulated=False,
-                 controlled={c['province'] for c in offensive.records()},enemy=set(),flags={},vars={},ideas=set(),
-                 expiry={},manpower=0,research=[],factories=[],slots=0,events=[],capacity_owned=True,capacity_free=True)
-        sov_runtime.tick(sov)
-        sov['controlled'].discard(11370);sov['enemy'].add(11370);sov_runtime.tick(sov)
-        self.s['enemy_flags']=sov['flags'];self.s['controlled'].add(11370);self.r.tick(self.s)
-        self.assertIn('hro_off_ger_minsk_awarded',self.s['flags'])
-        self.assertEqual(self.s['add_political_power'],60)
-        self.assertEqual(self.s['army_experience'],40)
 
-    def test_city_tiers_never_stack_or_refresh_the_existing_120_day_window(self):
-        self.capture('minsk');expiry=self.s['flags']['hro_off_ger_city_window']
-        self.r.advance(self.s,'1941.7.22');self.capture('kiev');self.capture('kharkov')
-        self.assertEqual(self.s['flags']['hro_off_ger_city_window'],expiry)
-        self.assertEqual(set(offensive.CITY_IDEAS)&self.s['ideas'],{offensive.CITY_IDEAS[2]})
-        self.r.advance(self.s,'1941.10.20');self.assertFalse(set(offensive.CITY_IDEAS)&self.s['ideas'])
-        self.capture('moscow');self.assertIn(offensive.CITY_IDEAS[2],self.s['ideas'])
-        self.assertGreater(self.s['flags']['hro_off_ger_city_window'],expiry)
 
     def test_peace_both_capitulations_and_1947_clear_temporary_advantages(self):
         self.capture('minsk')
@@ -140,18 +79,36 @@ class GermanOffensiveTests(unittest.TestCase):
                 self.assertFalse(set(offensive.LAUNCH_IDEAS+offensive.CITY_IDEAS)&s['ideas'])
                 self.assertIn('native_sentinel',s['ideas'])
 
-    def test_public_capture_effect_has_country_war_and_capitulation_guards(self):
-        self.s['controlled'].add(6380);self.s['enemy_flags'].add('hro_city_moscow_lost')
-        for key,value in [('tag','SOV'),('war',False),('capitulated',True),('enemy_capitulated',True)]:
-            with self.subTest(cause=key):
-                s=copy.deepcopy(self.s);s[key]=value;self.r.call('hro_off_ger_moscow_capture',s)
-                self.assertNotIn('hro_off_ger_moscow_awarded',s['flags'])
-                self.assertNotIn('add_political_power',s)
 
     def test_daily_offensive_dispatch_does_not_touch_foreign_countries(self):
         for tag in ['SOV','USA']:
             s=copy.deepcopy(self.s);s['tag']=tag;before=copy.deepcopy(s)
             self.r.execute(self.r.off_daily,s);self.assertEqual(s,before)
+
+    def test_city_captures_grant_no_automatic_rewards_or_notifications(self):
+        before=(self.s.get('add_political_power',0),self.s.get('army_experience',0),list(self.s['research']))
+        for city in offensive.records():self.capture(city['key'])
+        self.assertEqual(before,(self.s.get('add_political_power',0),self.s.get('army_experience',0),self.s['research']))
+        self.assertFalse(set(offensive.CITY_IDEAS)&self.s['ideas'])
+        self.assertEqual(self.s['events'],['hro.601'])
+
+    def test_old_save_city_spirits_and_window_are_removed_without_repaying_rewards(self):
+        self.s['ideas'].update(offensive.CITY_IDEAS);self.s['flags']['hro_off_ger_city_window']=None
+        self.s['flags']['hro_off_ger_minsk_awarded']=None
+        self.r.call('hro_off_ger_sync',self.s)
+        self.assertFalse(set(offensive.CITY_IDEAS)&self.s['ideas'])
+        self.assertNotIn('hro_off_ger_city_window',self.s['flags'])
+        self.assertNotIn('add_political_power',self.s)
+
+    def test_real_soviet_city_loss_hurts_soviets_without_paying_germany(self):
+        output=Path(self.temp.name);city_generate(output);runtime=SovietCityLifecycle(output)
+        sov=dict(tag='SOV',date=day('1941.6.22'),war=True,capitulated=False,enemy_capitulated=False,
+                 controlled={c['province'] for c in offensive.records()},enemy=set(),flags={},vars={},ideas=set(),
+                 expiry={},manpower=0,research=[],factories=[],slots=0,events=[],capacity_owned=True,capacity_free=True)
+        runtime.tick(sov);sov['controlled'].discard(11370);sov['enemy'].add(11370);runtime.tick(sov)
+        self.assertIn('hro_idea_city_crisis_1',sov['ideas']);self.assertIn('hro.501',sov['events'])
+        self.s['enemy_flags']=set(sov['flags']);self.capture('minsk')
+        self.assertNotIn('add_political_power',self.s);self.assertFalse(set(offensive.CITY_IDEAS)&self.s['ideas'])
 
 
 if __name__=='__main__':unittest.main()

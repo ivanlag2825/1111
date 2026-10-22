@@ -67,9 +67,9 @@ def generate(output: Path):
          'После 240 действительных дней войны новые штрафы вторжения автоматически сменились преимуществами. «Отчёты фронтов вместо сводок» заменяют этот опыт полной реформой; две положительные ступени не складываются.',
          'After 240 actual war days the new invasion penalties automatically become advantages. Front Feedback replaces this tier with the full reform; the two positive tiers never stack.')
     idea('hro_idea_war_sov_adapted','Фронты научились воевать','Fronts That Have Learned to Fight',
-         {'army_attack_factor':.25,'army_defence_factor':.20,'army_org_factor':.15,'army_org_regain':.40,'planning_speed':.50,'max_planning_factor':.35,'industrial_capacity_factory':.20,'supply_consumption_factor':-.10},
-         'Завершённая командная реформа и 240 действительных дней войны с Германией превращают кризис в крупное постоянное преимущество. Заменяет все новые штрафы вторжения и ранний положительный опыт. Чистки и ограничения DLC снимаются настоящими игровыми реформами.',
-         'The completed command reform and 240 actual war days turn the crisis into a major permanent advantage. Replaces invasion penalties and the earlier positive tier. Native purges and restrictions retain their own removal rules.')
+         {'army_attack_factor':.15,'army_defence_factor':.10,'army_org_factor':.10,'army_org_regain':.20,'planning_speed':.25,'max_planning_factor':.15,'industrial_capacity_factory':.10,'supply_consumption_factor':-.05},
+         'Не ранее 1942 года: завершённая командная реформа и 240 действительных дней войны с Германией превращают кризис в крупное постоянное преимущество. Заменяет все новые штрафы вторжения и ранний положительный опыт. Чистки и ограничения DLC снимаются настоящими игровыми реформами.',
+         'From 1942: the completed command reform and 240 actual war days turn the crisis into a major permanent advantage. Replaces invasion penalties and the earlier positive tier. Native purges and restrictions retain their own removal rules.')
     idea(GER_PENALTIES[0],'Первый неподготовленный зимний фронт','First Unprepared Winter Front',
          {'supply_consumption_factor':.50,'winter_attrition_factor':1.25,'army_org_regain':-.45,'army_speed_factor':-.25,'planning_speed':-.45,'army_org_factor':-.15,'army_attack_factor':-.15},
          'Тяжёлый кризис первой зимы войны с СССР, ноябрь–март. Подготовка смягчает его; полная логистическая реформа требует 90 действительных зимних дней войны. Наступательное окно первого удара зимой не действует.',
@@ -126,12 +126,20 @@ hro_war_sov_complete_adaptation = {{
     if = {{ limit = {{ original_tag = SOV }} set_country_flag = hro_war_sov_reform_authorized hro_war_sov_apply_reform = yes hro_war_sov_sync_penalty = yes }}
 }}
 hro_war_sov_apply_reform = {{
+    if = {{ limit = {{ original_tag = SOV OR = {{ date < 1942.1.1 check_variable = {{ hro_war_sov_war_days < 240 }} }} }}
+        remove_ideas = hro_idea_war_sov_adapted clr_country_flag = hro_war_sov_adapted
+    }}
     if = {{ limit = {{ original_tag = SOV hro_war_eastern_war = yes
         has_country_flag = hro_war_sov_reform_authorized has_country_flag = hro_war_sov_started
-        check_variable = {{ hro_war_sov_war_days > 239 }} NOT = {{ has_country_flag = hro_war_sov_adapted }} }}
+        date > 1941.12.31 check_variable = {{ hro_war_sov_war_days > 239 }} NOT = {{ has_country_flag = hro_war_sov_adapted }} }}
         set_country_flag = hro_war_sov_adapted
         {_remove(SOV_PENALTIES+(SOV_LEARNED,))}
         add_ideas = hro_idea_war_sov_adapted country_event = {{ id = hro.303 days = 1 }}
+    }}
+    if = {{ limit = {{ original_tag = SOV hro_war_eastern_war = yes date > 1941.12.31
+        has_country_flag = hro_war_sov_adapted check_variable = {{ hro_war_sov_war_days > 239 }}
+        NOT = {{ has_idea = hro_idea_war_sov_adapted }} }}
+        {_remove(SOV_PENALTIES+(SOV_LEARNED,))} add_ideas = hro_idea_war_sov_adapted
     }}
 }}
 hro_war_sov_sync_penalty = {{
@@ -195,8 +203,8 @@ hro_war_ger_tick = {{
     presentations={
         'hro_war_sov_reorganize_fronts':('Подготовка округов: смягчает каждую ступень кризиса дней 0–239 первой оборонительной войны с Германией. До войны запоминается, отсутствующие идеи не снимает. С 240 дней действует положительный опыт; полная реформа усиливает его.',
             'District preparation mitigates every crisis phase of days 0–239 of the first defensive war with Germany. Recorded before war; absent ideas are untouched. Positive experience begins at day 240; full reform improves it.',None),
-        'hro_war_sov_complete_adaptation':('Разрешает полную военную адаптацию после 240 действительных дней войны с Германией. До этого срок опыта сохраняется. Указанная положительная идея заменяет новые штрафы и ранний положительный опыт, не складываясь с ним.',
-            'Authorises full adaptation after 240 actual war days with Germany. Does not skip the timer. The displayed positive idea replaces the new penalties and earlier positive experience without stacking.', 'hro_idea_war_sov_adapted'),
+        'hro_war_sov_complete_adaptation':('Полная военная адаптация: не ранее 1942 года и после 240 действительных дней войны с Германией. До этого срок опыта сохраняется. Указанная положительная идея заменяет новые штрафы и ранний положительный опыт, не складываясь с ним.',
+            'Full adaptation: from 1942 after 240 actual war days with Germany. Does not skip the timer. The displayed positive idea replaces the new penalties and earlier positive experience without stacking.', 'hro_idea_war_sov_adapted'),
         'hro_war_ger_prepare_winter':('Подготовка зимних служб: смягчает тяжёлые сезонные ограничения. Заранее выполненная подготовка запоминается. Полная адаптация требует логистической реформы и 90 зимних дней войны с СССР.',
             'Winter preparation mitigates severe seasonal restrictions and is remembered before war. Full adaptation needs logistics reform and 90 actual winter war days against the USSR.',None),
         'hro_war_ger_complete_winter_adaptation':('Разрешает положительную зимнюю адаптацию после 90 действительных зимних дней войны с СССР. Тяжёлые кризисы заменяются преимуществами; остаётся меньшая сезонная нагрузка. Мир и тёплые месяцы срок не сокращают.',

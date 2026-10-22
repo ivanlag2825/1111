@@ -1,5 +1,17 @@
 """Player-facing numeric descriptions derived from the actual reward dictionaries."""
 LABELS = {
+ 'army_armor_attack_factor': ('Атака бронетанковых частей', 'Armour attack'),
+ 'army_armor_defence_factor': ('Защита бронетанковых частей', 'Armour defence'),
+ 'air_attack_factor': ('Воздушная атака', 'Air attack'),
+ 'air_cas_efficiency': ('Эффективность непосредственной авиаподдержки', 'Close air support efficiency'),
+ 'ground_attack_factor': ('Атака авиации по наземным целям', 'Air ground attack'),
+ 'experience_loss_factor': ('Потери опытных бойцов', 'Experience losses'),
+ 'army_core_defence_factor': ('Защита на национальной территории', 'Core territory defence'),
+ 'max_dig_in': ('Максимальная укреплённость', 'Maximum entrenchment'),
+ 'dig_in_speed_factor': ('Скорость окапывания', 'Entrenchment speed'),
+ 'army_artillery_attack_factor': ('Атака артиллерии', 'Artillery attack'),
+ 'coordination_bonus': ('Координация', 'Coordination'),
+ 'license_purchase_cost': ('Стоимость лицензий', 'Licence purchase cost'),
  'naval_coordination': ('Координация флота', 'Naval coordination'),
  'army_attack_factor': ('Атака дивизий', 'Division attack'),
  'army_speed_factor': ('Скорость дивизий', 'Division speed'),
@@ -35,10 +47,10 @@ def describe(modifiers, language):
     parts = []
     for key, value in modifiers.items():
         ru, en = LABELS[key]  # Fail closed rather than expose an untranslated script keyword.
-        numeric = f'{value if key == "political_power_gain" else value * 100:+g}'
+        numeric = f'{value if key in ("political_power_gain", "max_dig_in") else value * 100:+g}'
         if language == 'russian':
             numeric = numeric.replace('.', ',')
-        unit = (' ПВ/день' if language == 'russian' else ' PP/day') if key == 'political_power_gain' else (' п.п.' if language == 'russian' else ' pp') if key == 'land_reinforce_rate' else '%'
+        unit = '' if key == 'max_dig_in' else (' ПВ/день' if language == 'russian' else ' PP/day') if key == 'political_power_gain' else (' п.п.' if language == 'russian' else ' pp') if key == 'land_reinforce_rate' else '%'
         parts.append((ru if language == 'russian' else en) + ': ' + numeric + unit)
     return '; '.join(parts)
 
