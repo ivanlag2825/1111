@@ -1,5 +1,5 @@
 {
-  "version": "0.8.2",
+  "version": "0.8.3",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 60,
@@ -36,6 +36,7 @@
     "exhaustion_tiers": 4,
     "exhaustion_step_days": 7,
     "second_exhaustion_attack": 0.3,
+    "third_exhaustion_attack": 0.05,
     "exhaustion_requires_regrouping": true,
     "regrouping_supply_consumption": 0.3,
     "operation_cooldown_days": 90,
@@ -211,9 +212,9 @@
       }
     }
   },
-  "archive": "dist/balance.zip",
-  "sha256": "e2aec93c604d7d882c3cdf9dd9d9379ed6face8ee936ba6839230c3d500de313",
-  "bytes": 578149,
+  "archive": "dist/attack.zip",
+  "sha256": "d7a354da0d81db64ac9b3064c3b5f919d9b5b88bab4b2ae3a8570292f6a0092b",
+  "bytes": 578356,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 376,
@@ -221,8 +222,8 @@
   "tests": {
     "overhaul": 204
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-fatigue-balance/dist/balance.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-runtime-aid-fix/dist/repair.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-third-fatigue-attack/dist/attack.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-fatigue-balance/dist/balance.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -235,7 +236,8 @@
     "operations": "f8cb18f10b8f35231edf33fab341256b8d846059cd35c429609588e9f15d085c",
     "briefing": "c4c3faa3ccc449f27495e7cb009f294b426a6c94e12b4155b8452413187318cc",
     "agency": "307c34e7bf9a4b690ba5362a3d58d1443d233cdefc3fce3488ce5d47e2a76407",
-    "repair": "d410bef6e142a99e88ecb543d2ba4aa7aa9e302434176c87c6f1810046be73fc"
+    "repair": "d410bef6e142a99e88ecb543d2ba4aa7aa9e302434176c87c6f1810046be73fc",
+    "balance": "e2aec93c604d7d882c3cdf9dd9d9379ed6face8ee936ba6839230c3d500de313"
   },
   "saved_game_update": {
     "from_versions": [
@@ -245,7 +247,8 @@
       "0.7.0",
       "0.7.1",
       "0.8.0",
-      "0.8.1"
+      "0.8.1",
+      "0.8.2"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,

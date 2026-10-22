@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '0.8.2'
+VERSION = '0.8.3'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -531,6 +531,10 @@ def native_overlay(stage, game, catalogs):
 
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
+
+## Третья ступень усталости 0.8.3
+
+В третьей ступени усталости атака дивизий+5% вместо−20%. Остальные штрафы этой ступени сохранены: организация−20%, восстановление−45%, скорость−25%, расход снабжения+55%, истощение+20%. Во второй ступени остаётся атака+30%, перегруппировка длится21день. Подсказки показывают фактические параметры.
 
 ## Баланс усталости 0.8.2
 
