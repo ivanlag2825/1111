@@ -44,3 +44,5 @@ dist/*
 !dist/art.zip
 
 !dist/history.zip
+
+!dist/cinema.zip

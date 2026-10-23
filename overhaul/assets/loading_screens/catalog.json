@@ -1,0 +1,17 @@
+{
+  "images": [
+    "blitz",
+    "winter",
+    "airwar"
+  ],
+  "size": [
+    1920,
+    1080
+  ],
+  "thumbnail_size": [
+    192,
+    108
+  ],
+  "dds_format": "DXT1",
+  "source": "Original generated WWII grand strategy paintings; technical resizing and DDS compression."
+}

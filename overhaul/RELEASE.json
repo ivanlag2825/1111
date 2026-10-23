@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "1.9.1",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 85,
@@ -7,7 +7,7 @@
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 75,
+    "script_files": 76,
     "authored_focuses": 180,
     "focuses_per_country": {
       "GER": 85,
@@ -22,7 +22,7 @@
     "idea_families": 78,
     "events": 65,
     "decisions": 155,
-    "localisation_keys_per_language": 2483,
+    "localisation_keys_per_language": 2486,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/history.zip",
-  "sha256": "8cd130216b863bd498f830a5870eeee7b07851412cd14509113d481c66dee933",
-  "bytes": 1772378,
+  "archive": "dist/cinema.zip",
+  "sha256": "46866ecc0c40ef41ef21dcca06f1457fc846bc303b58f87b9d2650bf31d52772",
+  "bytes": 25049865,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
   "german_native_duration_factor": 0.7,
   "tests": {
-    "overhaul": 335
+    "overhaul": 340
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-history-rear-schools/dist/history.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-art-mountain-schools/dist/art.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-epic-loading/dist/cinema.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-history-rear-schools/dist/history.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -287,7 +287,8 @@
     "researchfix": "85aa9f040f630ebe3590b3c91d52974812e9907a5d2e31cb0ada5556885d7891",
     "schools": "b4485f34e96a52b53980a54639636e689e69a806a1f782d6db1e435754622aaf",
     "modules": "886bfbe3b07f593810f7d2567df3dcc49799811c2a182a3496e3604d7b290018",
-    "art": "6977e15c27813731e41824769e190f7d6cc4777ed2f031e960f7a5ff2a4ad0c7"
+    "art": "6977e15c27813731e41824769e190f7d6cc4777ed2f031e960f7a5ff2a4ad0c7",
+    "history": "8cd130216b863bd498f830a5870eeee7b07851412cd14509113d481c66dee933"
   },
   "saved_game_update": {
     "from_versions": [
@@ -833,6 +834,15 @@
     "school_focus_auto_grant": false,
     "ui": {
       "explicit_name_captions": 89,
+      "caption_plates": 89,
+      "research_art_size": [
+        176,
+        80
+      ],
+      "native_half_slot_offset": [
+        50,
+        -50
+      ],
       "integer_grid_coordinates": true,
       "folders": [
         "hro_front_folder",
@@ -1106,5 +1116,66 @@
     "renault_cost_reduction": 0.3,
     "renault_control_province": 11506,
     "runtime_verified": false
-  }
+  },
+  "loading_screens": {
+    "paintings": [
+      "blitz",
+      "winter",
+      "airwar"
+    ],
+    "native_backgrounds_retextured": 27,
+    "own_backgrounds": 3,
+    "native_registry_sha256": "e9e835013809a0adb567ee8f1197142639d5151c5a5dc59a7f10a2e1273e09ff",
+    "full_size": [
+      1920,
+      1080
+    ],
+    "thumbnail_size": [
+      192,
+      108
+    ],
+    "dds_format": "DXT1",
+    "bindings": {
+      "load_taog_ast": "blitz",
+      "load_ncns_chi": "winter",
+      "load_ncns_jap": "airwar",
+      "load_lar": "blitz",
+      "load_botb": "winter",
+      "load_nsb": "airwar",
+      "load_nsb2": "blitz",
+      "load_bba": "winter",
+      "load_aat": "airwar",
+      "load_aat2": "blitz",
+      "load_toa": "winter",
+      "load_ww": "airwar",
+      "load_goe": "blitz",
+      "load_tfv": "winter",
+      "load_dod": "airwar",
+      "load_tiger": "blitz",
+      "load_mtg": "winter",
+      "load_mtg_2": "airwar",
+      "load_1": "blitz",
+      "load_2": "winter",
+      "load_3": "airwar",
+      "load_4": "blitz",
+      "load_5": "winter",
+      "load_6": "airwar",
+      "load_7": "blitz",
+      "load_8": "winter",
+      "load_9": "airwar",
+      "hro_load_blitz": "blitz",
+      "hro_load_winter": "winter",
+      "hro_load_airwar": "airwar"
+    },
+    "vanilla_registry_replaced": false,
+    "gameplay_changed": false,
+    "runtime_verified": false,
+    "audit": {
+      "native_keys_checked": 27,
+      "dds_checked": 60,
+      "vanilla_ui_preserved": true,
+      "runtime_verified": false
+    }
+  },
+  "unchanged_gameplay_script_files_vs_190": 75
 }

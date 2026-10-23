@@ -66,8 +66,8 @@
     "air_blueprint"
   ],
   "size": [
-    96,
-    44
+    176,
+    80
   ],
   "source": "Original generated transparent components atlas; cropped and converted to game DDS.",
   "terrain_motifs": [
@@ -81,5 +81,9 @@
     "terrain_climb",
     "terrain_mule"
   ],
-  "terrain_source": "terrain_atlas.png"
+  "terrain_source": "terrain_atlas.png",
+  "caption_plate_size": [
+    176,
+    32
+  ]
 }

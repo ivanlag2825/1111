@@ -95,14 +95,15 @@ class ResearchTests(unittest.TestCase):
  def test_missing_research_pixels_are_rejected(self):
   next((self.p/'gfx/interface/hro_research').glob('*.dds')).unlink()
   with self.assertRaisesRegex(ValueError,'Missing owned research texture'):audit(self.p,self.game,self.catalogs)
- def test_research_icons_fit_below_names_and_have_transparent_pixels(self):
+ def test_research_art_fills_card_with_a_bottom_caption_plate(self):
   import struct
   for path in (self.p/'gfx/interface/hro_research').glob('*.dds'):
-   raw=path.read_bytes();self.assertEqual(struct.unpack_from('<II',raw,12),(44,96));self.assertIn(0,raw[131::4]);self.assertGreaterEqual(max(raw[131::4]),240)
+   if path.stem=='caption_plate':continue
+   raw=path.read_bytes();self.assertEqual(struct.unpack_from('<II',raw,12),(80,176));self.assertIn(0,raw[131::4]);self.assertGreaterEqual(max(raw[131::4]),240)
   gui=parse((self.p/'interface/countrytechtreeview.gui').read_text())
   for n in walk(gui):
    if n.key=='containerWindowType' and n.scalar('name','').strip('"') in ('techtree_hro_front_folder_item','techtree_hro_module_folder_item'):
-    icon=next(v for v in n.value if v.scalar('name','').strip('"')=='Icon');self.assertEqual(icon.one('position').scalar('y'),'36');self.assertEqual(icon.scalar('centerposition'),'no');self.assertEqual(icon.scalar('spriteType'),'"GFX_hro_research_placeholder"')
+    icon=next(v for v in n.value if v.scalar('name','').strip('"')=='Icon');self.assertEqual(icon.one('position').scalar('y'),'2');self.assertIsNone(icon.one('centerposition'));self.assertEqual(icon.scalar('spriteType'),'"GFX_hro_research_placeholder"')
     name=next(v for v in n.value if v.scalar('name','').strip('"')=='Name');self.assertEqual(name.one('position').scalar('x'),'-10000')
  def test_module_paths_use_distinct_and_correct_component_icons(self):
   from illustration_assets import research_bindings
@@ -117,6 +118,11 @@ class ResearchTests(unittest.TestCase):
   self.assertFalse(self.researchable('hro_modtech_cannon_b2',s))
   self.assertGreater(MODULES['hro_precision_88']['add']['hard_attack'],MODULES['hro_high_velocity_75']['add']['hard_attack'])
   self.assertGreater(MODULES['hro_blast_105']['add']['soft_attack'],MODULES['hro_support_75']['add']['soft_attack'])
+ def test_full_card_caption_plates_align_and_cannot_disappear(self):
+  path=self.p/'interface/countrytechtreeview.gui';gui=parse(path.read_text());plates=[n for n in walk(gui) if n.key=='iconType' and n.scalar('name','').strip('"').startswith('hro_plate_')]
+  self.assertEqual(len(plates),89);self.assertEqual(self.report['ui']['research_art_size'],[176,80]);self.assertEqual(self.report['ui']['native_half_slot_offset'],[50,-50])
+  path.write_text(path.read_text().replace('name = "hro_plate_hro_design_light_base"','name = "missing_plate"'))
+  with self.assertRaisesRegex(ValueError,'Missing research caption plate'):audit(self.p,self.game,self.catalogs)
  def test_full_generated_contract(self):
   report=audit(self.p,self.game,self.catalogs)
   self.assertEqual(report['technologies'],124);self.assertEqual(self.report['visible_per_country'],89);self.assertEqual(report['modules']['modules'],40)

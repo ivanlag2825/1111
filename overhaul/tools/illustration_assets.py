@@ -58,6 +58,8 @@ def research_assets(root):
     if not tech.one('folder'):continue
     name=bindings[tech.key];relative=f'gfx/interface/hro_research/{name}.dds';target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(COMPONENTS/f'{name}.dds',target)
     sprites.append(f'spriteType = {{ name = "GFX_{tech.key}_medium" texturefile = "{relative}" }}');used[tech.key]=name
+ target=root/'gfx/interface/hro_research/caption_plate.dds';shutil.copyfile(COMPONENTS/'caption_plate.dds',target)
+ sprites.append('spriteType = { name = "GFX_hro_research_caption_plate" texturefile = "gfx/interface/hro_research/caption_plate.dds" }')
  sprites.append('spriteType = { name = "GFX_hro_research_placeholder" texturefile = "gfx/interface/hro_research/tank_blueprint.dds" }')
  (root/'interface/hro_research_icons.gfx').write_text('spriteTypes = {\n'+'\n'.join(sprites)+'\n}\n')
  return used

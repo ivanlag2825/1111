@@ -139,7 +139,7 @@ def layout(techs,roots):
  result={}
  def place(identity,root_x,root_y):
   t=techs[identity];f=t.one('folder');pos=f.one('position')
-  result[identity]=(f.scalar('name'),root_x+float(pos.scalar('y'))*100-56,root_y+float(pos.scalar('x'))*100-7)
+  result[identity]=(f.scalar('name'),root_x+float(pos.scalar('y'))*100-6,root_y+float(pos.scalar('x'))*100-57)
   for path in t.all('path'):place(path.scalar('leads_to_tech'),root_x,root_y)
  for identity,x,y in roots:place(identity,x,y)
  return result
@@ -163,19 +163,20 @@ def author_ui(output,game,roots,icons):
   canonical=identity.replace('hro_tech_sov_','hro_tech_ger_')
   if (folder,x,y,canonical) in seen:continue
   seen.add((folder,x,y,canonical))
-  captions[folder].append(f'instantTextBoxType = {{ name = "hro_caption_{identity}" position = {{ x = {x+6:g} y = {y+4:g} }} font = "hoi_16mbs" text = "{identity}" maxWidth = 169 maxHeight = 32 format = center alwaystransparent = yes }}')
- main=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,150,font='hoi_16mbs'),label('hro_research_pair_2',30,800,150,font='hoi_16mbs'),label('hro_research_support',30,1350)]
+  captions[folder].append(f'iconType = {{ name = "hro_plate_{identity}" position = {{ x = {x+3:g} y = {y+50:g} }} spriteType = "GFX_hro_research_caption_plate" alwaystransparent = yes }}')
+  captions[folder].append(f'instantTextBoxType = {{ name = "hro_caption_{identity}" position = {{ x = {x+6:g} y = {y+50:g} }} font = "hoi_16mbs" text = "{identity}" maxWidth = 169 maxHeight = 32 format = center alwaystransparent = yes }}')
+ main=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,150,font='hoi_16mbs'),label('hro_research_pair_2',30,800,150,font='hoi_16mbs'),label('hro_research_support',30,1290)]
  for i,key in enumerate(design.BRANCHES):main.append(label('hro_design_row_'+key,20,1530+i*320,170,font='hoi_16mbs'))
- for index,x in enumerate((190,490,790),1):main.append(label('hro_research_stage_'+str(index),x,1400,260,font='hoi_16mbs'))
+ for index,x in enumerate((240,540,840),1):main.append(label('hro_research_stage_'+str(index),x,1330,260,font='hoi_16mbs'))
  module=[label('hro_module_heading',30,20),label('hro_module_help',30,65,font='hoi_16mbs',height=54)]
  for i,key in enumerate(design.programmes.PROGRAMMES):module.append(label('hro_mod_row_'+key,20,340+i*320,170,font='hoi_16mbs'))
- for index,x in enumerate((190,490,790),1):module.append(label('hro_research_stage_'+str(index),x,215,260,font='hoi_16mbs'))
+ for index,x in enumerate((240,540,840),1):module.append(label('hro_research_stage_'+str(index),x,145,260,font='hoi_16mbs'))
  panels=[];tabs_added=[]
  for folder,content,height,index in [(FOLDER,main,3750,0),(MODULE_FOLDER,module,3200,1)]:
   for identity,x,y in roots:
    if techs[identity].one('folder').scalar('name')==folder:content.append(f'gridboxtype = {{ name = "{identity}_tree" position = {{ x = {x} y = {y} }} slotsize = {{ width = 100 height = 100 }} format = "LEFT" }}')
   rows=[(1550+i*320) for i in range(len(design.BRANCHES))] if folder==FOLDER else [(360+i*320) for i in range(len(design.programmes.PROGRAMMES))]
-  bands=[f'containerWindowType = {{ name = "hro_band_{index}_{i}" position = {{ x = 10 y = {row-120} }} size = {{ width = {1390 if folder==MODULE_FOLDER else 1090} height = 310 }} background = {{ name = "Background" quadTextureSprite = "GFX_tiled_research_bg" }} }}' for i,row in enumerate(rows)]
+  bands=[f'containerWindowType = {{ name = "hro_band_{index}_{i}" position = {{ x = 10 y = {row-170} }} size = {{ width = {1390 if folder==MODULE_FOLDER else 1090} height = 310 }} background = {{ name = "Background" quadTextureSprite = "GFX_tiled_research_bg" }} }}' for i,row in enumerate(rows)]
   content=bands+content
   content.extend(captions[folder])
   panels.append(f'''containerWindowType = {{ name = "{folder}" position = {{ x = 0 y = 47 }} size = {{ width = 100%% height = 100%% }}
@@ -204,11 +205,10 @@ def author_ui(output,game,roots,icons):
      if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = -10000 y = -10000 }'))
      else:changes.append((child.value_end-1,child.value_end-1,' position = { x = -10000 y = -10000 } '))
     if child.scalar('name','').strip('"')=='Icon':
-     if field:=child.one('centerposition'):changes.append((field.start,field.end,'centerposition = no'))
-     else:changes.append((child.value_end-1,child.value_end-1,' centerposition = no '))
+     if field:=child.one('centerposition'):changes.append((field.start,field.end,''))
      if field:=child.one('spriteType'):changes.append((field.start,field.end,'spriteType = "GFX_hro_research_placeholder"'))
      else:changes.append((child.value_end-1,child.value_end-1,' spriteType = "GFX_hro_research_placeholder" '))
-     if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = 42 y = 36 }'))
+     if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = 3 y = 2 }'))
 
    fragment=edit(fragment,changes)
   templates.append(fragment)
@@ -227,7 +227,7 @@ def author_ui(output,game,roots,icons):
   if name not in sprites:raise ValueError('Vanilla research sprite missing: '+name)
   definitions.append(f'spriteType = {{ name = "GFX_{tech}_medium" texturefile = {sprites[name]} }}')
  (output/'interface/hro_research_icons.gfx').write_text('spriteTypes = {\n'+'\n'.join(definitions)+'\n}')
- return dict(explicit_name_captions=sum(len(v) for v in captions.values()),integer_grid_coordinates=True,folders=list(FOLDERS),source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),folder=FOLDER,root_grids=len(roots),sprite_aliases=len(icons),vanilla_gui_preserved_outside_insertions=True)
+ return dict(explicit_name_captions=sum(len(v)//2 for v in captions.values()),caption_plates=sum(len(v)//2 for v in captions.values()),research_art_size=[176,80],native_half_slot_offset=[50,-50],integer_grid_coordinates=True,folders=list(FOLDERS),source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),folder=FOLDER,root_grids=len(roots),sprite_aliases=len(icons),vanilla_gui_preserved_outside_insertions=True)
 
 
 def audit_interface_encoding(output):
@@ -353,7 +353,7 @@ def audit(output,game,catalogs,schema_dir=None):
   identity=node.scalar('name','').strip('"').removeprefix('GFX_').removesuffix('_medium')
   if identity in bindings and asset.name!=bindings[identity]+'.dds':errors.append('Research illustration does not match technology: '+identity)
   raw=asset.read_bytes()
-  if len(raw)!=128+96*44*4 or raw[:4]!=b'DDS ' or struct.unpack_from('<II',raw,12)!=(44,96):errors.append('Invalid owned research DDS: '+relative)
+  if len(raw)!=128+176*(32 if asset.stem=='caption_plate' else 80)*4 or raw[:4]!=b'DDS ' or struct.unpack_from('<II',raw,12)!=((32 if asset.stem=='caption_plate' else 80),176):errors.append('Invalid owned research DDS: '+relative)
  # Only Cyrillic-capable, actually defined fonts are allowed in our UI.
  font_source=Path(game)/'interface/core.gfx'
  fonts={};cyrillic=set()
@@ -375,7 +375,7 @@ def audit(output,game,catalogs,schema_dir=None):
  placements={}
  def place(k,root):
   t=techs[k];position=t.one('folder').one('position');grid=grids[root].one('position')
-  xy=(float(grid.scalar('x'))+float(position.scalar('y'))*100-56,float(grid.scalar('y'))+float(position.scalar('x'))*100-7)
+  xy=(float(grid.scalar('x'))+float(position.scalar('y'))*100-6,float(grid.scalar('y'))+float(position.scalar('x'))*100-57)
   placements[k]=(t.one('folder').scalar('name'),*xy)
   for path in t.all('path'):place(path.scalar('leads_to_tech'),root)
  for k,t in techs.items():
@@ -394,7 +394,12 @@ def audit(output,game,catalogs,schema_dir=None):
   canonical=k.replace('hro_tech_sov_','hro_tech_ger_')
   c=captions.get(k,captions.get(canonical))
   if c is None:errors.append('Missing explicit technology name: '+k)
-  elif float(c.one('position').scalar('x'))!=x+6 or float(c.one('position').scalar('y'))!=y+4:errors.append('Technology caption does not align: '+k)
+  elif float(c.one('position').scalar('x'))!=x+6 or float(c.one('position').scalar('y'))!=y+50:errors.append('Technology caption does not align: '+k)
+ plates={n.scalar('name','').strip('"').removeprefix('hro_plate_'):n for n in walk(gui) if n.key=='iconType' and n.scalar('name','').strip('"').startswith('hro_plate_')}
+ for k,(f,x,y) in placements.items():
+  canonical=k.replace('hro_tech_sov_','hro_tech_ger_');plate=plates.get(k,plates.get(canonical))
+  if plate is None:errors.append('Missing research caption plate: '+k)
+  elif float(plate.one('position').scalar('x'))!=x+3 or float(plate.one('position').scalar('y'))!=y+50:errors.append('Research caption plate does not align: '+k)
  module_report=design.audit(output,game,schema_dir)
  if errors:raise ValueError('\n'.join(errors))
  return dict(technologies=len(techs),converted_modifiers_exact=True,root_bindings_checked=True,exclusive_schools_checked=True,school_focuses_do_not_grant_technologies=True,interface_bom_free=True,research_bonus_categories_checked_against_game=True,cyrillic_fonts_checked=True,card_layout_checked=True,modules=module_report)

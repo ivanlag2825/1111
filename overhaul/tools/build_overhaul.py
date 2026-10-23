@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.9.0'
+VERSION = '1.9.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -566,7 +566,11 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Исторические развилки и операции в тылу 1.9.0
+## Загрузочные экраны и крупные изображения 1.9.1
+
+Три широкоформатные иллюстрации: танковый прорыв, зимнее наступление, воздушный бой. Заменены текстуры обычных и DLC-фонов, добавлены три выбираемых фона. Картинки исследований увеличены до 176×80, подписи выровнены и размещены на нижней тёмной полосе. [Установка и детали](docs/LOADING_191_RU.md).
+
+## История: исторические развилки и операции в тылу 1.9.0
 
 Чешская программа лёгких танков, фокус Renault при контроле Парижа, Neubaufahrzeug, Майнила и «Блиц кринж» для вступающих союзников. Новые прозрачные предметные картинки исследований, четыре продолжения танкового вооружения и три ограниченные операции восстаний в советском тылу. [Все числа, условия и установка](docs/HISTORY_REAR_190_RU.md).
 
@@ -880,9 +884,11 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
         spirit_assets = spirit_module.author_spirit_assets(stage)
+        loading_module = module('hro_loading_generator', OVERHAUL / 'tools/generate_loading_screens.py')
+        loading_screens = loading_module.generate(stage, game)
         combined_rewards = permanent_reform_envelopes(catalogs, war_adaptation)
         put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.19.*"\n')
-        report.update(version=VERSION, folder=FOLDER, historical_expansion=history_expansion, native_background_systems='preserved',
+        report.update(version=VERSION, folder=FOLDER, loading_screens=loading_screens, historical_expansion=history_expansion, native_background_systems='preserved',
                       target='1936-1946, two human opponents GER/SOV, all DLC', runtime_verified=False,
                       player_requirements={'players': 2, 'countries': ['GER', 'SOV'], 'campaign_end_year': 1946,
                                            'historical_default': True, 'allow_deviations': True, 'complexity': 'high'},
@@ -949,7 +955,7 @@ def package(built, output):
                     'При обновлении удали старую папку historical_reality_overhaul целиком, затем распакуй новую. Не копируй поверх старой; сохранения не удаляй.\n'
                     'Оба игрока используют одинаковый архив, версию игры и DLC.\n'
                     'Закрой игру полностью перед заменой файлов. Можно продолжить сохранение 1.6.0: прежние школы и модули сохраняются.\n'
-                    'Модули устанавливаются вручную в конструкторе после соответствующих исследований. Подробнее — docs/HISTORY_REAR_190_RU.md внутри папки мода.\n'
+                    'Модули устанавливаются вручную в конструкторе после соответствующих исследований. Подробнее — docs/LOADING_191_RU.md внутри папки мода.\n'
                     'В папку Steam ничего копировать не нужно. Python и установщик не нужны.\n'
                     f'Подробности и ограничения: {FOLDER}/README_RU.md\n'
                     'Новая версия прошла статические проверки, но ещё не проверена в игровом движке и сетевой партии.\n'
