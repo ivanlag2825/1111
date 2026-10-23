@@ -188,15 +188,15 @@ class WarAdaptationTests(unittest.TestCase):
         self.assertFalse(set(generator.SOV_PENALTIES) & offensive['ideas'])
         self.assertFalse(offensive['events'])
 
-    def test_prewar_completed_reform_waits_240_days_then_activates_without_reclick(self):
+    def test_prewar_completed_reform_waits_365_days_then_activates_without_reclick(self):
         sov = self.country('SOV', war=False)
         self.runtime.call('hro_war_sov_complete_adaptation', sov)
         self.assertNotIn('hro_idea_war_sov_adapted', sov['ideas'])
         sov['war'] = True
         self.runtime.tick(sov)
-        self.runtime.advance(sov, '1942.2.16')  # 239 actual days after 22 June
+        self.runtime.advance(sov, '1942.6.21')  # 364 actual days after 22 June
         self.assertNotIn('hro_idea_war_sov_adapted', sov['ideas'])
-        self.runtime.advance(sov, '1942.2.17')  # 240 actual days
+        self.runtime.advance(sov, '1942.6.22')  # 365 actual days
         self.assertIn('hro_idea_war_sov_adapted', sov['ideas'])
         self.assertFalse(set(generator.SOV_PENALTIES) & sov['ideas'])
         self.assertIn('SOV_native_restriction', sov['ideas'])
@@ -211,14 +211,14 @@ class WarAdaptationTests(unittest.TestCase):
         self.assertNotIn('hro_idea_war_sov_adapted', sov['ideas'])
         self.assertTrue(self.runtime.flag(sov, 'hro_war_sov_acute_phase'))
 
-    def test_unreformed_crisis_softens_after_120_days_even_without_any_focus(self):
+    def test_unreformed_crisis_softens_after_180_days_even_without_any_focus(self):
         sov = self.country('SOV')
         self.runtime.tick(sov)
-        self.runtime.advance(sov, '1941.10.20')
+        self.runtime.advance(sov, '1941.12.19')
         self.assertEqual(set(generator.SOV_PENALTIES) & sov['ideas'], {generator.SOV_PENALTIES[2]})
         self.runtime.call('hro_war_sov_reorganize_fronts', sov)
         self.assertEqual(set(generator.SOV_PENALTIES) & sov['ideas'], {generator.SOV_PENALTIES[5]})
-        self.runtime.advance(sov, '1942.2.17')
+        self.runtime.advance(sov, '1942.6.22')
         self.assertIn(generator.SOV_LEARNED, sov['ideas'])
         self.assertFalse(set(generator.SOV_PENALTIES) & sov['ideas'])
 
@@ -226,25 +226,25 @@ class WarAdaptationTests(unittest.TestCase):
         sov = self.country('SOV', aggressor='SOV')
         self.runtime.call('hro_war_sov_complete_adaptation', sov)
         self.runtime.tick(sov)
-        self.runtime.advance(sov, '1942.2.17')
+        self.runtime.advance(sov, '1942.6.22')
         self.assertIn('hro_idea_war_sov_adapted', sov['ideas'])
         self.assertFalse(set(generator.SOV_PENALTIES) & sov['ideas'])
 
-    def test_soviet_crisis_changes_exactly_at_45_120_and_240_days(self):
+    def test_soviet_crisis_changes_exactly_at_90_180_and_365_days(self):
         for prepared in (False, True):
             with self.subTest(prepared=prepared):
                 sov = self.country('SOV')
                 if prepared:
                     self.runtime.call('hro_war_sov_reorganize_fronts', sov)
                 self.runtime.tick(sov)
-                for when, index in [('1941.8.5', 1 if prepared else 0),
-                                    ('1941.8.6', 4 if prepared else 3),
-                                    ('1941.10.19', 4 if prepared else 3),
-                                    ('1941.10.20', 5 if prepared else 2),
-                                    ('1942.2.16', 5 if prepared else 2)]:
+                for when, index in [('1941.9.19', 1 if prepared else 0),
+                                    ('1941.9.20', 4 if prepared else 3),
+                                    ('1941.12.18', 4 if prepared else 3),
+                                    ('1941.12.19', 5 if prepared else 2),
+                                    ('1942.6.21', 5 if prepared else 2)]:
                     self.runtime.advance(sov, when)
                     self.assertEqual(set(generator.SOV_PENALTIES) & sov['ideas'], {generator.SOV_PENALTIES[index]})
-                self.runtime.advance(sov, '1942.2.17')
+                self.runtime.advance(sov, '1942.6.22')
                 self.assertFalse(set(generator.SOV_PENALTIES) & sov['ideas'])
                 self.assertIn(generator.SOV_LEARNED, sov['ideas'])
                 self.assertEqual(sov['events'].count('hro.305'), 1)
@@ -253,7 +253,7 @@ class WarAdaptationTests(unittest.TestCase):
     def test_late_reform_replaces_automatic_positive_without_stacking_or_repeating(self):
         sov = self.country('SOV')
         self.runtime.tick(sov)
-        self.runtime.advance(sov, '1942.2.17')
+        self.runtime.advance(sov, '1942.6.22')
         self.assertIn(generator.SOV_LEARNED, sov['ideas'])
         for _ in range(3):
             self.runtime.call('hro_war_sov_complete_adaptation', sov)
@@ -343,6 +343,8 @@ class WarAdaptationTests(unittest.TestCase):
         self.assertNotIn('hro_idea_war_sov_adapted', sov['ideas'])
         self.runtime.advance(sov, '1942.3.20')
         self.assertEqual(sov['variables']['hro_war_sov_war_days'], 240)
+        self.runtime.advance(sov, '1942.7.23')
+        self.assertEqual(sov['variables']['hro_war_sov_war_days'], 365)
         for _ in range(3):
             self.runtime.call('hro_war_sov_complete_adaptation', sov)
             self.runtime.tick(sov)

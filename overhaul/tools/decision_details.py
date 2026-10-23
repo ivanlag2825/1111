@@ -1,5 +1,9 @@
 """Player-facing numeric descriptions derived from the actual reward dictionaries."""
 LABELS = {
+ 'production_speed_rail_way_factor': ('Строительство железных дорог', 'Railway construction'),
+ 'production_speed_arms_factory_factor': ('Строительство военных заводов', 'Military factory construction'),
+ 'army_fuel_consumption_factor': ('Расход топлива армией', 'Army fuel consumption'),
+ 'air_intercept_efficiency': ('Эффективность перехвата', 'Interception efficiency'),
  'army_armor_attack_factor': ('Атака бронетанковых частей', 'Armour attack'),
  'army_armor_defence_factor': ('Защита бронетанковых частей', 'Armour defence'),
  'air_attack_factor': ('Воздушная атака', 'Air attack'),

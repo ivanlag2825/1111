@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.3.0'
+VERSION = '1.4.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,7 +552,17 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Баланс и темп Германии 1.3.0
+## Фронтовые технологии и военные программы 1.4.0
+
+12 новых фокусов, 8 выдаваемых фокусами технологий школ боя, три промышленных приоритета, материальный резерв наступления, пять немецких штабных решений и четыре исторических события. Школы дают преимущества указанным батальонам и местности; их статус виден в решениях, отдельного духа нет. Программы имеют цену, срок и взаимоисключения.
+
+Советский начальный кризис длится 365 действительных дней войны со смягчением на 90-й и 180-й дни. Каждая первая потеря города учитывается 365 военных дней; досрочное снятие — после возвращения всех ранее потерянных городов механики. Оплаченные контрмеры и частичное освобождение больше не отменяют годовой срок.
+
+[Полные правила, числа и условия](docs/FRONTIER_140_RU.md). Маршрут с выбранными новыми фокусами: 79 фокусов, завершение 11 июня 1941 года, запас 11 дней. Расписание: docs/GER_TIMETABLE_140.json. Это календарный расчёт, не прохождение движком.
+
+Для 1.19.3.0.c01a (4f21), все DLC. Рекомендуется новая кампания: старые счётчики были ограничены меньшими сроками, поэтому при обновлении некоторые штрафы вернутся до нового порога. Полностью замените папку, оба игрока устанавливают один архив. Движок и сетевой режим здесь не проверены.
+
+## История: баланс и темп Германии 1.3.0
 
 Немецкие доктрины усилены: решительный прорыв даёт +10% атаки и +10% восстановления организации; последовательные операции дополнительно +15% организации и +5% атаки. Городские награды Германии перенесены в три постоянные ступени блицкрига, до +30% атаки бронетанковых частей. Добавлены воздушный кулак, сохранение опытных кадров и два платных решения с издержками. «Дора»: +50% железнодорожного обстрела, +15% максимального плана. Ранние гражданские строительные консорциумы дают +15%, затем +25% строительства фабрик.
 
@@ -811,12 +821,15 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         stories_module = module('hro_war_stories_generator', OVERHAUL / 'tools/generate_war_stories.py')
         stories_module.validate_geography(game)
         war_stories = stories_module.generate(stage)
+        frontier_module = module('hro_frontier_generator', OVERHAUL / 'tools/generate_frontier.py')
+        frontier = frontier_module.generate(stage)
+        frontier["technology_audit"] = frontier_module.audit_technologies(stage, game, schema_dir)
         runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
         spirit_assets = spirit_module.author_spirit_assets(stage)
         combined_rewards = permanent_reform_envelopes(catalogs, war_adaptation)
-        put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.*.*"\n')
+        put(stage, 'descriptor.mod', f'version="{VERSION}"\ntags={{ "Historical" "National Focuses" "Events" }}\nname="{NAME}"\nsupported_version="1.19.*"\n')
         report.update(version=VERSION, folder=FOLDER, native_background_systems='preserved',
                       target='1936-1946, two human opponents GER/SOV, all DLC', runtime_verified=False,
                       player_requirements={'players': 2, 'countries': ['GER', 'SOV'], 'campaign_end_year': 1946,
@@ -826,7 +839,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, war_stories=war_stories, runtime=runtime,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, war_stories=war_stories, frontier=frontier, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':False,
                                        'native_timed_ideas':True,'restore_active_soviet_response_windows':True,
                                        'replays_material_rewards':False},
@@ -844,7 +857,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         timetable = timetable_module.schedule(stage, timetable_module.CORE_GOALS + timetable_module.NEW_GOALS)
         if not timetable['feasible']:
             raise ValueError('German prewar timetable no longer fits its declared goals')
-        put(stage, 'docs/GER_TIMETABLE_130.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
+        put(stage, 'docs/GER_TIMETABLE_140.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
         report['german_prewar_timetable'] = {key:timetable[key] for key in ('completed','focus_days','idle_days','spare_days','feasible','targets','engine_verified','limitations')}
         report['german_prewar_timetable']['focuses'] = timetable['route']['focuses']
         put(stage, 'OVERHAUL_BUILD_REPORT.json', json.dumps(report, ensure_ascii=False, indent=2) + '\n')
@@ -883,8 +896,8 @@ def package(built, output):
                     f'Выключи прежние версии и включи {NAME} {VERSION} в лаунчере.\n'
                     'При обновлении удали старую папку historical_reality_overhaul целиком, затем распакуй новую. Не копируй поверх старой; сохранения не удаляй.\n'
                     'Оба игрока используют одинаковый архив, версию игры и DLC.\n'
-                    'Закрой игру полностью перед заменой файлов. Сохранение версии 0.6 можно продолжить после перезапуска; дай пройти игровому дню.\n'
-                    'При первой установке и обновлении с более ранних версий нужна новая кампания 1936 года.\n'
+                    'Закрой игру полностью перед заменой файлов. Для 1.4.0 рекомендуется новая кампания 1936 года: годовые кризисы меняют старые сроки.\n'
+                    'При продолжении старого сохранения некоторые штрафы вернутся до новых порогов; подробнее — docs/FRONTIER_140_RU.md внутри папки мода.\n'
                     'В папку Steam ничего копировать не нужно. Python и установщик не нужны.\n'
                     f'Подробности и ограничения: {FOLDER}/README_RU.md\n'
                     'Новая версия прошла статические проверки, но ещё не проверена в игровом движке и сетевой партии.\n'

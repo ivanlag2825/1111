@@ -31,7 +31,8 @@ CORE_GOALS=[
  'GER_demand_sudetenland','GER_first_vienna_award',
  'GER_fate_of_czechoslovakia','GER_molotov_ribbentrop_pact',
 ]
-NEW_GOALS=['hro_ger_elite_panzer_crews','hro_ger_blitzkrieg_air_coordination','hro_ger_tooling_audit']
+NEW_GOALS=['hro_ger_elite_panzer_crews','hro_ger_blitzkrieg_air_coordination','hro_ger_tooling_audit',
+ 'hro_ger_frontier_bureau','hro_ger_operational_depots','hro_ger_school_urban','hro_ger_school_river']
 
 def day(s):return datetime.strptime(s.replace('-','.'),'%Y.%m.%d')
 

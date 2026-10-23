@@ -62,8 +62,8 @@ def generate(output):
         {'army_attack_factor':-.10,'army_defence_factor':-.08,'army_org_factor':-.12,'army_org_regain':-.20,'supply_consumption_factor':.15},
         {'army_attack_factor':-.15,'army_defence_factor':-.10,'army_org_factor':-.15,'army_org_regain':-.25,'supply_consumption_factor':.20}), 1):
         idea(f'hro_idea_city_crisis_{tier}', 'crisis', f'Армия теряет веру в победу: {tier}', f'The Army Loses Faith in Victory: {tier}', mods,
-             'Потеря ключевых городов подорвала уверенность армии. Действует одна ступень, максимум третья. Контрмеры, освобождение города или 90 фактических дней войны ослабляют кризис; в мире и после капитуляции дух снимается.',
-             'Lost cities undermine army confidence. Only one tier applies, up to tier three. Countermeasures, liberation or 90 actual war days reduce the crisis; peace and capitulation remove it.')
+             'Потеря ключевых городов подорвала уверенность армии. Действует одна ступень, максимум третья. Каждая первая потеря учитывается 365 фактических дней войны. Досрочно кризис снимается при одновременном возвращении всех ранее потерянных городов этой механики. Контрмеры и частичное освобождение срок не отменяют; в мире и после капитуляции дух снимается.',
+             'Lost cities undermine army confidence. Only one tier applies, up to tier three. Each first loss counts for 365 actual war days. Recapturing ALL previously lost tracked cities clears their shocks early; paid responses and partial liberation do not; peace and capitulation remove it.')
     for tier, mods in enumerate((
         {'army_defence_factor':.08,'army_org_regain':.15,'training_time_army_factor':-.10,'land_reinforce_rate':.02,'industrial_capacity_factory':.05},
         {'army_defence_factor':.25,'army_org_regain':.35,'training_time_army_factor':-.25,'industrial_capacity_factory':.15,'land_reinforce_rate':.05,'army_org_factor':.08},
@@ -120,11 +120,11 @@ def generate(output):
         for language in loc:
             loc[language][response+'_desc'] += '\n\n' + loc[language]['hro_city_mobilization_details']
         notification(f'hro.{500+index}', 'Армия теряет веру в победу', 'The Army Loses Faith in Victory',
-                     f"Потерян город {city['ru']}. Появляется национальный дух «Армия теряет веру в победу»: атака −5/10/15%, защита −5/8/10%, организация −8/12/15%, восстановление −15/20/25%, снабжение +10/15/20%. Ступени заменяются, не складываются. Кризис каждого города длится максимум 90 действительных дней войны. Решение или городской фокус дают контрмеры и положительный дух «Вторая мобилизация». Мир и капитуляция снимают временные военные духи; повторная потеря не создаёт наград.",
-                     'A major city has fallen. The Army Loses Faith in Victory applies one non-stacking army penalty tier: attack −5/10/15%, defence −5/8/10%, organisation −8/12/15%, recovery −15/20/25%, supply use +10/15/20%. Each city crisis lasts at most 90 actual war days. A regional decision or focus grants countermeasures and the positive Second Mobilisation spirit. Peace and capitulation remove temporary war spirits; repeated losses grant nothing.')
+                     f"Потерян город {city['ru']}. Появляется национальный дух «Армия теряет веру в победу»: атака −5/10/15%, защита −5/8/10%, организация −8/12/15%, восстановление −15/20/25%, снабжение +10/15/20%. Ступени заменяются, не складываются. Кризис каждой первой потери длится 365 действительных дней войны. Досрочное снятие — только после возвращения всех ранее потерянных городов этой механики; контрмеры и частичное освобождение не снимают штраф. Решение или городской фокус дают контрмеры и положительный дух «Вторая мобилизация». Мир и капитуляция снимают временные военные духи; повторная потеря не создаёт наград.",
+                     'A major city has fallen. The Army Loses Faith in Victory applies one non-stacking army penalty tier: attack −5/10/15%, defence −5/8/10%, organisation −8/12/15%, recovery −15/20/25%, supply use +10/15/20%. Each first-loss crisis lasts 365 actual war days; only returning ALL previously lost tracked cities clears it early. Countermeasures and partial liberation do not remove it. A regional decision or focus grants countermeasures and the positive Second Mobilisation spirit. Peace and capitulation remove temporary war spirits; repeated losses grant nothing.')
         notification(f'hro.{510+index}',city['ru']+': освобождение',city['en']+': Liberation',
-                     'Город вновь под нашим контролем. Его вклад в кризис снят, открыто ограниченное окно восстановления. Прежний выпуск и повреждённые предприятия восстанавливаются по обычным правилам игры.',
-                     'The city is under our control again. Its crisis contribution is removed and a finite rebuilding window opens. Production and damaged factories recover under normal game rules.')
+                     'Город вновь под нашим контролем. Открыто ограниченное окно восстановления. Для досрочного снятия городского кризиса необходимо вернуть все ранее потерянные города этой механики. Прежний выпуск и повреждённые предприятия восстанавливаются по обычным правилам игры.',
+                     'The city is under our control again. A finite rebuilding window opens. To clear the city crisis early, ALL previously lost tracked cities must be held simultaneously. Production and damaged factories recover under normal game rules.')
         cancel=f'{p}_cancel';finish=f'{p}_finish'
         effects.append(f'''{cancel} = {{
     if = {{ limit = {{ has_country_flag = {p}_active }}
@@ -175,7 +175,7 @@ def generate(output):
         set_country_flag = {p}_lost set_variable = {{ {p}_days = 0 }}
         country_event = {{ id = hro.{500+index} days = 1 }}
     }}
-    else_if = {{ limit = {{ hro_war_eastern_war = yes has_country_flag = {p}_lost check_variable = {{ {p}_days < 90 }} }}
+    else_if = {{ limit = {{ hro_war_eastern_war = yes has_country_flag = {p}_lost check_variable = {{ {p}_days < 365 }} }}
         add_to_variable = {{ {p}_days = 1 }}
     }}
     if = {{ limit = {{ hro_war_eastern_war = yes has_country_flag = {p}_lost controls_province = {vp} NOT = {{ has_country_flag = {p}_liberated }} }}
@@ -191,11 +191,15 @@ def generate(output):
             flag,days = ('hro_city_mobilization_active',240) if family == 'mobilization' else ('hro_city_rebuilding_active',180)
             return timed_selection(groups[family],desired,flag,days)
         return remove([i for i in groups[family] if i != desired])+f' if = {{ limit = {{ NOT = {{ has_idea = {desired} }} }} add_ideas = {desired} }}'
-    unresolved=[]
+    # A paid response or partial liberation cannot erase the year's morale shock.
+    # Returning ALL cities previously lost clears their shocks permanently;
+    # repeated losses never restart clocks or rewards.
+    all_back = ' '.join(f'OR = {{ NOT = {{ has_country_flag = hro_city_{c["key"]}_lost }} controls_province = {c["province"]} }}' for c in records())
+    recovered = ' '.join(f'if = {{ limit = {{ has_country_flag = hro_city_{c["key"]}_lost }} set_country_flag = hro_city_{c["key"]}_morale_restored }}' for c in records())
+    unresolved=[f'if = {{ limit = {{ {all_back} }} {recovered} }}']
     for city in records():
-        p='hro_city_'+city['key'];unresolved.append(f'''if = {{ limit = {{ has_country_flag = {p}_lost NOT = {{ has_country_flag = {p}_responded }}
-            NOT = {{ controls_province = {city['province']} }} any_enemy_country = {{ controls_province = {city['province']} }}
-            check_variable = {{ {p}_days < 90 }} }} add_to_variable = {{ hro_city_unresolved = {city.get("weight",1)} }} }}''')
+        p='hro_city_'+city['key']
+        unresolved.append(f'if = {{ limit = {{ has_country_flag = {p}_lost NOT = {{ has_country_flag = {p}_morale_restored }} check_variable = {{ {p}_days < 365 }} }} add_to_variable = {{ hro_city_unresolved = {city.get("weight",1)} }} }}')
     init_city_vars = ' '.join(f'set_variable = {{ hro_city_{c["key"]}_days = 0 }}' for c in records())
     effects.append('''hro_city_orderly_mobilization = {
     if = { limit = { original_tag = SOV hro_war_eastern_war = yes NOT = { has_country_flag = hro_city_orderly_awarded } }
@@ -267,5 +271,5 @@ hro_city_tick = {{
     for language, entries in loc.items():
         put(f'localisation/{language}/hro_city_l_{language}.yml',f'l_{language}:\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
     return {'cities':len(records()),'decisions':len(decisions),'events':len(events)-1,'ideas':len(ideas),
-            'max_crisis_tier':3,'crisis_war_days':90,'mobilization_window_days':240,'phase_caps':{'opening':1,'parity':2,'mature':3},'one_response_per_city':True,
-            'recapture_rewards_once':True,'victory_point_control':True,'native_evacuation_duplicated':False}
+            'max_crisis_tier':3,'crisis_war_days':365,'mobilization_window_days':240,'phase_caps':{'opening':1,'parity':2,'mature':3},'one_response_per_city':True,
+            'all_lost_cities_recaptured_clear_crisis':True,'paid_response_clears_crisis':False,'recapture_rewards_once':True,'victory_point_control':True,'native_evacuation_duplicated':False}

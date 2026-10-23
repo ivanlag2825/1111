@@ -1,28 +1,28 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "runtime_verified": false,
   "new_focus_counts": {
-    "GER": 78,
-    "SOV": 89
+    "GER": 84,
+    "SOV": 95
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 57,
-    "authored_focuses": 167,
+    "script_files": 63,
+    "authored_focuses": 179,
     "focuses_per_country": {
-      "GER": 78,
-      "SOV": 89
+      "GER": 84,
+      "SOV": 95
     },
     "native_focuses": 749,
     "catalogue_native_patches": 209,
     "native_prerequisite_patches": 74,
     "required_integrated_milestones": 44,
     "required_choice_milestones": 11,
-    "ideas": 355,
+    "ideas": 375,
     "idea_families": 76,
-    "events": 55,
-    "decisions": 137,
-    "localisation_keys_per_language": 1935,
+    "events": 59,
+    "decisions": 160,
+    "localisation_keys_per_language": 2079,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -149,7 +149,7 @@
       "sequential": 21
     },
     "direct_regrouping_completion_days": 21,
-    "merged_daily_sources": 13
+    "merged_daily_sources": 14
   },
   "allied_aid": {
     "duration_days": 365,
@@ -186,8 +186,8 @@
     ]
   },
   "country_catalog_sha256": {
-    "GER": "78f81864bffb98b42ec5572953541a84692046502db783a8b8fb961519171bd0",
-    "SOV": "06cb61f9afcd8e5bc917c823e7d29a2f3d744e455743e190affbbb7578163a54"
+    "GER": "4e6de299af8073a94c1fb6f3ed70fb71cabb4be33469aaae5954bbf8c851c69e",
+    "SOV": "8f9d07889058c11db3b52ba216e0fb10b47bc32e27767f12c25a6784e770ec25"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "material_reserves": {
@@ -224,7 +224,7 @@
       "max_conditional_focus_y": 31.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 516,
+      "focus_count": 522,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "500",
@@ -240,7 +240,7 @@
       "max_conditional_focus_y": 26.0,
       "row_height_px": 130,
       "margin_rows": 3,
-      "focus_count": 400,
+      "focus_count": 406,
       "scope": "standard GUI pixel grid; conservative vertical offset envelope; engine GUI not verified",
       "old_position": {
         "x": "55",
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/blitzkrieg.zip",
-  "sha256": "5a7b9514d335657c077beffbf944f9495bb9de9d8b96f35cd0c4944b4f1e17bf",
-  "bytes": 678525,
+  "archive": "dist/frontier.zip",
+  "sha256": "974491b17d44283c14c7861089a88028db38a3962fbf29815a43738da4d0486f",
+  "bytes": 704250,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
   "german_native_duration_factor": 0.7,
   "tests": {
-    "overhaul": 267
+    "overhaul": 285
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-blitzkrieg-balance/dist/blitzkrieg.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-war-stories/dist/stories.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-frontline-programmes/dist/frontier.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-blitzkrieg-balance/dist/blitzkrieg.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -280,7 +280,8 @@
     "eastbalance": "dad53fdee6c2ef4be4156f7177946db021853f671e97258309a5432c48b64c70",
     "military": "a5abbfe5dac986aeda754fa4a50075daa7bbdfdf5fde28ae2682f30ae91d82d1",
     "signals": "c099eef15b51e9513fa7719ccd4fe4c9782267ca3b465c988c32f24631086fb4",
-    "stories": "2cde80361cf0df7eb4c4c09c5f57b2e625298b54a0e285a7c2b0dddb547d327b"
+    "stories": "2cde80361cf0df7eb4c4c09c5f57b2e625298b54a0e285a7c2b0dddb547d327b",
+    "blitzkrieg": "5a7b9514d335657c077beffbf944f9495bb9de9d8b96f35cd0c4944b4f1e17bf"
   },
   "saved_game_update": {
     "from_versions": [
@@ -298,7 +299,8 @@
       "1.0.0",
       "1.1.0",
       "1.1.1",
-      "1.2.0"
+      "1.2.0",
+      "1.3.0"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,
@@ -314,7 +316,10 @@
     "legacy_german_city_spirits_retired": true,
     "german_blitzkrieg_permanent_backfill": true,
     "backfill_material_rewards": false,
-    "soviet_city_belt_and_adaptation_age_enforced": true
+    "soviet_city_belt_and_adaptation_age_enforced": true,
+    "old_soviet_invasion_and_city_counters_continue_from_saved_caps": true,
+    "old_soviet_penalties_may_return_until_new_threshold": true,
+    "school_technology_backfill_only": true
   },
   "decision_presentation": {
     "numeric_programmes": 36,
@@ -537,14 +542,14 @@
     }
   },
   "industry_schedule": {
-    "scope": "industry milestones within the joint 70-focus army/air/navy/economy route; engine conditions are player-controlled",
-    "completed": "1939-06-10T12:00:00",
+    "scope": "industry milestones within the joint 79-focus army/air/navy/economy/new-programmes route; engine conditions are player-controlled",
+    "completed": "1939-06-07T00:00:00",
     "targets": {
-      "hro_ger_rationalized_designs": "1937-04-03T12:00:00",
-      "hro_ger_warfactory_clusters": "1939-06-10T12:00:00",
-      "hro_ger_decentralized_arsenals": "1939-04-22T12:00:00"
+      "hro_ger_rationalized_designs": "1937-04-07T00:00:00",
+      "hro_ger_warfactory_clusters": "1939-06-07T00:00:00",
+      "hro_ger_decentralized_arsenals": "1939-04-19T00:00:00"
     },
-    "schedule_file": "docs/GER_TIMETABLE_130.json"
+    "schedule_file": "docs/GER_TIMETABLE_140.json"
   },
   "native_military": {
     "native_focuses": 59,
@@ -589,31 +594,35 @@
     "runtime_verified": false
   },
   "german_prewar_timetable": {
-    "completed": "1940-11-16T12:00:00",
-    "focus_days": 1781.5,
+    "completed": "1941-06-11T00:00:00",
+    "focus_days": 1988,
     "idle_days": 0,
-    "spare_days": 217.5,
+    "spare_days": 11.0,
     "feasible": true,
     "targets": {
-      "hro_ger_rationalized_designs": "1937-04-03T12:00:00",
-      "hro_ger_warfactory_clusters": "1939-06-10T12:00:00",
-      "hro_ger_decentralized_arsenals": "1939-04-22T12:00:00",
-      "hro_ger_operational_command_system": "1940-11-16T12:00:00",
-      "hro_ger_mature_air_operations": "1940-08-03T12:00:00",
-      "hro_ger_mature_maritime_programme": "1940-09-28T12:00:00",
-      "hro_ger_dora_programme": "1940-08-31T12:00:00",
-      "GER_danzig_or_war": "1939-08-23T00:00:00",
-      "GER_demand_sudetenland": "1938-09-28T00:00:00",
-      "GER_first_vienna_award": "1938-11-12T12:00:00",
-      "GER_fate_of_czechoslovakia": "1939-03-11T12:00:00",
-      "GER_molotov_ribbentrop_pact": "1939-07-05T00:00:00",
-      "hro_ger_elite_panzer_crews": "1940-07-06T12:00:00",
-      "hro_ger_blitzkrieg_air_coordination": "1940-06-15T12:00:00",
-      "hro_ger_tooling_audit": "1939-01-21T12:00:00"
+      "hro_ger_rationalized_designs": "1937-04-07T00:00:00",
+      "hro_ger_warfactory_clusters": "1939-06-07T00:00:00",
+      "hro_ger_decentralized_arsenals": "1939-04-19T00:00:00",
+      "hro_ger_operational_command_system": "1941-05-21T00:00:00",
+      "hro_ger_mature_air_operations": "1940-12-04T00:00:00",
+      "hro_ger_mature_maritime_programme": "1941-02-19T00:00:00",
+      "hro_ger_dora_programme": "1941-01-22T00:00:00",
+      "GER_danzig_or_war": "1939-08-19T12:00:00",
+      "GER_demand_sudetenland": "1938-10-01T12:00:00",
+      "GER_first_vienna_award": "1938-10-26T00:00:00",
+      "GER_fate_of_czechoslovakia": "1939-03-29T00:00:00",
+      "GER_molotov_ribbentrop_pact": "1939-07-01T12:00:00",
+      "hro_ger_elite_panzer_crews": "1940-11-06T00:00:00",
+      "hro_ger_blitzkrieg_air_coordination": "1940-09-25T00:00:00",
+      "hro_ger_tooling_audit": "1939-09-16T12:00:00",
+      "hro_ger_frontier_bureau": "1940-10-16T00:00:00",
+      "hro_ger_operational_depots": "1941-03-12T00:00:00",
+      "hro_ger_school_urban": "1941-04-02T00:00:00",
+      "hro_ger_school_river": "1941-06-11T00:00:00"
     },
     "engine_verified": false,
     "limitations": "Political events, army size, war support, DLC visibility, industry and war availability must be satisfied by the player. No focus speed bonus, bypass or saved focus progress is assumed. This is one reproducible route, not an optimum.",
-    "focuses": 70
+    "focuses": 79
   },
   "city_emergency": {
     "cities": 6,
@@ -621,7 +630,7 @@
     "events": 12,
     "ideas": 11,
     "max_crisis_tier": 3,
-    "crisis_war_days": 90,
+    "crisis_war_days": 365,
     "mobilization_window_days": 240,
     "phase_caps": {
       "opening": 1,
@@ -629,6 +638,8 @@
       "mature": 3
     },
     "one_response_per_city": true,
+    "all_lost_cities_recaptured_clear_crisis": true,
+    "paid_response_clears_crisis": false,
     "recapture_rewards_once": true,
     "victory_point_control": true,
     "native_evacuation_duplicated": false
@@ -657,7 +668,7 @@
   "spirit_delivery": {
     "owned_assets": {
       "owned_icons": 4,
-      "visible_spirits": 355,
+      "visible_spirits": 375,
       "external_texture_dependency": false
     },
     "direct_city_awards": false,
@@ -698,5 +709,83 @@
         "army_speed_factor": -0.05
       }
     }
+  },
+  "frontier": {
+    "technologies": 8,
+    "focuses": 12,
+    "decisions": 23,
+    "ideas": 20,
+    "events": 4,
+    "school_limit_per_country": 2,
+    "industrial_cycle": [
+      30,
+      180,
+      90
+    ],
+    "reserve_preparation_days": 21,
+    "reserve_cooldown_days": 120,
+    "reserve_equipment": {
+      "motorized_equipment": 150,
+      "support_equipment": 300,
+      "infantry_equipment": 2000
+    },
+    "reserve_fuel": 5000,
+    "reserve_combat_days": 14,
+    "german_command_lock_days": 90,
+    "technology_source": "focus-granted, permanent, no separate research tab",
+    "runtime_verified": false,
+    "technology_audit": {
+      "technologies": 8,
+      "grant_references": 8,
+      "unit_ids_checked_against_uploaded_game": true,
+      "stats_checked_against_schema": true
+    }
+  },
+  "war_adaptation": {
+    "ideas": 13,
+    "events": 6,
+    "soviet_shock_days": 365,
+    "soviet_phase_boundaries": [
+      90,
+      180,
+      365
+    ],
+    "soviet_automatic_positive": "hro_idea_war_sov_battle_hardened",
+    "german_winter_experience_days": 90,
+    "adapted_winter_retains_seasonal_costs": true,
+    "duration_clock": "actual daily war counters; peace and German warm seasons pause experience",
+    "winter_season": "November through March",
+    "winter_years": [
+      1936,
+      1946
+    ],
+    "reforms_authorized_before_eligibility": true,
+    "surprise_requires_defending": true,
+    "native_penalties_removed": false,
+    "daily_scope": "country, filtered by original_tag",
+    "permanent_rewards": {
+      "SOV": {
+        "army_attack_factor": 0.15,
+        "army_defence_factor": 0.1,
+        "army_org_factor": 0.1,
+        "army_org_regain": 0.2,
+        "planning_speed": 0.25,
+        "max_planning_factor": 0.15,
+        "industrial_capacity_factory": 0.1,
+        "supply_consumption_factor": -0.05
+      },
+      "GER": {
+        "winter_attrition_factor": -0.4,
+        "acclimatization_cold_climate_gain_factor": 1.0,
+        "supply_consumption_factor": -0.1,
+        "army_org_regain": 0.15
+      }
+    }
+  },
+  "source_game": {
+    "version_reported_by_user": "1.19.3.0.c01a",
+    "checksum_reported_by_user": "4f21",
+    "uploaded_common_files": 2261,
+    "native_focus_files_identical_to_previous_source": true
   }
 }

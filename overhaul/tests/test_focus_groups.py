@@ -7,6 +7,7 @@ sys.path[:0]=[str(ROOT/'tools'),str(ROOT/'overhaul/tools')]
 from clausewitz import parse,walk
 from generate_groups import generate
 from preview_trees import draw_country,resolve_positions
+from generate_frontier import generate as frontier_generate
 
 
 class FocusGroupTests(unittest.TestCase):
@@ -38,14 +39,20 @@ class FocusGroupTests(unittest.TestCase):
         self.assertNotIn('y="-128',svg)
 
     def test_no_authored_focus_relies_only_on_political_power_or_small_experience(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);frontier_generate(root)
+            effects={n.key:n for n in parse((root/'common/scripted_effects/hro_frontier_effects.txt').read_text())}
+            decisions=parse((root/'common/decisions/hro_frontier.txt').read_text())
+            unlocks={n.value for n in walk(decisions) if n.key=='has_completed_focus'}
         for catalog in self.catalogs:
             for focus in catalog['focuses']:
                 keys={n.key for n in walk(parse(focus['reward']))}
+                technology_grant=any(n.key=='set_technology' for k in keys if k in effects for n in walk(effects[k].value))
                 useful={'add_tech_bonus','add_research_slot','add_building_construction','add_timed_idea','hro_story_dora_complete'}
                 spirits={('hro_set_'+i['id']):i for i in catalog['ideas']}
                 reforms=[spirits[k] for k in keys if k in spirits]
                 real_reform=any(i.get('modifiers') or i.get('equipment_bonus') for i in reforms)
-                self.assertTrue(keys & useful or real_reform or any(k and k.startswith(('hro_war_','hro_city_')) for k in keys),focus['id'])
+                self.assertTrue(technology_grant or focus['id'] in unlocks or keys & useful or real_reform or any(k and k.startswith(('hro_war_','hro_city_')) for k in keys),focus['id'])
 
     def test_glory_of_red_army_grants_a_major_permanent_combat_reform(self):
         sov=next(c for c in self.catalogs if c['tag']=='SOV')

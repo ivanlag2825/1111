@@ -241,8 +241,8 @@
       "id": "hro_sov_front_feedback",
       "name_ru": "Отчёты фронтов вместо сводок",
       "name_en": "Reports from the Fighting Fronts",
-      "desc_ru": "Доступен с 1942 года после 240 действительных дней войны с Германией. Полная адаптация: атака +15%, защита +10%, организация +10%, восстановление организации +20%, планирование +25%, максимальный план +15%, военный выпуск +10%, расход снабжения −5%. Заменяет кризис и ранний положительный опыт; ступени не складываются. Также 100 опыта армии и два 100% бонуса обеспечения.",
-      "desc_en": "Available from 1942 after 240 actual war days against Germany. Full adaptation: attack +15%, defence +10%, organisation +10%, recovery +20%, planning +25%, maximum planning +15%, military output +10%, supply use −5%. Replaces crisis and earlier experience without stacking. Also 100 army XP and two 100% support research bonuses.",
+      "desc_ru": "Доступен с 1942 года после 365 действительных дней войны с Германией. Полная адаптация: атака +15%, защита +10%, организация +10%, восстановление организации +20%, планирование +25%, максимальный план +15%, военный выпуск +10%, расход снабжения −5%. Заменяет кризис и ранний положительный опыт; ступени не складываются. Также 100 опыта армии и два 100% бонуса обеспечения.",
+      "desc_en": "Available from 1942 after 365 actual war days against Germany. Full adaptation: attack +15%, defence +10%, organisation +10%, recovery +20%, planning +25%, maximum planning +15%, military output +10%, supply use −5%. Replaces crisis and earlier experience without stacking. Also 100 army XP and two 100% support research bonuses.",
       "branch": "war",
       "row": 6,
       "cost": 4,
@@ -256,7 +256,7 @@
       "y": 7,
       "icon": "GFX_SOV_an_adaptable_army_ccp_2d_sov_compatibility",
       "earliest": "1942.1.1",
-      "available": "hro_war_eastern_war = yes check_variable = { hro_war_sov_war_days > 239 }"
+      "available": "hro_war_eastern_war = yes check_variable = { hro_war_sov_war_days > 364 }"
     },
     {
       "id": "hro_sov_mature_command",
@@ -700,8 +700,8 @@
       "id": "hro_sov_campaign_preparedness",
       "name_ru": "Проверка мобилизационных округов",
       "name_en": "Audit the Mobilization Districts",
-      "desc_ru": "75 армейского опыта, 25 командных очков и доступ к военным программам. Подготовка смягчает каждую ступень первых 240 действительных дней оборонительной войны с Германией: в первые 45 дней организация −22% вместо −35%, выпуск −25% вместо −35%, снабжение +25% вместо +40%. Ограничения ослабевают после 45 и 120 военных дней; срок опыта сохраняется. До войны подготовка запоминается.",
-      "desc_en": "75 army experience, 25 command power and access to wartime programmes. Mitigates all phases of the first 240 actual days of defensive war with Germany: first-phase organisation −22% instead of −35%, output −25% instead of −35%, supply use +25% instead of +40%. Restrictions soften after 45 and 120 war days without skipping experience. Preparation is remembered before war.",
+      "desc_ru": "75 армейского опыта, 25 командных очков и доступ к военным программам. Подготовка смягчает каждую ступень первых 365 действительных дней оборонительной войны с Германией: в первые 90 дней организация −22% вместо −35%, выпуск −25% вместо −35%, снабжение +25% вместо +40%. Ограничения ослабевают после 90 и 180 военных дней; срок опыта сохраняется. До войны подготовка запоминается.",
+      "desc_en": "75 army experience, 25 command power and access to wartime programmes. Mitigates all phases of the first 365 actual days of defensive war with Germany: first-phase organisation −22% instead of −35%, output −25% instead of −35%, supply use +25% instead of +40%. Restrictions soften after 90 and 180 war days without skipping experience. Preparation is remembered before war.",
       "branch": "war",
       "row": 2,
       "cost": 3,
@@ -1969,6 +1969,132 @@
       "reward": "hro_set_hro_idea_sov_story_workshops = yes add_tech_bonus = { name = hro_sov_field_workshops bonus = 0.5 uses = 1 category = support_tech }",
       "icon": "GFX_SOV_development_of_tankograd_ccp_2d_sov_compatibility",
       "available": ""
+    },
+    {
+      "id": "hro_sov_school_urban",
+      "name_ru": "Школа штурма городов",
+      "name_en": "Urban Assault School",
+      "desc_ru": "Пехота: атака в городе +20%. Сапёры: атака в городе +20%, против укреплений +15%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
+      "desc_en": "Infantry: urban attack +20%. Engineers: urban attack +20%, fort attack +15%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "branch": "army",
+      "x": 24,
+      "y": 19,
+      "cost": 3,
+      "earliest": "1943.1.1",
+      "prerequisites": [
+        [
+          "hro_sov_assault_engineer_brigades"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_sov_school_forest"
+      ],
+      "reward": "hro_frontier_grant_sov_urban = yes",
+      "icon": "GFX_goal_generic_army_doctrines"
+    },
+    {
+      "id": "hro_sov_school_forest",
+      "name_ru": "Школа лесной войны",
+      "name_en": "Forest Warfare School",
+      "desc_ru": "Пехота: защита в лесу +20%, передвижение в лесу +15%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
+      "desc_en": "Infantry: forest defence +20%, forest movement +15%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "branch": "army",
+      "x": 26,
+      "y": 19,
+      "cost": 3,
+      "earliest": "1942.1.1",
+      "prerequisites": [
+        [
+          "hro_sov_assault_engineer_brigades"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_sov_school_urban"
+      ],
+      "reward": "hro_frontier_grant_sov_forest = yes",
+      "icon": "GFX_goal_generic_army_doctrines"
+    },
+    {
+      "id": "hro_sov_school_river",
+      "name_ru": "Школа форсирования рек",
+      "name_en": "River Crossing School",
+      "desc_ru": "Пехота: атака через реку +15%. Сапёры: атака через реку +20%, передвижение через реки +15%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
+      "desc_en": "Infantry: river attack +15%. Engineers: river attack +20%, river movement +15%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "branch": "army",
+      "x": 33,
+      "y": 15,
+      "cost": 3,
+      "earliest": "1942.1.1",
+      "prerequisites": [
+        [
+          "hro_sov_front_reserve_warehouses"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_sov_school_mobile"
+      ],
+      "reward": "hro_frontier_grant_sov_river = yes",
+      "icon": "GFX_goal_generic_army_doctrines"
+    },
+    {
+      "id": "hro_sov_school_mobile",
+      "name_ru": "Школа дальних маршей",
+      "name_en": "Long-Range March School",
+      "desc_ru": "Моторизованные и механизированные батальоны: скорость +5%. Рота снабжения: дополнительное снижение расхода припасов и топлива на 10%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
+      "desc_en": "Motorized and mechanized battalions: speed +5%. Logistics company: additional supply and fuel consumption reductions of 10%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "branch": "army",
+      "x": 35,
+      "y": 15,
+      "cost": 3,
+      "earliest": "1942.1.1",
+      "prerequisites": [
+        [
+          "hro_sov_front_reserve_warehouses"
+        ]
+      ],
+      "mutually_exclusive": [
+        "hro_sov_school_river"
+      ],
+      "reward": "hro_frontier_grant_sov_mobile = yes",
+      "icon": "GFX_goal_generic_army_doctrines"
+    },
+    {
+      "id": "hro_sov_frontier_bureau",
+      "name_ru": "Бюро серийных программ",
+      "name_en": "Serial Programme Bureau",
+      "desc_ru": "Открывает три альтернативные промышленные программы: бронетехника, авиация или вооружение массовой армии. 100 ПВ, 30 дней переналадки с выпуском −10%, затем 180 дней выбранных преимуществ и издержек. Следующий запуск через 300 дней. Один 75%-ный промышленный исследовательский бонус.",
+      "desc_en": "Unlocks three alternative industrial programmes: armour, aircraft or mass-army equipment. 100 PP; 30 days retooling at −10% output, then 180 days of benefits and trade-offs. Next start after 300 days. One 75% industry research bonus.",
+      "branch": "industry",
+      "x": 4,
+      "y": 11,
+      "cost": 3,
+      "earliest": "1938.1.1",
+      "prerequisites": [
+        [
+          "hro_sov_machine_tool_mobilization"
+        ]
+      ],
+      "reward": "add_tech_bonus = { name = hro_sov_frontier_bureau bonus = 0.75 uses = 1 category = industry } custom_effect_tooltip = hro_sov_frontier_bureau_desc",
+      "icon": "GFX_goal_generic_construct_mil_factory"
+    },
+    {
+      "id": "hro_sov_operational_depots",
+      "name_ru": "Материальный резерв наступления",
+      "name_en": "Material Reserves for the Offensive",
+      "desc_ru": "Открывает подготовку оперативного резерва: 50 ПВ, 150 грузовиков, 300 оснащения, 2000 оружия, 5000 топлива и 21 день. Резерв можно один раз использовать на 14 дней ускорения прорыва или смены передовых эшелонов. Даёт 30 опыта армии. Истощение операции не сбрасывается.",
+      "desc_en": "Unlocks operational reserves: 50 PP, 150 trucks, 300 support equipment, 2,000 infantry equipment, 5,000 fuel and 21 days. Spend one reserve for 14 days of breakthrough tempo or relief of forward echelons. Grants 30 army XP. Operation exhaustion is not reset.",
+      "branch": "logistics",
+      "x": 34,
+      "y": 17,
+      "cost": 3,
+      "earliest": "1942.1.1",
+      "prerequisites": [
+        [
+          "hro_sov_front_reserve_warehouses"
+        ]
+      ],
+      "reward": "army_experience = 30 custom_effect_tooltip = hro_sov_operational_depots_desc",
+      "icon": "GFX_goal_generic_army_motorized"
     }
   ],
   "ideas": [

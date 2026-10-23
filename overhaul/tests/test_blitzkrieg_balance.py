@@ -55,7 +55,7 @@ class BlitzkriegBalanceTests(unittest.TestCase):
   s['flags'].update(hro_war_sov_started=None,hro_war_sov_reform_authorized=None,hro_war_sov_adapted=None)
   s['variables']['hro_war_sov_war_days']=240;s['ideas'].add('hro_idea_war_sov_adapted')
   f.runtime.call('hro_war_sov_apply_reform',s);self.assertNotIn('hro_idea_war_sov_adapted',s['ideas'])
-  s['date']=day('1942.1.1');f.runtime.call('hro_war_sov_apply_reform',s);self.assertIn('hro_idea_war_sov_adapted',s['ideas'])
+  s['date']=day('1942.1.1');s['variables']['hro_war_sov_war_days']=365;f.runtime.call('hro_war_sov_apply_reform',s);self.assertIn('hro_idea_war_sov_adapted',s['ideas'])
   before=list(s['events']);s['ideas'].discard('hro_idea_war_sov_adapted');f.runtime.call('hro_war_sov_apply_reform',s)
   self.assertIn('hro_idea_war_sov_adapted',s['ideas']);self.assertEqual(s['events'],before)
  def test_city_morale_loss_is_bounded_and_does_not_add_an_industrial_penalty(self):
@@ -64,7 +64,7 @@ class BlitzkriegBalanceTests(unittest.TestCase):
   ideas={n.key:n for n in parse((f.output/'common/ideas/hro_city_ideas.txt').read_text())[0].one('country').value}
   for tier in (1,2,3):
    mods=ideas[f'hro_idea_city_crisis_{tier}'].one('modifier');self.assertLess(float(mods.scalar('army_attack_factor')),0);self.assertLess(float(mods.scalar('army_defence_factor')),0);self.assertIsNone(mods.one('industrial_capacity_factory'))
-  f.r.advance(f.s,90);self.assertFalse({f'hro_idea_city_crisis_{i}' for i in (1,2,3)}&f.s['ideas'])
+  f.r.advance(f.s,365);self.assertFalse({f'hro_idea_city_crisis_{i}' for i in (1,2,3)}&f.s['ideas'])
 
 
 class TimetableTests(unittest.TestCase):

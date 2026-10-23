@@ -121,18 +121,18 @@ class CityEmergencyTests(unittest.TestCase):
     def test_multiple_losses_have_one_bounded_shock_and_soften_after_war_days(self):
         for c in records():self.lose(c['key'])
         self.assertEqual(self.s['ideas'] & {f'hro_idea_city_crisis_{n}' for n in range(1,4)},{'hro_idea_city_crisis_3'})
-        self.r.advance(self.s,90)
+        self.r.advance(self.s,365)
         self.assertFalse(any('city_crisis' in i for i in self.s['ideas']))
-        self.assertTrue(all(self.s['vars']['hro_city_'+c['key']+'_days']==90 for c in records()))
+        self.assertTrue(all(self.s['vars']['hro_city_'+c['key']+'_days']==365 for c in records()))
 
-    def test_capital_city_loss_has_double_weight_and_response_reduces_it(self):
+    def test_capital_city_loss_has_double_weight_and_paid_response_does_not_erase_morale(self):
         self.lose('moscow')
         self.assertIn('hro_idea_city_crisis_2',self.s['ideas'])
         self.lose('minsk')
         self.assertIn('hro_idea_city_crisis_3',self.s['ideas'])
         self.r.call('hro_city_moscow_finish',self.s)
-        self.assertIn('hro_idea_city_crisis_1',self.s['ideas'])
-        self.assertNotIn('hro_idea_city_crisis_3',self.s['ideas'])
+        self.assertIn('hro_idea_city_crisis_3',self.s['ideas'])
+        self.assertNotIn('hro_idea_city_crisis_1',self.s['ideas'])
 
     def test_peace_pauses_crisis_days_and_cleans_work_and_penalties(self):
         self.lose('minsk');self.start('minsk');self.s['war']=False;before=self.s['vars']['hro_city_minsk_days']
@@ -233,3 +233,18 @@ class CityEmergencyTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class YearLongCityTests(unittest.TestCase):
+    setUp=CityEmergencyTests.setUp
+    lose=CityEmergencyTests.lose
+    regain=CityEmergencyTests.regain
+    def test_single_city_crisis_lasts_365_actual_war_days_despite_response(self):
+        self.lose('minsk');self.r.call('hro_city_minsk_finish',self.s)
+        self.r.advance(self.s,364);self.assertIn('hro_idea_city_crisis_1',self.s['ideas'])
+        self.r.advance(self.s,1);self.assertNotIn('hro_idea_city_crisis_1',self.s['ideas'])
+    def test_partial_recapture_keeps_crisis_all_recaptured_clears_and_reloss_cannot_reset(self):
+        self.lose('minsk');self.lose('kiev');self.regain('minsk')
+        self.assertIn('hro_idea_city_crisis_2',self.s['ideas'])
+        self.regain('kiev');self.assertFalse(any('city_crisis' in i for i in self.s['ideas']))
+        self.lose('minsk');self.assertFalse(any('city_crisis' in i for i in self.s['ideas']))
+        self.lose('moscow');self.assertIn('hro_idea_city_crisis_2',self.s['ideas'])

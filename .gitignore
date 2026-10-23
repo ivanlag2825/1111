@@ -30,3 +30,5 @@ dist/*
 !dist/stories.zip
 
 !dist/blitzkrieg.zip
+
+!dist/frontier.zip
