@@ -132,7 +132,7 @@ def generate(output,game,catalogs):
  design.preview(output)
  design.programmes.preview(output)
  for lang,entries in loc.items():put(f'localisation/{lang}/hro_research_l_{lang}.yml',f'l_{lang}:\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
- return dict(technologies=120,visible_technologies=96,visible_per_country=85,maximum_researched_per_country=50,schools=22,design_schools=7,design_technologies=35,designer_modules=36,new_module_programmes=9,module_programme_technologies=39,new_designer_modules=30,retired_support_technologies=12,hidden_focus_reforms=12,removed_active_spirits_per_country=6,base_days=[55,71.5,88],school_base_days=110,research_slots=True,school_focus_auto_grant=False,ui=ui,module_unlocks=unlocks,constructor_limit_files=limits,runtime_verified=False)
+ return dict(technologies=124,visible_technologies=100,visible_per_country=89,maximum_researched_per_country=52,schools=22,design_schools=7,design_technologies=35,designer_modules=40,new_module_programmes=9,module_programme_technologies=43,new_designer_modules=34,retired_support_technologies=12,hidden_focus_reforms=12,removed_active_spirits_per_country=6,base_days=[55,71.5,88],school_base_days=110,research_slots=True,school_focus_auto_grant=False,ui=ui,module_unlocks=unlocks,constructor_limit_files=limits,runtime_verified=False)
 
 
 def layout(techs,roots):
@@ -163,7 +163,7 @@ def author_ui(output,game,roots,icons):
   canonical=identity.replace('hro_tech_sov_','hro_tech_ger_')
   if (folder,x,y,canonical) in seen:continue
   seen.add((folder,x,y,canonical))
-  captions[folder].append(f'instantTextBoxType = {{ name = "hro_caption_{identity}" position = {{ x = {x+6:g} y = {y+4:g} }} font = "hoi_16mbs" text = "{identity}" maxWidth = 169 maxHeight = 37 format = center alwaystransparent = yes }}')
+  captions[folder].append(f'instantTextBoxType = {{ name = "hro_caption_{identity}" position = {{ x = {x+6:g} y = {y+4:g} }} font = "hoi_16mbs" text = "{identity}" maxWidth = 169 maxHeight = 32 format = center alwaystransparent = yes }}')
  main=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,150,font='hoi_16mbs'),label('hro_research_pair_2',30,800,150,font='hoi_16mbs'),label('hro_research_support',30,1350)]
  for i,key in enumerate(design.BRANCHES):main.append(label('hro_design_row_'+key,20,1530+i*320,170,font='hoi_16mbs'))
  for index,x in enumerate((190,490,790),1):main.append(label('hro_research_stage_'+str(index),x,1400,260,font='hoi_16mbs'))
@@ -175,14 +175,14 @@ def author_ui(output,game,roots,icons):
   for identity,x,y in roots:
    if techs[identity].one('folder').scalar('name')==folder:content.append(f'gridboxtype = {{ name = "{identity}_tree" position = {{ x = {x} y = {y} }} slotsize = {{ width = 100 height = 100 }} format = "LEFT" }}')
   rows=[(1550+i*320) for i in range(len(design.BRANCHES))] if folder==FOLDER else [(360+i*320) for i in range(len(design.programmes.PROGRAMMES))]
-  bands=[f'containerWindowType = {{ name = "hro_band_{index}_{i}" position = {{ x = 10 y = {row-120} }} size = {{ width = 1090 height = 310 }} background = {{ name = "Background" quadTextureSprite = "GFX_tiled_research_bg" }} }}' for i,row in enumerate(rows)]
+  bands=[f'containerWindowType = {{ name = "hro_band_{index}_{i}" position = {{ x = 10 y = {row-120} }} size = {{ width = {1390 if folder==MODULE_FOLDER else 1090} height = 310 }} background = {{ name = "Background" quadTextureSprite = "GFX_tiled_research_bg" }} }}' for i,row in enumerate(rows)]
   content=bands+content
   content.extend(captions[folder])
   panels.append(f'''containerWindowType = {{ name = "{folder}" position = {{ x = 0 y = 47 }} size = {{ width = 100%% height = 100%% }}
    margin = {{ top = 13 left = 13 bottom = 24 right = 25 }} drag_scroll = {{ left middle }}
    verticalScrollbar = "right_vertical_slider" horizontalScrollbar = "bottom_horizontal_slider" scroll_wheel_factor = 40
    background = {{ name = "Background" quadTextureSprite = "GFX_tiled_window_2b_border" }}
-   containerWindowType = {{ name = "hro_extent_{index}" position = {{ x = 0 y = 0 }} size = {{ width = 1160 height = {height} min = {{ width = 100%% height = 100%% }} }} clipping = no }}
+   containerWindowType = {{ name = "hro_extent_{index}" position = {{ x = 0 y = 0 }} size = {{ width = {1460 if folder==MODULE_FOLDER else 1160} height = {height} min = {{ width = 100%% height = 100%% }} }} clipping = no }}
    {' '.join(content)}
   }}''')
   tabs_added.append(f'buttonType = {{ name = "{folder}_tab" position = {{ x = {823+index*89} y = 0 }} quadTextureSprite = "'+('GFX_armour_folder_tab' if index==0 else 'GFX_techtree_engineering_tab')+f'" frame = 1 clicksound = ui_research_tab_support pdx_tooltip = "{folder}" }}')
@@ -201,9 +201,15 @@ def author_ui(output,game,roots,icons):
    for child in parsed.value:
     if child.scalar('name','').strip('"')=='Name':
      changes.append((child.value_end-1,child.value_end-1,' hide = yes '))
+     if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = -10000 y = -10000 }'))
+     else:changes.append((child.value_end-1,child.value_end-1,' position = { x = -10000 y = -10000 } '))
     if child.scalar('name','').strip('"')=='Icon':
-     if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = 90 y = 60 }'))
-     changes.append((child.value_end-1,child.value_end-1,' scale = 0.7 '))
+     if field:=child.one('centerposition'):changes.append((field.start,field.end,'centerposition = no'))
+     else:changes.append((child.value_end-1,child.value_end-1,' centerposition = no '))
+     if field:=child.one('spriteType'):changes.append((field.start,field.end,'spriteType = "GFX_hro_research_placeholder"'))
+     else:changes.append((child.value_end-1,child.value_end-1,' spriteType = "GFX_hro_research_placeholder" '))
+     if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = 42 y = 36 }'))
+
    fragment=edit(fragment,changes)
   templates.append(fragment)
  patches=[(tabs.value_end-1,tabs.value_end-1,tab),(window.value_end-1,window.value_end-1,panel),(root.value_end-1,root.value_end-1,'\n'.join(templates))]
@@ -337,13 +343,17 @@ def audit(output,game,catalogs,schema_dir=None):
  # Validate owned pixels, not just sprite names: missing DDS files otherwise
  # render as empty cards although the script references look correct.
  import struct
+ from illustration_assets import research_bindings
+ bindings=research_bindings()
  for node in walk(parse((output/'interface/hro_research_icons.gfx').read_text())):
   if node.key!='spriteType':continue
   relative=node.scalar('texturefile','').strip('"');asset=(output/relative).resolve()
   if not relative.startswith('gfx/interface/hro_research/') or not asset.is_relative_to(output.resolve()) or not asset.is_file():
    errors.append('Missing owned research texture: '+relative);continue
+  identity=node.scalar('name','').strip('"').removeprefix('GFX_').removesuffix('_medium')
+  if identity in bindings and asset.name!=bindings[identity]+'.dds':errors.append('Research illustration does not match technology: '+identity)
   raw=asset.read_bytes()
-  if len(raw)!=128+128*128*4 or raw[:4]!=b'DDS ' or struct.unpack_from('<II',raw,12)!=(128,128):errors.append('Invalid owned research DDS: '+relative)
+  if len(raw)!=128+96*44*4 or raw[:4]!=b'DDS ' or struct.unpack_from('<II',raw,12)!=(44,96):errors.append('Invalid owned research DDS: '+relative)
  # Only Cyrillic-capable, actually defined fonts are allowed in our UI.
  font_source=Path(game)/'interface/core.gfx'
  fonts={};cyrillic=set()

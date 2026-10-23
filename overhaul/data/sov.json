@@ -3029,8 +3029,8 @@
       "initial": false,
       "name_ru": "Ставка на тяжёлые танки",
       "name_en": "Heavy Tank Priority",
-      "desc_ru": "Первый этап: танки и ПТ-САУ выбранной массы получают атаки +2,5%, броню +5%, стоимость −2,5%. Альтернативная масса: обе атаки −5%, стоимость +5%. Далее выберите танки или ПТ-САУ: итог выбранной технике +5% обеих атак, +10% брони, −5% стоимости. Один бонус исследования бронетехники 50%, 50 опыта армии. Улучшение заменяет этот дух.",
-      "desc_en": "First stage: selected-weight tanks and tank destroyers gain attacks +2.5%, armour +5%, cost −2.5%. Other weight: both attacks −5%, cost +5%. Then choose tanks or tank destroyers: final chosen stats attacks +5%, armour +10%, cost −5%. One 50% armour research bonus and 50 army XP. The upgrade replaces this spirit.",
+      "desc_ru": "Начальная ставка: танки и ПТ-САУ выбранной массы получают обе атаки +2,5%, броню +5%, стоимость −2,5%. Альтернативная масса: обе атаки −5%, стоимость +5%. Дух сохраняется после развития танков или ПТ-САУ; эффекты обоих духов складываются, включая штрафы. Один бонус исследования бронетехники 50%, 50 опыта армии.",
+      "desc_en": "Initial priority: selected-weight tanks and tank destroyers gain both attacks +2.5%, armour +5%, cost −2.5%. Other weight: both attacks −5%, cost +5%. This spirit remains after tank or TD development; both spirits stack, including penalties. One 50% armour research bonus and 50 army XP.",
       "modifiers": {},
       "equipment_bonus": {
         "heavy_tank_chassis": {
@@ -3065,8 +3065,8 @@
       "initial": false,
       "name_ru": "Ставка на средние танки",
       "name_en": "Medium Tank Priority",
-      "desc_ru": "Первый этап: танки и ПТ-САУ выбранной массы получают атаки +2,5%, броню +5%, стоимость −2,5%. Альтернативная масса: обе атаки −5%, стоимость +5%. Далее выберите танки или ПТ-САУ: итог выбранной технике +5% обеих атак, +10% брони, −5% стоимости. Один бонус исследования бронетехники 50%, 50 опыта армии. Улучшение заменяет этот дух.",
-      "desc_en": "First stage: selected-weight tanks and tank destroyers gain attacks +2.5%, armour +5%, cost −2.5%. Other weight: both attacks −5%, cost +5%. Then choose tanks or tank destroyers: final chosen stats attacks +5%, armour +10%, cost −5%. One 50% armour research bonus and 50 army XP. The upgrade replaces this spirit.",
+      "desc_ru": "Начальная ставка: танки и ПТ-САУ выбранной массы получают обе атаки +2,5%, броню +5%, стоимость −2,5%. Альтернативная масса: обе атаки −5%, стоимость +5%. Дух сохраняется после развития танков или ПТ-САУ; эффекты обоих духов складываются, включая штрафы. Один бонус исследования бронетехники 50%, 50 опыта армии.",
+      "desc_en": "Initial priority: selected-weight tanks and tank destroyers gain both attacks +2.5%, armour +5%, cost −2.5%. Other weight: both attacks −5%, cost +5%. This spirit remains after tank or TD development; both spirits stack, including penalties. One 50% armour research bonus and 50 army XP.",
       "modifiers": {},
       "equipment_bonus": {
         "medium_tank_chassis": {
@@ -3195,14 +3195,14 @@
     },
     {
       "id": "hro_idea_sov_specialize_heavy_tank",
-      "family": "hro_family_sov_specialize_armour",
+      "family": "hro_family_sov_specialize_armour_role",
       "stage": 2,
       "tag": "SOV",
       "initial": false,
       "name_ru": "Развитие тяжёлых танков",
       "name_en": "Heavy Tank Development",
-      "desc_ru": "Выбранная техника: противопехотная и противотанковая атака +5%, броня +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Заменяет начальную специализацию, бонусы не складываются. 50 опыта армии; дополнительных исследований нет.",
-      "desc_en": "Chosen equipment: soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Replaces the initial spirit without stacking. 50 army XP; no extra research bonuses.",
+      "desc_ru": "Дополнительно к сохранённой начальной ставке: выбранная техника получает противопехотную и противотанковую атаку +5%, броню +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Оба духа действуют вместе, включая штрафы. Итог выбранной технике: обе атаки +7,5%, броня +15%, стоимость −7,5%. 50 опыта армии; дополнительных исследований нет.",
+      "desc_en": "Added to the retained initial priority: chosen equipment gains soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Both spirits stack, including penalties. Chosen total: attacks +7.5%, armour +15%, cost −7.5%. 50 army XP; no additional research bonus.",
       "modifiers": {},
       "equipment_bonus": {
         "heavy_tank_chassis": {
@@ -3230,14 +3230,14 @@
     },
     {
       "id": "hro_idea_sov_specialize_heavy_td",
-      "family": "hro_family_sov_specialize_armour",
+      "family": "hro_family_sov_specialize_armour_role",
       "stage": 2,
       "tag": "SOV",
       "initial": false,
       "name_ru": "Развитие тяжёлых ПТ-САУ",
       "name_en": "Heavy Tank Destroyer Development",
-      "desc_ru": "Выбранная техника: противопехотная и противотанковая атака +5%, броня +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Заменяет начальную специализацию, бонусы не складываются. 50 опыта армии; дополнительных исследований нет.",
-      "desc_en": "Chosen equipment: soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Replaces the initial spirit without stacking. 50 army XP; no extra research bonuses.",
+      "desc_ru": "Дополнительно к сохранённой начальной ставке: выбранная техника получает противопехотную и противотанковую атаку +5%, броню +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Оба духа действуют вместе, включая штрафы. Итог выбранной технике: обе атаки +7,5%, броня +15%, стоимость −7,5%. 50 опыта армии; дополнительных исследований нет.",
+      "desc_en": "Added to the retained initial priority: chosen equipment gains soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Both spirits stack, including penalties. Chosen total: attacks +7.5%, armour +15%, cost −7.5%. 50 army XP; no additional research bonus.",
       "modifiers": {},
       "equipment_bonus": {
         "heavy_tank_destroyer_chassis": {
@@ -3265,14 +3265,14 @@
     },
     {
       "id": "hro_idea_sov_specialize_medium_tank",
-      "family": "hro_family_sov_specialize_armour",
+      "family": "hro_family_sov_specialize_armour_role",
       "stage": 2,
       "tag": "SOV",
       "initial": false,
       "name_ru": "Развитие средних танков",
       "name_en": "Medium Tank Development",
-      "desc_ru": "Выбранная техника: противопехотная и противотанковая атака +5%, броня +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Заменяет начальную специализацию, бонусы не складываются. 50 опыта армии; дополнительных исследований нет.",
-      "desc_en": "Chosen equipment: soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Replaces the initial spirit without stacking. 50 army XP; no extra research bonuses.",
+      "desc_ru": "Дополнительно к сохранённой начальной ставке: выбранная техника получает противопехотную и противотанковую атаку +5%, броню +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Оба духа действуют вместе, включая штрафы. Итог выбранной технике: обе атаки +7,5%, броня +15%, стоимость −7,5%. 50 опыта армии; дополнительных исследований нет.",
+      "desc_en": "Added to the retained initial priority: chosen equipment gains soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Both spirits stack, including penalties. Chosen total: attacks +7.5%, armour +15%, cost −7.5%. 50 army XP; no additional research bonus.",
       "modifiers": {},
       "equipment_bonus": {
         "medium_tank_chassis": {
@@ -3300,14 +3300,14 @@
     },
     {
       "id": "hro_idea_sov_specialize_medium_td",
-      "family": "hro_family_sov_specialize_armour",
+      "family": "hro_family_sov_specialize_armour_role",
       "stage": 2,
       "tag": "SOV",
       "initial": false,
       "name_ru": "Развитие средних ПТ-САУ",
       "name_en": "Medium Tank Destroyer Development",
-      "desc_ru": "Выбранная техника: противопехотная и противотанковая атака +5%, броня +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Заменяет начальную специализацию, бонусы не складываются. 50 опыта армии; дополнительных исследований нет.",
-      "desc_en": "Chosen equipment: soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Replaces the initial spirit without stacking. 50 army XP; no extra research bonuses.",
+      "desc_ru": "Дополнительно к сохранённой начальной ставке: выбранная техника получает противопехотную и противотанковую атаку +5%, броню +10%, стоимость −5%. Остальные танки и ПТ-САУ этих двух масс: обе атаки −5%, стоимость +5%. Оба духа действуют вместе, включая штрафы. Итог выбранной технике: обе атаки +7,5%, броня +15%, стоимость −7,5%. 50 опыта армии; дополнительных исследований нет.",
+      "desc_en": "Added to the retained initial priority: chosen equipment gains soft/hard attack +5%, armour +10%, cost −5%. Other tanks and tank destroyers of these two weights: both attacks −5%, cost +5%. Both spirits stack, including penalties. Chosen total: attacks +7.5%, armour +15%, cost −7.5%. 50 army XP; no additional research bonus.",
       "modifiers": {},
       "equipment_bonus": {
         "medium_tank_destroyer_chassis": {

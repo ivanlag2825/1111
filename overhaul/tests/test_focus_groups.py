@@ -41,7 +41,10 @@ class FocusGroupTests(unittest.TestCase):
     def test_no_authored_focus_relies_only_on_political_power_or_small_experience(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);frontier_generate(root)
-            effects={n.key:n for n in parse((root/'common/scripted_effects/hro_frontier_effects.txt').read_text())}
+            from generate_historical_expansion import generate as history_generate
+            history_generate(root)
+            effects={n.key:n for p in (root/'common/scripted_effects').glob('hro*.txt') for n in parse(p.read_text())}
+            equipment_ideas={n.key for p in (root/'common/ideas').glob('hro*.txt') for n in walk(parse(p.read_text())) if n.one('equipment_bonus')}
             decisions=parse((root/'common/decisions/hro_frontier.txt').read_text())
             unlocks={n.value for n in walk(decisions) if n.key=='has_completed_focus'}
         for catalog in self.catalogs:
@@ -52,7 +55,7 @@ class FocusGroupTests(unittest.TestCase):
                 spirits={('hro_set_'+i['id']):i for i in catalog['ideas']}
                 reforms=[spirits[k] for k in keys if k in spirits]
                 real_reform=any(i.get('modifiers') or i.get('equipment_bonus') for i in reforms)
-                self.assertTrue(technology_grant or focus['id'] in unlocks or keys & useful or real_reform or any(k and k.startswith(('hro_war_','hro_city_')) for k in keys),focus['id'])
+                self.assertTrue(any(n.key=='add_ideas' and n.value in equipment_ideas for k in keys if k in effects for n in walk(effects[k].value)) or technology_grant or focus['id'] in unlocks or keys & useful or real_reform or any(k and k.startswith(('hro_war_','hro_city_')) for k in keys),focus['id'])
 
     def test_glory_of_red_army_grants_a_major_permanent_combat_reform(self):
         sov=next(c for c in self.catalogs if c['tag']=='SOV')

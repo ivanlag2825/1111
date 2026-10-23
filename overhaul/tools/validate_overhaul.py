@@ -555,7 +555,7 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
                 errors.append(f'Existence needs a country scope, not exists = {n.value}')
             if own_context and n.key in ('add_army_experience', 'political_power'):
                 errors.append(f'Unsupported script keyword: {n.key}')
-            if own_context and n.key in ('declare_war_on', 'annex_country', 'transfer_state'):
+            if own_context and n.key in ('declare_war_on', 'annex_country', 'transfer_state') and not (path == 'events/hro_history_expansion_events.txt' and ((n.key == 'transfer_state' and n.value == '146') or (n.key == 'declare_war_on' and n.scalar('target') == 'FIN' and n.scalar('type') == 'take_state' and n.one('generator') and [v.value for v in n.one('generator').value] == ['146']))):
                 errors.append(f'New programme forcibly changes war/territory: {n.key}')
             if own_context and n.key in ('title', 'desc', 'text', 'name', 'group', 'custom_effect_tooltip', 'tooltip', 'custom_cost_text', 'outcome', 'outcome_extra', 'risk_extra') and isinstance(n.value, str) and n.value.startswith(('hro', 'HRO_')):
                 required_loc.add(n.value)

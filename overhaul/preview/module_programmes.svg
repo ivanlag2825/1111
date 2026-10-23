@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="3200" viewBox="0 0 1160 3200">
-<rect width="1160" height="3200" fill="#171c20"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1460" height="3200" viewBox="0 0 1460 3200">
+<rect width="1460" height="3200" fill="#171c20"/>
 <text x="30" y="45" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="24">КОНСТРУКТОРСКИЕ ПРОГРАММЫ</text>
 <text x="30" y="80" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="16">Схема размещения, не скриншот игры. Каждая ветка открывает новые модули.</text>
 <text x="194" y="235" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">1936 — ПРОГРАММА</text>
@@ -163,11 +163,31 @@
 <text x="501" y="2216" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">75-мм</text>
 <text x="501" y="2253" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
 <path d="M380,2321 L490,2221" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="2173" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="2196" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Длинноствольная</text>
+<text x="801" y="2216" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">88-мм</text>
+<text x="801" y="2253" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1939</text>
+<path d="M680,2221 L790,2221" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="1094" y="2173" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="1101" y="2196" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">88-мм: прицельный</text>
+<text x="1101" y="2216" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">бронебойный огонь</text>
+<text x="1101" y="2253" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M980,2221 L1090,2221" fill="none" stroke="#c2ae70" stroke-width="2"/>
 <rect x="494" y="2373" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
 <text x="501" y="2396" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">75-мм орудие</text>
 <text x="501" y="2416" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">поддержки</text>
 <text x="501" y="2453" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
 <path d="M380,2321 L490,2421" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="2373" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="2396" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">105-мм штурмовое</text>
+<text x="801" y="2416" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">орудие</text>
+<text x="801" y="2453" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1939</text>
+<path d="M680,2421 L790,2421" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="1094" y="2373" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="1101" y="2396" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">105-мм: усиленный</text>
+<text x="1101" y="2416" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">фугас</text>
+<text x="1101" y="2453" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M980,2421 L1090,2421" fill="none" stroke="#c2ae70" stroke-width="2"/>
 <text x="555" y="2326" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
 <text x="20" y="2628" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">АВИАЦИОННОЕ</text>
 <text x="20" y="2650" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ВООРУЖЕНИЕ</text>

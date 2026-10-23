@@ -96,16 +96,16 @@ class SpecializationTests(unittest.TestCase):
     costs=[float(group.scalar('build_cost_ic')) for group in eq.value]
     self.assertTrue(any(v<0 for v in costs));self.assertTrue(any(v>0 for v in costs))
     self.assertTrue(all(group.scalar('instant')=='yes' for group in eq.value))
- def test_tank_role_upgrades_replace_initial_spirit_and_cannot_stack_or_downgrade(self):
+ def test_tank_role_upgrades_stack_with_initial_priority_without_duplicate_rewards(self):
   for tag in ('ger','sov'):
    for weight in ('heavy','medium'):
     for role in ('tank','td'):
      s=self.country(tag.upper());base=f'hro_idea_{tag}_specialize_{weight}';final=base+'_'+role
      self.r.execute(self.focuses[f'hro_{tag}_specialize_{weight}'].one('completion_reward').value,s)
      self.r.execute(self.focuses[f'hro_{tag}_specialize_{weight}_{role}'].one('completion_reward').value,s)
-     self.assertNotIn(base,s['ideas']);self.assertIn(final,s['ideas']);self.assertEqual(s['research'],[('armor',1)])
+     self.assertIn(base,s['ideas']);self.assertIn(final,s['ideas']);self.assertEqual(s['research'],[('armor',1)])
      self.r.execute(self.focuses[f'hro_{tag}_specialize_{weight}'].one('completion_reward').value,s)
-     self.assertNotIn(base,s['ideas']);self.assertIn(final,s['ideas'])
+     self.assertIn(base,s['ideas']);self.assertIn(final,s['ideas'])
      eq=self.ideas.one(final).one('equipment_bonus');chosen=weight+'_tank'+('_destroyer' if role=='td' else '')+'_chassis'
      stats={n.key:float(n.value) for n in eq.one(chosen).value if n.key!='instant'}
      self.assertEqual(stats,{'soft_attack':.05,'hard_attack':.05,'armor_value':.10,'build_cost_ic':-.05})
@@ -119,6 +119,26 @@ class SpecializationTests(unittest.TestCase):
    self.assertEqual(float(mods.scalar('army_org_regain')),.10 if tag=='ger' else -.10)
    seq=self.ideas.one(f'hro_idea_{tag}_specialize_sequential').one('modifier')
    self.assertEqual(float(seq.scalar('army_org_factor','0')),.15 if tag=='ger' else 0);self.assertEqual(float(seq.scalar('army_attack_factor','0')),.05 if tag=='ger' else 0)
+ def test_old_save_restores_priority_without_replaying_focus_rewards(self):
+  for tag in ('ger','sov'):
+   for weight in ('heavy','medium'):
+    for role in ('tank','td'):
+     s=self.country(tag.upper());base=f'hro_idea_{tag}_specialize_{weight}';final=base+'_'+role
+     s['ideas'].add(final);before=copy.deepcopy(s)
+     self.r.call('hro_restore_armour_priorities',s)
+     expected=copy.deepcopy(before);expected['ideas'].add(base);self.assertEqual(s,expected)
+     self.r.call('hro_restore_armour_priorities',s);self.assertEqual(s,expected)
+ def test_two_tank_spirits_sum_to_requested_stats_and_preserve_role_exclusions(self):
+  for tag in ('ger','sov'):
+   for weight in ('heavy','medium'):
+    for role in ('tank','td'):
+     base=f'hro_idea_{tag}_specialize_{weight}';final=base+'_'+role
+     chosen=weight+'_tank'+('_destroyer' if role=='td' else '')+'_chassis'
+     a=self.ideas.one(base).one('equipment_bonus').one(chosen);b=self.ideas.one(final).one('equipment_bonus').one(chosen)
+     for key,total in [('soft_attack',.075),('hard_attack',.075),('armor_value',.15),('build_cost_ic',-.075)]:self.assertAlmostEqual(float(a.scalar(key))+float(b.scalar(key)),total)
+     s=self.country(tag.upper());self.r.call('hro_set_'+base,s);self.r.call('hro_set_'+final,s)
+     opposite=base+('_tank' if role=='td' else '_td');self.r.call('hro_set_'+opposite,s)
+     self.assertIn(final,s['ideas']);self.assertNotIn(opposite,s['ideas'])
  def test_sprite_authoring_preserves_equipment_bonuses(self):
   def snapshot():
    ideas=parse((self.output/'common/ideas/hro_country_ideas.txt').read_text())[0].one('country')

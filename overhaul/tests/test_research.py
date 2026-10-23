@@ -95,14 +95,36 @@ class ResearchTests(unittest.TestCase):
  def test_missing_research_pixels_are_rejected(self):
   next((self.p/'gfx/interface/hro_research').glob('*.dds')).unlink()
   with self.assertRaisesRegex(ValueError,'Missing owned research texture'):audit(self.p,self.game,self.catalogs)
+ def test_research_icons_fit_below_names_and_have_transparent_pixels(self):
+  import struct
+  for path in (self.p/'gfx/interface/hro_research').glob('*.dds'):
+   raw=path.read_bytes();self.assertEqual(struct.unpack_from('<II',raw,12),(44,96));self.assertIn(0,raw[131::4]);self.assertGreaterEqual(max(raw[131::4]),240)
+  gui=parse((self.p/'interface/countrytechtreeview.gui').read_text())
+  for n in walk(gui):
+   if n.key=='containerWindowType' and n.scalar('name','').strip('"') in ('techtree_hro_front_folder_item','techtree_hro_module_folder_item'):
+    icon=next(v for v in n.value if v.scalar('name','').strip('"')=='Icon');self.assertEqual(icon.one('position').scalar('y'),'36');self.assertEqual(icon.scalar('centerposition'),'no');self.assertEqual(icon.scalar('spriteType'),'"GFX_hro_research_placeholder"')
+    name=next(v for v in n.value if v.scalar('name','').strip('"')=='Name');self.assertEqual(name.one('position').scalar('x'),'-10000')
+ def test_module_paths_use_distinct_and_correct_component_icons(self):
+  from illustration_assets import research_bindings
+  b=research_bindings()
+  for row in PROGRAMMES:
+   ids=['hro_modtech_'+row+'_'+suffix for suffix in ('base','a','b')]
+   self.assertEqual(len({b[i] for i in ids}),3,row)
+  self.assertNotEqual(b['hro_modtech_engine_a'],b['hro_modtech_airengine_a'])
+  self.assertNotEqual(b['hro_modtech_protection_a'],b['hro_modtech_protection_b'])
+ def test_four_cannon_upgrades_follow_existing_choices_and_increase_firepower(self):
+  s=self.state();s['techs'].add('basic_medium_tank_chassis');self.finish('hro_modtech_cannon_base',s);self.finish('hro_modtech_cannon_a',s);self.finish('hro_modtech_cannon_a2',s);self.finish('hro_modtech_cannon_a3',s)
+  self.assertFalse(self.researchable('hro_modtech_cannon_b2',s))
+  self.assertGreater(MODULES['hro_precision_88']['add']['hard_attack'],MODULES['hro_high_velocity_75']['add']['hard_attack'])
+  self.assertGreater(MODULES['hro_blast_105']['add']['soft_attack'],MODULES['hro_support_75']['add']['soft_attack'])
  def test_full_generated_contract(self):
   report=audit(self.p,self.game,self.catalogs)
-  self.assertEqual(report['technologies'],120);self.assertEqual(self.report['visible_per_country'],85);self.assertEqual(report['modules']['modules'],36)
+  self.assertEqual(report['technologies'],124);self.assertEqual(self.report['visible_per_country'],89);self.assertEqual(report['modules']['modules'],40)
  def test_every_country_has_85_research_nodes_and_foreign_reforms_are_inaccessible(self):
   for tag in ('GER','SOV'):
    s=self.state(tag)
    visible=[t.key for t in self.techs.values() if t.one('folder') and self.r.condition(t.one('allow_branch').value,s)]
-   self.assertEqual(len(visible),85)
+   self.assertEqual(len(visible),89)
    self.assertFalse(any('_'+('sov' if tag=='GER' else 'ger')+'_' in k for k in visible))
   s=self.state('FRA');self.assertFalse(any(t.one('folder') and self.r.condition(t.one('allow_branch').value,s) for t in self.techs.values()))
  def test_new_campaign_and_completed_focus_do_not_grant_research(self):
@@ -149,7 +171,7 @@ class ResearchTests(unittest.TestCase):
     other='b' if side=='a' else 'a';self.assertFalse(self.researchable(prefix+'_'+other,s));self.assertFalse(self.researchable(prefix+'_'+other+'2',s))
  def test_module_unlocks_require_specific_research_and_retain_production_tradeoffs(self):
   unlocks={m.value:t.key for t in self.techs.values() if t.one('enable_equipment_modules') for m in t.one('enable_equipment_modules').value}
-  self.assertEqual(len(unlocks),36);self.assertEqual(set(unlocks),set(MODULES))
+  self.assertEqual(len(unlocks),40);self.assertEqual(set(unlocks),set(MODULES))
   for k,m in MODULES.items():
    self.assertGreater(m['add']['build_cost_ic'],0)
    self.assertTrue(unlocks[k].startswith(('hro_design_','hro_modtech_')))
@@ -203,7 +225,7 @@ class ResearchTests(unittest.TestCase):
   p=self.p/'common/units/equipment/fixture.txt';p.write_text(p.read_text().replace('module = hro_applique_armor count < 2','module = hro_applique_armor count < 5'))
   with self.assertRaisesRegex(ValueError,'Missing one-per-design limit'):audit(self.p,self.game,self.catalogs)
  def test_thirty_extra_modules_have_genuine_categories_and_costs(self):
-  self.assertEqual(len(EXTRA_MODULES),30);self.assertEqual(len(MODULES),36)
+  self.assertEqual(len(EXTRA_MODULES),34);self.assertEqual(len(MODULES),40)
   self.assertGreaterEqual(len({m['category'] for m in EXTRA_MODULES.values()}),7)
   self.assertTrue(any(m['category']=='tank_armor_type' for m in EXTRA_MODULES.values()))
   self.assertTrue(any(m['category']=='tank_engine_type' for m in EXTRA_MODULES.values()))
@@ -211,7 +233,7 @@ class ResearchTests(unittest.TestCase):
   s=self.state()
   for folder in (FOLDER,MODULE_FOLDER):
    nodes=[t for t in self.techs.values() if t.one('folder') and t.one('folder').scalar('name')==folder and self.r.condition(t.one('allow').value,s)]
-   self.assertEqual(len(nodes),46 if folder==FOLDER else 39)
+   self.assertEqual(len(nodes),46 if folder==FOLDER else 43)
  def test_module_research_choices_cannot_unlock_the_opposite_line(self):
   for key,p in PROGRAMMES.items():
    for side in ('a','b'):
@@ -224,7 +246,7 @@ class ResearchTests(unittest.TestCase):
  def test_all_visible_cards_have_explicit_captions_instead_of_dynamic_name_binding(self):
   gui=parse((self.p/'interface/countrytechtreeview.gui').read_text())
   captions=[n for n in walk(gui) if n.key=='instantTextBoxType' and n.scalar('name','').strip('"').startswith('hro_caption_')]
-  self.assertEqual(len(captions),85)
+  self.assertEqual(len(captions),89)
   for n in captions:self.assertEqual(n.scalar('alwaystransparent'),'yes');self.assertIn(n.scalar('text').strip('"'),self.techs)
  def test_fractional_coordinates_fail_even_if_the_parser_accepts_them(self):
   p=self.p/'common/technologies/hro_front_developments.txt';p.write_text(p.read_text().replace('x = -1 y = 3','x = -0.8 y = 3'))

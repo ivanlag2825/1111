@@ -34,7 +34,11 @@ module('rapid_mg_pack','Скорострельная пулемётная бат
 module('cannon_pack','Спаренная 20-мм батарея','Twin 20 mm Battery','fighter_weapon','aircraft_cannon_1_2x',{'build_cost_ic':6,'weight':7,'air_attack':25},{'air_agility':-.05},'Тяжёлая батарея повышает огневую мощь, нагружая планер.','A heavy battery increases firepower but burdens the airframe.',extras='add_equipment_type = { fighter heavy_fighter } allow_mission_type = { air_superiority interception }')
 module('field_tools','Бортовой ремонтный комплект','Onboard Repair Tools','tank_special_module','easy_maintenance',{'build_cost_ic':1,'reliability':.08},{'maximum_speed':-.02},'Комплект инструмента сокращает простои, занимая объём машины.','Onboard tools reduce downtime but occupy vehicle space.')
 module('extended_fuel','Маршевый регулятор двигателя','March Engine Governor','tank_special_module','expanded_fuel_tank',{'build_cost_ic':1.5,'reliability':-.03},{'fuel_consumption':-.08,'maximum_speed':-.03},'Ограничение пиковых оборотов экономит топливо, снижая максимальную скорость.','Limiting peak engine revolutions saves fuel and reduces top speed.')
-assert len(MODULES)==30
+module('long_88','Длинноствольная 88-мм','Long-Barrel 88 mm','tank_medium_main_armament','tank_medium_cannon_2',{'build_cost_ic':7,'soft_attack':32,'hard_attack':38,'ap_attack':140,'breakthrough':4,'maximum_speed':-.4,'reliability':-.14},{},'Длинный ствол увеличивает пробитие; тяжёлый боекомплект замедляет машину.','A long barrel improves penetration; heavy ammunition slows the vehicle.',extras='allow_equipment_type = anti_tank build_cost_resources = { tungsten = 2 steel = 2 }')
+module('support_105','105-мм штурмовое орудие','105 mm Assault Gun','tank_medium_main_armament','tank_medium_cannon',{'build_cost_ic':6.5,'soft_attack':55,'hard_attack':18,'ap_attack':65,'breakthrough':8,'maximum_speed':-.4,'reliability':-.10},{},'Мощный фугасный снаряд поддерживает штурм; бронепробитие вторично.','A powerful explosive shell supports assaults; penetration is secondary.',extras='allow_equipment_type = anti_tank build_cost_resources = { tungsten = 1 steel = 2 }')
+module('precision_88','88-мм: прицельный бронебойный огонь','88 mm Precision AP Fire','tank_medium_main_armament','tank_medium_cannon_2',{'build_cost_ic':8.5,'soft_attack':36,'hard_attack':48,'ap_attack':165,'breakthrough':5,'maximum_speed':-.5,'reliability':-.16},{},'Согласованные прицелы и бронебойные боеприпасы усиливают поражение тяжёлой брони.','Matched sights and armour-piercing ammunition improve heavy-armour defeat.',extras='allow_equipment_type = anti_tank build_cost_resources = { tungsten = 2 steel = 3 }')
+module('blast_105','105-мм: усиленный фугас','105 mm Heavy HE','tank_medium_main_armament','tank_medium_cannon',{'build_cost_ic':8,'soft_attack':70,'hard_attack':22,'ap_attack':80,'breakthrough':10,'maximum_speed':-.6,'reliability':-.14},{},'Усиленная фугасная программа увеличивает огневую мощь ценой массы, производства и надёжности.','Heavy HE ammunition raises firepower at a cost in mass, production and reliability.',extras='allow_equipment_type = anti_tank build_cost_resources = { tungsten = 1 steel = 3 }')
+assert len(MODULES)==34
 
 def programme(ru,en,prereq,icon,a,b,a2=None,b2=None):return dict(ru=ru,en=en,prereq=prereq,icon=icon,a=a,b=b,a2=a2,b2=b2)
 PROGRAMMES={
@@ -44,7 +48,7 @@ PROGRAMMES={
  'protection':programme('Живучесть танка','Tank Survival','basic_medium_tank_chassis','basic_heavy_tank_chassis','hro_spall_liner','hro_fire_suppression','hro_roof_armor','hro_separated_stowage'),
  'airengine':programme('Авиационные моторы','Aero Engines','basic_small_airframe','fighter1','hro_supercharged_motor','hro_cruise_motor','hro_emergency_boost','hro_aero_cowling'),
  'airsurvival':programme('Живучесть самолёта','Aircraft Survival','basic_small_airframe','CAS1','hro_light_cockpit','hro_sealed_cells','hro_armored_oil','hro_drop_tank_system'),
- 'cannon':programme('Танковое вооружение','Tank Armament','basic_medium_tank_chassis','basic_medium_tank_chassis','hro_high_velocity_75','hro_support_75'),
+ 'cannon':programme('Танковое вооружение','Tank Armament','basic_medium_tank_chassis','basic_medium_tank_chassis','hro_high_velocity_75','hro_support_75','hro_long_88','hro_support_105'),
  'airgun':programme('Авиационное вооружение','Aircraft Armament','basic_small_airframe','fighter1','hro_rapid_mg_pack','hro_cannon_pack'),
  'service':programme('Походное оснащение','March Equipment','basic_light_tank_chassis','tech_logistics_company','hro_field_tools','hro_extended_fuel'),
 }
@@ -60,6 +64,10 @@ def definitions():
    if child:
     m=MODULES[p[side+'2']]
     result.append(dict(id=child,year=1940,pos=(x,6),parent=prefix+'_'+side,children=(),modules=(p[side+'2'],),ru=m['ru'],en=m['en'],icon=p['icon'],row=key))
+ # Four new technologies extend the two existing 75-mm choices.
+ for side,module in [('a','hro_precision_88'),('b','hro_blast_105')]:
+  parent=next(t for t in result if t['id']=='hro_modtech_cannon_'+side+'2');parent['year']=1939;child='hro_modtech_cannon_'+side+'3';parent['children']=(child,)
+  m=MODULES[module];result.append(dict(id=child,year=1940,pos=(-1 if side=='a' else 1,9),parent=parent['id'],children=(),modules=(module,),ru=m['ru'],en=m['en'],icon='basic_medium_tank_chassis',row='cannon'))
  return result
 
 def generate(put,text,format_stats):
@@ -73,7 +81,7 @@ def generate(put,text,format_stats):
  for t in definitions():
   x,y=t['pos'];identity=t['id'];mods=' '.join(t['modules']);paths=' '.join('path = { leads_to_tech = '+k+' research_cost_coeff = 1 }' for k in t['children'])
   xor='xor = { '+t['xor']+' }' if t.get('xor') else ''
-  techs.append(f'{identity} = {{ allow_branch = {{ hro_supported_country = yes }} allow = {{ hro_supported_country = yes }} research_cost = { {1936:.4,1938:.55,1940:.7}[t["year"]]} start_year = {t["year"]} folder = {{ name = {FOLDER} position = {{ x = {x} y = {y} }} }} dependencies = {{ {t["parent"]} = 1 }} {paths} {xor} categories = {{ hro_front_research }} '+('enable_equipment_modules = { '+mods+' }' if mods else '')+' }')
+  techs.append(f'{identity} = {{ allow_branch = {{ hro_supported_country = yes }} allow = {{ hro_supported_country = yes }} research_cost = { {1936:.4,1938:.55,1939:.7,1940:.7}[t["year"]]} start_year = {t["year"]} folder = {{ name = {FOLDER} position = {{ x = {x} y = {y} }} }} dependencies = {{ {t["parent"]} = 1 }} {paths} {xor} categories = {{ hro_front_research }} '+('enable_equipment_modules = { '+mods+' }' if mods else '')+' }')
   text(identity,t['ru'],t['en'])
   desc_ru='Основы программы: открывает выбор двух несовместимых направлений. Само по себе не даёт боевых бонусов.';desc_en='Programme foundations: opens two mutually exclusive paths. Does not itself grant combat bonuses.'
   if t['modules']:
@@ -88,7 +96,7 @@ def preview(output):
  from pathlib import Path
  from html import escape
  import textwrap
- out=['<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="3200" viewBox="0 0 1160 3200">','<rect width="1160" height="3200" fill="#171c20"/>']
+ out=['<svg xmlns="http://www.w3.org/2000/svg" width="1460" height="3200" viewBox="0 0 1460 3200">','<rect width="1460" height="3200" fill="#171c20"/>']
  def text(x,y,value,size=15):out.append(f'<text x="{x}" y="{y}" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="{size}">{escape(value)}</text>')
  def card(x,y,name,year):
   out.append(f'<rect x="{x}" y="{y}" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>')
@@ -105,6 +113,8 @@ def preview(output):
   for side,delta in [('a',-100),('b',100)]:
    m=MODULES[p[side]];card(494,y+delta,m['ru'],1938);line(380,y+48,490,y+delta+48)
    if p[side+'2']:
-    cap=MODULES[p[side+'2']];card(794,y+delta,cap['ru'],1940);line(680,y+delta+48,790,y+delta+48)
+    cap=MODULES[p[side+'2']];card(794,y+delta,cap['ru'],1939 if key=='cannon' else 1940);line(680,y+delta+48,790,y+delta+48)
+    if key=='cannon':
+     final=MODULES['hro_precision_88' if side=='a' else 'hro_blast_105'];card(1094,y+delta,final['ru'],1940);line(980,y+delta+48,1090,y+delta+48)
   text(555,y+53,'ИЛИ')
  out.append('</svg>');path=Path(output)/'preview/module_programmes.svg';path.parent.mkdir(parents=True,exist_ok=True);path.write_text('\n'.join(out))
