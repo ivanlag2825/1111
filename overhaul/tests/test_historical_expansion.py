@@ -82,8 +82,8 @@ class HistoricalExpansionTests(unittest.TestCase):
   self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name);generate(self.root);self.r=HistoryRuntime(self.root)
  def test_czech_focus_once_and_reload_does_not_refresh_548_days(self):
   s=self.r.world['GER'];s['completed'].add('GER_demand_sudetenland');self.r.tick();expiry=s['expiry']['hro_history_czech_refit'];self.r.tick(days=200);self.assertEqual(s['expiry']['hro_history_czech_refit'],expiry);self.r.tick(days=348);self.assertNotIn('hro_history_czech_refit',s['ideas']);self.r.tick(days=1);self.assertNotIn('hro_history_czech_refit',s['ideas'])
- def test_renault_requires_authorization_and_tracks_paris_loss_recapture(self):
-  s=self.r.world['GER'];self.r.controllers[11506]='GER';self.r.call('hro_history_renault_sync',s);self.assertNotIn('hro_history_renault',s['ideas']);s['flags']['hro_renault_authorized']=None;self.r.call('hro_history_renault_sync',s);self.assertIn('hro_history_renault',s['ideas']);self.r.controllers[11506]='FRA';self.r.call('hro_history_renault_sync',s);self.assertNotIn('hro_history_renault',s['ideas']);self.r.controllers[11506]='GER';self.r.call('hro_history_renault_sync',s);self.assertIn('hro_history_renault',s['ideas'])
+ def test_renault_automatic_without_focus_and_tracks_paris_loss_recapture(self):
+  s=self.r.world['GER'];self.r.tick();self.assertNotIn('hro_history_renault',s['ideas']);self.r.controllers[11506]='GER';self.r.tick(days=1);self.assertIn('hro_history_renault',s['ideas']);self.r.controllers[11506]='FRA';self.r.call('hro_history_renault_sync',s);self.assertNotIn('hro_history_renault',s['ideas']);self.r.controllers[11506]='GER';self.r.call('hro_history_renault_sync',s);self.assertIn('hro_history_renault',s['ideas'])
  def test_propaganda_has_fixed_august_cutoff_and_cannot_be_replayed(self):
   self.r.choose('hro.950',0,'GER');self.assertIn('hro_history_neubaufahrzeug_ger',self.r.world['GER']['ideas'])
   for tag in ('SOV','FRA','ENG'):self.assertIn('hro_history_neubaufahrzeug_fear',self.r.world[tag]['ideas'])

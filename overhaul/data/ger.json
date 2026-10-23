@@ -1897,8 +1897,8 @@
       "id": "hro_ger_renault_programme",
       "name_ru": "Французское Renault теперь работает на нас!",
       "name_en": "French Renault Now Works for Us!",
-      "desc_ru": "При контроле Парижа: стоимость производства грузовиков и поездов −30%. Бонус действует только пока Германия контролирует провинцию Парижа; при её потере снимается, при возвращении восстанавливается без повторных наград.",
-      "desc_en": "While Germany controls Paris: truck and train production cost −30%. Lost when Paris is lost; restored upon recapture without repeated rewards.",
+      "desc_ru": "Стоимость грузовиков и поездов −30% автоматически при контроле Парижа, без этого фокуса. Фокус организует переоснащение: два бонуса по 50% к исследованию моторизованной техники. При потере Парижа производственный дух снимается, при возвращении восстанавливается.",
+      "desc_en": "Trucks and trains cost −30% automatically while controlling Paris, without this focus. The focus provides two 50% motorized research bonuses. The production spirit is removed upon losing Paris and restored on recapture.",
       "branch": "industry",
       "x": 61,
       "y": 19,
@@ -1909,7 +1909,7 @@
         ]
       ],
       "available": "controls_province = 11506",
-      "reward": "set_country_flag = hro_renault_authorized hro_history_renault_sync = yes",
+      "reward": "set_country_flag = hro_renault_authorized hro_history_renault_sync = yes add_tech_bonus = { name = hro_ger_renault_programme bonus = 0.5 uses = 2 category = motorized_equipment }",
       "icon": "GFX_goal_generic_army_motorized"
     }
   ],

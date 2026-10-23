@@ -46,3 +46,5 @@ dist/*
 !dist/history.zip
 
 !dist/cinema.zip
+
+!dist/cities.zip

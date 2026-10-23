@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json,re,shutil,struct
 from clausewitz import parse
 ASSETS=Path(__file__).resolve().parents[1]/'assets/loading_screens'
-SCENES={'blitz':('Танковый прорыв','Armoured Breakthrough'),'winter':('Зимнее наступление','Winter Offensive'),'airwar':('Битва над фронтом','Battle above the Front')}
+SCENES={'blitz':('Танковый прорыв','Armoured Breakthrough'),'winter':('Зимнее наступление','Winter Offensive'),'airwar':('Битва над фронтом','Battle above the Front'),'moscow':('Москва в огне','Moscow Ablaze'),'berlin':('Последние дни Берлина','The Last Days of Berlin')}
 
 def registry(game):
  path=Path(game)/'common/frontend/backgrounds/base_backgrounds.txt'
@@ -28,7 +28,7 @@ def generate(output,game):
  put('common/frontend/backgrounds/hro_painted_backgrounds.txt','\n'.join('hro_load_'+k+' = { gfx = GFX_hro_loading_background }' for k in scenes))
  for lang,index in [('russian',0),('english',1)]:
   put(f'localisation/{lang}/hro_loading_screens_l_{lang}.yml','l_'+lang+':\n'+''.join(f' hro_load_{k}:0 {json.dumps(v[index],ensure_ascii=False)}\n' for k,v in SCENES.items()),True)
- report=dict(paintings=list(scenes),native_backgrounds_retextured=len(names),own_backgrounds=3,native_registry_sha256=sha,full_size=[1920,1080],thumbnail_size=[192,108],dds_format='DXT1',bindings=mapping,vanilla_registry_replaced=False,gameplay_changed=False,runtime_verified=False)
+ report=dict(paintings=list(scenes),native_backgrounds_retextured=len(names),own_backgrounds=len(scenes),native_registry_sha256=sha,full_size=[1920,1080],thumbnail_size=[192,108],dds_format='DXT1',bindings=mapping,vanilla_registry_replaced=False,gameplay_changed=False,runtime_verified=False)
  report['audit']=audit(root,game,report)
  return report
 

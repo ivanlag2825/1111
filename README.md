@@ -1,3 +1,13 @@
+# Historical Reality — 1.9.2
+
+[Скачать cities.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-renault-city-art/dist/cities.zip)
+
+Renault теперь автоматически даёт −30% стоимости грузовиков и поездов при контроле Парижа. Добавлены загрузочные картины горящей Москвы и Берлина — всего пять сюжетов.
+
+[Подробности и установка](overhaul/docs/CITIES_192_RU.md). Полностью замените старую папку мода и перезапустите игру у обоих игроков. В старой партии дождитесь следующего дня. Проверки сборки не заменяют проверку в движке.
+
+## Предыдущие версии
+
 # Historical Reality — 1.9.1
 
 [Скачать cinema.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-epic-loading/dist/cinema.zip)

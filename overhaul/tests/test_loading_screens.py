@@ -7,7 +7,7 @@ class LoadingTests(unittest.TestCase):
  def setUp(self):
   self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);base=Path(self.temp.name);self.game=base/'game';self.mod=base/'mod';p=self.game/'common/frontend/backgrounds/base_backgrounds.txt';p.parent.mkdir(parents=True);p.write_text('load_1 = {} load_5 = {} load_nsb = { dlc_allowed = "No Step Back" }');self.native=p;self.before=p.read_bytes()
  def test_every_default_and_dlc_key_has_a_full_image_and_thumbnail(self):
-  r=generate(self.mod,self.game);self.assertEqual(r['native_backgrounds_retextured'],3);self.assertEqual(r['own_backgrounds'],3);self.assertEqual(r['audit']['dds_checked'],12);self.assertEqual(self.native.read_bytes(),self.before);self.assertFalse((self.mod/'common/frontend/backgrounds/base_backgrounds.txt').exists())
+  r=generate(self.mod,self.game);self.assertEqual(r['native_backgrounds_retextured'],3);self.assertEqual(r['own_backgrounds'],5);self.assertEqual(r['audit']['dds_checked'],16);self.assertEqual(self.native.read_bytes(),self.before);self.assertFalse((self.mod/'common/frontend/backgrounds/base_backgrounds.txt').exists())
  def test_missing_or_wrong_size_texture_stops_art_audit(self):
   r=generate(self.mod,self.game);p=self.mod/'gfx/loadingscreens/load_nsb.dds';raw=p.read_bytes();p.unlink()
   with self.assertRaisesRegex(ValueError,'Missing loading art'):audit(self.mod,self.game,r)
