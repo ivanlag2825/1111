@@ -167,7 +167,7 @@ def author_ui(output,game,roots,icons):
   templates.append(fragment)
  patches=[(tabs.value_end-1,tabs.value_end-1,tab),(window.value_end-1,window.value_end-1,panel),(root.value_end-1,root.value_end-1,'\n'.join(templates))]
  final=edit(source,patches);parse(final)
- (output/'interface').mkdir(exist_ok=True);(output/'interface/countrytechtreeview.gui').write_text(final,encoding='utf-8-sig')
+ (output/'interface').mkdir(exist_ok=True);(output/'interface/countrytechtreeview.gui').write_text(final,encoding='utf-8')
  # Alias existing, shipped vanilla texture files by the new technology IDs.
  sprites={}
  for p in [game/'interface/Technologies.gfx']:
@@ -183,11 +183,21 @@ def author_ui(output,game,roots,icons):
  return dict(source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),folder=FOLDER,root_grids=len(roots),sprite_aliases=len(icons),vanilla_gui_preserved_outside_insertions=True)
 
 
+def audit_interface_encoding(output):
+ errors=[]
+ for p in (Path(output)/'interface').rglob('*'):
+  if p.is_file() and p.suffix.lower() in ('.gui','.gfx'):
+   data=p.read_bytes()
+   if data.startswith((b'\xef\xbb\xbf',b'\xff\xfe',b'\xfe\xff')):
+    errors.append('Interface file has unsupported BOM: '+str(p.relative_to(output)))
+ return errors
+
+
 def audit(output,game,catalogs,schema_dir=None):
  """Validate graph, names, GUI bindings, inherited modifiers and migration.
  Game-engine rendering remains a separate, manual verification step.
  """
- output=Path(output);records=converted(catalogs);errors=[]
+ output=Path(output);records=converted(catalogs);errors=audit_interface_encoding(output)
  techs={n.key:n for p in (output/'common/technologies').glob('hro*.txt') for r in parse(p.read_text()) for n in r.value}
  gui=parse((output/'interface/countrytechtreeview.gui').read_text(encoding='utf-8-sig'))
  names={n.scalar('name','').strip('"') for n in walk(gui) if isinstance(n.value,list)}
@@ -214,6 +224,19 @@ def audit(output,game,catalogs,schema_dir=None):
    if n.key=='set_technology':
     for child in n.value:
      if child.key and child.key.startswith('hro_tech_') and child.key not in techs:errors.append('Unknown technology: '+child.key)
+ # Research categories are identifiers from the actual game, not free text.
+ categories=set()
+ for base in (Path(game),output):
+  for p in (base/'common/technology_tags').glob('*.txt'):
+   for block in parse(p.read_text(encoding='utf-8-sig')):
+    if block.key=='technology_categories':categories.update(n.value for n in block.value if isinstance(n.value,str))
+ if not categories:errors.append('Missing vanilla research category definitions')
+ for p in output.rglob('*.txt'):
+  if not p.relative_to(output).parts[0] in ('common','events'):continue
+  for n in walk(parse(p.read_text(encoding='utf-8-sig'))):
+   if n.key=='add_tech_bonus':
+    for category in n.all('category'):
+     if category.value not in categories:errors.append('Unknown research category: '+str(category.value))
  # Exact preservation of vanilla GUI structure after removing our additions.
  def signature(nodes):
   result=[]
@@ -270,4 +293,4 @@ def audit(output,game,catalogs,schema_dir=None):
  for k in techs:
   if 'GFX_'+k+'_medium' not in sprite_names:errors.append('Missing research sprite: '+k)
  if errors:raise ValueError('\n'.join(errors))
- return dict(technologies=len(techs),converted_modifiers_exact=True,root_bindings_checked=True,exclusive_schools_checked=True,focuses_do_not_grant_technologies=True)
+ return dict(technologies=len(techs),converted_modifiers_exact=True,root_bindings_checked=True,exclusive_schools_checked=True,focuses_do_not_grant_technologies=True,interface_bom_free=True,research_bonus_categories_checked_against_game=True)

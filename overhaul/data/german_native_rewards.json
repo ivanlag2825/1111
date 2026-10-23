@@ -375,7 +375,7 @@
     "branch": "navy",
     "idea": "hro_idea_ger_native_surface_1",
     "effect": "hro_native_reward_cruiser_warfare",
-    "tech": "cl_tech"
+    "tech": "mio_cat_tech_all_cruiser_and_modules"
   },
   {
     "focus": "GER_panzerschiff_raiders",

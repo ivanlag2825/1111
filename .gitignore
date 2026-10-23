@@ -34,3 +34,5 @@ dist/*
 !dist/frontier.zip
 
 !dist/research.zip
+
+!dist/researchfix.zip

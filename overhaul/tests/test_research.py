@@ -29,6 +29,14 @@ def fixture_game(game):
  units=game/'common/units';units.mkdir(parents=True)
  (units/'fixture.txt').write_text('sub_units = { '+' '.join(i+' = {}' for i in ('infantry','engineer','motorized','mechanized','logistics_company','maintenance_company','field_hospital'))+' }')
  techs=game/'common/technologies';techs.mkdir()
+ tags=game/'common/technology_tags';tags.mkdir()
+ categories={'support_tech','mio_cat_tech_all_cruiser_and_modules'}
+ for tag in ('ger','sov'):
+  catalog=json.loads((ROOT/'overhaul/data'/f'{tag}.json').read_text())
+  for f in catalog['focuses']:
+   for n in walk(parse(f['reward'])):
+    if n.key=='category' and isinstance(n.value,str):categories.add(n.value)
+ (tags/'fixture.txt').write_text('technology_categories = { '+' '.join(sorted(categories))+' }')
  (techs/'fixture.txt').write_text('technologies = { '+' '.join(i+' = {}' for i in icons)+' }')
 
 
@@ -108,6 +116,17 @@ class ResearchTests(unittest.TestCase):
  def test_no_more_than_original_bonus_is_carried_across_migration(self):
   for row in self.records:
    for stat,value in row['idea']['modifiers'].items():self.assertEqual(float(self.techs[row['tech']].scalar(stat)),value)
+ def test_generated_gui_is_utf8_without_bom_and_keeps_the_expected_root_token(self):
+  p=self.p/'interface/countrytechtreeview.gui';data=p.read_bytes()
+  self.assertFalse(data.startswith(b'\xef\xbb\xbf'))
+  self.assertEqual(data.lstrip().split(None,1)[0],b'guiTypes')
+ def test_audit_rejects_bom_even_though_the_python_parser_accepts_it(self):
+  p=self.p/'interface/countrytechtreeview.gui';p.write_bytes(b'\xef\xbb\xbf'+p.read_bytes())
+  with self.assertRaisesRegex(ValueError,'unsupported BOM'):audit(self.p,self.game,self.catalogs)
+ def test_audit_rejects_unregistered_research_bonus_category(self):
+  p=self.p/'common/scripted_effects/hro_bad_category.txt'
+  p.write_text('bad = { add_tech_bonus = { name = test bonus = 0.5 uses = 1 category = cl_tech } }')
+  with self.assertRaisesRegex(ValueError,'Unknown research category: cl_tech'):audit(self.p,self.game,self.catalogs)
  def test_audit_rejects_a_missing_grid_sprite_and_legacy_modifier_change(self):
   gui=self.p/'interface/countrytechtreeview.gui';original=gui.read_text(encoding='utf-8-sig')
   gui.write_text(original.replace('hro_tech_ger_urban_tree','missing_grid'))

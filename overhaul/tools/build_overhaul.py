@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.5.0'
+VERSION = '1.5.1'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -551,6 +551,10 @@ def native_overlay(stage, game, catalogs):
 
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
+
+## Исправление запуска 1.5.1
+
+Исправлена ошибка кодировки `countrytechtreeview.gui`, из-за которой движок не распознавал окно исследований и вылетал при начале партии. Исправлена категория бонуса «Крейсерская война». [Разбор и установка](docs/CRASHFIX_151_RU.md).
 
 ## Исследования фронта 1.5.0
 

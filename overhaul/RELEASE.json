@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.5.1",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 84,
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/research.zip",
-  "sha256": "cf3ec009c396514edbb1d73fba980ee102b5d5b2d3f561b5f94c8dbd60351b90",
-  "bytes": 726936,
+  "archive": "dist/researchfix.zip",
+  "sha256": "85aa9f040f630ebe3590b3c91d52974812e9907a5d2e31cb0ada5556885d7891",
+  "bytes": 728929,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
   "german_native_duration_factor": 0.7,
   "tests": {
-    "overhaul": 299
+    "overhaul": 302
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-front-research/dist/research.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-frontline-programmes/dist/frontier.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-research-crashfix/dist/researchfix.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-front-research/dist/research.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -282,7 +282,8 @@
     "signals": "c099eef15b51e9513fa7719ccd4fe4c9782267ca3b465c988c32f24631086fb4",
     "stories": "2cde80361cf0df7eb4c4c09c5f57b2e625298b54a0e285a7c2b0dddb547d327b",
     "blitzkrieg": "5a7b9514d335657c077beffbf944f9495bb9de9d8b96f35cd0c4944b4f1e17bf",
-    "frontier": "974491b17d44283c14c7861089a88028db38a3962fbf29815a43738da4d0486f"
+    "frontier": "974491b17d44283c14c7861089a88028db38a3962fbf29815a43738da4d0486f",
+    "research": "cf3ec009c396514edbb1d73fba980ee102b5d5b2d3f561b5f94c8dbd60351b90"
   },
   "saved_game_update": {
     "from_versions": [
@@ -626,7 +627,7 @@
       "hro_ger_school_river": "1941-06-11T00:00:00"
     },
     "engine_verified": false,
-    "limitations": "Political events, army size, war support, DLC visibility, industry and war availability must be satisfied by the player. No focus speed bonus, bypass or saved focus progress is assumed. This is one reproducible route, not an optimum. Research time is separate; focus completion no longer implies school technology completion.",
+    "limitations": "Political events, army size, war support, DLC visibility, industry and war availability must be satisfied by the player. No focus speed bonus, bypass or saved focus progress is assumed. This is one reproducible route, not an optimum.",
     "focuses": 79
   },
   "city_emergency": {
@@ -823,7 +824,25 @@
       "converted_modifiers_exact": true,
       "root_bindings_checked": true,
       "exclusive_schools_checked": true,
-      "focuses_do_not_grant_technologies": true
+      "focuses_do_not_grant_technologies": true,
+      "interface_bom_free": true,
+      "research_bonus_categories_checked_against_game": true
     }
+  },
+  "hotfix": {
+    "user_report_date": "2026-10-23",
+    "confirmed_log_errors": [
+      "Unexpected token: BOM+guiTypes",
+      "Undefined GUI_TYPE: countrytechtreeview",
+      "Unknown technology category cl_tech"
+    ],
+    "gui_utf8_bom_removed": true,
+    "research_category_replacement": "mio_cat_tech_all_cruiser_and_modules",
+    "gameplay_differential_against_150": [
+      "interface/countrytechtreeview.gui: remove exactly three BOM bytes",
+      "common/scripted_effects/hro_native_military_effects.txt: replace one research category"
+    ],
+    "engine_verified": false,
+    "new_campaign_required_for_hotfix": false
   }
 }

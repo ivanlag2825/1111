@@ -336,6 +336,8 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
     errors, warnings = [], []
     if not root.is_dir():
         raise ValueError(f'Mod directory does not exist: {root}')
+    from generate_research import audit_interface_encoding
+    errors.extend(audit_interface_encoding(root))
     documents = {}
     for path in sorted(root.rglob('*.txt')):
         relative = path.relative_to(root).as_posix()
