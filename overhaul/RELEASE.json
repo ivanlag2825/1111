@@ -1,5 +1,5 @@
 {
-  "version": "1.9.2",
+  "version": "1.9.3",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 85,
@@ -248,9 +248,9 @@
       }
     }
   },
-  "archive": "dist/cities.zip",
-  "sha256": "5781ac0a66dbd1f25ade4b2df521e46e1adffb8c1b99d53879d0d2e6f5c9a5fb",
-  "bytes": 26451108,
+  "archive": "dist/tanks.zip",
+  "sha256": "14f0785c19d69407402c693bf0390aa7168ee6d96c2859022a8fee05bb5f50d6",
+  "bytes": 26231394,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
@@ -258,8 +258,8 @@
   "tests": {
     "overhaul": 340
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-renault-city-art/dist/cities.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-epic-loading/dist/cinema.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-ww2-loading-art/dist/tanks.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-renault-city-art/dist/cities.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -289,7 +289,8 @@
     "modules": "886bfbe3b07f593810f7d2567df3dcc49799811c2a182a3496e3604d7b290018",
     "art": "6977e15c27813731e41824769e190f7d6cc4777ed2f031e960f7a5ff2a4ad0c7",
     "history": "8cd130216b863bd498f830a5870eeee7b07851412cd14509113d481c66dee933",
-    "cinema": "46866ecc0c40ef41ef21dcca06f1457fc846bc303b58f87b9d2650bf31d52772"
+    "cinema": "46866ecc0c40ef41ef21dcca06f1457fc846bc303b58f87b9d2650bf31d52772",
+    "cities": "5781ac0a66dbd1f25ade4b2df521e46e1adffb8c1b99d53879d0d2e6f5c9a5fb"
   },
   "saved_game_update": {
     "from_versions": [
@@ -1182,8 +1183,5 @@
       "runtime_verified": false
     }
   },
-  "changed_gameplay_files_vs_191": [
-    "common/national_focus/hro_country_focuses.txt",
-    "common/scripted_effects/hro_history_expansion_effects.txt"
-  ]
+  "changed_gameplay_files_vs_192": []
 }

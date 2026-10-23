@@ -1,3 +1,13 @@
+# Historical Reality — 1.9.3
+
+[Скачать tanks.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-ww2-loading-art/dist/tanks.zip)
+
+Техника на всех пяти загрузочных картинах переработана под узнаваемые машины Второй мировой. Улучшены пропорции корпусов, башен, орудий и ходовой; сохранены композиция, освещение и атмосфера.
+
+[Галерея и установка](overhaul/docs/WW2_ART_193_RU.md). Это полный мод; замените старую папку и перезапустите игру. Игровые скрипты и баланс сохранены.
+
+## Предыдущие версии
+
 # Historical Reality — 1.9.2
 
 [Скачать cities.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-renault-city-art/dist/cities.zip)
