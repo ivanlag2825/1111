@@ -779,6 +779,17 @@ def validate(mod_dir: Path, catalog_dir: Path | None = None, schema_dir: Path | 
             if setter not in effect_defs:
                 errors.append(f'Missing family setter: {setter}')
                 continue
+            # 1.5 explicitly converts selected single-tier technical families.
+            # Validate their exact guarded research-bonus setter instead of
+            # applying the old idea-only state model to different semantics.
+            if (root / 'common/technologies/hro_front_developments.txt').is_file():
+                from generate_research import converted, replacement_setter
+                migrations = {r['idea']['id']: r for r in converted(catalogues)}
+                if identity in migrations:
+                    expected = parse(replacement_setter(migrations[identity]))[0]
+                    if _signature(effect_defs[setter]) != _signature(expected):
+                        errors.append('Invalid research replacement setter: ' + setter)
+                    continue
             try:
                 expected_state = _run_idea_setter(effect_defs[setter].value, {'external_sentinel'}, effect_defs, (setter,))
                 if expected_state != {'external_sentinel', identity}:

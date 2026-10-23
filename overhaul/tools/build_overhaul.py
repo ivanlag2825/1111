@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.4.0'
+VERSION = '1.5.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,13 +552,19 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Фронтовые технологии и военные программы 1.4.0
+## Исследования фронта 1.5.0
+
+Новая вкладка «Фронтовые разработки» в обычном окне исследований: 22 технологии для каждой страны. Школы боя теперь изучаются в слотах, фокусы дают ускорение. Добавлены четыре цепочки по три исследования: обслуживание, эвакуация раненых, зимнее оснащение и снабжение. Шесть постоянных технических духов каждой страны заменены исследованиями с теми же эффектами.
+
+[Все изменения и правила переноса сохранений](docs/RESEARCH_150_RU.md). Обновление сохраняет уже полученные школьные технологии и переносит имеющиеся технические духи в изученные технологии. Для новой партии нужен исследовательский слот и время. Полностью замените папку мода; оба игрока устанавливают одинаковый архив. Размещение интерфейса и работу движка нужно проверить в игре.
+
+## История: фронтовые технологии и военные программы 1.4.0
 
 12 новых фокусов, 8 выдаваемых фокусами технологий школ боя, три промышленных приоритета, материальный резерв наступления, пять немецких штабных решений и четыре исторических события. Школы дают преимущества указанным батальонам и местности; их статус виден в решениях, отдельного духа нет. Программы имеют цену, срок и взаимоисключения.
 
 Советский начальный кризис длится 365 действительных дней войны со смягчением на 90-й и 180-й дни. Каждая первая потеря города учитывается 365 военных дней; досрочное снятие — после возвращения всех ранее потерянных городов механики. Оплаченные контрмеры и частичное освобождение больше не отменяют годовой срок.
 
-[Полные правила, числа и условия](docs/FRONTIER_140_RU.md). Маршрут с выбранными новыми фокусами: 79 фокусов, завершение 11 июня 1941 года, запас 11 дней. Расписание: docs/GER_TIMETABLE_140.json. Это календарный расчёт, не прохождение движком.
+[Полные правила, числа и условия](docs/FRONTIER_140_RU.md). Маршрут с выбранными новыми фокусами: 79 фокусов, завершение 11 июня 1941 года, запас 11 дней. Расписание: docs/GER_TIMETABLE_150.json. Это календарный расчёт, не прохождение движком.
 
 Для 1.19.3.0.c01a (4f21), все DLC. Рекомендуется новая кампания: старые счётчики были ограничены меньшими сроками, поэтому при обновлении некоторые штрафы вернутся до нового порога. Полностью замените папку, оба игрока устанавливают один архив. Движок и сетевой режим здесь не проверены.
 
@@ -824,6 +830,9 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         frontier_module = module('hro_frontier_generator', OVERHAUL / 'tools/generate_frontier.py')
         frontier = frontier_module.generate(stage)
         frontier["technology_audit"] = frontier_module.audit_technologies(stage, game, schema_dir)
+        research_module = module('hro_research_generator', OVERHAUL / 'tools/generate_research.py')
+        research = research_module.generate(stage, game, catalogs)
+        research['audit'] = research_module.audit(stage, game, catalogs, schema_dir)
         runtime_module = module('hro_runtime_generator', OVERHAUL / 'tools/generate_runtime.py')
         runtime = runtime_module.generate(stage)
         spirit_module = module('hro_spirit_lifecycle', OVERHAUL / 'tools/spirit_lifecycle.py')
@@ -839,7 +848,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
                       war_adaptation=war_adaptation,
                       city_emergency=emergency, city_geography=city_geography, focus_groups=focus_groups,
                       german_offensive=offensive,
-                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, war_stories=war_stories, frontier=frontier, runtime=runtime,
+                      material_reserves=reserves, operations=operations, agency=agency, allied_aid=allied_aid, last_chance=last_chance, campaign_balance=campaign_balance, mefo_relief=mefo_relief, native_military=native_military, war_stories=war_stories, frontier=frontier, research=research, runtime=runtime,
                       spirit_delivery={'owned_assets':spirit_assets,'direct_city_awards':False,
                                        'native_timed_ideas':True,'restore_active_soviet_response_windows':True,
                                        'replays_material_rewards':False},
@@ -857,7 +866,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         timetable = timetable_module.schedule(stage, timetable_module.CORE_GOALS + timetable_module.NEW_GOALS)
         if not timetable['feasible']:
             raise ValueError('German prewar timetable no longer fits its declared goals')
-        put(stage, 'docs/GER_TIMETABLE_140.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
+        put(stage, 'docs/GER_TIMETABLE_150.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
         report['german_prewar_timetable'] = {key:timetable[key] for key in ('completed','focus_days','idle_days','spare_days','feasible','targets','engine_verified','limitations')}
         report['german_prewar_timetable']['focuses'] = timetable['route']['focuses']
         put(stage, 'OVERHAUL_BUILD_REPORT.json', json.dumps(report, ensure_ascii=False, indent=2) + '\n')
@@ -896,8 +905,8 @@ def package(built, output):
                     f'Выключи прежние версии и включи {NAME} {VERSION} в лаунчере.\n'
                     'При обновлении удали старую папку historical_reality_overhaul целиком, затем распакуй новую. Не копируй поверх старой; сохранения не удаляй.\n'
                     'Оба игрока используют одинаковый архив, версию игры и DLC.\n'
-                    'Закрой игру полностью перед заменой файлов. Для 1.4.0 рекомендуется новая кампания 1936 года: годовые кризисы меняют старые сроки.\n'
-                    'При продолжении старого сохранения некоторые штрафы вернутся до новых порогов; подробнее — docs/FRONTIER_140_RU.md внутри папки мода.\n'
+                    'Закрой игру полностью перед заменой файлов. Для 1.5.0 рекомендуется новая кампания 1936 года: постоянные технические бонусы теперь требуют исследования.\n'
+                    'При продолжении сохранения технические духи заменяются изученными технологиями на ежедневной проверке. Подробнее — docs/RESEARCH_150_RU.md внутри папки мода.\n'
                     'В папку Steam ничего копировать не нужно. Python и установщик не нужны.\n'
                     f'Подробности и ограничения: {FOLDER}/README_RU.md\n'
                     'Новая версия прошла статические проверки, но ещё не проверена в игровом движке и сетевой партии.\n'

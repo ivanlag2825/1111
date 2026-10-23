@@ -32,3 +32,5 @@ dist/*
 !dist/blitzkrieg.zip
 
 !dist/frontier.zip
+
+!dist/research.zip

@@ -1,5 +1,13 @@
 """Player-facing numeric descriptions derived from the actual reward dictionaries."""
 LABELS = {
+ 'army_infantry_attack_factor': ('Атака пехоты', 'Infantry attack'),
+ 'fuel_gain_factor': ('Прирост топлива', 'Fuel gain'),
+ 'production_speed_bunker_factor': ('Строительство наземных укреплений', 'Land fort construction'),
+ 'production_speed_coastal_bunker_factor': ('Строительство береговых укреплений', 'Coastal fort construction'),
+ 'recon_factor': ('Разведка', 'Reconnaissance'),
+ 'army_intel_to_others': ('Разведданные об армии для противника', 'Army intelligence to enemies'),
+ 'airforce_intel_to_others': ('Разведданные об авиации для противника', 'Air intelligence to enemies'),
+ 'out_of_supply_factor': ('Штраф за недостаток снабжения', 'Out-of-supply penalty'),
  'production_speed_rail_way_factor': ('Строительство железных дорог', 'Railway construction'),
  'production_speed_arms_factory_factor': ('Строительство военных заводов', 'Military factory construction'),
  'army_fuel_consumption_factor': ('Расход топлива армией', 'Army fuel consumption'),

@@ -1012,8 +1012,8 @@
       ],
       "icon": "GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_fire_control_1 = yes add_tech_bonus = { name = hro_sov_artillery_breakthrough_groups bonus = 1 uses = 2 category = artillery }",
-      "desc_ru": "Результат реформы: Атака артиллерии: +20%; Атака дивизий: +3%. Исследовательские и разовые награды указаны в эффектах.",
-      "desc_en": "Reform effects: Artillery attack: +20%; Division attack: +3%. Research and one-time rewards are listed in completion effects."
+      "desc_ru": "Техническая программа: один бонус +100% к скорости исследования «Артиллерия прорыва» во вкладке «Фронтовые разработки». Прежние постоянные эффекты теперь даёт изученная технология. Остальные награды указаны в результате фокуса.",
+      "desc_en": "Technical programme: one +100% research speed bonus for Breakthrough Artillery in Front Developments. The researched technology now provides the former permanent effects. Other rewards are listed in the completion tooltip."
     },
     {
       "id": "hro_sov_assault_engineer_brigades",
@@ -1033,8 +1033,8 @@
       ],
       "icon": "GFX_goal_generic_fortify_city",
       "reward": "hro_set_hro_idea_sov_engineers_1 = yes add_tech_bonus = { name = hro_sov_assault_engineer_brigades bonus = 1 uses = 2 category = cat_fortification }",
-      "desc_ru": "Результат реформы: Скорость окапывания: +35%; Максимальная укреплённость: +3; Защита дивизий: +3%. Исследовательские и разовые награды указаны в эффектах.",
-      "desc_en": "Reform effects: Entrenchment speed: +35%; Maximum entrenchment: +3; Division defence: +3%. Research and one-time rewards are listed in completion effects."
+      "desc_ru": "Техническая программа: один бонус +100% к скорости исследования «Инженерно-сапёрные бригады» во вкладке «Фронтовые разработки». Прежние постоянные эффекты теперь даёт изученная технология. Остальные награды указаны в результате фокуса.",
+      "desc_en": "Technical programme: one +100% research speed bonus for Assault Engineer Brigades in Front Developments. The researched technology now provides the former permanent effects. Other rewards are listed in the completion tooltip."
     },
     {
       "id": "hro_sov_operational_signal_reserves",
@@ -1054,8 +1054,8 @@
       ],
       "icon": "GFX_SOV_strengthen_the_mobilization_plan_ccp_2d_sov_compatibility",
       "reward": "hro_set_hro_idea_sov_radio_network_1 = yes add_tech_bonus = { name = hro_sov_operational_signal_reserves bonus = 1 uses = 2 category = electronics }",
-      "desc_ru": "Результат реформы: Скорость планирования: +20%; Координация: +10%. Исследовательские и разовые награды указаны в эффектах.",
-      "desc_en": "Reform effects: Planning speed: +20%; Coordination: +10%. Research and one-time rewards are listed in completion effects."
+      "desc_ru": "Техническая программа: один бонус +100% к скорости исследования «Оперативные узлы связи» во вкладке «Фронтовые разработки». Прежние постоянные эффекты теперь даёт изученная технология. Остальные награды указаны в результате фокуса.",
+      "desc_en": "Technical programme: one +100% research speed bonus for Operational Signals Nodes in Front Developments. The researched technology now provides the former permanent effects. Other rewards are listed in the completion tooltip."
     },
     {
       "id": "hro_sov_armored_recovery_echelons",
@@ -1096,8 +1096,8 @@
       ],
       "icon": "GFX_goal_generic_construct_infrastructure",
       "reward": "hro_set_hro_idea_sov_reserve_warehouses_1 = yes add_tech_bonus = { name = hro_sov_front_reserve_warehouses bonus = 1 uses = 2 category = train_tech }",
-      "desc_ru": "Программа «Склады фронтового резерва». Фронтовые склады второго эшелона: штраф отсутствия снабжения -25%; ремонт +25%. Исследовательские и строительные награды показаны отдельно. Предыдущая ступень этой реформы заменяется.",
-      "desc_en": "Front Reserve Warehouses. out of supply factor -25%; industry repair factor +25%. Research, capacity and manpower rewards are shown in the completion effects."
+      "desc_ru": "Техническая программа: один бонус +100% к скорости исследования «Фронтовые склады второго эшелона» во вкладке «Фронтовые разработки». Прежние постоянные эффекты теперь даёт изученная технология. Остальные награды указаны в результате фокуса.",
+      "desc_en": "Technical programme: one +100% research speed bonus for Second-Echelon Warehouses in Front Developments. The researched technology now provides the former permanent effects. Other rewards are listed in the completion tooltip."
     },
     {
       "id": "hro_sov_air_ground_dispatchers",
@@ -1890,8 +1890,8 @@
       "id": "hro_sov_modular_fortification_lines",
       "name_ru": "Железобетонные рубежи",
       "name_en": "Reinforced Concrete Lines",
-      "desc_ru": "Строительство сухопутных укреплений +40%, береговых +25%, скорость окапывания +20%. Нужно выделять фабрики на строительство: готовые укрепления не выдаются. Один 50%-ный профильный исследовательский бонус.",
-      "desc_en": "Land fort construction +40%, coastal forts +25%, entrenchment speed +20%. Factories must still build the forts. One 50% matching research bonus.",
+      "desc_ru": "Техническая программа: один бонус +100% к скорости исследования «Сборные оборонительные рубежи» во вкладке «Фронтовые разработки». Прежние постоянные эффекты теперь даёт изученная технология. Остальные награды указаны в результате фокуса.",
+      "desc_en": "Technical programme: one +100% research speed bonus for Prefabricated Defensive Lines in Front Developments. The researched technology now provides the former permanent effects. Other rewards are listed in the completion tooltip.",
       "branch": "army",
       "x": 36,
       "y": 13,
@@ -1954,8 +1954,8 @@
       "id": "hro_sov_field_workshops",
       "name_ru": "Самовар, сварка и ремонт",
       "name_en": "Samovar, Welding and Repairs",
-      "desc_ru": "Истощение −3%, зимнее истощение −10%. В первую подходящую зиму Восточной войны возможно одно событие о горячем чае для экипажей. Один 50%-ный бонус технологий поддержки.",
-      "desc_en": "Attrition −3%, winter attrition −10%. One hot-tea story may occur in a suitable Eastern-war winter. One 50% support research bonus.",
+      "desc_ru": "Техническая программа: один бонус +100% к скорости исследования «Зимние фронтовые мастерские» во вкладке «Фронтовые разработки». Прежние постоянные эффекты теперь даёт изученная технология. Остальные награды указаны в результате фокуса.",
+      "desc_en": "Technical programme: one +100% research speed bonus for Winter Front Workshops in Front Developments. The researched technology now provides the former permanent effects. Other rewards are listed in the completion tooltip.",
       "branch": "army",
       "x": 31,
       "y": 23,
@@ -1974,8 +1974,8 @@
       "id": "hro_sov_school_urban",
       "name_ru": "Школа штурма городов",
       "name_en": "Urban Assault School",
-      "desc_ru": "Пехота: атака в городе +20%. Сапёры: атака в городе +20%, против укреплений +15%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
-      "desc_en": "Infantry: urban attack +20%. Engineers: urban attack +20%, fort attack +15%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "desc_ru": "Даёт 25 опыта армии и один бонус +100% к скорости исследования соответствующей школы во вкладке «Фронтовые разработки». Бонусы школы начинают действовать только после изучения технологии. Если школа или её альтернатива уже изучена, остаётся награда опытом.",
+      "desc_en": "Grants 25 army experience and one +100% research speed bonus for the matching school in Front Developments. School effects apply only after research finishes. If this school or its alternative is already researched, only experience is awarded.",
       "branch": "army",
       "x": 24,
       "y": 19,
@@ -1996,8 +1996,8 @@
       "id": "hro_sov_school_forest",
       "name_ru": "Школа лесной войны",
       "name_en": "Forest Warfare School",
-      "desc_ru": "Пехота: защита в лесу +20%, передвижение в лесу +15%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
-      "desc_en": "Infantry: forest defence +20%, forest movement +15%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "desc_ru": "Даёт 25 опыта армии и один бонус +100% к скорости исследования соответствующей школы во вкладке «Фронтовые разработки». Бонусы школы начинают действовать только после изучения технологии. Если школа или её альтернатива уже изучена, остаётся награда опытом.",
+      "desc_en": "Grants 25 army experience and one +100% research speed bonus for the matching school in Front Developments. School effects apply only after research finishes. If this school or its alternative is already researched, only experience is awarded.",
       "branch": "army",
       "x": 26,
       "y": 19,
@@ -2018,8 +2018,8 @@
       "id": "hro_sov_school_river",
       "name_ru": "Школа форсирования рек",
       "name_en": "River Crossing School",
-      "desc_ru": "Пехота: атака через реку +15%. Сапёры: атака через реку +20%, передвижение через реки +15%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
-      "desc_en": "Infantry: river attack +15%. Engineers: river attack +20%, river movement +15%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "desc_ru": "Даёт 25 опыта армии и один бонус +100% к скорости исследования соответствующей школы во вкладке «Фронтовые разработки». Бонусы школы начинают действовать только после изучения технологии. Если школа или её альтернатива уже изучена, остаётся награда опытом.",
+      "desc_en": "Grants 25 army experience and one +100% research speed bonus for the matching school in Front Developments. School effects apply only after research finishes. If this school or its alternative is already researched, only experience is awarded.",
       "branch": "army",
       "x": 33,
       "y": 15,
@@ -2040,8 +2040,8 @@
       "id": "hro_sov_school_mobile",
       "name_ru": "Школа дальних маршей",
       "name_en": "Long-Range March School",
-      "desc_ru": "Моторизованные и механизированные батальоны: скорость +5%. Рота снабжения: дополнительное снижение расхода припасов и топлива на 10%. Открывает постоянную технологию без отдельного исследования. Эффекты относятся к указанным батальонам и ротам; итог дивизии зависит от состава. В этой паре можно выбрать только одну школу.",
-      "desc_en": "Motorized and mechanized battalions: speed +5%. Logistics company: additional supply and fuel consumption reductions of 10%. Grants a permanent technology without separate research. Effects apply to the named battalions/companies; division results depend on composition. Only one school in this pair can be chosen.",
+      "desc_ru": "Даёт 25 опыта армии и один бонус +100% к скорости исследования соответствующей школы во вкладке «Фронтовые разработки». Бонусы школы начинают действовать только после изучения технологии. Если школа или её альтернатива уже изучена, остаётся награда опытом.",
+      "desc_en": "Grants 25 army experience and one +100% research speed bonus for the matching school in Front Developments. School effects apply only after research finishes. If this school or its alternative is already researched, only experience is awarded.",
       "branch": "army",
       "x": 35,
       "y": 15,

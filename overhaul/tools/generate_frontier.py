@@ -1,6 +1,6 @@
 """Front schools, finite industrial programmes and paid operational reserves.
 
-Original implementation, inspired by RT56's focus-granted special technologies.
+Original implementation; schools use normal research slots since version 1.5.
 Vanilla 1.19.3 supplies unit IDs and scripting examples; no RT56 assets are shipped.
 """
 from pathlib import Path
@@ -96,19 +96,20 @@ def generate(output):
  bureau='OR = { has_completed_focus = hro_ger_frontier_bureau has_completed_focus = hro_sov_frontier_bureau }'
  reserve_focus='OR = { has_completed_focus = hro_ger_operational_depots has_completed_focus = hro_sov_operational_depots }'
  text('hro_frontier','Фронтовые технологии и военные программы','Front Technologies and War Programmes')
- text('hro_frontier_desc','Выбор школы постоянный. Промышленный приоритет: 30 дней подготовки, 180 дней работы, затем 90 дней до нового запуска. Резерв наступления требует реального вооружения и топлива. Результаты и издержки указаны у каждого решения.',
-      'Schools are permanent choices. Industry priorities: 30 days of preparation, 180 days active, then 90 days until another start. Operational reserves consume real equipment and fuel. Each decision states its benefits and costs.')
- # Focus-granted technologies follow vanilla hidden special-project technology format.
+ text('hro_frontier_desc','Школы изучаются во вкладке исследований «Фронтовые разработки». Промышленный приоритет: 30 дней подготовки, 180 дней работы, затем 90 дней до нового запуска. Резерв наступления требует реального вооружения и топлива. Результаты и издержки указаны у каждого решения.',
+      'Schools are researched in the Front Developments research tab. Industry priorities: 30 days of preparation, 180 days active, then 90 days until another start. Operational reserves consume real equipment and fuel. Each decision states its benefits and costs.')
+ # Researchable schools. Focuses accelerate research; they never award it.
  for tag in ('GER','SOV'):
   for key,(ru,en,mods,dr,de) in SCHOOLS.items():
-   identity=f'hro_tech_{tag.lower()}_{key}';focus=f'hro_{tag.lower()}_school_{key}'
-   text(identity,ru,en);text(identity+'_desc',dr+' Постоянная технология школы; выдаётся соответствующим фокусом.',de+' Permanent school technology granted by its focus.')
-   techs.append(f'{identity} = {{ allow = {{ always = no }} research_cost = 1 start_year = 1939 {script(mods)} }}')
-   effect=f'hro_frontier_grant_{tag.lower()}_{key}';opposite={'urban':'forest','forest':'urban','river':'mobile','mobile':'river'}[key]
-   school_guard=f'original_tag = {tag} NOT = {{ has_tech = hro_tech_{tag.lower()}_{opposite} }}'
-   effects.append(f'{effect} = {{ custom_effect_tooltip = {identity}_desc hidden_effect = {{ if = {{ limit = {{ {school_guard} NOT = {{ has_tech = {identity} }} }} set_technology = {{ {identity} = 1 popup = no }} }} }} }}')
-   daily.append(f'if = {{ limit = {{ original_tag = {tag} has_completed_focus = {focus} NOT = {{ has_tech = {identity} }} }} {effect} = yes }}')
-   decision(f'hro_frontier_status_{tag.lower()}_{key}',(ru+': освоено',en+': mastered'),(dr,de),'always = no','',visible=f'original_tag = {tag} has_tech = {identity}')
+   identity=f'hro_tech_{tag.lower()}_{key}'
+   opposite={'urban':'forest','forest':'urban','river':'mobile','mobile':'river'}[key]
+   other=f'hro_tech_{tag.lower()}_{opposite}'
+   year=1940 if tag=='GER' else (1943 if key=='urban' else 1942)
+   text(identity,ru,en);text(identity+'_desc',dr+' Изучается в слоте исследований. Выбор школы взаимоисключающий.',de+' Researched in a research slot. School choices are mutually exclusive.')
+   text(identity+'_bonus','Исследовательская программа: '+ru,'Research programme: '+en)
+   techs.append(f'{identity} = {{ allow_branch = {{ original_tag = {tag} }} allow = {{ original_tag = {tag} }} xor = {{ {other} }} research_cost = 1 start_year = {year} folder = {{ name = hro_front_folder position = {{ x = 0 y = 0 }} }} categories = {{ hro_front_research support_tech }} force_use_small_tech_layout = yes ai_will_do = {{ factor = 1 }} {script(mods)} }}')
+   effect=f'hro_frontier_grant_{tag.lower()}_{key}'
+   effects.append(f'{effect} = {{ if = {{ limit = {{ original_tag = {tag} NOT = {{ has_country_flag = {identity}_bonus_issued }} }} set_country_flag = {identity}_bonus_issued army_experience = 25 if = {{ limit = {{ NOT = {{ has_tech = {identity} }} NOT = {{ has_tech = {other} }} }} add_tech_bonus = {{ name = {identity}_bonus bonus = 1 uses = 1 technology = {identity} }} }} }} }}')
  # Programme locks survive reloads. Completion also runs from daily dispatch if native decision removal is delayed.
  idea('hro_frontier_retooling','Переналадка предприятий','Factory Retooling',{'industrial_capacity_factory':-.10},extra=('30 дней. Затем начинает действовать выбранная программа.','30 days, followed by the chosen programme.'))
  for key,(ru,en,eq,dr,de) in PROGRAMMES.items():
@@ -201,7 +202,7 @@ def generate(output):
  put('common/decisions/hro_frontier.txt','hro_frontier = {\n'+'\n'.join(decisions)+'\n}')
  put('events/hro_frontier_events.txt','\n'.join(events))
  for lang,entries in loc.items():put(f'localisation/{lang}/hro_frontier_l_{lang}.yml',f'l_{lang}:\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
- return dict(technologies=len(techs),focuses=12,decisions=len(decisions),ideas=len(ideas),events=len(HISTORY),school_limit_per_country=2,industrial_cycle=[30,180,90],reserve_preparation_days=21,reserve_cooldown_days=120,reserve_equipment=equipment,reserve_fuel=5000,reserve_combat_days=14,german_command_lock_days=90,technology_source='focus-granted, permanent, no separate research tab',runtime_verified=False)
+ return dict(technologies=len(techs),focuses=12,decisions=len(decisions),ideas=len(ideas),events=len(HISTORY),school_limit_per_country=2,industrial_cycle=[30,180,90],reserve_preparation_days=21,reserve_cooldown_days=120,reserve_equipment=equipment,reserve_fuel=5000,reserve_combat_days=14,german_command_lock_days=90,technology_source='research slots in hro_front_folder; focus grants a single targeted speed bonus',runtime_verified=False)
 
 
 def audit_technologies(output, game, schema_dir):
@@ -216,12 +217,14 @@ def audit_technologies(output, game, schema_dir):
  schema_text='\n'.join(p.read_text(encoding='utf-8-sig') for p in (Path(schema_dir)/'Config').rglob('*.cwt')) if schema_dir else ''
  allowed_stats=set(re.findall(r'alias\[unit_stat:([A-Za-z_][A-Za-z0-9_]*)\]',schema_text))
  terrain={'urban','forest','river','fort'}
- meta={'allow','research_cost','start_year'}
+ meta={'allow','allow_branch','research_cost','start_year','xor','folder','categories','force_use_small_tech_layout','ai_will_do'}
  root=Path(output)
  techs=parse((root/'common/technologies/hro_front_schools.txt').read_text())[0].value
  known={t.key for t in techs}
+ all_known={n.key for p in (root/'common/technologies').glob('hro*.txt') for r in parse(p.read_text()) for n in r.value}
  for tech in techs:
-  assert tech.one('allow').scalar('always')=='no',tech.key
+  assert tech.one('folder').scalar('name')=='hro_front_folder',tech.key
+  assert tech.one('allow').scalar('original_tag') in ('GER','SOV'),tech.key
   for unit in tech.value:
    if unit.key in meta:continue
    if unit.key not in units:raise ValueError('School technology references missing unit: '+unit.key)
@@ -238,6 +241,6 @@ def audit_technologies(output, game, schema_dir):
    if n.key=='set_technology':
     for child in n.value:
      if child.key and child.key.startswith('hro_tech_'):
-      if child.key not in known:raise ValueError('Unknown school technology: '+child.key)
-      references+=1
+      if child.key not in all_known:raise ValueError('Unknown school technology: '+child.key)
+      if child.key in known:references+=1
  return dict(technologies=len(techs),grant_references=references,unit_ids_checked_against_uploaded_game=True,stats_checked_against_schema=bool(schema_dir))

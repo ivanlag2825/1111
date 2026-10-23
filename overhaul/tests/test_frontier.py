@@ -103,13 +103,16 @@ class FrontierTests(unittest.TestCase):
  def test_combat_benefits_do_not_reappear_after_peace(self):
   s=self.state();self.r.choose('hro_frontier_ger_fighter_sweep_activate',s);s['war']=False;self.r.days(s,1);self.assertNotIn('hro_frontier_ger_fighter_sweep',s['ideas'])
   s['war']=True;self.r.days(s,1);self.assertNotIn('hro_frontier_ger_fighter_sweep',s['ideas']);self.assertFalse(self.r.choose('hro_frontier_ger_cas_surge_activate',s))
- def test_schools_grant_real_technology_and_reconcile_only_completed_focus(self):
+ def test_school_focus_awards_research_bonus_once_and_never_auto_researches(self):
   for tag in ('GER','SOV'):
-   s=self.state(tag);self.r.tick(s);self.assertFalse(s['techs'])
-   s['completed'].add(f'hro_{tag.lower()}_school_urban');self.r.tick(s);self.assertEqual(s['techs'],{f'hro_tech_{tag.lower()}_urban'})
-   self.r.call(f'hro_frontier_grant_{tag.lower()}_forest',s);self.assertEqual(len(s['techs']),1)
-   self.r.call(f'hro_frontier_grant_{tag.lower()}_river',s);self.assertEqual(len(s['techs']),2)
-   s=copy.deepcopy(s);self.r=FrontierRuntime(self.p);self.r.tick(s);self.assertEqual(len(s['techs']),2);self.assertEqual(s['add_political_power'],1000)
+   s=self.state(tag);s['completed'].add(f'hro_{tag.lower()}_school_urban')
+   self.r.tick(s);self.assertFalse(s['techs'])
+   effect=f'hro_frontier_grant_{tag.lower()}_urban'
+   self.r.call(effect,s);self.assertFalse(s['techs']);self.assertEqual(len(s['research']),1);self.assertEqual(s['army_experience'],25)
+   s=copy.deepcopy(s);self.r=FrontierRuntime(self.p);self.r.call(effect,s);self.r.tick(s)
+   self.assertEqual(len(s['research']),1);self.assertEqual(s['army_experience'],25);self.assertFalse(s['techs'])
+   s=self.state(tag);s['techs'].add(f'hro_tech_{tag.lower()}_forest');self.r.call(effect,s)
+   self.assertFalse(s.get('research'));self.assertEqual(s['army_experience'],25)
  def test_all_historical_events_guard_date_war_unlock_and_single_choice(self):
   for index,record in enumerate(frontier.HISTORY,930):
    s=self.state(record['tag']);s['variables']['hro_war_sov_war_days']=180;s['date']=day(record['date']);self.r.tick(s);self.assertNotIn(f'hro.{index}',s['events'])
@@ -140,7 +143,7 @@ class FrontierSchemaTests(unittest.TestCase):
   p.write_text('alias[unit_stat:maximum_speed] = float\nalias[unit_stat:supply_consumption_factor] = float\nalias[unit_stat:fuel_consumption_factor] = float\n')
  def test_school_grants_resolve_to_real_units_and_supported_stats(self):
   audit=frontier.audit_technologies(self.mod,self.game,self.schema)
-  self.assertEqual(audit['technologies'],8);self.assertEqual(audit['grant_references'],8)
+  self.assertEqual(audit['technologies'],8);self.assertEqual(audit['grant_references'],0)
  def test_unknown_technology_unit_and_misspelled_stat_fail_closed(self):
   p=self.mod/'common/technologies/hro_front_schools.txt';original=p.read_text()
   for old,new,error in [('infantry =','imaginary_unit =','missing unit'),('maximum_speed =','maximum_speeed =','Unknown school stat')]:
@@ -148,5 +151,5 @@ class FrontierSchemaTests(unittest.TestCase):
    with self.assertRaisesRegex(ValueError,error):frontier.audit_technologies(self.mod,self.game,self.schema)
   p.write_text(original)
  def test_unknown_granted_school_technology_fails_closed(self):
-  p=self.mod/'common/scripted_effects/hro_frontier_effects.txt';p.write_text(p.read_text().replace('hro_tech_ger_urban = 1','hro_tech_missing = 1'))
+  p=self.mod/'common/scripted_effects/hro_frontier_effects.txt';p.write_text(p.read_text()+'\nbad_grant = { set_technology = { hro_tech_missing = 1 } }')
   with self.assertRaisesRegex(ValueError,'Unknown school technology'):frontier.audit_technologies(self.mod,self.game,self.schema)
