@@ -19,7 +19,7 @@ def generate(output, catalogs):
     instantTextBoxType = {{ name = "chapter_title" position = {{ x = 0 y = 0 }}
         font = "hoi_20b" text = "{identity}" maxWidth = {width} maxHeight = 28 format = center }}
     instantTextBoxType = {{ name = "chapter_subtitle" position = {{ x = 0 y = 32 }}
-        font = "hoi_16mb" text = "{identity}_desc" maxWidth = {width} maxHeight = 24 format = center }}
+        font = "hoi_16mbs" text = "{identity}_desc" maxWidth = {width} maxHeight = 24 format = center }}
 }}''')
             for language,suffix in [('russian','ru'),('english','en')]:
                 loc[language][identity]='§Y'+group['name_'+suffix]+'§!'

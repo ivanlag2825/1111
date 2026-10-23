@@ -96,7 +96,7 @@ def generate(output):
  bureau='OR = { has_completed_focus = hro_ger_frontier_bureau has_completed_focus = hro_sov_frontier_bureau }'
  reserve_focus='OR = { has_completed_focus = hro_ger_operational_depots has_completed_focus = hro_sov_operational_depots }'
  text('hro_frontier','Фронтовые технологии и военные программы','Front Technologies and War Programmes')
- text('hro_frontier_desc','Школы изучаются во вкладке исследований «Фронтовые разработки». Промышленный приоритет: 30 дней подготовки, 180 дней работы, затем 90 дней до нового запуска. Резерв наступления требует реального вооружения и топлива. Результаты и издержки указаны у каждого решения.',
+ text('hro_frontier_desc','Школы изучаются во вкладке исследований «Школы боя и техники». Промышленный приоритет: 30 дней подготовки, 180 дней работы, затем 90 дней до нового запуска. Резерв наступления требует реального вооружения и топлива. Результаты и издержки указаны у каждого решения.',
       'Schools are researched in the Front Developments research tab. Industry priorities: 30 days of preparation, 180 days active, then 90 days until another start. Operational reserves consume real equipment and fuel. Each decision states its benefits and costs.')
  # Researchable schools. Focuses accelerate research; they never award it.
  for tag in ('GER','SOV'):
@@ -107,7 +107,7 @@ def generate(output):
    year=1940 if tag=='GER' else (1943 if key=='urban' else 1942)
    text(identity,ru,en);text(identity+'_desc',dr+' Изучается в слоте исследований. Выбор школы взаимоисключающий.',de+' Researched in a research slot. School choices are mutually exclusive.')
    text(identity+'_bonus','Исследовательская программа: '+ru,'Research programme: '+en)
-   techs.append(f'{identity} = {{ allow_branch = {{ original_tag = {tag} }} allow = {{ original_tag = {tag} }} xor = {{ {other} }} research_cost = 1 start_year = {year} folder = {{ name = hro_front_folder position = {{ x = 0 y = 0 }} }} categories = {{ hro_front_research support_tech }} force_use_small_tech_layout = yes ai_will_do = {{ factor = 1 }} {script(mods)} }}')
+   techs.append(f'{identity} = {{ allow_branch = {{ original_tag = {tag} }} allow = {{ original_tag = {tag} }} xor = {{ {other} }} research_cost = 1 start_year = {year} folder = {{ name = hro_front_folder position = {{ x = 0 y = 0 }} }} categories = {{ hro_front_research support_tech }} ai_will_do = {{ factor = 1 }} {script(mods)} }}')
    effect=f'hro_frontier_grant_{tag.lower()}_{key}'
    effects.append(f'{effect} = {{ if = {{ limit = {{ original_tag = {tag} NOT = {{ has_country_flag = {identity}_bonus_issued }} }} set_country_flag = {identity}_bonus_issued army_experience = 25 if = {{ limit = {{ NOT = {{ has_tech = {identity} }} NOT = {{ has_tech = {other} }} }} add_tech_bonus = {{ name = {identity}_bonus bonus = 1 uses = 1 technology = {identity} }} }} }} }}')
  # Programme locks survive reloads. Completion also runs from daily dispatch if native decision removal is delayed.

@@ -1,5 +1,5 @@
 {
-  "version": "1.5.1",
+  "version": "1.6.0",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 84,
@@ -7,7 +7,7 @@
   },
   "validation": {
     "runtime_verified": false,
-    "script_files": 66,
+    "script_files": 70,
     "authored_focuses": 179,
     "focuses_per_country": {
       "GER": 84,
@@ -22,7 +22,7 @@
     "idea_families": 76,
     "events": 59,
     "decisions": 152,
-    "localisation_keys_per_language": 2156,
+    "localisation_keys_per_language": 2244,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -186,8 +186,8 @@
     ]
   },
   "country_catalog_sha256": {
-    "GER": "4df0a7a7f5816fc1edbd35bde18605a26093f16ffe04d12aad994586481dad0a",
-    "SOV": "535052df99d462052b2b0dadd1c2bee451c447156328f6794b411cd761e42756"
+    "GER": "c4052a25122c04c3bd07a67800904174dbd8e111451027246e05932a5c8f1db2",
+    "SOV": "56af5c6b09a20900061d9936efec2ab1ad3d68f10b09e84d7286c0524d5340ea"
   },
   "city_catalog_sha256": "0f70e03e81c257c61dd106a6147efbb9491bd853b845e68a2550c473cca329c4",
   "material_reserves": {
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/researchfix.zip",
-  "sha256": "85aa9f040f630ebe3590b3c91d52974812e9907a5d2e31cb0ada5556885d7891",
-  "bytes": 728929,
+  "archive": "dist/schools.zip",
+  "sha256": "b4485f34e96a52b53980a54639636e689e69a806a1f782d6db1e435754622aaf",
+  "bytes": 750253,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
   "german_native_duration_factor": 0.7,
   "tests": {
-    "overhaul": 302
+    "overhaul": 308
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-research-crashfix/dist/researchfix.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-front-research/dist/research.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-design-schools/dist/schools.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-research-crashfix/dist/researchfix.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -283,7 +283,8 @@
     "stories": "2cde80361cf0df7eb4c4c09c5f57b2e625298b54a0e285a7c2b0dddb547d327b",
     "blitzkrieg": "5a7b9514d335657c077beffbf944f9495bb9de9d8b96f35cd0c4944b4f1e17bf",
     "frontier": "974491b17d44283c14c7861089a88028db38a3962fbf29815a43738da4d0486f",
-    "research": "cf3ec009c396514edbb1d73fba980ee102b5d5b2d3f561b5f94c8dbd60351b90"
+    "research": "cf3ec009c396514edbb1d73fba980ee102b5d5b2d3f561b5f94c8dbd60351b90",
+    "researchfix": "85aa9f040f630ebe3590b3c91d52974812e9907a5d2e31cb0ada5556885d7891"
   },
   "saved_game_update": {
     "from_versions": [
@@ -303,7 +304,9 @@
       "1.1.1",
       "1.2.0",
       "1.3.0",
-      "1.4.0"
+      "1.4.0",
+      "1.5.0",
+      "1.5.1"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,
@@ -325,7 +328,9 @@
     "school_technology_backfill_only": false,
     "existing_school_technologies_retained": true,
     "technical_spirits_migrate_to_researched_technologies": true,
-    "completed_focus_alone_does_not_grant_research": true
+    "visible_school_and_design_technologies_require_research": true,
+    "technical_focuses_grant_hidden_permanent_effects": true,
+    "retired_support_technology_ids_kept_without_effects": true
   },
   "decision_presentation": {
     "numeric_programmes": 36,
@@ -555,7 +560,7 @@
       "hro_ger_warfactory_clusters": "1939-06-07T00:00:00",
       "hro_ger_decentralized_arsenals": "1939-04-19T00:00:00"
     },
-    "schedule_file": "docs/GER_TIMETABLE_150.json"
+    "schedule_file": "docs/GER_TIMETABLE_160.json"
   },
   "native_military": {
     "native_focuses": 59,
@@ -627,7 +632,7 @@
       "hro_ger_school_river": "1941-06-11T00:00:00"
     },
     "engine_verified": false,
-    "limitations": "Political events, army size, war support, DLC visibility, industry and war availability must be satisfied by the player. No focus speed bonus, bypass or saved focus progress is assumed. This is one reproducible route, not an optimum.",
+    "limitations": "Political events, army size, war support, DLC visibility, industry and war availability must be satisfied by the player. No focus speed bonus, bypass or saved focus progress is assumed. This is one reproducible route, not an optimum. Research time is separate from the focus schedule.",
     "focuses": 79
   },
   "city_emergency": {
@@ -796,11 +801,16 @@
     "uploaded_research_gui_sha256": "fec641fb738ab59369cac40ae902fdba793bed7cbaa2c807756207a2e1f01045"
   },
   "research": {
-    "technologies": 32,
-    "visible_per_country": 22,
+    "technologies": 67,
+    "visible_technologies": 43,
+    "visible_per_country": 39,
+    "maximum_researched_per_country": 23,
     "schools": 8,
-    "new_support_technologies": 12,
-    "converted_spirits": 12,
+    "design_schools": 7,
+    "design_technologies": 35,
+    "designer_modules": 6,
+    "retired_support_technologies": 12,
+    "hidden_focus_reforms": 12,
     "removed_active_spirits_per_country": 6,
     "base_days": [
       88,
@@ -808,28 +818,71 @@
       132
     ],
     "school_base_days": 110,
-    "reform_base_days": 132,
     "research_slots": true,
     "school_focus_auto_grant": false,
     "ui": {
       "source_sha256": "fec641fb738ab59369cac40ae902fdba793bed7cbaa2c807756207a2e1f01045",
       "folder": "hro_front_folder",
-      "root_grids": 24,
-      "sprite_aliases": 32,
+      "root_grids": 15,
+      "sprite_aliases": 43,
       "vanilla_gui_preserved_outside_insertions": true
+    },
+    "module_unlocks": {
+      "hro_command_radio": "hro_design_medium_a",
+      "hro_applique_armor": "hro_design_heavy_b",
+      "hro_optical_rangefinder": "hro_design_td_a",
+      "hro_protected_rack": "hro_design_td_b",
+      "hro_gyro_sight": "hro_design_fighter_a2",
+      "hro_cockpit_armor": "hro_design_cas_b"
+    },
+    "constructor_limit_files": {
+      "tank_chassis.txt": [
+        "light_tank_chassis",
+        "medium_tank_chassis",
+        "heavy_tank_chassis",
+        "modern_tank_chassis",
+        "super_heavy_tank_chassis",
+        "amphibious_tank_chassis"
+      ],
+      "plane_airframes.txt": [
+        "small_plane_airframe",
+        "small_plane_airframe_1",
+        "small_plane_airframe_2",
+        "small_plane_airframe_3",
+        "small_plane_airframe_4",
+        "small_plane_airframe_5",
+        "cv_small_plane_airframe",
+        "cv_small_plane_airframe_1",
+        "cv_small_plane_airframe_2",
+        "cv_small_plane_airframe_3",
+        "cv_small_plane_airframe_4"
+      ]
     },
     "runtime_verified": false,
     "audit": {
-      "technologies": 32,
+      "technologies": 67,
       "converted_modifiers_exact": true,
       "root_bindings_checked": true,
       "exclusive_schools_checked": true,
-      "focuses_do_not_grant_technologies": true,
+      "school_focuses_do_not_grant_technologies": true,
       "interface_bom_free": true,
-      "research_bonus_categories_checked_against_game": true
+      "research_bonus_categories_checked_against_game": true,
+      "cyrillic_fonts_checked": true,
+      "card_layout_checked": true,
+      "modules": {
+        "modules": 6,
+        "unique_research_unlocks": 6,
+        "native_categories_and_slots_checked": true,
+        "native_icon_fallbacks_checked": true,
+        "limits": {
+          "native_files": 2,
+          "one_per_design_limits": 46,
+          "all_original_fields_preserved": true
+        }
+      }
     }
   },
-  "hotfix": {
+  "previous_hotfix": {
     "user_report_date": "2026-10-23",
     "confirmed_log_errors": [
       "Unexpected token: BOM+guiTypes",
