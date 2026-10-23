@@ -2140,10 +2140,10 @@
       "initial": false,
       "name_ru": "Устойчивая система армейского снабжения",
       "name_en": "Resilient Army Supply System",
-      "desc_ru": "supply_consumption_factor -22%; истощение -25%; winter_attrition_factor -20%",
-      "desc_en": "supply consumption factor -22%; attrition -25%; winter attrition factor -20%",
+      "desc_ru": "supply_consumption_factor -18%; истощение -25%; winter_attrition_factor -20%",
+      "desc_en": "supply consumption factor -18%; attrition -25%; winter attrition factor -20%",
       "modifiers": {
-        "supply_consumption_factor": -0.22,
+        "supply_consumption_factor": -0.18,
         "attrition": -0.25,
         "winter_attrition_factor": -0.2
       }
@@ -2460,10 +2460,10 @@
       "initial": false,
       "name_ru": "Люфтваффе: воздушно-наземная операция",
       "name_en": "Luftwaffe: Air-Ground Operations",
-      "desc_ru": "эффективность авиазаданий +30%; эффект авиационной поддержки +35%; аварийность -25%; air_range_factor -10%",
-      "desc_en": "air mission efficiency +30%; air cas present factor +35%; air accidents factor -25%; air range factor -10%",
+      "desc_ru": "эффективность авиазаданий +25%; эффект авиационной поддержки +35%; аварийность -25%; air_range_factor -10%",
+      "desc_en": "air mission efficiency +25%; air cas present factor +35%; air accidents factor -25%; air range factor -10%",
       "modifiers": {
-        "air_mission_efficiency": 0.3,
+        "air_mission_efficiency": 0.25,
         "air_cas_present_factor": 0.35,
         "air_accidents_factor": -0.25,
         "air_range_factor": -0.1
@@ -2714,10 +2714,10 @@
       "initial": false,
       "name_ru": "Полковые центры наведения",
       "name_en": "Regimental Guidance Centres",
-      "desc_ru": "эффективность авиазаданий +25%; аварийность -25%.",
-      "desc_en": "air mission efficiency +25%; air accidents factor -25%",
+      "desc_ru": "эффективность авиазаданий +20%; аварийность -25%.",
+      "desc_en": "air mission efficiency +20%; air accidents factor -25%",
       "modifiers": {
-        "air_mission_efficiency": 0.25,
+        "air_mission_efficiency": 0.2,
         "air_accidents_factor": -0.25
       }
     },

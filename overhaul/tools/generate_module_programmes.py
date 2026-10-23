@@ -4,10 +4,10 @@ MODULES={}
 def module(key,ru,en,category,gfx,add,mult,reason,reason_en,extras=''):
  MODULES['hro_'+key]=dict(ru=ru,en=en,category=category,gfx=gfx,dlc='By Blood Alone' if category.startswith(('plane_','fighter_')) else 'No Step Back',add=add,mult=mult,reason=reason,reason_en=reason_en,extras=extras)
 # Four alternatives/upgrades per long programme; two per short programme.
-module('face_hardened','Цементированные листы','Face-Hardened Plates','tank_armor_type','tank_cast_armor',{'build_cost_ic':2,'defense':3,'breakthrough':2,'reliability':-.04},{'armor_value':.35,'build_cost_ic':.08},'Твёрдый поверхностный слой усиливает защиту, но усложняет изготовление и ремонт.','A hard surface improves protection but complicates manufacture and repair.')
-module('homogeneous','Гомогенная сварная броня','Homogeneous Welded Armour','tank_armor_type','tank_welded_armor',{'build_cost_ic':1.5,'defense':2,'breakthrough':3,'reliability':.05},{'armor_value':.25},'Однородные листы и технологичные соединения облегчают обслуживание при умеренной защите.','Uniform plates and practical joints simplify maintenance with moderate protection.')
-module('spaced_screens','Разнесённые экраны','Spaced Armour Screens','tank_special_module','armor_skirts',{'build_cost_ic':1.5,'reliability':-.03},{'armor_value':.12,'maximum_speed':-.04},'Дополнительные экраны повышают эффективную защиту, добавляя массу.','Extra screens improve effective protection but add weight.')
-module('reinforced_plate','Усиленный лобовой пакет','Reinforced Frontal Package','tank_special_module','sloped_armor',{'build_cost_ic':2.5,'defense':3},{'armor_value':.18,'maximum_speed':-.08,'build_cost_ic':.05},'Утолщение фронтальной зоны повышает защиту ценой темпа и цены.','Thicker frontal protection trades speed and cost for armour.')
+module('face_hardened','Цементированные листы','Face-Hardened Plates','tank_armor_type','tank_cast_armor',{'build_cost_ic':2,'defense':3,'breakthrough':2,'reliability':-.04},{'armor_value':.42},'Твёрдый поверхностный слой усиливает защиту, но усложняет изготовление и ремонт.','A hard surface improves protection but complicates manufacture and repair.')
+module('homogeneous','Гомогенная сварная броня','Homogeneous Welded Armour','tank_armor_type','tank_welded_armor',{'build_cost_ic':1.5,'defense':2,'breakthrough':3,'reliability':.05},{'armor_value':.32},'Однородные листы и технологичные соединения облегчают обслуживание при умеренной защите.','Uniform plates and practical joints simplify maintenance with moderate protection.')
+module('spaced_screens','Разнесённые экраны','Spaced Armour Screens','tank_special_module','armor_skirts',{'build_cost_ic':1.5,'reliability':-.03},{'armor_value':.16,'maximum_speed':-.04},'Дополнительные экраны повышают эффективную защиту, добавляя массу.','Extra screens improve effective protection but add weight.')
+module('reinforced_plate','Усиленный лобовой пакет','Reinforced Frontal Package','tank_special_module','sloped_armor',{'build_cost_ic':2.5,'defense':3},{'armor_value':.24,'maximum_speed':-.08},'Утолщение фронтальной зоны повышает защиту ценой темпа и цены.','Thicker frontal protection trades speed and cost for armour.')
 module('long_travel','Длинноходная подвеска','Long-Travel Suspension','tank_suspension_type','tank_christie_suspension',{'build_cost_ic':1.5,'reliability':-.03},{'maximum_speed':.25},'Ходовая для быстрых маршей требует более тщательного ухода.','A fast-march running gear requires closer maintenance.')
 module('rugged_torsion','Усиленные торсионы','Reinforced Torsion Bars','tank_suspension_type','tank_torsion_bar_suspension',{'build_cost_ic':1.8,'reliability':.20},{'maximum_speed':-.04},'Запас прочности снижает технические отказы ценой массы.','Structural reserve reduces mechanical failures at a cost in weight.')
 module('field_tracks','Сменные траки и катки','Replaceable Tracks and Wheels','tank_special_module','easy_maintenance',{'build_cost_ic':1.2,'reliability':.08},{'maximum_speed':.04,'build_cost_ic':.04},'Сменные элементы ходовой упрощают полевой ремонт, усложняя комплектацию.','Replaceable running-gear parts aid field repair but complicate manufacture.')
@@ -18,7 +18,7 @@ module('improved_cooling','Усиленное охлаждение','Improved Co
 module('fuel_metering','Точная подача топлива','Precision Fuel Metering','tank_special_module','expanded_fuel_tank',{'build_cost_ic':1.8},{'fuel_consumption':-.12,'maximum_speed':-.03},'Регулировка смеси экономит топливо ценой пиковой мощности.','Mixture regulation saves fuel at a cost in peak output.')
 module('spall_liner','Противоосколочный подбой','Spall Liner','tank_special_module','wet_ammo_storage',{'build_cost_ic':1.5,'defense':3,'reliability':.04},{'build_cost_ic':.04},'Внутренняя защита снижает последствия повреждений, усложняя корпус.','Internal protection limits damage consequences but complicates the hull.')
 module('fire_suppression','Автоматическое пожаротушение','Automatic Fire Suppression','tank_special_module','wet_ammo_storage',{'build_cost_ic':2,'reliability':.10},{'maximum_speed':-.02},'Противопожарное оснащение повышает эксплуатационную живучесть и массу.','Fire protection improves operational survival but adds weight.')
-module('roof_armor','Усиленная крыша','Reinforced Roof Armour','tank_special_module','armor_skirts',{'build_cost_ic':1.7,'defense':4},{'armor_value':.08,'maximum_speed':-.04},'Дополнительное прикрытие сверху повышает защиту ценой массы.','Extra overhead protection trades weight for defence.')
+module('roof_armor','Усиленная крыша','Reinforced Roof Armour','tank_special_module','armor_skirts',{'build_cost_ic':1.7,'defense':4},{'armor_value':.12,'maximum_speed':-.04},'Дополнительное прикрытие сверху повышает защиту ценой массы.','Extra overhead protection trades weight for defence.')
 module('separated_stowage','Секционированная укладка','Compartmented Stowage','tank_special_module','extra_ammo_storage',{'build_cost_ic':1.8,'reliability':.12},{'soft_attack':-.03,'hard_attack':-.03},'Безопасное размещение запасов снижает доступный темп подачи боеприпасов.','Safer stowage reduces the immediate ammunition feed rate.')
 module('supercharged_motor','Мотор с нагнетателем','Supercharged Engine','plane_engine_type','engine_3_1x',{'build_cost_ic':18,'thrust':27,'fuel_consumption':.20},{'maximum_speed':.32},'Высотный наддув даёт мощность и требует больше топлива.','Altitude boosting provides power and demands more fuel.')
 module('cruise_motor','Мотор крейсерского режима','Cruise-Tuned Engine','plane_engine_type','engine_3_1x',{'build_cost_ic':17,'thrust':24,'fuel_consumption':.13},{'maximum_speed':.24,'air_range':.08},'Экономичный режим расширяет радиус ценой скорости.','Economical tuning extends range at a cost in speed.')
@@ -53,13 +53,13 @@ def definitions():
  result=[]
  for key,p in PROGRAMMES.items():
   prefix='hro_modtech_'+key
-  result.append(dict(id=prefix+'_base',year=1938,pos=(0,0),parent=p['prereq'],children=(prefix+'_a',prefix+'_b'),modules=(),ru=p['ru'],en=p['en'],icon=p['icon'],row=key))
+  result.append(dict(id=prefix+'_base',year=1936,pos=(0,0),parent=p['prereq'],children=(prefix+'_a',prefix+'_b'),modules=(),ru=p['ru'],en=p['en'],icon=p['icon'],row=key))
   for side,x in [('a',-1),('b',1)]:
    m=MODULES[p[side]];other='b' if side=='a' else 'a';child=prefix+'_'+side+'2' if p[side+'2'] else None
-   result.append(dict(id=prefix+'_'+side,year=1940,pos=(x,3),parent=prefix+'_base',children=(child,) if child else (),xor=prefix+'_'+other,modules=(p[side],),ru=m['ru'],en=m['en'],icon=p['icon'],row=key))
+   result.append(dict(id=prefix+'_'+side,year=1938,pos=(x,3),parent=prefix+'_base',children=(child,) if child else (),xor=prefix+'_'+other,modules=(p[side],),ru=m['ru'],en=m['en'],icon=p['icon'],row=key))
    if child:
     m=MODULES[p[side+'2']]
-    result.append(dict(id=child,year=1943,pos=(x,6),parent=prefix+'_'+side,children=(),modules=(p[side+'2'],),ru=m['ru'],en=m['en'],icon=p['icon'],row=key))
+    result.append(dict(id=child,year=1940,pos=(x,6),parent=prefix+'_'+side,children=(),modules=(p[side+'2'],),ru=m['ru'],en=m['en'],icon=p['icon'],row=key))
  return result
 
 def generate(put,text,format_stats):
@@ -73,7 +73,7 @@ def generate(put,text,format_stats):
  for t in definitions():
   x,y=t['pos'];identity=t['id'];mods=' '.join(t['modules']);paths=' '.join('path = { leads_to_tech = '+k+' research_cost_coeff = 1 }' for k in t['children'])
   xor='xor = { '+t['xor']+' }' if t.get('xor') else ''
-  techs.append(f'{identity} = {{ allow_branch = {{ hro_supported_country = yes }} allow = {{ hro_supported_country = yes }} research_cost = { {1938:.6,1940:.9,1943:1.1}[t["year"]]} start_year = {t["year"]} folder = {{ name = {FOLDER} position = {{ x = {x} y = {y} }} }} dependencies = {{ {t["parent"]} = 1 }} {paths} {xor} categories = {{ hro_front_research }} '+('enable_equipment_modules = { '+mods+' }' if mods else '')+' }')
+  techs.append(f'{identity} = {{ allow_branch = {{ hro_supported_country = yes }} allow = {{ hro_supported_country = yes }} research_cost = { {1936:.4,1938:.55,1940:.7}[t["year"]]} start_year = {t["year"]} folder = {{ name = {FOLDER} position = {{ x = {x} y = {y} }} }} dependencies = {{ {t["parent"]} = 1 }} {paths} {xor} categories = {{ hro_front_research }} '+('enable_equipment_modules = { '+mods+' }' if mods else '')+' }')
   text(identity,t['ru'],t['en'])
   desc_ru='Основы программы: открывает выбор двух несовместимых направлений. Само по себе не даёт боевых бонусов.';desc_en='Programme foundations: opens two mutually exclusive paths. Does not itself grant combat bonuses.'
   if t['modules']:
@@ -97,14 +97,14 @@ def preview(output):
  def line(x,y,xx,yy):out.append(f'<path d="M{x},{y} L{xx},{yy}" fill="none" stroke="#c2ae70" stroke-width="2"/>')
  text(30,45,'КОНСТРУКТОРСКИЕ ПРОГРАММЫ',24)
  text(30,80,'Схема размещения, не скриншот игры. Каждая ветка открывает новые модули.',16)
- for x,title in [(194,'1938 — ПРОГРАММА'),(494,'1940 — ВЫБОР'),(794,'1943 — РАЗВИТИЕ')]:text(x,235,title)
+ for x,title in [(194,'1936 — ПРОГРАММА'),(494,'1938 — ВЫБОР'),(794,'1940 — РАЗВИТИЕ')]:text(x,235,title)
  for i,(key,p) in enumerate(PROGRAMMES.items()):
   y=360+i*320-7
   for j,title in enumerate(textwrap.wrap(p['ru'].upper(),15)):text(20,y+35+j*22,title)
-  card(194,y,p['ru'],1938)
+  card(194,y,p['ru'],1936)
   for side,delta in [('a',-100),('b',100)]:
-   m=MODULES[p[side]];card(494,y+delta,m['ru'],1940);line(380,y+48,490,y+delta+48)
+   m=MODULES[p[side]];card(494,y+delta,m['ru'],1938);line(380,y+48,490,y+delta+48)
    if p[side+'2']:
-    cap=MODULES[p[side+'2']];card(794,y+delta,cap['ru'],1943);line(680,y+delta+48,790,y+delta+48)
+    cap=MODULES[p[side+'2']];card(794,y+delta,cap['ru'],1940);line(680,y+delta+48,790,y+delta+48)
   text(555,y+53,'ИЛИ')
  out.append('</svg>');path=Path(output)/'preview/module_programmes.svg';path.parent.mkdir(parents=True,exist_ok=True);path.write_text('\n'.join(out))

@@ -34,7 +34,7 @@ BRANCHES={
 }
 MODULES={
  'hro_command_radio':dict(ru='Командная радиосеть',en='Command Radio Network',category='tank_radio_module',gfx='tank_radio_2',dlc='No Step Back',add={'build_cost_ic':2,'breakthrough':2},mult={'breakthrough':.35,'defense':.30},reason='Настройка частот и связь экипажей улучшают управление прорывом; оснащение повышает стоимость.',reason_en='Frequency coordination and crew communication improve breakthrough control; equipment increases cost.'),
- 'hro_applique_armor':dict(ru='Комплект навесной защиты',en='Applique Armour Kit',category='tank_special_module',gfx='sloped_armor',dlc='No Step Back',add={'build_cost_ic':2,'reliability':-.05},mult={'armor_value':.15,'maximum_speed':-.05},reason='Дополнительные броневые элементы усиливают защиту, но перегружают ходовую.',reason_en='Additional plates improve protection but strain the running gear.'),
+ 'hro_applique_armor':dict(ru='Комплект навесной защиты',en='Applique Armour Kit',category='tank_special_module',gfx='sloped_armor',dlc='No Step Back',add={'build_cost_ic':2,'reliability':-.05},mult={'armor_value':.20,'maximum_speed':-.05},reason='Дополнительные броневые элементы усиливают защиту, но перегружают ходовую.',reason_en='Additional plates improve protection but strain the running gear.'),
  'hro_optical_rangefinder':dict(ru='Оптический дальномер',en='Optical Rangefinder',category='tank_special_module',gfx='stabilizer',dlc='No Step Back',add={'build_cost_ic':1.5,'ap_attack':5,'hard_attack':3},mult={'soft_attack':-.03},reason='Приборы и укладка для бронебойных боеприпасов улучшают огонь по броне ценой универсальности.',reason_en='Sighting equipment and armour-piercing ammunition arrangements improve anti-armour fire at a cost in versatility.'),
  'hro_protected_rack':dict(ru='Защищённая боеукладка',en='Protected Ammunition Racks',category='tank_special_module',gfx='wet_ammo_storage',dlc='No Step Back',add={'build_cost_ic':1.5,'reliability':.08},mult={'build_cost_ic':.05},reason='Разделение и защита укладки снижают потери от технических отказов, усложняя производство.',reason_en='Separated, protected storage improves reliability but complicates manufacture.'),
  'hro_gyro_sight':dict(ru='Гироскопический прицел',en='Gyroscopic Gunsight',category='plane_special_module_small',gfx='armor_plate_small',dlc='By Blood Alone',add={'build_cost_ic':1.5,'weight':1,'air_attack':2},mult={'air_agility':-.02},reason='Поправка на упреждение повышает результативность огня; прибор добавляет массу.',reason_en='Lead calculation improves fire effectiveness; the instrument adds weight.'),
@@ -58,18 +58,18 @@ def definitions():
  result=[]
  for key,b in BRANCHES.items():
   prefix='hro_design_'+key
-  result.append(dict(id=prefix+'_base',branch=key,year=1938,pos=(0,0),parents=(b['prereq'],),children=(prefix+'_a',prefix+'_b'),stats=b['base'],ru={'light':'Школа лёгких танков','medium':'Школа средних танков','heavy':'Школа тяжёлых танков','spg':'Школа САУ','td':'Школа ПТ-САУ','fighter':'Школа истребителей','cas':'Школа штурмовиков'}[key],en=b['en']+': Foundations',reason='Испытания и обучение экипажей создают основу специализированной школы.',reason_en='Trials and crew training establish the foundation of a specialised school.',modules=()))
+  result.append(dict(id=prefix+'_base',branch=key,year=1936,pos=(0,0),parents=(b['prereq'],),children=(prefix+'_a',prefix+'_b'),stats=b['base'],ru={'light':'Школа лёгких танков','medium':'Школа средних танков','heavy':'Школа тяжёлых танков','spg':'Школа САУ','td':'Школа ПТ-САУ','fighter':'Школа истребителей','cas':'Школа штурмовиков'}[key],en=b['en']+': Foundations',reason='Испытания и обучение экипажей создают основу специализированной школы.',reason_en='Trials and crew training establish the foundation of a specialised school.',modules=()))
   for side,x in [('a',-1),('b',1)]:
    c=b[side];other='b' if side=='a' else 'a'
-   result.append(dict(id=prefix+'_'+side,branch=key,year=1940,pos=(x,3),parents=(prefix+'_base',),children=(prefix+'_'+side+'2',),xor=prefix+'_'+other,stats=c['stats'],ru=c['ru'],en=c['en'],reason=c['reason'],reason_en=c['reason_en'],modules=c['modules']))
-   result.append(dict(id=prefix+'_'+side+'2',branch=key,year=1943,pos=(x,6),parents=(prefix+'_'+side,),children=(),stats=c['capstats'],ru=c['capru'],en=c['capen'],reason=c['reason'],reason_en=c['reason_en'],modules=c['capmodules']))
+   result.append(dict(id=prefix+'_'+side,branch=key,year=1938,pos=(x,3),parents=(prefix+'_base',),children=(prefix+'_'+side+'2',),xor=prefix+'_'+other,stats=c['stats'],ru=c['ru'],en=c['en'],reason=c['reason'],reason_en=c['reason_en'],modules=c['modules']))
+   result.append(dict(id=prefix+'_'+side+'2',branch=key,year=1940,pos=(x,6),parents=(prefix+'_'+side,),children=(),stats=c['capstats'],ru=c['capru'],en=c['capen'],reason=c['reason'],reason_en=c['reason_en'],modules=c['capmodules']))
  return result
 
 
 def generate(output,put,text):
  techs=[];roots=[];icons={};unlocks={}
  for index,(key,b) in enumerate(BRANCHES.items()):
-  roots.append(('hro_design_'+key+'_base',250,720+index*320))
+  roots.append(('hro_design_'+key+'_base',250,1550+index*320))
   text('hro_design_row_'+key,b['ru'].upper(),b['en'].upper())
  for t in definitions():
   b=BRANCHES[t['branch']];identity=t['id'];x,y=t['pos']
@@ -81,7 +81,7 @@ def generate(output,put,text):
    if m in unlocks:raise ValueError('Module is unlocked by two choices: '+m)
    unlocks[m]=identity
   techs.append(f'''{identity} = {{ allow_branch = {{ hro_supported_country = yes }} allow = {{ hro_supported_country = yes }}
-   research_cost = { {1938: .8,1940:1,1943:1.2}[t['year']]} start_year = {t['year']}
+   research_cost = { {1936: .5,1938:.65,1940:.8}[t['year']]} start_year = {t['year']}
    folder = {{ name = hro_front_folder position = {{ x = {x} y = {y} }} }}
    dependencies = {{ {' '.join(k+' = 1' for k in t['parents'])} }} {paths} {xor}
    categories = {{ hro_front_research {'air_equipment' if t['branch'] in ('fighter','cas') else 'armor'} }}
@@ -212,7 +212,7 @@ def preview(output):
  """
  from html import escape
  import textwrap
- output=Path(output);items=['<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="2920" viewBox="0 0 1160 2920">','<rect width="1160" height="2920" fill="#171c20"/>','<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#c2ae70"/></marker></defs>']
+ output=Path(output);items=['<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="3750" viewBox="0 0 1160 3750">','<rect width="1160" height="3750" fill="#171c20"/>','<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#c2ae70"/></marker></defs>']
  def text(x,y,value,size=17,color='#e9e6d8'):
   items.append(f'<text x="{x}" y="{y}" fill="{color}" font-family="DejaVu Sans, sans-serif" font-size="{size}">{escape(value)}</text>')
  def card(x,y,name,year):
@@ -223,18 +223,26 @@ def preview(output):
  text(30,40,'ШКОЛЫ БОЯ И ТЕХНИКИ',24)
  text(30,80,'Схема расположения из файлов мода; это не снимок игрового интерфейса.',16)
  text(30,140,'ШКОЛЫ БОЯ: ОДИН ВЫБОР В КАЖДОЙ ПАРЕ',20)
- for x,y,name in [(194,203,'Штурм городов'),(534,203,'Лесная война'),(194,363,'Форсирование рек'),(534,363,'Дальние марши')]:card(x,y,name,'Выбор школы')
- text(407,260,'ИЛИ',17,'#d59081');text(407,420,'ИЛИ',17,'#d59081')
- text(30,535,'РАЗВИТИЕ ТЕХНИКИ',22)
- for x,title in [(194,'1938 — ОСНОВЫ'),(494,'1940 — ВЫБОР'),(794,'1943 — РАЗВИТИЕ')]:text(x,580,title,16)
+ from generate_terrain_schools import CHOICES
+ for key,y in [('urban',210),('forest',510),('mountain',1150)]:
+  title={'urban':'Штурм городов','forest':'Лесная война','mountain':'Горная война'}[key]
+  card(194,y-7,title,'Основа')
+  for side,choice in enumerate(CHOICES[key]):
+   yy=y+(-100 if side==0 else 100)-7
+   card(494,yy,choice[1],'Продолжение');arrow(381,y+41,491,yy+48)
+  text(560,y+45,'ИЛИ',15,'#d59081')
+ card(194,843,'Форсирование рек','Выбор школы');card(794,843,'Дальние марши','Выбор школы')
+ text(565,900,'ИЛИ',17,'#d59081')
+ text(30,1350,'РАЗВИТИЕ ТЕХНИКИ',22)
+ for x,title in [(194,'1936 — ОСНОВЫ'),(494,'1938 — ВЫБОР'),(794,'1940 — РАЗВИТИЕ')]:text(x,1430,title,16)
  lookup={t['id']:t for t in definitions()}
  for index,(key,b) in enumerate(BRANCHES.items()):
-  y=720+index*320-7;prefix='hro_design_'+key
+  y=1550+index*320-7;prefix='hro_design_'+key
   for i,line in enumerate(textwrap.wrap(b['ru'].upper(),width=15)):text(20,y+35+i*22,line,15)
-  card(194,y,lookup[prefix+'_base']['ru'],1938)
+  card(194,y,lookup[prefix+'_base']['ru'],1936)
   for side,offset in [('a',-100),('b',100)]:
    t=lookup[prefix+'_'+side];cap=lookup[prefix+'_'+side+'2']
-   card(494,y+offset,t['ru'],1940);card(794,y+offset,cap['ru'],1943)
+   card(494,y+offset,t['ru'],1938);card(794,y+offset,cap['ru'],1940)
    arrow(382,y+48,486,y+offset+48);arrow(682,y+offset+48,786,y+offset+48)
   text(560,y+52,'ИЛИ',15,'#d59081')
  items.append('</svg>');p=output/'preview/research.svg';p.parent.mkdir(parents=True,exist_ok=True);p.write_text('\n'.join(items))

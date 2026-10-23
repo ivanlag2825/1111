@@ -17,7 +17,7 @@ sys.path.insert(0, str(PROJECT / 'tools'))
 from clausewitz import Node, edit, parse, walk
 from build_mod import tree_tag, right_edge, focus_definitions
 
-VERSION = '1.7.0'
+VERSION = '1.8.0'
 FOLDER = 'historical_reality_overhaul'
 NAME = 'Historical Reality: Total War 1936-1946'
 BRANCHES = ('industry', 'army', 'logistics', 'air', 'navy', 'state', 'diplomacy', 'war')
@@ -552,7 +552,11 @@ def native_overlay(stage, game, catalogs):
 def player_guide(catalogs, gameplay, report):
     text = f'''# Historical Reality: Total War 1936–1946 — {VERSION}
 
-## Конструкторские программы 1.7.0
+## Иллюстрации и школы местности 1.8.0
+
+64 оригинальные иллюстрации для всех духов и видимых исследований. Развитие городского и лесного боя, новая горная школа с выбором специализации. Техника и модули: 1936/1938/1940; усилена броня, снята процентная надбавка к цене двух броневых модулей. Уменьшено суммирование отдельных бонусов снабжения и авиации. [Все числа и установка](docs/ART_TERRAIN_180_RU.md).
+
+## История: конструкторские программы 1.7.0
 
 Исправлены карточки: явные русские подписи и целые координаты развилок. Новая вкладка «Конструкторские программы» содержит девять исследовательских направлений и 30 дополнительных модулей — всего 36. Броня, ходовая, танковые и авиационные двигатели, вооружение и оснащение имеют разные эффекты и издержки. Две вкладки используют единые колонки и фоновые полосы строк. [Полная таблица и установка](docs/CONSTRUCTOR_170_RU.md).
 
@@ -578,7 +582,7 @@ def player_guide(catalogs, gameplay, report):
 
 Советский начальный кризис длится 365 действительных дней войны со смягчением на 90-й и 180-й дни. Каждая первая потеря города учитывается 365 военных дней; досрочное снятие — после возвращения всех ранее потерянных городов механики. Оплаченные контрмеры и частичное освобождение больше не отменяют годовой срок.
 
-[Полные правила, числа и условия](docs/FRONTIER_140_RU.md). Маршрут с выбранными новыми фокусами: 79 фокусов, завершение 11 июня 1941 года, запас 11 дней. Расписание: docs/GER_TIMETABLE_170.json. Это календарный расчёт, не прохождение движком.
+[Полные правила, числа и условия](docs/FRONTIER_140_RU.md). Маршрут с выбранными новыми фокусами: 79 фокусов, завершение 11 июня 1941 года, запас 11 дней. Расписание: docs/GER_TIMETABLE_180.json. Это календарный расчёт, не прохождение движком.
 
 Для 1.19.3.0.c01a (4f21), все DLC. Рекомендуется новая кампания: старые счётчики были ограничены меньшими сроками, поэтому при обновлении некоторые штрафы вернутся до нового порога. Полностью замените папку, оба игрока устанавливают один архив. Движок и сетевой режим здесь не проверены.
 
@@ -880,7 +884,7 @@ def build(game, output, catalog_dir=None, schema_dir=None):
         timetable = timetable_module.schedule(stage, timetable_module.CORE_GOALS + timetable_module.NEW_GOALS)
         if not timetable['feasible']:
             raise ValueError('German prewar timetable no longer fits its declared goals')
-        put(stage, 'docs/GER_TIMETABLE_170.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
+        put(stage, 'docs/GER_TIMETABLE_180.json', json.dumps(timetable, ensure_ascii=False, indent=2) + '\n')
         report['german_prewar_timetable'] = {key:timetable[key] for key in ('completed','focus_days','idle_days','spare_days','feasible','targets','engine_verified','limitations')}
         report['german_prewar_timetable']['focuses'] = timetable['route']['focuses']
         put(stage, 'OVERHAUL_BUILD_REPORT.json', json.dumps(report, ensure_ascii=False, indent=2) + '\n')
@@ -920,7 +924,7 @@ def package(built, output):
                     'При обновлении удали старую папку historical_reality_overhaul целиком, затем распакуй новую. Не копируй поверх старой; сохранения не удаляй.\n'
                     'Оба игрока используют одинаковый архив, версию игры и DLC.\n'
                     'Закрой игру полностью перед заменой файлов. Можно продолжить сохранение 1.6.0: прежние школы и модули сохраняются.\n'
-                    'Модули устанавливаются вручную в конструкторе после соответствующих исследований. Подробнее — docs/CONSTRUCTOR_170_RU.md внутри папки мода.\n'
+                    'Модули устанавливаются вручную в конструкторе после соответствующих исследований. Подробнее — docs/ART_TERRAIN_180_RU.md внутри папки мода.\n'
                     'В папку Steam ничего копировать не нужно. Python и установщик не нужны.\n'
                     f'Подробности и ограничения: {FOLDER}/README_RU.md\n'
                     'Новая версия прошла статические проверки, но ещё не проверена в игровом движке и сетевой партии.\n'

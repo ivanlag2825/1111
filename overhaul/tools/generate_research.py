@@ -9,6 +9,7 @@ from clausewitz import parse,walk,edit
 from generate_frontier import script,SCHOOLS
 from decision_details import describe
 import generate_design_schools as design
+import generate_terrain_schools as terrain
 
 FOLDER='hro_front_folder'
 MODULE_FOLDER='hro_module_folder'
@@ -74,15 +75,17 @@ def generate(output,game,catalogs):
  text('hro_research_support','ТАНКОВЫЕ И АВИАЦИОННЫЕ ШКОЛЫ','ARMOUR AND AIR SCHOOLS')
  text('hro_research_pair_1','ГОРОД ИЛИ ЛЕС','URBAN OR FOREST')
  text('hro_research_pair_2','РЕКИ ИЛИ МАРШИ','RIVERS OR MARCHES')
- text('hro_research_stage_1','1938: ОСНОВЫ','1938: FOUNDATIONS')
- text('hro_research_stage_2','1940: ВЫБОР','1940: CHOICE')
- text('hro_research_stage_3','1943: РАЗВИТИЕ','1943: DEVELOPMENT')
+ text('hro_research_stage_1','1936: ОСНОВЫ','1936: FOUNDATIONS')
+ text('hro_research_stage_2','1938: ВЫБОР','1938: CHOICE')
+ text('hro_research_stage_3','1940: РАЗВИТИЕ','1940: DEVELOPMENT')
  # Country-specific old school IDs are retained so already researched schools survive.
  for tag in ('ger','sov'):
   for index,key in enumerate(SCHOOLS):
    identity=f'hro_tech_{tag}_{key}'
-   roots.append((identity,250+(index%2)*340,210+(index//2)*160))
+   roots.append((identity,*{'urban':(250,210),'forest':(250,510),'river':(250,850),'mobile':(850,850)}[key]))
    sprite_requests[identity]={'urban':'tech_engineers','forest':'tech_mountaineers','river':'tech_engineers2','mobile':'tech_logistics_company'}[key]
+ terrain_techs,terrain_roots,terrain_icons=terrain.generate(output,put,text)
+ techs.extend(terrain_techs);roots.extend(terrain_roots);sprite_requests.update(terrain_icons)
  # Retired support research keeps IDs solely for loading old saves. No
  # modifiers, folders or paths survive; these nodes cannot be researched anew.
  for key in CHAINS:
@@ -124,10 +127,12 @@ def generate(output,game,catalogs):
  put('common/scripted_effects/hro_research_migration.txt','hro_research_migrate = {\n'+'\n'.join(migration)+'\n}')
  put('common/on_actions/hro_research_on_actions.txt','on_actions = { on_daily = { effect = { hro_research_migrate = yes } } }')
  ui=author_ui(output,game,roots,sprite_requests)
+ from illustration_assets import research_assets
+ ui["owned_illustration_bindings"]=research_assets(output)
  design.preview(output)
  design.programmes.preview(output)
  for lang,entries in loc.items():put(f'localisation/{lang}/hro_research_l_{lang}.yml',f'l_{lang}:\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
- return dict(technologies=106,visible_technologies=82,visible_per_country=78,maximum_researched_per_country=47,schools=8,design_schools=7,design_technologies=35,designer_modules=36,new_module_programmes=9,module_programme_technologies=39,new_designer_modules=30,retired_support_technologies=12,hidden_focus_reforms=12,removed_active_spirits_per_country=6,base_days=[88,110,132],school_base_days=110,research_slots=True,school_focus_auto_grant=False,ui=ui,module_unlocks=unlocks,constructor_limit_files=limits,runtime_verified=False)
+ return dict(technologies=120,visible_technologies=96,visible_per_country=85,maximum_researched_per_country=50,schools=22,design_schools=7,design_technologies=35,designer_modules=36,new_module_programmes=9,module_programme_technologies=39,new_designer_modules=30,retired_support_technologies=12,hidden_focus_reforms=12,removed_active_spirits_per_country=6,base_days=[55,71.5,88],school_base_days=110,research_slots=True,school_focus_auto_grant=False,ui=ui,module_unlocks=unlocks,constructor_limit_files=limits,runtime_verified=False)
 
 
 def layout(techs,roots):
@@ -159,17 +164,17 @@ def author_ui(output,game,roots,icons):
   if (folder,x,y,canonical) in seen:continue
   seen.add((folder,x,y,canonical))
   captions[folder].append(f'instantTextBoxType = {{ name = "hro_caption_{identity}" position = {{ x = {x+6:g} y = {y+4:g} }} font = "hoi_16mbs" text = "{identity}" maxWidth = 169 maxHeight = 37 format = center alwaystransparent = yes }}')
- main=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,180,font='hoi_16mbs'),label('hro_research_pair_2',30,330,180,font='hoi_16mbs'),label('hro_research_support',30,515)]
- for i,key in enumerate(design.BRANCHES):main.append(label('hro_design_row_'+key,20,700+i*320,170,font='hoi_16mbs'))
- for index,x in enumerate((190,490,790),1):main.append(label('hro_research_stage_'+str(index),x,565,260,font='hoi_16mbs'))
+ main=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,150,font='hoi_16mbs'),label('hro_research_pair_2',30,800,150,font='hoi_16mbs'),label('hro_research_support',30,1350)]
+ for i,key in enumerate(design.BRANCHES):main.append(label('hro_design_row_'+key,20,1530+i*320,170,font='hoi_16mbs'))
+ for index,x in enumerate((190,490,790),1):main.append(label('hro_research_stage_'+str(index),x,1400,260,font='hoi_16mbs'))
  module=[label('hro_module_heading',30,20),label('hro_module_help',30,65,font='hoi_16mbs',height=54)]
  for i,key in enumerate(design.programmes.PROGRAMMES):module.append(label('hro_mod_row_'+key,20,340+i*320,170,font='hoi_16mbs'))
  for index,x in enumerate((190,490,790),1):module.append(label('hro_research_stage_'+str(index),x,215,260,font='hoi_16mbs'))
  panels=[];tabs_added=[]
- for folder,content,height,index in [(FOLDER,main,2920,0),(MODULE_FOLDER,module,3200,1)]:
+ for folder,content,height,index in [(FOLDER,main,3750,0),(MODULE_FOLDER,module,3200,1)]:
   for identity,x,y in roots:
    if techs[identity].one('folder').scalar('name')==folder:content.append(f'gridboxtype = {{ name = "{identity}_tree" position = {{ x = {x} y = {y} }} slotsize = {{ width = 100 height = 100 }} format = "LEFT" }}')
-  rows=[(720+i*320) for i in range(len(design.BRANCHES))] if folder==FOLDER else [(360+i*320) for i in range(len(design.programmes.PROGRAMMES))]
+  rows=[(1550+i*320) for i in range(len(design.BRANCHES))] if folder==FOLDER else [(360+i*320) for i in range(len(design.programmes.PROGRAMMES))]
   bands=[f'containerWindowType = {{ name = "hro_band_{index}_{i}" position = {{ x = 10 y = {row-120} }} size = {{ width = 1090 height = 310 }} background = {{ name = "Background" quadTextureSprite = "GFX_tiled_research_bg" }} }}' for i,row in enumerate(rows)]
   content=bands+content
   content.extend(captions[folder])
@@ -317,7 +322,7 @@ def audit(output,game,catalogs,schema_dir=None):
     elif n.key not in units:errors.append('Unknown research unit: '+str(n.key))
     else:
      for stat in n.value:
-      if stat.key in ('urban','forest','river','fort'):
+      if stat.key in ('urban','forest','river','fort','mountain','hills'):
        if any(x.key not in ('attack','defence','movement') for x in stat.value):errors.append('Unknown terrain stat: '+str(stat.key))
       elif stat.key not in stats:errors.append('Unknown research unit stat: '+str(stat.key))
  for lang in ('russian','english'):
@@ -329,6 +334,16 @@ def audit(output,game,catalogs,schema_dir=None):
  sprite_names={n.scalar('name','').strip('"') for n in walk(parse((output/'interface/hro_research_icons.gfx').read_text())) if isinstance(n.value,list)}
  for k in techs:
   if techs[k].one('folder') and 'GFX_'+k+'_medium' not in sprite_names:errors.append('Missing research sprite: '+k)
+ # Validate owned pixels, not just sprite names: missing DDS files otherwise
+ # render as empty cards although the script references look correct.
+ import struct
+ for node in walk(parse((output/'interface/hro_research_icons.gfx').read_text())):
+  if node.key!='spriteType':continue
+  relative=node.scalar('texturefile','').strip('"');asset=(output/relative).resolve()
+  if not relative.startswith('gfx/interface/hro_research/') or not asset.is_relative_to(output.resolve()) or not asset.is_file():
+   errors.append('Missing owned research texture: '+relative);continue
+  raw=asset.read_bytes()
+  if len(raw)!=128+128*128*4 or raw[:4]!=b'DDS ' or struct.unpack_from('<II',raw,12)!=(128,128):errors.append('Invalid owned research DDS: '+relative)
  # Only Cyrillic-capable, actually defined fonts are allowed in our UI.
  font_source=Path(game)/'interface/core.gfx'
  fonts={};cyrillic=set()

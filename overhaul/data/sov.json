@@ -2274,10 +2274,10 @@
       "initial": false,
       "name_ru": "Транспортные службы: глубокое снабжение",
       "name_en": "Transport Services: Supply in Depth",
-      "desc_ru": "потребление снабжения: -25%; истощение: -25%; штрафы при недостатке снабжения: -20%; скорость ремонта промышленности: +25%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
-      "desc_en": "supply consumption: -25%; attrition: -25%; out-of-supply penalties: -20%; industrial repair speed: +25%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
+      "desc_ru": "потребление снабжения: -20%; истощение: -25%; штрафы при недостатке снабжения: -20%; скорость ремонта промышленности: +25%. Новая ступень заменяет предыдущую в этой семье. Положительные и отрицательные эффекты действуют вместе.",
+      "desc_en": "supply consumption: -20%; attrition: -25%; out-of-supply penalties: -20%; industrial repair speed: +25%. This stage replaces the previous stage in its family. Benefits and tradeoffs apply together.",
       "modifiers": {
-        "supply_consumption_factor": -0.25,
+        "supply_consumption_factor": -0.2,
         "attrition": -0.25,
         "out_of_supply_factor": -0.2,
         "industry_repair_factor": 0.25
@@ -2773,11 +2773,11 @@
       "initial": false,
       "name_ru": "Авиационные диспетчеры фронтов",
       "name_en": "Front Air Dispatchers",
-      "desc_ru": "эффект авиационной поддержки +20%; эффективность авиазаданий +15%; аварийность -10%.",
-      "desc_en": "air cas present factor +20%; air mission efficiency +15%; air accidents factor -10%",
+      "desc_ru": "эффект авиационной поддержки +20%; эффективность авиазаданий +10%; аварийность -10%.",
+      "desc_en": "air cas present factor +20%; air mission efficiency +10%; air accidents factor -10%",
       "modifiers": {
         "air_cas_present_factor": 0.2,
-        "air_mission_efficiency": 0.15,
+        "air_mission_efficiency": 0.1,
         "air_accidents_factor": -0.1
       }
     },
@@ -2789,11 +2789,11 @@
       "initial": false,
       "name_ru": "Сеть запасных аэродромов",
       "name_en": "Reserve Airfield Network",
-      "desc_ru": "эффект авиационной поддержки +25%; эффективность авиазаданий +20%; аварийность -20%.",
-      "desc_en": "air cas present factor +25%; air mission efficiency +20%; air accidents factor -20%",
+      "desc_ru": "эффект авиационной поддержки +25%; эффективность авиазаданий +15%; аварийность -20%.",
+      "desc_en": "air cas present factor +25%; air mission efficiency +15%; air accidents factor -20%",
       "modifiers": {
         "air_cas_present_factor": 0.25,
-        "air_mission_efficiency": 0.2,
+        "air_mission_efficiency": 0.15,
         "air_accidents_factor": -0.2
       }
     },

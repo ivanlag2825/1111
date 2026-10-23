@@ -36,7 +36,7 @@ def fixture_game(game):
  (modules.parent/'fixture.txt').write_text('equipments = { base_tank = { is_archetype = yes module_slots = { special = { allowed_module_categories = { '+' '.join(sorted({m['category'] for m in MODULES.values() if m['dlc']=='No Step Back'}))+' } } } } base_plane = { is_archetype = yes module_slots = { special = { allowed_module_categories = { '+' '.join(sorted({m['category'] for m in MODULES.values() if m['dlc']=='By Blood Alone'}))+' } } } } }')
  (interface/'Technologies.gfx').write_text('spriteTypes = { '+' '.join(f'spriteType = {{ name = "GFX_{i}_medium" texturefile = "gfx/interface/technologies/{i}.dds" }}' for i in icons)+' }')
  units=game/'common/units';units.mkdir(parents=True,exist_ok=True)
- (units/'fixture.txt').write_text('sub_units = { '+' '.join(i+' = {}' for i in {'infantry','engineer','motorized','mechanized','logistics_company','maintenance_company','field_hospital'}|{u for b in BRANCHES.values() for u in b['units']})+' }')
+ (units/'fixture.txt').write_text('sub_units = { '+' '.join(i+' = {}' for i in {'infantry','mountaineers','engineer','motorized','mechanized','logistics_company','maintenance_company','field_hospital'}|{u for b in BRANCHES.values() for u in b['units']})+' }')
  techs=game/'common/technologies';techs.mkdir()
  tags=game/'common/technology_tags';tags.mkdir()
  categories={'support_tech','armor','air_equipment','mio_cat_tech_all_cruiser_and_modules'}
@@ -69,14 +69,40 @@ class ResearchTests(unittest.TestCase):
  def finish(self,k,s):
   self.assertTrue(self.researchable(k,s));s['techs'].add(k)
   if effect:=self.techs[k].one('on_research_complete'):self.r.execute(effect.value,s)
+ def test_terrain_extensions_require_parent_and_lock_opposite_choice(self):
+  from generate_terrain_schools import CHOICES
+  for tag in ('GER','SOV'):
+   for school,choices in CHOICES.items():
+    parent=f'hro_tech_{tag.lower()}_{school}';left=parent+'_'+choices[0][0];right=parent+'_'+choices[1][0];s=self.state(tag)
+    self.assertFalse(self.researchable(left,s));self.assertFalse(self.researchable(right,s))
+    s['techs'].add(parent);self.finish(left,s);self.assertFalse(self.researchable(right,s))
+    s=self.state(tag);s['techs'].add(parent);self.finish(right,s);self.assertFalse(self.researchable(left,s))
+ def test_mountain_bonuses_apply_to_mountaineers_not_all_infantry(self):
+  for tag in ('ger','sov'):
+   t=self.techs[f'hro_tech_{tag}_mountain_assault']
+   self.assertIsNone(t.one('infantry'));self.assertEqual(t.one('mountaineers').one('mountain').scalar('attack'),'0.15')
+ def test_vehicle_and_module_dates_finish_by_1940_without_ahead_penalty(self):
+  from generate_design_schools import definitions as designs
+  from generate_module_programmes import definitions as programmes
+  for t in designs()+programmes():
+   self.assertLessEqual(t['year'],1940)
+   self.assertLessEqual(float(self.techs[t['id']].scalar('research_cost')),0.8)
+ def test_armour_has_no_percentage_cost_penalty_and_is_strengthened(self):
+  for key,minimum in [('hro_face_hardened',.42),('hro_homogeneous',.32),('hro_reinforced_plate',.24)]:
+   self.assertGreaterEqual(MODULES[key]['mult']['armor_value'],minimum)
+   self.assertNotIn('build_cost_ic',MODULES[key]['mult'])
+   self.assertGreater(MODULES[key]['add']['build_cost_ic'],0)
+ def test_missing_research_pixels_are_rejected(self):
+  next((self.p/'gfx/interface/hro_research').glob('*.dds')).unlink()
+  with self.assertRaisesRegex(ValueError,'Missing owned research texture'):audit(self.p,self.game,self.catalogs)
  def test_full_generated_contract(self):
   report=audit(self.p,self.game,self.catalogs)
-  self.assertEqual(report['technologies'],106);self.assertEqual(self.report['visible_per_country'],78);self.assertEqual(report['modules']['modules'],36)
- def test_every_country_has_78_research_nodes_and_foreign_reforms_are_inaccessible(self):
+  self.assertEqual(report['technologies'],120);self.assertEqual(self.report['visible_per_country'],85);self.assertEqual(report['modules']['modules'],36)
+ def test_every_country_has_85_research_nodes_and_foreign_reforms_are_inaccessible(self):
   for tag in ('GER','SOV'):
    s=self.state(tag)
    visible=[t.key for t in self.techs.values() if t.one('folder') and self.r.condition(t.one('allow_branch').value,s)]
-   self.assertEqual(len(visible),78)
+   self.assertEqual(len(visible),85)
    self.assertFalse(any('_'+('sov' if tag=='GER' else 'ger')+'_' in k for k in visible))
   s=self.state('FRA');self.assertFalse(any(t.one('folder') and self.r.condition(t.one('allow_branch').value,s) for t in self.techs.values()))
  def test_new_campaign_and_completed_focus_do_not_grant_research(self):
@@ -165,7 +191,7 @@ class ResearchTests(unittest.TestCase):
   p=self.p/'interface/countrytechtreeview.gui';p.write_text(p.read_text().replace('hoi_16mbs','hoi_16mb'))
   with self.assertRaisesRegex(ValueError,'Unknown research font'):audit(self.p,self.game,self.catalogs)
  def test_layout_overlap_is_rejected(self):
-  p=self.p/'interface/countrytechtreeview.gui';p.write_text(p.read_text().replace('x = 590 y = 210','x = 250 y = 210'))
+  p=self.p/'interface/countrytechtreeview.gui';p.write_text(p.read_text().replace('x = 250 y = 510','x = 250 y = 210'))
   with self.assertRaisesRegex(ValueError,'Overlapping research cards'):audit(self.p,self.game,self.catalogs)
  def test_module_category_and_icon_must_exist_in_vanilla(self):
   p=self.p/'common/units/equipment/modules/hro_tank_modules.txt';old=p.read_text()
@@ -181,11 +207,11 @@ class ResearchTests(unittest.TestCase):
   self.assertGreaterEqual(len({m['category'] for m in EXTRA_MODULES.values()}),7)
   self.assertTrue(any(m['category']=='tank_armor_type' for m in EXTRA_MODULES.values()))
   self.assertTrue(any(m['category']=='tank_engine_type' for m in EXTRA_MODULES.values()))
- def test_each_tab_has_its_own_visible_39_nodes(self):
+ def test_each_tab_has_its_own_visible_nodes(self):
   s=self.state()
   for folder in (FOLDER,MODULE_FOLDER):
    nodes=[t for t in self.techs.values() if t.one('folder') and t.one('folder').scalar('name')==folder and self.r.condition(t.one('allow').value,s)]
-   self.assertEqual(len(nodes),39)
+   self.assertEqual(len(nodes),46 if folder==FOLDER else 39)
  def test_module_research_choices_cannot_unlock_the_opposite_line(self):
   for key,p in PROGRAMMES.items():
    for side in ('a','b'):
@@ -198,7 +224,7 @@ class ResearchTests(unittest.TestCase):
  def test_all_visible_cards_have_explicit_captions_instead_of_dynamic_name_binding(self):
   gui=parse((self.p/'interface/countrytechtreeview.gui').read_text())
   captions=[n for n in walk(gui) if n.key=='instantTextBoxType' and n.scalar('name','').strip('"').startswith('hro_caption_')]
-  self.assertEqual(len(captions),78)
+  self.assertEqual(len(captions),85)
   for n in captions:self.assertEqual(n.scalar('alwaystransparent'),'yes');self.assertIn(n.scalar('text').strip('"'),self.techs)
  def test_fractional_coordinates_fail_even_if_the_parser_accepts_them(self):
   p=self.p/'common/technologies/hro_front_developments.txt';p.write_text(p.read_text().replace('x = -1 y = 3','x = -0.8 y = 3'))

@@ -2,6 +2,7 @@
 import math,struct
 from pathlib import Path
 from clausewitz import parse,edit
+from illustration_assets import motif,copy_asset,ASSETS
 
 PICTURES=('hro_spirit_army','hro_spirit_industry','hro_spirit_crisis','hro_spirit_recovery')
 
@@ -64,9 +65,11 @@ def _dds(kind):
 
 def author_spirit_assets(root):
     root=Path(root);sprites=[]
-    for picture in PICTURES:
-        asset='gfx/interface/ideas/'+picture+'.dds';path=root/asset;path.parent.mkdir(parents=True,exist_ok=True)
-        path.write_bytes(_dds(picture.removeprefix('hro_spirit_')))
+    import json
+    pictures=tuple('hro_spirit_'+n for n in json.loads((ASSETS/'catalog.json').read_text())['motifs'])
+    for picture in pictures:
+        name=picture.removeprefix('hro_spirit_');asset='gfx/interface/ideas/'+picture+'.dds'
+        copy_asset(root,name,64,asset)
         sprites.append(f'spriteType = {{ name = "GFX_idea_{picture}" texturefile = "{asset}" }}')
     (root/'interface').mkdir(parents=True,exist_ok=True)
     (root/'interface/hro_spirit_icons.gfx').write_text('spriteTypes = {\n'+'\n'.join(sprites)+'\n}\n')
@@ -78,16 +81,14 @@ def author_spirit_assets(root):
             for category in section.value:
                 for idea in category.value:
                     if not idea.key.startswith('hro_'):continue
-                    picture=('hro_spirit_crisis' if idea.key.startswith('hro_ops_idea_exhaustion') or any(s in idea.key for s in ('_crisis_','_surprise','_shock','_strain','_dislocated','_prepared_fronts','_regrouping','_first_winter','_prepared_winter','_later_winter','_adapted_winter','_working')) else
-                             'hro_spirit_recovery' if any(s in idea.key for s in ('_mobilization_','_rebuilding_','_liberation_','_adapted','_battle_hardened')) else
-                             'hro_spirit_industry' if path.name in ('hro_country_ideas.txt','hro_programme_ideas.txt') else 'hro_spirit_army')
+                    picture='hro_spirit_'+motif(idea.key)
                     if field:=idea.one('picture'):patches.append((field.start,field.end,'picture = '+picture))
                     for name,value in [('visible','{ always = yes }'),('cancel_if_invalid','no')]:
                         if field:=idea.one(name):patches.append((field.start,field.end,name+' = '+value))
                         else:patches.append((idea.value_end-1,idea.value_end-1,' '+name+' = '+value+' '))
                     count+=1
         path.write_text(edit(source,patches))
-    return {'owned_icons':len(PICTURES),'visible_spirits':count,'external_texture_dependency':False}
+    return {'owned_icons':len(pictures),'visible_spirits':count,'external_texture_dependency':False}
 
 
 def audit_spirit_assets(root):

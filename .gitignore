@@ -40,3 +40,5 @@ dist/*
 !dist/schools.zip
 
 !dist/modules.zip
+
+!dist/art.zip

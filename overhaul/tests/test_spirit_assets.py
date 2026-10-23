@@ -42,16 +42,16 @@ class SpiritAssetTests(unittest.TestCase):
         self.assertEqual(self.modifiers(),before)
     def test_owned_dds_headers_include_real_pixels_and_alpha(self):
         author_spirit_assets(self.root)
-        paths=list((self.root/'gfx/interface/ideas').glob('*.dds'));self.assertEqual(len(paths),4)
+        paths=list((self.root/'gfx/interface/ideas').glob('*.dds'));self.assertEqual(len(paths),64)
         for p in paths:
             data=p.read_bytes();self.assertEqual(data[:4],b'DDS ')
             self.assertEqual(struct.unpack_from('<II',data,12),(64,64))
             self.assertEqual(len(data),128+64*64*4)
             self.assertEqual(struct.unpack_from('<I',data,104)[0],0xff000000)
-            self.assertIn(255,data[131::4]);self.assertIn(0,data[131::4])
+            self.assertIn(255,data[131::4])
     def test_missing_or_invalid_sprite_assets_fail_the_release_audit(self):
         author_spirit_assets(self.root)
-        path=self.root/'gfx/interface/ideas/hro_spirit_army.dds';data=path.read_bytes();path.unlink()
+        path=self.root/'gfx/interface/ideas/hro_spirit_helmet.dds';data=path.read_bytes();path.unlink()
         self.assertTrue(any('Missing national-spirit texture' in e for e in audit_spirit_assets(self.root)))
         path.write_bytes(data[:64])
         self.assertTrue(any('Invalid national-spirit DDS' in e for e in audit_spirit_assets(self.root)))

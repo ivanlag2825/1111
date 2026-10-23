@@ -1,186 +1,215 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="2920" viewBox="0 0 1160 2920">
-<rect width="1160" height="2920" fill="#171c20"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="3750" viewBox="0 0 1160 3750">
+<rect width="1160" height="3750" fill="#171c20"/>
 <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#c2ae70"/></marker></defs>
 <text x="30" y="40" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="24">ШКОЛЫ БОЯ И ТЕХНИКИ</text>
 <text x="30" y="80" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">Схема расположения из файлов мода; это не снимок игрового интерфейса.</text>
 <text x="30" y="140" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="20">ШКОЛЫ БОЯ: ОДИН ВЫБОР В КАЖДОЙ ПАРЕ</text>
 <rect x="194" y="203" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
 <text x="203" y="227" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Штурм городов</text>
-<text x="203" y="283" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Выбор школы</text>
-<rect x="534" y="203" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="543" y="227" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Лесная война</text>
-<text x="543" y="283" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Выбор школы</text>
-<rect x="194" y="363" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="387" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Форсирование рек</text>
-<text x="203" y="443" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Выбор школы</text>
-<rect x="534" y="363" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="543" y="387" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Дальние марши</text>
-<text x="543" y="443" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Выбор школы</text>
-<text x="407" y="260" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="17">ИЛИ</text>
-<text x="407" y="420" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="17">ИЛИ</text>
-<text x="30" y="535" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="22">РАЗВИТИЕ ТЕХНИКИ</text>
-<text x="194" y="580" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">1938 — ОСНОВЫ</text>
-<text x="494" y="580" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">1940 — ВЫБОР</text>
-<text x="794" y="580" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">1943 — РАЗВИТИЕ</text>
-<text x="20" y="748" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ЛЁГКИЕ ТАНКИ</text>
-<rect x="194" y="713" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="737" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа лёгких</text>
-<text x="203" y="758" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">танков</text>
-<text x="203" y="793" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="613" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="637" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Крейсерский рейд</text>
-<text x="503" y="693" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="613" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="637" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Рейдовые эшелоны</text>
-<text x="803" y="693" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,761 L486,661" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,661 L786,661" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="813" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="837" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Поддержка пехоты</text>
-<text x="503" y="893" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="813" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="837" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Штурмовые звенья</text>
-<text x="803" y="893" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,761 L486,861" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,861 L786,861" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="765" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
-<text x="20" y="1068" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">СРЕДНИЕ ТАНКИ</text>
-<rect x="194" y="1033" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="1057" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа средних</text>
-<text x="203" y="1078" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">танков</text>
-<text x="203" y="1113" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="933" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="957" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Маневренная группа</text>
-<text x="503" y="1013" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="933" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="957" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Управляемый прорыв</text>
-<text x="803" y="1013" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,1081 L486,981" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,981 L786,981" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="1133" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="1157" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Лобовое</text>
-<text x="503" y="1178" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">превосходство</text>
-<text x="503" y="1213" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="1133" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="1157" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Огневой кулак</text>
-<text x="803" y="1213" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,1081 L486,1181" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,1181 L786,1181" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="1085" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
-<text x="20" y="1388" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ТЯЖЁЛЫЕ ТАНКИ</text>
-<rect x="194" y="1353" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="1377" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа тяжёлых</text>
-<text x="203" y="1398" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">танков</text>
-<text x="203" y="1433" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="1253" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="1277" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Танк прорыва</text>
-<text x="503" y="1333" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="1253" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="1277" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Пролом обороны</text>
-<text x="803" y="1333" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,1401 L486,1301" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,1301 L786,1301" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="1453" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="1477" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Подвижная крепость</text>
-<text x="503" y="1533" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="1453" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="1477" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Броневой заслон</text>
-<text x="803" y="1533" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,1401 L486,1501" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,1501 L786,1501" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="1405" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
-<text x="20" y="1708" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">САМОХОДНАЯ</text>
-<text x="20" y="1730" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">АРТИЛЛЕРИЯ</text>
-<rect x="194" y="1673" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="1697" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа САУ</text>
-<text x="203" y="1753" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="1573" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="1597" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Штурмовая батарея</text>
-<text x="503" y="1653" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="1573" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="1597" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Орудия</text>
-<text x="803" y="1618" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">сопровождения</text>
-<text x="803" y="1653" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,1721 L486,1621" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,1621 L786,1621" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="1773" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="1797" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Кочующий огонь</text>
-<text x="503" y="1853" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="1773" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="1797" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Подвижные батареи</text>
-<text x="803" y="1853" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,1721 L486,1821" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,1821 L786,1821" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="1725" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
-<text x="20" y="2028" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ПРОТИВОТАНКОВЫЕ</text>
-<text x="20" y="2050" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">САУ</text>
-<rect x="194" y="1993" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="2017" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа ПТ-САУ</text>
-<text x="203" y="2073" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="1893" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="1917" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Дальняя засада</text>
-<text x="503" y="1973" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="1893" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="1917" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Прицельное</text>
-<text x="803" y="1938" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">поражение</text>
-<text x="803" y="1973" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,2041 L486,1941" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,1941 L786,1941" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="2093" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="2117" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Подвижный резерв</text>
-<text x="503" y="2138" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ПТО</text>
-<text x="503" y="2173" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="2093" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="2117" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Охотничьи группы</text>
-<text x="803" y="2173" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,2041 L486,2141" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,2141 L786,2141" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="2045" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
-<text x="20" y="2348" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИСТРЕБИТЕЛИ</text>
-<rect x="194" y="2313" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="2337" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа истребителей</text>
-<text x="203" y="2393" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="2213" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="2237" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Маневренный бой</text>
-<text x="503" y="2293" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="2213" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="2237" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа воздушного</text>
-<text x="803" y="2258" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">боя</text>
-<text x="803" y="2293" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,2361 L486,2261" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,2261 L786,2261" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="2413" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="2437" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Высотный перехват</text>
-<text x="503" y="2493" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="2413" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="2437" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Перехват эшелонами</text>
-<text x="803" y="2493" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,2361 L486,2461" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,2461 L786,2461" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="2365" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
-<text x="20" y="2668" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ШТУРМОВИКИ</text>
-<rect x="194" y="2633" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="203" y="2657" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа штурмовиков</text>
-<text x="203" y="2713" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
-<rect x="494" y="2533" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="2557" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Удар по переднему</text>
-<text x="503" y="2578" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">краю</text>
-<text x="503" y="2613" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="2533" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="2557" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Точное</text>
-<text x="803" y="2578" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">сопровождение</text>
-<text x="803" y="2613" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,2681 L486,2581" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,2581 L786,2581" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="494" y="2733" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="503" y="2757" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Защищённый</text>
-<text x="503" y="2778" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">штурмовик</text>
-<text x="503" y="2813" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
-<rect x="794" y="2733" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
-<text x="803" y="2757" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Возвращение</text>
-<text x="803" y="2778" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">экипажей</text>
-<text x="803" y="2813" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
-<path d="M382,2681 L486,2781" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<path d="M682,2781 L786,2781" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="560" y="2685" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="203" y="283" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Основа</text>
+<rect x="494" y="103" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="127" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Штурмовые группы</text>
+<text x="503" y="183" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Продолжение</text>
+<path d="M381,251 L491,151" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="303" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="327" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Оборона кварталов</text>
+<text x="503" y="383" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Продолжение</text>
+<path d="M381,251 L491,351" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="255" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<rect x="194" y="503" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="527" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Лесная война</text>
+<text x="203" y="583" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Основа</text>
+<rect x="494" y="403" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="427" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Лесные засады</text>
+<text x="503" y="483" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Продолжение</text>
+<path d="M381,551 L491,451" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="603" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="627" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Егерские маршруты</text>
+<text x="503" y="683" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Продолжение</text>
+<path d="M381,551 L491,651" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="555" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<rect x="194" y="1143" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="1167" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Горная война</text>
+<text x="203" y="1223" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Основа</text>
+<rect x="494" y="1043" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="1067" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Высотный штурм</text>
+<text x="503" y="1123" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Продолжение</text>
+<path d="M381,1191 L491,1091" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="1243" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="1267" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Высотное снабжение</text>
+<text x="503" y="1323" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Продолжение</text>
+<path d="M381,1191 L491,1291" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="1195" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<rect x="194" y="843" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="867" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Форсирование рек</text>
+<text x="203" y="923" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Выбор школы</text>
+<rect x="794" y="843" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="867" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Дальние марши</text>
+<text x="803" y="923" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">Выбор школы</text>
+<text x="565" y="900" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="17">ИЛИ</text>
+<text x="30" y="1350" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="22">РАЗВИТИЕ ТЕХНИКИ</text>
+<text x="194" y="1430" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">1936 — ОСНОВЫ</text>
+<text x="494" y="1430" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">1938 — ВЫБОР</text>
+<text x="794" y="1430" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="16">1940 — РАЗВИТИЕ</text>
+<text x="20" y="1578" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ЛЁГКИЕ ТАНКИ</text>
+<rect x="194" y="1543" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="1567" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа лёгких</text>
+<text x="203" y="1588" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">танков</text>
+<text x="203" y="1623" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="1443" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="1467" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Крейсерский рейд</text>
+<text x="503" y="1523" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="1443" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="1467" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Рейдовые эшелоны</text>
+<text x="803" y="1523" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,1591 L486,1491" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,1491 L786,1491" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="1643" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="1667" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Поддержка пехоты</text>
+<text x="503" y="1723" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="1643" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="1667" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Штурмовые звенья</text>
+<text x="803" y="1723" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,1591 L486,1691" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,1691 L786,1691" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="1595" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="1898" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">СРЕДНИЕ ТАНКИ</text>
+<rect x="194" y="1863" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="1887" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа средних</text>
+<text x="203" y="1908" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">танков</text>
+<text x="203" y="1943" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="1763" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="1787" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Маневренная группа</text>
+<text x="503" y="1843" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="1763" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="1787" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Управляемый прорыв</text>
+<text x="803" y="1843" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,1911 L486,1811" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,1811 L786,1811" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="1963" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="1987" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Лобовое</text>
+<text x="503" y="2008" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">превосходство</text>
+<text x="503" y="2043" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="1963" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="1987" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Огневой кулак</text>
+<text x="803" y="2043" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,1911 L486,2011" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2011 L786,2011" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="1915" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="2218" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ТЯЖЁЛЫЕ ТАНКИ</text>
+<rect x="194" y="2183" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="2207" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа тяжёлых</text>
+<text x="203" y="2228" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">танков</text>
+<text x="203" y="2263" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="2083" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="2107" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Танк прорыва</text>
+<text x="503" y="2163" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="2083" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="2107" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Пролом обороны</text>
+<text x="803" y="2163" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,2231 L486,2131" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2131 L786,2131" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="2283" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="2307" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Подвижная крепость</text>
+<text x="503" y="2363" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="2283" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="2307" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Броневой заслон</text>
+<text x="803" y="2363" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,2231 L486,2331" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2331 L786,2331" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="2235" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="2538" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">САМОХОДНАЯ</text>
+<text x="20" y="2560" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">АРТИЛЛЕРИЯ</text>
+<rect x="194" y="2503" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="2527" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа САУ</text>
+<text x="203" y="2583" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="2403" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="2427" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Штурмовая батарея</text>
+<text x="503" y="2483" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="2403" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="2427" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Орудия</text>
+<text x="803" y="2448" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">сопровождения</text>
+<text x="803" y="2483" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,2551 L486,2451" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2451 L786,2451" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="2603" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="2627" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Кочующий огонь</text>
+<text x="503" y="2683" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="2603" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="2627" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Подвижные батареи</text>
+<text x="803" y="2683" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,2551 L486,2651" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2651 L786,2651" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="2555" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="2858" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ПРОТИВОТАНКОВЫЕ</text>
+<text x="20" y="2880" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">САУ</text>
+<rect x="194" y="2823" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="2847" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа ПТ-САУ</text>
+<text x="203" y="2903" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="2723" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="2747" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Дальняя засада</text>
+<text x="503" y="2803" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="2723" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="2747" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Прицельное</text>
+<text x="803" y="2768" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">поражение</text>
+<text x="803" y="2803" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,2871 L486,2771" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2771 L786,2771" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="2923" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="2947" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Подвижный резерв</text>
+<text x="503" y="2968" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ПТО</text>
+<text x="503" y="3003" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="2923" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="2947" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Охотничьи группы</text>
+<text x="803" y="3003" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,2871 L486,2971" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,2971 L786,2971" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="2875" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="3178" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИСТРЕБИТЕЛИ</text>
+<rect x="194" y="3143" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="3167" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа истребителей</text>
+<text x="203" y="3223" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="3043" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="3067" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Маневренный бой</text>
+<text x="503" y="3123" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="3043" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="3067" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа воздушного</text>
+<text x="803" y="3088" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">боя</text>
+<text x="803" y="3123" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,3191 L486,3091" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,3091 L786,3091" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="3243" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="3267" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Высотный перехват</text>
+<text x="503" y="3323" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="3243" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="3267" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Перехват эшелонами</text>
+<text x="803" y="3323" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,3191 L486,3291" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,3291 L786,3291" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="3195" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="3498" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">ШТУРМОВИКИ</text>
+<rect x="194" y="3463" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="203" y="3487" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Школа штурмовиков</text>
+<text x="203" y="3543" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1936</text>
+<rect x="494" y="3363" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="3387" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Удар по переднему</text>
+<text x="503" y="3408" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">краю</text>
+<text x="503" y="3443" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="3363" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="3387" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Точное</text>
+<text x="803" y="3408" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">сопровождение</text>
+<text x="803" y="3443" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,3511 L486,3411" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,3411 L786,3411" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="494" y="3563" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="503" y="3587" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Защищённый</text>
+<text x="503" y="3608" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">штурмовик</text>
+<text x="503" y="3643" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="794" y="3563" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="803" y="3587" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">Возвращение</text>
+<text x="803" y="3608" fill="#e9e6d8" font-family="DejaVu Sans, sans-serif" font-size="15">экипажей</text>
+<text x="803" y="3643" fill="#d4bb75" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M382,3511 L486,3611" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M682,3611 L786,3611" fill="none" stroke="#c2ae70" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="3515" fill="#d59081" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
 </svg>
