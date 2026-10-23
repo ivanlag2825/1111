@@ -38,3 +38,5 @@ dist/*
 !dist/researchfix.zip
 
 !dist/schools.zip
+
+!dist/modules.zip

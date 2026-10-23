@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="3200" viewBox="0 0 1160 3200">
+<rect width="1160" height="3200" fill="#171c20"/>
+<text x="30" y="45" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="24">КОНСТРУКТОРСКИЕ ПРОГРАММЫ</text>
+<text x="30" y="80" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="16">Схема размещения, не скриншот игры. Каждая ветка открывает новые модули.</text>
+<text x="194" y="235" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">1938 — ПРОГРАММА</text>
+<text x="494" y="235" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">1940 — ВЫБОР</text>
+<text x="794" y="235" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">1943 — РАЗВИТИЕ</text>
+<text x="20" y="388" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">БРОНЕКОРПУСА</text>
+<rect x="194" y="353" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="376" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Бронекорпуса</text>
+<text x="201" y="433" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="253" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="276" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Цементированные</text>
+<text x="501" y="296" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">листы</text>
+<text x="501" y="333" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,401 L490,301" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="253" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="276" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Разнесённые экраны</text>
+<text x="801" y="333" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,301 L790,301" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="453" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="476" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Гомогенная сварная</text>
+<text x="501" y="496" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">броня</text>
+<text x="501" y="533" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,401 L490,501" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="453" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="476" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Усиленный лобовой</text>
+<text x="801" y="496" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">пакет</text>
+<text x="801" y="533" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,501 L790,501" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="406" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="708" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ХОДОВАЯ ЧАСТЬ</text>
+<rect x="194" y="673" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="696" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Ходовая часть</text>
+<text x="201" y="753" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="573" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="596" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Длинноходная</text>
+<text x="501" y="616" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">подвеска</text>
+<text x="501" y="653" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,721 L490,621" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="573" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="596" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Сменные траки и</text>
+<text x="801" y="616" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">катки</text>
+<text x="801" y="653" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,621 L790,621" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="773" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="796" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Усиленные торсионы</text>
+<text x="501" y="853" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,721 L490,821" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="773" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="796" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Широкие гусеницы</text>
+<text x="801" y="853" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,821 L790,821" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="726" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="1028" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ТАНКОВЫЕ</text>
+<text x="20" y="1050" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ДВИГАТЕЛИ</text>
+<rect x="194" y="993" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="1016" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Танковые двигатели</text>
+<text x="201" y="1073" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="893" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="916" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Форсированный</text>
+<text x="501" y="936" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">бензиновый</text>
+<text x="501" y="973" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,1041 L490,941" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="893" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="916" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Усиленное</text>
+<text x="801" y="936" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">охлаждение</text>
+<text x="801" y="973" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,941 L790,941" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="1093" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="1116" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Экономичный дизель</text>
+<text x="501" y="1173" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,1041 L490,1141" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="1093" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="1116" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Точная подача</text>
+<text x="801" y="1136" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">топлива</text>
+<text x="801" y="1173" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,1141 L790,1141" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="1046" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="1348" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ЖИВУЧЕСТЬ ТАНКА</text>
+<rect x="194" y="1313" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="1336" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Живучесть танка</text>
+<text x="201" y="1393" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="1213" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="1236" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Противоосколочный</text>
+<text x="501" y="1256" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">подбой</text>
+<text x="501" y="1293" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,1361 L490,1261" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="1213" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="1236" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Усиленная крыша</text>
+<text x="801" y="1293" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,1261 L790,1261" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="1413" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="1436" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Автоматическое</text>
+<text x="501" y="1456" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">пожаротушение</text>
+<text x="501" y="1493" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,1361 L490,1461" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="1413" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="1436" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Секционированная</text>
+<text x="801" y="1456" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">укладка</text>
+<text x="801" y="1493" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,1461 L790,1461" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="1366" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="1668" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">АВИАЦИОННЫЕ</text>
+<text x="20" y="1690" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">МОТОРЫ</text>
+<rect x="194" y="1633" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="1656" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Авиационные моторы</text>
+<text x="201" y="1713" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="1533" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="1556" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Мотор с</text>
+<text x="501" y="1576" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">нагнетателем</text>
+<text x="501" y="1613" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,1681 L490,1581" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="1533" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="1556" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Система аварийного</text>
+<text x="801" y="1576" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">форсажа</text>
+<text x="801" y="1613" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,1581 L790,1581" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="1733" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="1756" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Мотор крейсерского</text>
+<text x="501" y="1776" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">режима</text>
+<text x="501" y="1813" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,1681 L490,1781" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="1733" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="1756" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Обтекаемый капот</text>
+<text x="801" y="1813" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,1781 L790,1781" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="1686" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="1988" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ЖИВУЧЕСТЬ</text>
+<text x="20" y="2010" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">САМОЛЁТА</text>
+<rect x="194" y="1953" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="1976" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Живучесть самолёта</text>
+<text x="201" y="2033" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="1853" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="1876" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Облегчённая</text>
+<text x="501" y="1896" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">бронекабина</text>
+<text x="501" y="1933" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2001 L490,1901" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="1853" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="1876" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Бронированный</text>
+<text x="801" y="1896" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">маслорадиатор</text>
+<text x="801" y="1933" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,1901 L790,1901" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="2053" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="2076" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Протектированные</text>
+<text x="501" y="2096" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">топливные ячейки</text>
+<text x="501" y="2133" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2001 L490,2101" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="794" y="2053" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="801" y="2076" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Усиленная система</text>
+<text x="801" y="2096" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">подвесных баков</text>
+<text x="801" y="2133" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1943</text>
+<path d="M680,2101 L790,2101" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="2006" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="2308" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ТАНКОВОЕ</text>
+<text x="20" y="2330" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ВООРУЖЕНИЕ</text>
+<rect x="194" y="2273" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="2296" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Танковое</text>
+<text x="201" y="2316" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">вооружение</text>
+<text x="201" y="2353" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="2173" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="2196" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Длинноствольная</text>
+<text x="501" y="2216" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">75-мм</text>
+<text x="501" y="2253" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2321 L490,2221" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="2373" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="2396" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">75-мм орудие</text>
+<text x="501" y="2416" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">поддержки</text>
+<text x="501" y="2453" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2321 L490,2421" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="2326" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="2628" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">АВИАЦИОННОЕ</text>
+<text x="20" y="2650" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ВООРУЖЕНИЕ</text>
+<rect x="194" y="2593" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="2616" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Авиационное</text>
+<text x="201" y="2636" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">вооружение</text>
+<text x="201" y="2673" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="2493" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="2516" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Скорострельная</text>
+<text x="501" y="2536" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">пулемётная батарея</text>
+<text x="501" y="2573" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2641 L490,2541" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="2693" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="2716" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Спаренная 20-мм</text>
+<text x="501" y="2736" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">батарея</text>
+<text x="501" y="2773" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2641 L490,2741" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="2646" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+<text x="20" y="2948" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ПОХОДНОЕ</text>
+<text x="20" y="2970" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ОСНАЩЕНИЕ</text>
+<rect x="194" y="2913" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="201" y="2936" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Походное оснащение</text>
+<text x="201" y="2993" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1938</text>
+<rect x="494" y="2813" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="2836" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Бортовой ремонтный</text>
+<text x="501" y="2856" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">комплект</text>
+<text x="501" y="2893" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2961 L490,2861" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<rect x="494" y="3013" width="183" height="96" rx="7" fill="#343a3b" stroke="#b5a06b" stroke-width="2"/>
+<text x="501" y="3036" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">Маршевый регулятор</text>
+<text x="501" y="3056" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">двигателя</text>
+<text x="501" y="3093" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="14">1940</text>
+<path d="M380,2961 L490,3061" fill="none" stroke="#c2ae70" stroke-width="2"/>
+<text x="555" y="2966" fill="#eee9d8" font-family="DejaVu Sans, sans-serif" font-size="15">ИЛИ</text>
+</svg>

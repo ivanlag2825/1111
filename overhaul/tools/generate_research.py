@@ -11,6 +11,8 @@ from decision_details import describe
 import generate_design_schools as design
 
 FOLDER='hro_front_folder'
+MODULE_FOLDER='hro_module_folder'
+FOLDERS=(FOLDER,MODULE_FOLDER)
 # Single-tier, permanent, technical reforms only. Modifier dictionaries remain
 # authoritative in the catalogs, and are copied exactly into technologies.
 CONVERT = {
@@ -64,6 +66,8 @@ def generate(output,game,catalogs):
  text(FOLDER,'Школы боя и техники','Combat and Design Schools')
  text(FOLDER+'_desc','Школы боя и специализации танковых и авиационных частей. Технологии изучаются в обычных слотах.','Combat schools and armour/air specialisations. Technologies use normal research slots.')
  text('hro_front_research','Фронтовые разработки','Front Developments')
+ text('hro_module_heading','КОНСТРУКТОРСКИЕ ПРОГРАММЫ','CONSTRUCTOR PROGRAMMES')
+ text('hro_module_help','Каждая строка открывает выбор модулей. Выберите одну линию и установите изученные модули в конструкторе.','Each row offers module choices. Choose one line and install researched modules in the designer.')
  text('hro_research_heading','ШКОЛЫ БОЯ И ТЕХНИКИ','COMBAT AND DESIGN SCHOOLS')
  text('hro_research_help','Сверху выберите школы боя. Ниже каждая строка: основы, одна из двух специализаций, её развитие.','Choose combat schools above. Each row below: foundations, one of two specialisations, its development.')
  text('hro_research_schools','ШКОЛЫ БОЯ — ВЫБЕРИТЕ ОДНУ В КАЖДОЙ ПАРЕ','COMBAT SCHOOLS — CHOOSE ONE IN EACH PAIR')
@@ -116,13 +120,24 @@ def generate(output,game,catalogs):
   }}''')
  source_path.write_text(edit(source,patches))
  put('common/technologies/hro_front_developments.txt','technologies = {\n'+'\n'.join(techs)+'\n}')
- put('common/technology_tags/hro_front_research.txt',f'technology_categories = {{ hro_front_research }}\ntechnology_folders = {{ {FOLDER} = {{ ledger = army available = {{ hro_supported_country = yes }} }} }}')
+ put('common/technology_tags/hro_front_research.txt',f'technology_categories = {{ hro_front_research }}\ntechnology_folders = {{ {FOLDER} = {{ ledger = army available = {{ hro_supported_country = yes }} }} {MODULE_FOLDER} = {{ ledger = army available = {{ hro_supported_country = yes }} }} }}')
  put('common/scripted_effects/hro_research_migration.txt','hro_research_migrate = {\n'+'\n'.join(migration)+'\n}')
  put('common/on_actions/hro_research_on_actions.txt','on_actions = { on_daily = { effect = { hro_research_migrate = yes } } }')
  ui=author_ui(output,game,roots,sprite_requests)
  design.preview(output)
+ design.programmes.preview(output)
  for lang,entries in loc.items():put(f'localisation/{lang}/hro_research_l_{lang}.yml',f'l_{lang}:\n'+''.join(f' {k}:0 {json.dumps(v,ensure_ascii=False)}\n' for k,v in entries.items()),True)
- return dict(technologies=67,visible_technologies=43,visible_per_country=39,maximum_researched_per_country=23,schools=8,design_schools=7,design_technologies=35,designer_modules=6,retired_support_technologies=12,hidden_focus_reforms=12,removed_active_spirits_per_country=6,base_days=[88,110,132],school_base_days=110,research_slots=True,school_focus_auto_grant=False,ui=ui,module_unlocks=unlocks,constructor_limit_files=limits,runtime_verified=False)
+ return dict(technologies=106,visible_technologies=82,visible_per_country=78,maximum_researched_per_country=47,schools=8,design_schools=7,design_technologies=35,designer_modules=36,new_module_programmes=9,module_programme_technologies=39,new_designer_modules=30,retired_support_technologies=12,hidden_focus_reforms=12,removed_active_spirits_per_country=6,base_days=[88,110,132],school_base_days=110,research_slots=True,school_focus_auto_grant=False,ui=ui,module_unlocks=unlocks,constructor_limit_files=limits,runtime_verified=False)
+
+
+def layout(techs,roots):
+ result={}
+ def place(identity,root_x,root_y):
+  t=techs[identity];f=t.one('folder');pos=f.one('position')
+  result[identity]=(f.scalar('name'),root_x+float(pos.scalar('y'))*100-56,root_y+float(pos.scalar('x'))*100-7)
+  for path in t.all('path'):place(path.scalar('leads_to_tech'),root_x,root_y)
+ for identity,x,y in roots:place(identity,x,y)
+ return result
 
 
 def author_ui(output,game,roots,icons):
@@ -135,24 +150,44 @@ def author_ui(output,game,roots,icons):
  window=named(root.value,'countrytechtreeview');tabs=named(window.value,'folder_tabs')
  def label(key,x,y,width=1000,font='hoi_20b',height=42):
   return f'instantTextBoxType = {{ name = "{key}" position = {{ x = {x} y = {y} }} font = "{font}" text = "{key}" maxWidth = {width} maxHeight = {height} format = left }}'
- content=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,180,font='hoi_16mbs'),label('hro_research_pair_2',30,330,180,font='hoi_16mbs'),label('hro_research_support',30,515)]
- for i,key in enumerate(design.BRANCHES):content.append(label('hro_design_row_'+key,20,660+i*270,170,font='hoi_16mbs'))
- for index,x in enumerate((190,530,870),1):content.append(label('hro_research_stage_'+str(index),x,565,260,font='hoi_16mbs'))
- for identity,x,y in roots:content.append(f'gridboxtype = {{ name = "{identity}_tree" position = {{ x = {x} y = {y} }} slotsize = {{ width = 100 height = 100 }} format = "LEFT" }}')
- panel=f'''containerWindowType = {{ name = "{FOLDER}" position = {{ x = 0 y = 47 }} size = {{ width = 100%% height = 100%% }}
-  margin = {{ top = 13 left = 13 bottom = 24 right = 25 }} drag_scroll = {{ left middle }}
-  verticalScrollbar = "right_vertical_slider" horizontalScrollbar = "bottom_horizontal_slider" scroll_wheel_factor = 40
-  background = {{ name = "Background" quadTextureSprite = "GFX_tiled_window_2b_border" }}
-  containerWindowType = {{ name = "hro_extent" position = {{ x = 0 y = 0 }} size = {{ width = 1160 height = 2500 min = {{ width = 100%% height = 100%% }} }} clipping = no }}
-  {' '.join(content)}
- }}'''
- tab=f'buttonType = {{ name = "{FOLDER}_tab" position = {{ x = 823 y = 0 }} quadTextureSprite = "GFX_armour_folder_tab" frame = 1 clicksound = ui_research_tab_support pdx_tooltip = "{FOLDER}" }}'
+ techs={n.key:n for p in (output/'common/technologies').glob('hro*.txt') for r in parse(p.read_text()) for n in r.value}
+ placements=layout(techs,roots)
+ captions={FOLDER:[],MODULE_FOLDER:[]};seen=set()
+ for identity,(folder,x,y) in placements.items():
+  # The two countries share school names and screen positions.
+  canonical=identity.replace('hro_tech_sov_','hro_tech_ger_')
+  if (folder,x,y,canonical) in seen:continue
+  seen.add((folder,x,y,canonical))
+  captions[folder].append(f'instantTextBoxType = {{ name = "hro_caption_{identity}" position = {{ x = {x+6:g} y = {y+4:g} }} font = "hoi_16mbs" text = "{identity}" maxWidth = 169 maxHeight = 37 format = center alwaystransparent = yes }}')
+ main=[label('hro_research_heading',30,20),label('hro_research_help',30,65,font='hoi_16mbs',height=42),label('hro_research_schools',30,120),label('hro_research_pair_1',30,170,180,font='hoi_16mbs'),label('hro_research_pair_2',30,330,180,font='hoi_16mbs'),label('hro_research_support',30,515)]
+ for i,key in enumerate(design.BRANCHES):main.append(label('hro_design_row_'+key,20,700+i*320,170,font='hoi_16mbs'))
+ for index,x in enumerate((190,490,790),1):main.append(label('hro_research_stage_'+str(index),x,565,260,font='hoi_16mbs'))
+ module=[label('hro_module_heading',30,20),label('hro_module_help',30,65,font='hoi_16mbs',height=54)]
+ for i,key in enumerate(design.programmes.PROGRAMMES):module.append(label('hro_mod_row_'+key,20,340+i*320,170,font='hoi_16mbs'))
+ for index,x in enumerate((190,490,790),1):module.append(label('hro_research_stage_'+str(index),x,215,260,font='hoi_16mbs'))
+ panels=[];tabs_added=[]
+ for folder,content,height,index in [(FOLDER,main,2920,0),(MODULE_FOLDER,module,3200,1)]:
+  for identity,x,y in roots:
+   if techs[identity].one('folder').scalar('name')==folder:content.append(f'gridboxtype = {{ name = "{identity}_tree" position = {{ x = {x} y = {y} }} slotsize = {{ width = 100 height = 100 }} format = "LEFT" }}')
+  rows=[(720+i*320) for i in range(len(design.BRANCHES))] if folder==FOLDER else [(360+i*320) for i in range(len(design.programmes.PROGRAMMES))]
+  bands=[f'containerWindowType = {{ name = "hro_band_{index}_{i}" position = {{ x = 10 y = {row-120} }} size = {{ width = 1090 height = 310 }} background = {{ name = "Background" quadTextureSprite = "GFX_tiled_research_bg" }} }}' for i,row in enumerate(rows)]
+  content=bands+content
+  content.extend(captions[folder])
+  panels.append(f'''containerWindowType = {{ name = "{folder}" position = {{ x = 0 y = 47 }} size = {{ width = 100%% height = 100%% }}
+   margin = {{ top = 13 left = 13 bottom = 24 right = 25 }} drag_scroll = {{ left middle }}
+   verticalScrollbar = "right_vertical_slider" horizontalScrollbar = "bottom_horizontal_slider" scroll_wheel_factor = 40
+   background = {{ name = "Background" quadTextureSprite = "GFX_tiled_window_2b_border" }}
+   containerWindowType = {{ name = "hro_extent_{index}" position = {{ x = 0 y = 0 }} size = {{ width = 1160 height = {height} min = {{ width = 100%% height = 100%% }} }} clipping = no }}
+   {' '.join(content)}
+  }}''')
+  tabs_added.append(f'buttonType = {{ name = "{folder}_tab" position = {{ x = {823+index*89} y = 0 }} quadTextureSprite = "'+('GFX_armour_folder_tab' if index==0 else 'GFX_techtree_engineering_tab')+f'" frame = 1 clicksound = ui_research_tab_support pdx_tooltip = "{folder}" }}')
+ panel='\n'.join(panels);tab='\n'.join(tabs_added)
  # Vanilla naming conventions let the engine bind research nodes and their
  # researched/current/available states to these templates.
  templates=[]
- for size in ('item','small_item'):
+ for folder,size in [(folder,size) for folder in FOLDERS for size in ('item','small_item')]:
   node=named(root.value,'techtree_support_folder_'+size)
-  fragment=source[node.start:node.end].replace('techtree_support_folder_'+size,'techtree_'+FOLDER+'_'+size)
+  fragment=source[node.start:node.end].replace('techtree_support_folder_'+size,'techtree_'+folder+'_'+size)
   # Both templates use the actual Cyrillic-capable vanilla font. Full
   # cards retain native research-state and bonus bindings.
   fragment=fragment.replace('"hoi_20bs"','"hoi_16mbs"')
@@ -160,7 +195,7 @@ def author_ui(output,game,roots,icons):
    parsed=parse(fragment)[0];changes=[]
    for child in parsed.value:
     if child.scalar('name','').strip('"')=='Name':
-     if field:=child.one('maxHeight'):changes.append((field.start,field.end,'maxHeight = 36'))
+     changes.append((child.value_end-1,child.value_end-1,' hide = yes '))
     if child.scalar('name','').strip('"')=='Icon':
      if field:=child.one('position'):changes.append((field.start,field.end,'position = { x = 90 y = 60 }'))
      changes.append((child.value_end-1,child.value_end-1,' scale = 0.7 '))
@@ -181,7 +216,7 @@ def author_ui(output,game,roots,icons):
   if name not in sprites:raise ValueError('Vanilla research sprite missing: '+name)
   definitions.append(f'spriteType = {{ name = "GFX_{tech}_medium" texturefile = {sprites[name]} }}')
  (output/'interface/hro_research_icons.gfx').write_text('spriteTypes = {\n'+'\n'.join(definitions)+'\n}')
- return dict(source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),folder=FOLDER,root_grids=len(roots),sprite_aliases=len(icons),vanilla_gui_preserved_outside_insertions=True)
+ return dict(explicit_name_captions=sum(len(v) for v in captions.values()),integer_grid_coordinates=True,folders=list(FOLDERS),source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),folder=FOLDER,root_grids=len(roots),sprite_aliases=len(icons),vanilla_gui_preserved_outside_insertions=True)
 
 
 def audit_interface_encoding(output):
@@ -204,7 +239,7 @@ def audit(output,game,catalogs,schema_dir=None):
  names={n.scalar('name','').strip('"') for n in walk(gui) if isinstance(n.value,list)}
  targets={n.value for t in techs.values() for n in walk(t.value) if n.key=='leads_to_tech'}
  for k,t in techs.items():
-  if t.one('folder') and t.one('folder').scalar('name')!=FOLDER:errors.append('Missing research folder: '+k)
+  if t.one('folder') and t.one('folder').scalar('name') not in FOLDERS:errors.append('Missing research folder: '+k)
   if t.one('folder') and k not in targets and k+'_tree' not in names:errors.append('Missing root grid: '+k)
   if not t.one('folder') and (t.one('allow') is None or t.one('allow').scalar('always')!='no'):errors.append('Legacy technology became researchable: '+k)
   if float(t.scalar('research_cost','0'))<=0:errors.append('Research must cost time: '+k)
@@ -243,7 +278,7 @@ def audit(output,game,catalogs,schema_dir=None):
  def signature(nodes):
   result=[]
   for n in nodes:
-   if isinstance(n.value,list) and n.scalar('name','').strip('"') in {FOLDER,FOLDER+'_tab','techtree_'+FOLDER+'_item','techtree_'+FOLDER+'_small_item'}:continue
+   if isinstance(n.value,list) and n.scalar('name','').strip('"') in {v for f in FOLDERS for v in (f,f+'_tab','techtree_'+f+'_item','techtree_'+f+'_small_item')}:continue
    result.append((n.key,n.op,signature(n.value) if isinstance(n.value,list) else n.value))
   return result
  native=parse((Path(game)/'interface/countrytechtreeview.gui').read_text(encoding='utf-8-sig'))
@@ -303,7 +338,7 @@ def audit(output,game,catalogs,schema_dir=None):
    if n.key in ('bitmapfont','bitmapfont_override'):
     name=n.scalar('name','').strip('"');fonts[name]=n
     if any('cryllic' in str(v.value).lower() or 'cyrillic' in str(v.value).lower() for v in walk(n.value)):cyrillic.add(name)
- owned=[n for n in walk(gui) if isinstance(n.value,list) and n.scalar('name','').strip('"') in (FOLDER,'techtree_'+FOLDER+'_item','techtree_'+FOLDER+'_small_item')]
+ owned=[n for n in walk(gui) if isinstance(n.value,list) and n.scalar('name','').strip('"') in {v for f in FOLDERS for v in (f,'techtree_'+f+'_item','techtree_'+f+'_small_item')}]
  for container in owned:
   for n in walk(container.value):
    if n.key=='font':
@@ -316,15 +351,25 @@ def audit(output,game,catalogs,schema_dir=None):
  def place(k,root):
   t=techs[k];position=t.one('folder').one('position');grid=grids[root].one('position')
   xy=(float(grid.scalar('x'))+float(position.scalar('y'))*100-56,float(grid.scalar('y'))+float(position.scalar('x'))*100-7)
-  placements[k]=xy
+  placements[k]=(t.one('folder').scalar('name'),*xy)
   for path in t.all('path'):place(path.scalar('leads_to_tech'),root)
  for k,t in techs.items():
   if t.one('folder') and k not in targets and k in grids:place(k,k)
  for tag in ('ger','sov'):
   boxes=[(k,xy) for k,xy in placements.items() if not k.startswith('hro_tech_'+('sov' if tag=='ger' else 'ger')+'_')]
-  for i,(k,(x,y)) in enumerate(boxes):
-   for other,(xx,yy) in boxes[i+1:]:
-    if abs(x-xx)<183 and abs(y-yy)<96:errors.append('Overlapping research cards: '+k+' / '+other)
+  for i,(k,(f,x,y)) in enumerate(boxes):
+   for other,(ff,xx,yy) in boxes[i+1:]:
+    if f==ff and abs(x-xx)<183 and abs(y-yy)<96:errors.append('Overlapping research cards: '+k+' / '+other)
+ for k,t in techs.items():
+  if folder:=t.one('folder'):
+   for v in folder.one('position').value:
+    if float(v.value)!=int(float(v.value)):errors.append('Fractional technology grid coordinate: '+k)
+ captions={n.scalar('text','').strip('"'):n for n in walk(gui) if n.key=='instantTextBoxType' and n.scalar('name','').strip('"').startswith('hro_caption_')}
+ for k,(f,x,y) in placements.items():
+  canonical=k.replace('hro_tech_sov_','hro_tech_ger_')
+  c=captions.get(k,captions.get(canonical))
+  if c is None:errors.append('Missing explicit technology name: '+k)
+  elif float(c.one('position').scalar('x'))!=x+6 or float(c.one('position').scalar('y'))!=y+4:errors.append('Technology caption does not align: '+k)
  module_report=design.audit(output,game,schema_dir)
  if errors:raise ValueError('\n'.join(errors))
  return dict(technologies=len(techs),converted_modifiers_exact=True,root_bindings_checked=True,exclusive_schools_checked=True,school_focuses_do_not_grant_technologies=True,interface_bom_free=True,research_bonus_categories_checked_against_game=True,cyrillic_fonts_checked=True,card_layout_checked=True,modules=module_report)

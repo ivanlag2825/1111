@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 from clausewitz import parse,walk,edit
 from generate_frontier import script
+import generate_module_programmes as programmes
 
 # Every row is independent; its two specialisations are mutually exclusive.
 # Base, specialisation and capstone effects are incremental, not full totals.
@@ -39,6 +40,7 @@ MODULES={
  'hro_gyro_sight':dict(ru='Гироскопический прицел',en='Gyroscopic Gunsight',category='plane_special_module_small',gfx='armor_plate_small',dlc='By Blood Alone',add={'build_cost_ic':1.5,'weight':1,'air_attack':2},mult={'air_agility':-.02},reason='Поправка на упреждение повышает результативность огня; прибор добавляет массу.',reason_en='Lead calculation improves fire effectiveness; the instrument adds weight.'),
  'hro_cockpit_armor':dict(ru='Защита кабины и маслосистемы',en='Cockpit and Oil-System Protection',category='plane_special_module_small',gfx='armor_plate_small',dlc='By Blood Alone',add={'build_cost_ic':2,'weight':2,'air_defence':5},mult={'air_range':-.05},reason='Прикрытие жизненно важных узлов повышает живучесть ценой массы и дальности.',reason_en='Protecting vital components improves survival at a cost in weight and range.'),
 }
+MODULES.update(programmes.MODULES)
 STAT_NAMES={
  'breakthrough':('Прорыв','Breakthrough'),'maximum_speed':('Скорость','Speed'),'armor_value':('Броня','Armour'),
  'soft_attack':('Противопехотная атака','Soft attack'),'hard_attack':('Противотанковая атака','Hard attack'),
@@ -46,7 +48,7 @@ STAT_NAMES={
  'supply_consumption_factor':('Расход припасов','Supply consumption'),'air_attack':('Воздушная атака','Air attack'),
  'air_agility':('Манёвренность','Agility'),'air_range':('Дальность','Range'),'air_defence':('Воздушная защита','Air defence'),
  'air_ground_attack':('Атака наземных целей','Ground attack'),'build_cost_ic':('Стоимость производства','Production cost'),
- 'reliability':('Надёжность','Reliability'),'weight':('Масса','Weight'),
+ 'reliability':('Надёжность','Reliability'),'weight':('Масса','Weight'),'thrust':('Тяга','Thrust'),'fuel_consumption':('Расход топлива оборудования','Equipment fuel consumption'),
 }
 
 def describe_stats(stats,lang,percentage=True):
@@ -57,17 +59,17 @@ def definitions():
  for key,b in BRANCHES.items():
   prefix='hro_design_'+key
   result.append(dict(id=prefix+'_base',branch=key,year=1938,pos=(0,0),parents=(b['prereq'],),children=(prefix+'_a',prefix+'_b'),stats=b['base'],ru={'light':'Школа лёгких танков','medium':'Школа средних танков','heavy':'Школа тяжёлых танков','spg':'Школа САУ','td':'Школа ПТ-САУ','fighter':'Школа истребителей','cas':'Школа штурмовиков'}[key],en=b['en']+': Foundations',reason='Испытания и обучение экипажей создают основу специализированной школы.',reason_en='Trials and crew training establish the foundation of a specialised school.',modules=()))
-  for side,x in [('a',-.8),('b',.8)]:
+  for side,x in [('a',-1),('b',1)]:
    c=b[side];other='b' if side=='a' else 'a'
-   result.append(dict(id=prefix+'_'+side,branch=key,year=1940,pos=(x,3.4),parents=(prefix+'_base',),children=(prefix+'_'+side+'2',),xor=prefix+'_'+other,stats=c['stats'],ru=c['ru'],en=c['en'],reason=c['reason'],reason_en=c['reason_en'],modules=c['modules']))
-   result.append(dict(id=prefix+'_'+side+'2',branch=key,year=1943,pos=(x,6.8),parents=(prefix+'_'+side,),children=(),stats=c['capstats'],ru=c['capru'],en=c['capen'],reason=c['reason'],reason_en=c['reason_en'],modules=c['capmodules']))
+   result.append(dict(id=prefix+'_'+side,branch=key,year=1940,pos=(x,3),parents=(prefix+'_base',),children=(prefix+'_'+side+'2',),xor=prefix+'_'+other,stats=c['stats'],ru=c['ru'],en=c['en'],reason=c['reason'],reason_en=c['reason_en'],modules=c['modules']))
+   result.append(dict(id=prefix+'_'+side+'2',branch=key,year=1943,pos=(x,6),parents=(prefix+'_'+side,),children=(),stats=c['capstats'],ru=c['capru'],en=c['capen'],reason=c['reason'],reason_en=c['reason_en'],modules=c['capmodules']))
  return result
 
 
 def generate(output,put,text):
  techs=[];roots=[];icons={};unlocks={}
  for index,(key,b) in enumerate(BRANCHES.items()):
-  roots.append(('hro_design_'+key+'_base',250,680+index*270))
+  roots.append(('hro_design_'+key+'_base',250,720+index*320))
   text('hro_design_row_'+key,b['ru'].upper(),b['en'].upper())
  for t in definitions():
   b=BRANCHES[t['branch']];identity=t['id'];x,y=t['pos']
@@ -91,14 +93,16 @@ def generate(output,put,text):
   text(identity,t['ru'],t['en'])
   text(identity+'_desc',t['reason']+' '+describe_stats(t['stats'],'russian')+'. Прибавки ступеней складываются. Эффект относится только к указанному типу батальона или авиакрыла; это не общий бонус всей армии.'+suffix_ru,t['reason_en']+' '+describe_stats(t['stats'],'english')+'. Stage increments stack. Effects apply only to the listed battalion or wing type, not the whole army.'+suffix_en)
   icons[identity]=b['icon']
+ new_techs,new_roots,new_icons,new_unlocks=programmes.generate(put,text,describe_stats)
+ techs.extend(new_techs);roots.extend(new_roots);icons.update(new_icons);unlocks.update(new_unlocks)
  assert set(unlocks)==set(MODULES)
  for dlc,filename in [('No Step Back','tank'),('By Blood Alone','air')]:
   modules=[]
   for k,m in MODULES.items():
    if m['dlc']!=dlc:continue
-   modules.append(f'{k} = {{ abbreviation = "HRO" category = {m["category"]} gfx = {m["gfx"]} sfx = sfx_ui_sd_module_turret xp_cost = 2 add_stats = {{ {script(m["add"])} }} multiply_stats = {{ {script(m["mult"])} }} }}')
+   modules.append(f'{k} = {{ abbreviation = "HRO" category = {m["category"]} gfx = {m["gfx"]} sfx = sfx_ui_sd_module_turret xp_cost = 2 add_stats = {{ {script(m["add"])} }} multiply_stats = {{ {script(m["mult"])} }} {m.get("extras", "")} }}')
    text(k,m['ru'],m['en'])
-   text(k+'_desc',m['reason']+' '+describe_stats(m['add'],'russian',False)+'. Процентные модификаторы: '+describe_stats(m['mult'],'russian')+'. Устанавливается вручную в конструкторе; исследование не меняет готовые проекты.',m['reason_en']+' '+describe_stats(m['add'],'english',False)+'. Percentage modifiers: '+describe_stats(m['mult'],'english')+'. Install manually in the designer; research does not change existing designs.')
+   text(k+'_desc',m['reason']+' '+describe_stats(m['add'],'russian',False)+'. '+('Процентные модификаторы: '+describe_stats(m['mult'],'russian')+'. ' if m['mult'] else '')+'Устанавливается вручную в конструкторе; исследование не меняет готовые проекты.',m['reason_en']+' '+describe_stats(m['add'],'english',False)+'. '+('Percentage modifiers: '+describe_stats(m['mult'],'english')+'. ' if m['mult'] else '')+'Install manually in the designer; research does not change existing designs.')
   put(f'common/units/equipment/modules/hro_{filename}_modules.txt','equipment_modules = { limit = { has_dlc = "'+dlc+'" }\n'+'\n'.join(modules)+'\n}')
  return techs,roots,icons,unlocks
 
@@ -110,10 +114,13 @@ def audit(output,game,schema_dir=None):
   for root in parse(p.read_text(encoding='utf-8-sig')):
    if root.key=='equipment_modules':native.update({n.key:n for n in root.value if n.key!='limit'})
  categories={n.scalar('category') for n in native.values()}
+ for m in native.values():
+  for n in walk(m.value):
+   if n.key=='allowed_module_categories':slots.update(v.value for v in walk(n.value) if v.key is None and isinstance(v.value,str))
  for p in (game/'common/units/equipment').glob('*.txt'):
   for n in walk(parse(p.read_text(encoding='utf-8-sig'))):
    if n.key=='allowed_module_categories':
-    slots.update(v.value for v in n.value if isinstance(v.value,str))
+    slots.update(v.value for v in walk(n.value) if v.key is None and isinstance(v.value,str))
  for filename in ('tank_modules_icons.gfx','plane_modules_icons.gfx'):
   p=game/'interface'/filename
   if p.is_file():
@@ -141,7 +148,7 @@ def audit(output,game,schema_dir=None):
  if schema_dir:
   import re
   schema='\n'.join(p.read_text(encoding='utf-8-sig') for p in (Path(schema_dir)/'Config').rglob('*.cwt'))
-  stats=set(re.findall(r'alias\[(?:unit_stat|air_stat|naval_stat):([A-Za-z_][A-Za-z0-9_]*)\]',schema))|{'weight','build_cost_ic','reliability','air_defence'}
+  stats=set(re.findall(r'alias\[(?:unit_stat|air_stat|naval_stat):([A-Za-z_][A-Za-z0-9_]*)\]',schema))|{v.key for m in native.values() for k in ('add_stats','multiply_stats') for b in m.all(k) for v in b.value}|{'weight','build_cost_ic','reliability','air_defence'}
   for k,m in modules.items():
    for block in ('add_stats','multiply_stats'):
     for stat in m.one(block).value:
@@ -163,7 +170,8 @@ def module_limits(output,game):
     slots=[n for n in item.all('module_slots') if isinstance(n.value,list)]
     if not slots:continue
     categories={v.value for slot in slots for n in walk(slot.value) if n.key=='allowed_module_categories' for v in n.value if isinstance(v.value,str)}
-    applicable=[k for k,m in MODULES.items() if m['category'] in categories]
+    main_slot=any(slot.key=='main_armament_slot' for block in slots for slot in block.value)
+    applicable=[k for k,m in MODULES.items() if m['category'] in categories or (main_slot and m['category']=='tank_medium_main_armament')]
     if not applicable:continue
     blocks=' '.join(f'module_count_limit = {{ module = {k} count < 2 }}' for k in applicable)
     changes.append((item.value_end-1,item.value_end-1,' '+blocks+' '));identities.append(item.key)
@@ -189,7 +197,7 @@ def audit_limits(output,game):
     if not slots:continue
     categories={v.value for slot in slots for n in walk(slot.value) if n.key=='allowed_module_categories' for v in n.value if isinstance(v.value,str)}
     for k,m in MODULES.items():
-     if m['category'] not in categories:continue
+     if m['category'] not in categories and not (m['category']=='tank_medium_main_armament' and any(slot.key=='main_armament_slot' for block in slots for slot in block.value)):continue
      limits=[n for n in item.all('module_count_limit') if n.scalar('module')==k]
      if len(limits)!=1 or limits[0].one('count').op!='<' or limits[0].scalar('count')!='2':raise ValueError('Missing one-per-design limit: '+item.key+'/'+k)
      count+=1
@@ -204,7 +212,7 @@ def preview(output):
  """
  from html import escape
  import textwrap
- output=Path(output);items=['<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="2500" viewBox="0 0 1160 2500">','<rect width="1160" height="2500" fill="#171c20"/>','<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#c2ae70"/></marker></defs>']
+ output=Path(output);items=['<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="2920" viewBox="0 0 1160 2920">','<rect width="1160" height="2920" fill="#171c20"/>','<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#c2ae70"/></marker></defs>']
  def text(x,y,value,size=17,color='#e9e6d8'):
   items.append(f'<text x="{x}" y="{y}" fill="{color}" font-family="DejaVu Sans, sans-serif" font-size="{size}">{escape(value)}</text>')
  def card(x,y,name,year):
@@ -218,15 +226,15 @@ def preview(output):
  for x,y,name in [(194,203,'Штурм городов'),(534,203,'Лесная война'),(194,363,'Форсирование рек'),(534,363,'Дальние марши')]:card(x,y,name,'Выбор школы')
  text(407,260,'ИЛИ',17,'#d59081');text(407,420,'ИЛИ',17,'#d59081')
  text(30,535,'РАЗВИТИЕ ТЕХНИКИ',22)
- for x,title in [(194,'1938 — ОСНОВЫ'),(534,'1940 — ВЫБОР'),(874,'1943 — РАЗВИТИЕ')]:text(x,580,title,16)
+ for x,title in [(194,'1938 — ОСНОВЫ'),(494,'1940 — ВЫБОР'),(794,'1943 — РАЗВИТИЕ')]:text(x,580,title,16)
  lookup={t['id']:t for t in definitions()}
  for index,(key,b) in enumerate(BRANCHES.items()):
-  y=680+index*270-7;prefix='hro_design_'+key
+  y=720+index*320-7;prefix='hro_design_'+key
   for i,line in enumerate(textwrap.wrap(b['ru'].upper(),width=15)):text(20,y+35+i*22,line,15)
   card(194,y,lookup[prefix+'_base']['ru'],1938)
-  for side,offset in [('a',-80),('b',80)]:
+  for side,offset in [('a',-100),('b',100)]:
    t=lookup[prefix+'_'+side];cap=lookup[prefix+'_'+side+'2']
-   card(534,y+offset,t['ru'],1940);card(874,y+offset,cap['ru'],1943)
-   arrow(382,y+48,526,y+offset+48);arrow(722,y+offset+48,866,y+offset+48)
-  text(600,y+52,'ИЛИ',15,'#d59081')
+   card(494,y+offset,t['ru'],1940);card(794,y+offset,cap['ru'],1943)
+   arrow(382,y+48,486,y+offset+48);arrow(682,y+offset+48,786,y+offset+48)
+  text(560,y+52,'ИЛИ',15,'#d59081')
  items.append('</svg>');p=output/'preview/research.svg';p.parent.mkdir(parents=True,exist_ok=True);p.write_text('\n'.join(items))

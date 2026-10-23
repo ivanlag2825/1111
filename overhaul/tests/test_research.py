@@ -6,8 +6,9 @@ sys.path[:0]=[str(ROOT/'overhaul/tools'),str(ROOT/'tools')]
 from clausewitz import parse,walk
 from build_overhaul import author_country_content,read_catalogs
 from generate_frontier import generate as frontier_generate,SCHOOLS
-from generate_research import generate,audit,converted,CHAINS,YEARS,FOLDER
+from generate_research import generate,audit,converted,CHAINS,YEARS,FOLDER,MODULE_FOLDER
 from generate_design_schools import BRANCHES,MODULES,definitions
+from generate_module_programmes import PROGRAMMES,MODULES as EXTRA_MODULES
 from test_frontier import FrontierRuntime
 import test_frontier
 from generate_war_adaptation import generate as war_generate
@@ -32,7 +33,7 @@ def fixture_game(game):
   (interface/f'{kind}_modules_icons.gfx').write_text('spriteTypes = { '+' '.join('spriteType = { name = "GFX_EMI_'+n+'" }' for n in names)+' }')
  modules=game/'common/units/equipment/modules';modules.mkdir(parents=True)
  (modules/'fixture.txt').write_text('equipment_modules = { '+' '.join(n+' = { category = '+m['category']+' }' for n,m in MODULES.items())+' }')
- (modules.parent/'fixture.txt').write_text('equipments = { base_tank = { is_archetype = yes module_slots = { special = { allowed_module_categories = { tank_special_module tank_radio_module } } } } base_plane = { is_archetype = yes module_slots = { special = { allowed_module_categories = { plane_special_module_small } } } } }')
+ (modules.parent/'fixture.txt').write_text('equipments = { base_tank = { is_archetype = yes module_slots = { special = { allowed_module_categories = { '+' '.join(sorted({m['category'] for m in MODULES.values() if m['dlc']=='No Step Back'}))+' } } } } base_plane = { is_archetype = yes module_slots = { special = { allowed_module_categories = { '+' '.join(sorted({m['category'] for m in MODULES.values() if m['dlc']=='By Blood Alone'}))+' } } } } }')
  (interface/'Technologies.gfx').write_text('spriteTypes = { '+' '.join(f'spriteType = {{ name = "GFX_{i}_medium" texturefile = "gfx/interface/technologies/{i}.dds" }}' for i in icons)+' }')
  units=game/'common/units';units.mkdir(parents=True,exist_ok=True)
  (units/'fixture.txt').write_text('sub_units = { '+' '.join(i+' = {}' for i in {'infantry','engineer','motorized','mechanized','logistics_company','maintenance_company','field_hospital'}|{u for b in BRANCHES.values() for u in b['units']})+' }')
@@ -70,12 +71,12 @@ class ResearchTests(unittest.TestCase):
   if effect:=self.techs[k].one('on_research_complete'):self.r.execute(effect.value,s)
  def test_full_generated_contract(self):
   report=audit(self.p,self.game,self.catalogs)
-  self.assertEqual(report['technologies'],67);self.assertEqual(self.report['visible_per_country'],39);self.assertEqual(report['modules']['modules'],6)
- def test_every_country_has_39_research_nodes_and_foreign_reforms_are_inaccessible(self):
+  self.assertEqual(report['technologies'],106);self.assertEqual(self.report['visible_per_country'],78);self.assertEqual(report['modules']['modules'],36)
+ def test_every_country_has_78_research_nodes_and_foreign_reforms_are_inaccessible(self):
   for tag in ('GER','SOV'):
    s=self.state(tag)
    visible=[t.key for t in self.techs.values() if t.one('folder') and self.r.condition(t.one('allow_branch').value,s)]
-   self.assertEqual(len(visible),39)
+   self.assertEqual(len(visible),78)
    self.assertFalse(any('_'+('sov' if tag=='GER' else 'ger')+'_' in k for k in visible))
   s=self.state('FRA');self.assertFalse(any(t.one('folder') and self.r.condition(t.one('allow_branch').value,s) for t in self.techs.values()))
  def test_new_campaign_and_completed_focus_do_not_grant_research(self):
@@ -122,10 +123,10 @@ class ResearchTests(unittest.TestCase):
     other='b' if side=='a' else 'a';self.assertFalse(self.researchable(prefix+'_'+other,s));self.assertFalse(self.researchable(prefix+'_'+other+'2',s))
  def test_module_unlocks_require_specific_research_and_retain_production_tradeoffs(self):
   unlocks={m.value:t.key for t in self.techs.values() if t.one('enable_equipment_modules') for m in t.one('enable_equipment_modules').value}
-  self.assertEqual(len(unlocks),6);self.assertEqual(set(unlocks),set(MODULES))
+  self.assertEqual(len(unlocks),36);self.assertEqual(set(unlocks),set(MODULES))
   for k,m in MODULES.items():
    self.assertGreater(m['add']['build_cost_ic'],0)
-   self.assertTrue(unlocks[k].startswith('hro_design_'))
+   self.assertTrue(unlocks[k].startswith(('hro_design_','hro_modtech_')))
  def test_research_completion_removes_legacy_spirit_in_same_effect(self):
   r=self.records[0];s=self.state(r['tag']);s['ideas'].add(r['idea']['id'])
   self.r.call('hro_set_'+r['idea']['id'],s)
@@ -175,5 +176,41 @@ class ResearchTests(unittest.TestCase):
  def test_constructor_limit_prevents_duplicate_modules_without_changing_native_stats(self):
   p=self.p/'common/units/equipment/fixture.txt';p.write_text(p.read_text().replace('module = hro_applique_armor count < 2','module = hro_applique_armor count < 5'))
   with self.assertRaisesRegex(ValueError,'Missing one-per-design limit'):audit(self.p,self.game,self.catalogs)
+ def test_thirty_extra_modules_have_genuine_categories_and_costs(self):
+  self.assertEqual(len(EXTRA_MODULES),30);self.assertEqual(len(MODULES),36)
+  self.assertGreaterEqual(len({m['category'] for m in EXTRA_MODULES.values()}),7)
+  self.assertTrue(any(m['category']=='tank_armor_type' for m in EXTRA_MODULES.values()))
+  self.assertTrue(any(m['category']=='tank_engine_type' for m in EXTRA_MODULES.values()))
+ def test_each_tab_has_its_own_visible_39_nodes(self):
+  s=self.state()
+  for folder in (FOLDER,MODULE_FOLDER):
+   nodes=[t for t in self.techs.values() if t.one('folder') and t.one('folder').scalar('name')==folder and self.r.condition(t.one('allow').value,s)]
+   self.assertEqual(len(nodes),39)
+ def test_module_research_choices_cannot_unlock_the_opposite_line(self):
+  for key,p in PROGRAMMES.items():
+   for side in ('a','b'):
+    prefix='hro_modtech_'+key;s=self.state();s['techs'].add(p['prereq']);self.finish(prefix+'_base',s);self.finish(prefix+'_'+side,s)
+    if p[side+'2']:self.finish(prefix+'_'+side+'2',s)
+    other='a' if side=='b' else 'b';self.assertFalse(self.researchable(prefix+'_'+other,s))
+    unlocked={m.value for k in s['techs'] if k in self.techs and self.techs[k].one('enable_equipment_modules') for m in self.techs[k].one('enable_equipment_modules').value}
+    self.assertIn(p[side],unlocked);self.assertNotIn(p[other],unlocked)
+    if p[side+'2']:self.assertIn(p[side+'2'],unlocked)
+ def test_all_visible_cards_have_explicit_captions_instead_of_dynamic_name_binding(self):
+  gui=parse((self.p/'interface/countrytechtreeview.gui').read_text())
+  captions=[n for n in walk(gui) if n.key=='instantTextBoxType' and n.scalar('name','').strip('"').startswith('hro_caption_')]
+  self.assertEqual(len(captions),78)
+  for n in captions:self.assertEqual(n.scalar('alwaystransparent'),'yes');self.assertIn(n.scalar('text').strip('"'),self.techs)
+ def test_fractional_coordinates_fail_even_if_the_parser_accepts_them(self):
+  p=self.p/'common/technologies/hro_front_developments.txt';p.write_text(p.read_text().replace('x = -1 y = 3','x = -0.8 y = 3'))
+  with self.assertRaisesRegex(ValueError,'Fractional technology grid coordinate'):audit(self.p,self.game,self.catalogs)
+ def test_missing_visible_card_caption_fails_the_release(self):
+  p=self.p/'interface/countrytechtreeview.gui';p.write_text(p.read_text().replace('text = "hro_design_light_base"','text = "missing_caption"'))
+  with self.assertRaisesRegex(ValueError,'Missing explicit technology name'):audit(self.p,self.game,self.catalogs)
+ def test_native_name_binding_remains_present_but_hidden_in_full_card_templates(self):
+  gui=parse((self.p/'interface/countrytechtreeview.gui').read_text())[0]
+  for folder in (FOLDER,MODULE_FOLDER):
+   template=next(n for n in gui.value if n.scalar('name','').strip('"')=='techtree_'+folder+'_item')
+   name=next(n for n in template.value if n.scalar('name','').strip('"')=='Name')
+   self.assertEqual(name.scalar('hide'),'yes')
 
 if __name__=='__main__':unittest.main()

@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "runtime_verified": false,
   "new_focus_counts": {
     "GER": 84,
@@ -22,7 +22,7 @@
     "idea_families": 76,
     "events": 59,
     "decisions": 152,
-    "localisation_keys_per_language": 2244,
+    "localisation_keys_per_language": 2395,
     "prerequisite_checks": "all native and authored AND/OR paths, exclusions, cycles; declared core milestones cannot be skipped",
     "family_checks": "bounded budgets and executable upgrade-only setter contracts",
     "schema_keyword_audit": true,
@@ -248,18 +248,18 @@
       }
     }
   },
-  "archive": "dist/schools.zip",
-  "sha256": "b4485f34e96a52b53980a54639636e689e69a806a1f782d6db1e435754622aaf",
-  "bytes": 750253,
+  "archive": "dist/modules.zip",
+  "sha256": "886bfbe3b07f593810f7d2567df3dcc49799811c2a182a3496e3604d7b290018",
+  "bytes": 770138,
   "native_focus_ids_preserved": 749,
   "native_prerequisite_rewrites": 74,
   "german_native_focuses_shortened": 372,
   "german_native_duration_factor": 0.7,
   "tests": {
-    "overhaul": 308
+    "overhaul": 315
   },
-  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-design-schools/dist/schools.zip",
-  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-research-crashfix/dist/researchfix.zip",
+  "download": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-constructor-programmes/dist/modules.zip",
+  "previous_release": "https://github.com/ivanlag2825/1111/raw/refs/heads/mod-design-schools/dist/schools.zip",
   "old_archives_unchanged": {
     "mod": "282bacdc68271ed69fb6766ff41e7aa849b08856188825d99889c432778c5c9f",
     "overhaul": "55948681b74e8d8ec8419fbd787545393fefe9ca97bc351ac61189b9c27aea00",
@@ -284,7 +284,8 @@
     "blitzkrieg": "5a7b9514d335657c077beffbf944f9495bb9de9d8b96f35cd0c4944b4f1e17bf",
     "frontier": "974491b17d44283c14c7861089a88028db38a3962fbf29815a43738da4d0486f",
     "research": "cf3ec009c396514edbb1d73fba980ee102b5d5b2d3f561b5f94c8dbd60351b90",
-    "researchfix": "85aa9f040f630ebe3590b3c91d52974812e9907a5d2e31cb0ada5556885d7891"
+    "researchfix": "85aa9f040f630ebe3590b3c91d52974812e9907a5d2e31cb0ada5556885d7891",
+    "schools": "b4485f34e96a52b53980a54639636e689e69a806a1f782d6db1e435754622aaf"
   },
   "saved_game_update": {
     "from_versions": [
@@ -306,7 +307,8 @@
       "1.3.0",
       "1.4.0",
       "1.5.0",
-      "1.5.1"
+      "1.5.1",
+      "1.6.0"
     ],
     "full_restart_required": true,
     "finish_current_focus_before_update": true,
@@ -330,7 +332,10 @@
     "technical_spirits_migrate_to_researched_technologies": true,
     "visible_school_and_design_technologies_require_research": true,
     "technical_focuses_grant_hidden_permanent_effects": true,
-    "retired_support_technology_ids_kept_without_effects": true
+    "retired_support_technology_ids_kept_without_effects": true,
+    "can_continue_160": true,
+    "old_six_module_definitions_unchanged": true,
+    "existing_research_ids_retained": true
   },
   "decision_presentation": {
     "numeric_programmes": 36,
@@ -560,7 +565,7 @@
       "hro_ger_warfactory_clusters": "1939-06-07T00:00:00",
       "hro_ger_decentralized_arsenals": "1939-04-19T00:00:00"
     },
-    "schedule_file": "docs/GER_TIMETABLE_160.json"
+    "schedule_file": "docs/GER_TIMETABLE_170.json"
   },
   "native_military": {
     "native_focuses": 59,
@@ -801,14 +806,17 @@
     "uploaded_research_gui_sha256": "fec641fb738ab59369cac40ae902fdba793bed7cbaa2c807756207a2e1f01045"
   },
   "research": {
-    "technologies": 67,
-    "visible_technologies": 43,
-    "visible_per_country": 39,
-    "maximum_researched_per_country": 23,
+    "technologies": 106,
+    "visible_technologies": 82,
+    "visible_per_country": 78,
+    "maximum_researched_per_country": 47,
     "schools": 8,
     "design_schools": 7,
     "design_technologies": 35,
-    "designer_modules": 6,
+    "designer_modules": 36,
+    "new_module_programmes": 9,
+    "module_programme_technologies": 39,
+    "new_designer_modules": 30,
     "retired_support_technologies": 12,
     "hidden_focus_reforms": 12,
     "removed_active_spirits_per_country": 6,
@@ -821,10 +829,16 @@
     "research_slots": true,
     "school_focus_auto_grant": false,
     "ui": {
+      "explicit_name_captions": 78,
+      "integer_grid_coordinates": true,
+      "folders": [
+        "hro_front_folder",
+        "hro_module_folder"
+      ],
       "source_sha256": "fec641fb738ab59369cac40ae902fdba793bed7cbaa2c807756207a2e1f01045",
       "folder": "hro_front_folder",
-      "root_grids": 15,
-      "sprite_aliases": 43,
+      "root_grids": 24,
+      "sprite_aliases": 82,
       "vanilla_gui_preserved_outside_insertions": true
     },
     "module_unlocks": {
@@ -833,7 +847,37 @@
       "hro_optical_rangefinder": "hro_design_td_a",
       "hro_protected_rack": "hro_design_td_b",
       "hro_gyro_sight": "hro_design_fighter_a2",
-      "hro_cockpit_armor": "hro_design_cas_b"
+      "hro_cockpit_armor": "hro_design_cas_b",
+      "hro_face_hardened": "hro_modtech_armor_a",
+      "hro_spaced_screens": "hro_modtech_armor_a2",
+      "hro_homogeneous": "hro_modtech_armor_b",
+      "hro_reinforced_plate": "hro_modtech_armor_b2",
+      "hro_long_travel": "hro_modtech_suspension_a",
+      "hro_field_tracks": "hro_modtech_suspension_a2",
+      "hro_rugged_torsion": "hro_modtech_suspension_b",
+      "hro_wide_tracks": "hro_modtech_suspension_b2",
+      "hro_boosted_petrol": "hro_modtech_engine_a",
+      "hro_improved_cooling": "hro_modtech_engine_a2",
+      "hro_economy_diesel": "hro_modtech_engine_b",
+      "hro_fuel_metering": "hro_modtech_engine_b2",
+      "hro_spall_liner": "hro_modtech_protection_a",
+      "hro_roof_armor": "hro_modtech_protection_a2",
+      "hro_fire_suppression": "hro_modtech_protection_b",
+      "hro_separated_stowage": "hro_modtech_protection_b2",
+      "hro_supercharged_motor": "hro_modtech_airengine_a",
+      "hro_emergency_boost": "hro_modtech_airengine_a2",
+      "hro_cruise_motor": "hro_modtech_airengine_b",
+      "hro_aero_cowling": "hro_modtech_airengine_b2",
+      "hro_light_cockpit": "hro_modtech_airsurvival_a",
+      "hro_armored_oil": "hro_modtech_airsurvival_a2",
+      "hro_sealed_cells": "hro_modtech_airsurvival_b",
+      "hro_drop_tank_system": "hro_modtech_airsurvival_b2",
+      "hro_high_velocity_75": "hro_modtech_cannon_a",
+      "hro_support_75": "hro_modtech_cannon_b",
+      "hro_rapid_mg_pack": "hro_modtech_airgun_a",
+      "hro_cannon_pack": "hro_modtech_airgun_b",
+      "hro_field_tools": "hro_modtech_service_a",
+      "hro_extended_fuel": "hro_modtech_service_b"
     },
     "constructor_limit_files": {
       "tank_chassis.txt": [
@@ -855,12 +899,17 @@
         "cv_small_plane_airframe_1",
         "cv_small_plane_airframe_2",
         "cv_small_plane_airframe_3",
-        "cv_small_plane_airframe_4"
+        "cv_small_plane_airframe_4",
+        "medium_plane_airframe",
+        "medium_plane_airframe_1",
+        "medium_plane_airframe_2",
+        "medium_plane_airframe_3",
+        "medium_plane_airframe_4"
       ]
     },
     "runtime_verified": false,
     "audit": {
-      "technologies": 67,
+      "technologies": 106,
       "converted_modifiers_exact": true,
       "root_bindings_checked": true,
       "exclusive_schools_checked": true,
@@ -870,13 +919,13 @@
       "cyrillic_fonts_checked": true,
       "card_layout_checked": true,
       "modules": {
-        "modules": 6,
-        "unique_research_unlocks": 6,
+        "modules": 36,
+        "unique_research_unlocks": 36,
         "native_categories_and_slots_checked": true,
         "native_icon_fallbacks_checked": true,
         "limits": {
           "native_files": 2,
-          "one_per_design_limits": 46,
+          "one_per_design_limits": 284,
           "all_original_fields_preserved": true
         }
       }
