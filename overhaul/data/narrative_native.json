@@ -1,0 +1,1052 @@
+{
+  "GER_prioritize_economic_growth": {
+    "ru": "Годы наплевательского отношения к фискальной политике едва не разрушили нашу экономику. Мы должны выпускать тракторы вместо танков, раздать народу лопаты вместо винтовок и сделать упор на экономический рост вместо роста производства оружия!\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Приоритет экономического роста"
+  },
+  "GER_the_four_year_plan": {
+    "ru": "$GER_four_year_plan_desc$\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Четырехлетний план"
+  },
+  "GER_construct_the_reichsautobahn": {
+    "ru": "$GER_autobahn_desc$\n\nПодвижность начинается с подготовленного маршрута, исправной машины и согласованного движения колонн. Порядок перевозок и обслуживания помогает соединениям использовать скорость вне идеальных условий полигона.",
+    "en": "Mobility begins with a prepared route, a serviceable vehicle and coordinated columns. Transport and servicing arrangements help formations use their speed beyond ideal proving-ground conditions.",
+    "name_ru": "Завершить строительство: [GetAutobahnName]"
+  },
+  "GER_autarky_efforts": {
+    "ru": "$GER_autarky_desc$\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Развитие автаркии"
+  },
+  "GER_institute_price_controls": {
+    "ru": "Мы должны принять меры по усилению контроля над финансами, чтобы они выдержали наши амбициозные проекты по переходу на самообеспечение. Нам нужна возможность регулировать цены на импорт и товары первой необходимости, а также зарплату рабочих, чтобы сдержать инфляцию и обеспечить экономическую стабильность.\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Ввести регулирование цен"
+  },
+  "GER_establish_the_reichswerke": {
+    "ru": "$GER_hermann_goring_werke_desc$\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Основать $GER_reichswerke$"
+  },
+  "GER_coal_liquefaction": {
+    "ru": "$GER_coal_liquidization_desc$\n\nВоенная промышленность и моторизованные части зависят от постоянного потока сырья и горючего. Запасы, переработка и распределение уменьшают уязвимость к перебоям, но требуют заранее выделенных мощностей.",
+    "en": "War industry and motorised forces depend on a constant flow of raw materials and fuel. Stocks, processing and allocation reduce vulnerability to disruption but require capacity to be committed in advance.",
+    "name_ru": "Сжижение угля"
+  },
+  "GER_subsidize_hoesch_benzin": {
+    "ru": "Раньше говорили, что армия марширует на брюхе, но современная армия передвигается на бензине. Чтобы не отставать в военной сфере, нам нужно удвоить усилия по производству синтетического топлива.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Субсидировать Hoesch-Benzin"
+  },
+  "GER_establish_buna_werke": {
+    "ru": "Для бурного развития автомобильной и авиационной промышленности необходимы постоянные поставки резины. Однако в Германии нет источников натурального сырья для ее производства. Чтобы меньше зависеть от импорта, мы должны построить заводы по производству синтетического каучука.\n\nВоенная промышленность и моторизованные части зависят от постоянного потока сырья и горючего. Запасы, переработка и распределение уменьшают уязвимость к перебоям, но требуют заранее выделенных мощностей.",
+    "en": "War industry and motorised forces depend on a constant flow of raw materials and fuel. Stocks, processing and allocation reduce vulnerability to disruption but require capacity to be committed in advance.",
+    "name_ru": "Основать Buna-Werke"
+  },
+  "GER_accelerate_the_rearmament_program": {
+    "ru": "Мы должны сбросить оковы Версальского договора, чтобы горнила индустрии смогли выковать для [ROOT.GetNameRuGen] новую славную судьбу. Каждый построенный танк, каждый собранный самолет станут свидетельством несгибаемой воли немецкого народа.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Ускорить перевооружение"
+  },
+  "GER_establish_production_targets": {
+    "ru": "Прежде чем мы начнем серию военных кампаний, нужно модернизировать и как следует экипировать нашу армию. Чтобы нарастить объемы производства, необходима амбициозная программа.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Поставить производственные цели"
+  },
+  "GER_zentrale_planung": {
+    "ru": "Война обнажила многие проблемы армии и военной промышленности, и эти проблемы нужно решать! Создав Центральный комитет планирования, в который войдут члены правительства, промышленники и военные, мы сможем координировать экономическую политику и эффективно направлять ресурсы на производство оружия, поддерживая таким образом национальные задачи по достижению военного превосходства над другими странами.\n\nПересекающиеся распоряжения и конкуренция ведомств расходуют время и материалы. Разграничение ответственности помогает направить ограниченные возможности государства на согласованные задачи.",
+    "en": "Overlapping orders and competing departments waste time and materials. Clear responsibilities direct the state’s limited capacity towards agreed objectives.",
+    "name_ru": "Создать Центральный комитет планирования"
+  },
+  "GER_create_rustungsstab": {
+    "ru": "Наша попытка оптимизировать производство оружия оказалась успешной, но нужны дальнейшие улучшения! Создав Штаб вооружений, мы сможем разработать стратегии распределения ресурсов и расстановки приоритетов, чтобы повысить эффективность производства.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Создать Штаб вооружений"
+  },
+  "GER_armament_rationalization": {
+    "ru": "Наши производственные линии едва успевают за потребностями армии. Мы должны предпринять меры по рационализации производства вооружений, чтобы повысить эффективность военной промышленности.\n\nЕдиные чертежи, оснастка и взаимозаменяемые детали связывают конструкторов с серийным заводом. Упорядочение производства уменьшает потери на переходах между предприятиями и моделями.",
+    "en": "Common drawings, tooling and interchangeable parts connect designers to series production. Standardisation reduces losses at the interfaces between factories and models.",
+    "name_ru": "Рационализация производства вооружений"
+  },
+  "GER_totaler_krieg": {
+    "ru": "Чтобы добиться полной победы, мы должны мобилизовать всё общество и довести тотальную войну до вражеского порога. Пора государству [ROOT.GetNameDef] восстать и устроить настоящую бурю!\n\nРуководство требует подчинить оставшиеся возможности страны военной задаче. Чрезвычайные меры ускоряют сосредоточение сил, но не устраняют нехватку людей, оборудования и времени.",
+    "en": "The leadership demands that remaining national resources serve the military objective. Emergency measures accelerate concentration without abolishing shortages of people, equipment and time.",
+    "name_ru": "Тотальная война"
+  },
+  "GER_develop_modern_maneuver_warfare": {
+    "ru": "Мы должны принять концепции современной войны и разработать новую доктрину, где особый упор будет сделан на интеграцию пехоты и новых технологий. Так мы максимально повысим свою боевую эффективность.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Разработать методы современной маневренной войны"
+  },
+  "GER_the_prussian_legacy": {
+    "ru": "«У некоторых государств есть армия, а у прусской армии есть государство», — сказал как-то Вольтер. Мы продемонстрируем это, развив старую немецкую доктрину Bewegungskrieg — маневренной войны, — чтобы побеждать быстро и ошеломительно.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Прусское наследие"
+  },
+  "GER_improve_motorized_troops": {
+    "ru": "Современная война — это скорость. Надо убедиться, что наша моторизованная пехота готова к бою и способна, возглавив нападение, наносить стремительные и решительные удары.\n\nПодвижность начинается с подготовленного маршрута, исправной машины и согласованного движения колонн. Порядок перевозок и обслуживания помогает соединениям использовать скорость вне идеальных условий полигона.",
+    "en": "Mobility begins with a prepared route, a serviceable vehicle and coordinated columns. Transport and servicing arrangements help formations use their speed beyond ideal proving-ground conditions.",
+    "name_ru": "Улучшить мотопехоту"
+  },
+  "GER_lessons_of_the_great_war": {
+    "ru": "Из наших неудач в Великой войне можно извлечь полезные уроки для будущих конфликтов. Мы тщательно изучили опыт прошлого и не допустим подобных ошибок в будущем.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Уроки Великой войны"
+  },
+  "GER_artillery_bombardment": {
+    "ru": "Пехота — костяк нашей армии. Чтобы пехота добивалась успеха, ей нужна поддержка. Мы должны больше инвестировать в артиллерию, чтобы пехота смогла использовать любое преимущество и эффективно истреблять врагов.\n\nРазведанные цели, согласованные таблицы огня и своевременный подвоз снарядов превращают отдельные орудия в общую систему поддержки. Выигрыш возникает из управления огнём, а не только из числа стволов.",
+    "en": "Located targets, coordinated fire plans and timely ammunition deliveries turn individual guns into a shared support system. The gain comes from fire control as well as the number of barrels.",
+    "name_ru": "Артиллерийский обстрел"
+  },
+  "GER_stormtroopers": {
+    "ru": "«Штоструппен» — элитные подразделения штурмовиков, которые в годы Великой войны возглавляли атаки на вражеские окопы и прорывали строй противника. Мы можем возродить эту идею и подготовить новых штурмовиков, которые станут воплощением скорости, подвижности и беспощадной эффективности на поле боя.\n\nАвиация поддержки приносит наибольшую пользу, когда её удар совпадает с движением наземных частей. Связь с передовыми штабами позволяет выбирать нужную цель, избегать рассеивания сил и поддерживать развитие прорыва.",
+    "en": "Support aviation is most useful when its strikes coincide with the movement of ground forces. Links to forward headquarters help select the right target, avoid dispersing effort and sustain exploitation.",
+    "name_ru": "Штурмовики"
+  },
+  "GER_instill_auftragstaktik": {
+    "ru": "Наша армия давно практикует Auftragstaktik — тактику децентрализации командования и индивидуальной инициативы. Это дает нам гибкость и автономность, позволяет лучше приспосабливаться к непредвиденным обстоятельствам и извлекать из них пользу. Очень важно и дальше использовать эту практику, чтобы армия оставалась победоносной!\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Децентрализация командования"
+  },
+  "GER_panzergrenadier": {
+    "ru": "Наша военная доктрина делает упор на мобильность и зависит от эффективности мотопехоты. Ни пехота, ни танковые дивизии не смогут успешно продвигаться без соответствующей поддержки. Интегрировав в войска авангарда механизированную пехоту, мы обеспечим себе превосходство в наступательных операциях.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Панцергренадер"
+  },
+  "GER_kriegslokomotiven": {
+    "ru": "Логистические сложности военного времени диктуют необходимость производства так называемых кригслокомотивен — военных паровозов. Такие паровозы можно производить быстро и дешево, в соответствии с нашими экономическими возможностями.\n\nЖелезная дорога задаёт предел объёму перевозок на дальнее расстояние. Единое расписание, исправный парк и восстановленные пути позволяют доставлять фронту то, что уже произведено в тылу.",
+    "en": "Railways set the limit on long-distance transport capacity. A common timetable, serviceable rolling stock and repaired tracks bring the front what the rear has already produced.",
+    "name_ru": "Военные паровозы"
+  },
+  "GER_improve_the_logistics_system": {
+    "ru": "Слишком многие наши генералы верховного командования пренебрегают логистикой и сетями снабжения, не вникая в проблемы существующей системы. Им надо объяснить чрезвычайную важность эффективной логистики в современной войне — ведь мы хотим улучшить эту самую систему.\n\nЗапас на складе становится боевой силой только после доставки в нужную часть. Расположение тыловых узлов и очередность подвоза определяют, сколько времени армия сможет действовать вдали от исходных баз.",
+    "en": "A stockpile becomes fighting power only when it reaches the right unit. Depot placement and delivery priorities determine how long an army can operate away from its starting bases.",
+    "name_ru": "Улучшить логистическую систему"
+  },
+  "GER_adopt_new_panzer_doctrine": {
+    "ru": "$GER_army_innovation_desc$\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Принять новую танковую доктрину"
+  },
+  "GER_panzer_troops_school": {
+    "ru": "Танковые дивизии будут играть важнейшую роль в любом современном конфликте, и мы должны следить, чтобы наши броневойска были на острие военных инноваций. Строгая подготовка и эксперты-инструкторы помогут нам вырастить элитных танкистов, необходимых для победы.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Школа танковых дивизий"
+  },
+  "GER_combined_arms": {
+    "ru": "Быстрое развитие технологий изменило военное дело, и нам следует этим воспользоваться. Приняв принципы взаимодействия разных родов войск и создав всеобъемлющую стратегию синхронизации действий пехоты, бронетехники и авиации, мы гарантируем себе сильную армию и военное превосходство.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Взаимодействие родов войск"
+  },
+  "GER_expanding_the_luftwaffe": {
+    "ru": "$air_innovation_desc$\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Расширить люфтваффе"
+  },
+  "GER_aeronautical_research_institute": {
+    "ru": "Со времен Великой войны важность и сложность военных действий в небе возросли, и поскольку Версальский договор запретил нам иметь боевую авиацию, мы отстаем в этой области. Чтобы исправить ситуацию, нужно создать Luftfahrtforschungsanstalt — Авиационный исследовательский институт. Там мы будем разрабатывать инновационные авиационные корпуса, двигатели и вооружение, чтобы добиться превосходства в воздухе.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Авиационный исследовательский институт"
+  },
+  "GER_dive_bombers": {
+    "ru": "$GER_tactical_air_effort_desc$\n\nБомбардировочная авиация должна найти цель, доставить нагрузку и сохранить строй на маршруте. Навигация, взаимодействие экипажей и обслуживание позволяют использовать машины систематически.",
+    "en": "Bombers must find their target, deliver their load and maintain formation en route. Navigation, crew cooperation and servicing make sustained operations possible.",
+    "name_ru": "Пикирующие бомбардировщики"
+  },
+  "GER_tactical_bombers": {
+    "ru": "$GER_strategic_air_effort_desc$ Если сровнять с землей все заводы и фабрики за пределами нашей страны, мы можем гарантировать, что эффективная армия будет только у нас.\n\nБомбардировочная авиация должна найти цель, доставить нагрузку и сохранить строй на маршруте. Навигация, взаимодействие экипажей и обслуживание позволяют использовать машины систематически.",
+    "en": "Bombers must find their target, deliver their load and maintain formation en route. Navigation, crew cooperation and servicing make sustained operations possible.",
+    "name_ru": "Тактические бомбардировщики"
+  },
+  "GER_form_the_jagdwaffe": {
+    "ru": "Нам следует сформировать ягдваффе — специальное истребительное подразделение, способное гарантировать нам превосходство в воздухе. Обеспечив серьезную подготовку, улучшенную тактику и новейшие технологии, мы будем доминировать в небесах и дадим нашим наземным войскам возможность беспрепятственно катком проходить по полю боя, сотрясая землю словно гром.\n\nИстребители должны вовремя встретить противника, занять выгодное положение и сохранить строй. Подготовка лётчиков и наведение помогают использовать характеристики самолёта там, где решается борьба за воздух.",
+    "en": "Fighters must intercept in time, gain a favourable position and keep formation. Pilot training and guidance put aircraft performance to use where control of the air is contested.",
+    "name_ru": "Сформировать ягдваффе"
+  },
+  "GER_reorganize_the_luftwaffe": {
+    "ru": "Хоть наши ВВС стали серьезной силой всего несколько лет назад, они уже являются заметным фактором наращивания национальной мощи. Однако столь быстрое развитие привело к определенным структурным недочетам. Делегируя больше ответственности командирам, не допуская внутренних распрей, мы позволим нашей боевой авиации достичь большей эффективности.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Реорганизовать люфтваффе"
+  },
+  "GER_solve_the_logistical_bottlenecks": {
+    "ru": "Закончив с реорганизацией ВВС, мы можем переключить внимание на неэффективную систему логистики и сети снабжения. Устранив эти проблемы, мы освободим больше людей для других заданий и ускорим процесс ремонта самолетов.\n\nЗапас на складе становится боевой силой только после доставки в нужную часть. Расположение тыловых узлов и очередность подвоза определяют, сколько времени армия сможет действовать вдали от исходных баз.",
+    "en": "A stockpile becomes fighting power only when it reaches the right unit. Depot placement and delivery priorities determine how long an army can operate away from its starting bases.",
+    "name_ru": "Устранить узкие места в логистике"
+  },
+  "GER_defense_of_the_reich": {
+    "ru": "Мы должны уберечь Отечество от вражеских авианалетов. Защита неба над государством [ROOT.GetNameDef], а также заводов на его земле — вот что должно стать главным приоритетом!\n\nОборона удерживает не только линию на карте, но и способность армии продолжать бой. Эшелонирование, контрудары и сохранение кадров дают командованию выбор между удержанием позиции и организованным отходом.",
+    "en": "Defence preserves an army’s ability to continue fighting as well as a line on the map. Echelons, counterattacks and cadre preservation give commanders a choice between holding and an organised withdrawal.",
+    "name_ru": "Оборона [GetDefenseofGermanyName]"
+  },
+  "GER_strengthen_the_kriegsmarine": {
+    "ru": "$GER_naval_rearmament_desc$\n\nКорабельным соединениям необходимы подготовленные штабы, береговые службы и общая программа действий. Организация флота определяет, как именно страна сможет использовать построенные корабли.",
+    "en": "Naval formations need trained staffs, shore services and a shared operational programme. Naval organisation determines how the country can employ the ships it builds.",
+    "name_ru": "Усилить [GetStrengthenKriegsmarineName]"
+  },
+  "GER_plan_z": {
+    "ru": "Адмирал Редер убежден, что проще всего разгромить англичан с помощью морских рейдов. Для этого придется построить множество линкоров и авианосцев, что потребует времени... возможно, слишком много времени. С другой стороны, сейчас наш флот выглядит просто жалким.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "План «Зет»"
+  },
+  "GER_trade_interdiction": {
+    "ru": "Чтобы перерезать пути снабжения противника и ослабить его военную экономику, нужно придерживаться определенной стратегии. Распределив наши надводные силы и подлодки по ключевым морям, мы перекроем поставки важных ресурсов и блокируем проход торговых судов, тем самым вынудив противника сдаться.\n\nПодводные лодки и рейдеры ищут уязвимые коммуникации противника, избегая невыгодного генерального боя. Их результат зависит от разведки маршрутов, совместных действий и своевременного возвращения на базу.",
+    "en": "Submarines and raiders seek vulnerable enemy communications while avoiding an unfavourable fleet battle. Their effectiveness depends on route intelligence, cooperation and timely returns to base.",
+    "name_ru": "Морская блокада"
+  },
+  "GER_wolfpack_tactics": {
+    "ru": "Идея нападения подводных лодок на торговые конвои не нова и использовалась еще в Великой войне, но теперь нам предложили новую тактику. Наши подлодки будут действовать «стаями», совместными усилиями находя и пуская ко дну торговые суда. Возможно, так мы сможем лишить врага ресурсов и способности продолжать эту войну.\n\nПодводные лодки и рейдеры ищут уязвимые коммуникации противника, избегая невыгодного генерального боя. Их результат зависит от разведки маршрутов, совместных действий и своевременного возвращения на базу.",
+    "en": "Submarines and raiders seek vulnerable enemy communications while avoiding an unfavourable fleet battle. Their effectiveness depends on route intelligence, cooperation and timely returns to base.",
+    "name_ru": "Тактика волчьей стаи"
+  },
+  "GER_u_boat_efforts": {
+    "ru": "Успех тактики волчьих стай убедил командование ВМФ закрепить его. Поэтому принято решение увеличить количество и повысить качество подводных лодок, чтобы обеспечить нам победу на море.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Развитие подводного флота"
+  },
+  "GER_reorganize_the_wehrmacht": {
+    "ru": "Чтобы претворить грандиозные планы фюрера в жизнь, потребуется провести масштабную реорганизацию вермахта. Многие наши командиры слишком часто и необоснованно жалуются по мелочам вместо того, чтобы выполнять приказы. Если их не устранить, мы никогда не добьемся задуманного!\n\nНовые условия требуют соединений с ясной задачей и подходящим обеспечением. Организация специальных сил и использование доступного имущества расширяют выбор командования, но требуют отдельной подготовки.",
+    "en": "New conditions require formations with a clear mission and suitable support. Special forces and the use of available equipment broaden the command’s options but require dedicated preparation.",
+    "name_ru": "Реорганизовать вермахт"
+  },
+  "GER_anschluss": {
+    "ru": "Несмотря на заверения [AUS.GetAdjective]их политиков, очевидно, что большая часть [GER.GetAdjective]оязычного населения [AUS.GetNameRuGen] стремится воссоединиться с Отечеством. Воля народа должна осуществиться, а для этого нам следует сделать всё, чтобы продажный лидер [AUS.GetLeader] ушел в отставку.\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Аншлюс"
+  },
+  "GER_molotov_ribbentrop_pact": {
+    "ru": "$GER_mol_rib_pact_desc$\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "$GER_mol_rib_pact$"
+  },
+  "GER_war_with_the_ussr": {
+    "ru": "$GER_ussr_war_goal_desc$\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "$GER_ussr_war_goal$"
+  },
+  "GER_currency_reforms": {
+    "ru": "Первый шаг к экономическому восстановлению — провести всеобъемлющие валютные реформы.\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Валютные реформы"
+  },
+  "GER_lower_taxes": {
+    "ru": "Налоговое бремя на наш народ, вынужденный оплачивать программу перевооружения, постепенно становилось всё тяжелее и тяжелее. Ослабив это бремя, мы снизим доход государства в краткосрочной перспективе, но дадим народу возможность тратить больше денег, которые они с таким трудом зарабатывают.\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Снизить налоги"
+  },
+  "GER_abolish_price_controls": {
+    "ru": "Меры по контролю цен, введенные для ускорения перевооружения, сдерживают экономику. Отменив их, мы уменьшим приток средств в казну, но зато позволим людям создавать новые компании и тем самым ускорим рост экономики.\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Отменить регулирование цен"
+  },
+  "GER_increased_trade": {
+    "ru": "Чтобы германский народ процветал, нам придется ввозить в страну всё, что нельзя добыть или произвести своими силами. Для этого следует подписать новые торговые соглашения (разумеется, выгодные для нас) с другими государствами.\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Рост товарооборота"
+  },
+  "GER_housing_developments": {
+    "ru": "Мы можем оживить экономику, запустив программу строительства жилья, нацеленную на реновацию и возведение современных домов, а также на создание нового жилищного стандарта.\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Строительство жилья"
+  },
+  "GER_workers_rights": {
+    "ru": "Концепция профсоюзов значительно изменилась за последние несколько лет. Реформировав их, мы сможем собрать рабочих под знаменами общего дела и пожать плоды этих инноваций.\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Права рабочих"
+  },
+  "GER_industrial_expansion": {
+    "ru": "Сильная, конкурентоспособная на международном рынке промышленность, разрабатывающая и внедряющая новые технологии, очень важна для непрерывного экономического роста. Слово «[ROOT.GetNameDefCap]» станет синонимом слова «качество».\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Развитие промышленности"
+  },
+  "GER_invest_in_vereinigte_stahlwerke": {
+    "ru": "Vereinigte Stahlwerke — одна из крупнейших и самых важных сталелитейных корпораций. Инвестировав средства в эту корпорацию, мы, без сомнения, повысим ее производительность и преобразим сталелитейную индустрию Германии.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Инвестировать в Vereinigte Stahlwerke"
+  },
+  "GER_agricultural_reforms": {
+    "ru": "Наш сельскохозяйственный сектор в основном состоит из небольших семейных ферм с преобладанием ручного труда. Мы можем преобразовать весь аграрный сектор, поощряя использование современной техники и повысив производство продукции каждой отдельной фермы. От этого получит выгоду вся нация!\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Сельскохозяйственные реформы"
+  },
+  "GER_urbanization": {
+    "ru": "Механизация сельского хозяйства освободила много людей, которые теперь стекаются в города в поисках новой работы. Им можно предоставить рабочие места на заводах, где они продолжат выводить нашу экономику на лидирующие позиции.\n\nГород дробит бой на отдельные дома, перекрёстки и проходы. Небольшие штурмовые группы, связь с сапёрами и организация опорных пунктов позволяют приспособить общий замысел к такой местности.",
+    "en": "A city breaks combat into buildings, crossroads and passages. Small assault groups, engineer liaison and organised strongpoints adapt a broader plan to this terrain.",
+    "name_ru": "Урбанизация"
+  },
+  "GER_wirtschaftswunder": {
+    "ru": "Все наши программы и усилия по оживлению экономики наконец-то окупились! Люди всего мира восхищаются успехами нашей промышленности и финансового сектора. Они называют этот феномен Wirtschaftswunder — «экономическое чудо».\n\nГражданское хозяйство обеспечивает рабочую силу, строительство и повседневную устойчивость страны. Его ресурсы приходится распределять между нуждами населения и расширением военных программ.",
+    "en": "The civilian economy sustains labour, construction and everyday national stability. Its resources must be divided between the population’s needs and expanding military programmes.",
+    "name_ru": "Немецкое экономическое чудо"
+  },
+  "GER_mass_production": {
+    "ru": "Развитие промышленности позволило нам много узнать о производственных технологиях. Нужно использовать все эти новые знания для оптимизации работы сборочных линий, чтобы обеспечить невиданное прежде массовое производство материалов и товаров.\n\nЕдиные чертежи, оснастка и взаимозаменяемые детали связывают конструкторов с серийным заводом. Упорядочение производства уменьшает потери на переходах между предприятиями и моделями.",
+    "en": "Common drawings, tooling and interchangeable parts connect designers to series production. Standardisation reduces losses at the interfaces between factories and models.",
+    "name_ru": "Массовое производство"
+  },
+  "GER_build_defense_industry": {
+    "ru": "Мы наконец-то сумели стабилизировать и даже многократно усилить свою экономику. Теперь можно обратить внимание на укрепление суверенитета нации и развитие оборонной промышленности, чтобы защитить стремление немецкого народа к прогрессу и совершенству.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Построить оборонную промышленность"
+  },
+  "GER_war_production": {
+    "ru": "Нашу страну снова охватило пламя войны. Но мы не сдадимся, мы выстоим! Мы мобилизуем всю свою индустриальную мощь и опередим в производственной гонке любого врага, у которого хватит безрассудства думать, будто он может сокрушить железную волю немецкого народа!\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Военное производство"
+  },
+  "GER_build_the_rur_dam": {
+    "ru": "Строительство Рурской плотины — это не просто крупный инженерный проект, это инвестиция в будущее. Плотина не только ускорит экономическое развитие региона, она будет обеспечивать электроэнергией нашу промышленность и повысит ее эффективность.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Построить Рурскую плотину"
+  },
+  "GER_trade_deal_with_sweden": {
+    "ru": "$GER_swedish_trade_agreement_desc$\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Торговое соглашение со Швецией"
+  },
+  "GER_kdf_wagen_factories": {
+    "ru": "[GetKDFFactoriesText]\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "[GetKfdWagenNames]"
+  },
+  "GER_expand_the_reichsautobahn_south": {
+    "ru": "Расширение сети автобанов на юг будет стимулировать экономический рост и развитие южных регионов. Также оно усилит наш военный потенциал, позволив быстро перебрасывать войска в сторону Альп.\n\nПодвижность начинается с подготовленного маршрута, исправной машины и согласованного движения колонн. Порядок перевозок и обслуживания помогает соединениям использовать скорость вне идеальных условий полигона.",
+    "en": "Mobility begins with a prepared route, a serviceable vehicle and coordinated columns. Transport and servicing arrangements help formations use their speed beyond ideal proving-ground conditions.",
+    "name_ru": "[GetAutobahnName]: расширить на юг"
+  },
+  "GER_expand_the_reichsautobahn_east": {
+    "ru": "Расширение сети автобанов в сторону Восточной Пруссии продемонстрирует решимость нашей нации снова соединить наши самые восточные земли с остальными территориями [ROOT.GetNameRuGen]. Также оно поможет нам при необходимости усилить и ускорить удар на восток.\n\nПодвижность начинается с подготовленного маршрута, исправной машины и согласованного движения колонн. Порядок перевозок и обслуживания помогает соединениям использовать скорость вне идеальных условий полигона.",
+    "en": "Mobility begins with a prepared route, a serviceable vehicle and coordinated columns. Transport and servicing arrangements help formations use their speed beyond ideal proving-ground conditions.",
+    "name_ru": "[GetAutobahnName]: расширить на восток"
+  },
+  "GER_develop_heraeus_facilities": {
+    "ru": "Инвестиции в новые комплексы могут дать нам доступ к растущему спросу на драгоценные металлы, необходимые современной армии для электроники и высококачественного вооружения.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "Разработать исследовательские комплексы Heraeus"
+  },
+  "GER_seize_foreign_industries": {
+    "ru": "Интегрировав иностранную промышленность, мы получим жизненно необходимые ресурсы, которые улучшат нашу военную экономику и производство.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Захватить иностранные промышленные предприятия"
+  },
+  "GER_autarky_achieved": {
+    "ru": "Мы наконец-то достигли своих амбициозных целей и стали полностью самодостаточными! Наша страна чрезвычайно богата природными ресурсами, которые усилят нас и позволят преодолеть любые преграды!\n\nВоенная промышленность и моторизованные части зависят от постоянного потока сырья и горючего. Запасы, переработка и распределение уменьшают уязвимость к перебоям, но требуют заранее выделенных мощностей.",
+    "en": "War industry and motorised forces depend on a constant flow of raw materials and fuel. Stocks, processing and allocation reduce vulnerability to disruption but require capacity to be committed in advance.",
+    "name_ru": "Автаркия достигнута"
+  },
+  "GER_concentrated_armament_program": {
+    "ru": "Наша промышленность должна обеспечить потребности армии, которая остро нуждается в перевооружении. Нужно запустить всеобъемлющую программу перевооружения, чтобы быстро модернизировать и укрепить наши вооруженные силы!\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Концентрированная программа вооружения"
+  },
+  "GER_fortify_the_vaterland": {
+    "ru": "Сейчас безопасность [GER.GetNameRuGen] находится под угрозой. Нам следует построить необходимые укрепления. Усилив оборону, мы сможем защищать границы меньшими силами и освободим дивизии для возможных военных действий на других фронтах.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Укрепить отечество"
+  },
+  "GER_all_terrain_military_motorcycle": {
+    "ru": "Важность быстрой разведки невозможно переоценить. Вложения в мотоциклетные отряды позволят нам быстро получать важные разведданные, принимать на их основе стратегические решения и в целом действовать эффективнее.\n\nПодвижность начинается с подготовленного маршрута, исправной машины и согласованного движения колонн. Порядок перевозок и обслуживания помогает соединениям использовать скорость вне идеальных условий полигона.",
+    "en": "Mobility begins with a prepared route, a serviceable vehicle and coordinated columns. Transport and servicing arrangements help formations use their speed beyond ideal proving-ground conditions.",
+    "name_ru": "Внедорожный военный мотоцикл"
+  },
+  "GER_salvage_captured_equipment": {
+    "ru": "Основав центры разборки и переработки захваченного вражеского снаряжения для нашей армии, мы сможем использовать трофейное оружие, технику и машины.\n\nНовые условия требуют соединений с ясной задачей и подходящим обеспечением. Организация специальных сил и использование доступного имущества расширяют выбор командования, но требуют отдельной подготовки.",
+    "en": "New conditions require formations with a clear mission and suitable support. Special forces and the use of available equipment broaden the command’s options but require dedicated preparation.",
+    "name_ru": "Разобрать и использовать трофейное снаряжение"
+  },
+  "GER_establish_the_afrikakorps": {
+    "ru": "Чтобы иметь возможность перекрывать пути снабжения противника, а также захватывать для себя необходимые ресурсы и стратегические позиции, нужно распространить европейскую войну на берега других континентов!\n\nНовые условия требуют соединений с ясной задачей и подходящим обеспечением. Организация специальных сил и использование доступного имущества расширяют выбор командования, но требуют отдельной подготовки.",
+    "en": "New conditions require formations with a clear mission and suitable support. Special forces and the use of available equipment broaden the command’s options but require dedicated preparation.",
+    "name_ru": "Основать Африканский корпус"
+  },
+  "GER_establish_the_skijager": {
+    "ru": "Чтобы наши вооруженные силы сохраняли эффективность в любых условиях, надо обучиться искусству зимней войны. Для этого мы подготовим и экипируем специальных военных лыжников, которые смогут действовать на заснеженных равнинах и в высоких горах.\n\nНа горном участке склон, перевал и тропа важнее широкого фронта. Подготовка горных частей соединяет выносливость, работу малыми группами и особые требования к подвозу.",
+    "en": "On a mountain front slopes, passes and paths matter more than a broad battle line. Mountain training combines endurance, small-unit action and special supply arrangements.",
+    "name_ru": "Подготовить военных лыжников"
+  },
+  "GER_nationalize_ford_factories": {
+    "ru": "Захватив контроль над заводами «Форд» в регионе [51.GetName] и передав их под государственное управление, мы нарастим производственную мощь и обеспечим себе стабильное поступление важного оборудования и машин. Всё это пойдет на пользу нашей армии и логистике.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Национализация заводов «Форд»"
+  },
+  "GER_defend_the_vaterland": {
+    "ru": "Сейчас, когда угроза маячит уже у самой нашей границы, мы должны твердо стоять на защите отечества! Чтобы защитить немецкий народ, нам нужно укрепить свои позиции и собрать войска. [ROOT.GetNameDef] выстоит и победит!\n\nОборона удерживает не только линию на карте, но и способность армии продолжать бой. Эшелонирование, контрудары и сохранение кадров дают командованию выбор между удержанием позиции и организованным отходом.",
+    "en": "Defence preserves an army’s ability to continue fighting as well as a line on the map. Echelons, counterattacks and cadre preservation give commanders a choice between holding and an organised withdrawal.",
+    "name_ru": "Защитить фатерлянд"
+  },
+  "GER_uranverein": {
+    "ru": "Наша нация должна стать первопроходцем в изучении атомной энергии и подчинить ее силу для выполнения наших задач. Мы располагаем лучшими умами Земли, они помогут нам преуспеть в этом и стать разрушителями миров.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "Uranverein"
+  },
+  "GER_advanced_panzer_research": {
+    "ru": "Выделив ресурсы на исследование и разработку новейших танковых технологий, мы получим новые, прорывные результаты. Это повысит нашу боеспособность и сделает наши танки еще опаснее.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "Усиленное исследование танков"
+  },
+  "GER_expand_kummersdorfs_capacity": {
+    "ru": "Чтобы гарантировать себе превосходство на поле боя, мы должны лидировать в развитии танковых технологий и использовать передовые инновации. Изучая вражеские танки на полигоне в Куммерсдорфе и задействуя новейшие технологии, мы будем опережать всех противников.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "Расширить Куммерсдорфский полигон"
+  },
+  "GER_uralbomber_program": {
+    "ru": "Мы достигнем победы лишь тогда, когда сможем дотянуться до всех врагов, где бы они ни были. Если построить самолеты, способные долететь до Уральских гор, почти любой потенциальный противник будет в нашей досягаемости.\n\nБомбардировочная авиация должна найти цель, доставить нагрузку и сохранить строй на маршруте. Навигация, взаимодействие экипажей и обслуживание позволяют использовать машины систематически.",
+    "en": "Bombers must find their target, deliver their load and maintain formation en route. Navigation, crew cooperation and servicing make sustained operations possible.",
+    "name_ru": "Программа «Уралбомбер»"
+  },
+  "GER_rocketry_innovations": {
+    "ru": "Мы вот-вот сделаем следующий гигантский шаг в развитии авиации! Наши инженеры неустанно работали над усовершенствованием новых ракетных двигателей, что должно помочь нам стать повелителями небес.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "Развитие ракетной техники"
+  },
+  "GER_fallschirmjager": {
+    "ru": "Мы хорошо понимаем важность воздушно-десантных войск. Подготовив элитных десантников к быстрому развертыванию в тылу врага, мы повысим их боевую эффективность и универсальность, нарастив тем самым свою боеспособность.\n\nНовые условия требуют соединений с ясной задачей и подходящим обеспечением. Организация специальных сил и использование доступного имущества расширяют выбор командования, но требуют отдельной подготовки.",
+    "en": "New conditions require formations with a clear mission and suitable support. Special forces and the use of available equipment broaden the command’s options but require dedicated preparation.",
+    "name_ru": "Воздушно-десантные силы"
+  },
+  "GER_experimental_rotorcrafts": {
+    "ru": "Инвестируя в новые проекты и разрабатывая новые технологии, мы стремимся создать ранние прототипы летательных аппаратов, которые произведут революцию в использовании боевой авиации. Наша цель — эффективно использовать возможности вертикального взлета и посадки новых аппаратов, которые называют вертолетами.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Экспериментальные винтокрылые ЛА"
+  },
+  "GER_develop_the_knickebein": {
+    "ru": "С помощью сложной системы радионавигации для самолетов мы научились повышать точность бомбометания. Эти новые технологии помогут нам превращать вражеские фабрики в пыль даже ночью.\n\nБомбардировочная авиация должна найти цель, доставить нагрузку и сохранить строй на маршруте. Навигация, взаимодействие экипажей и обслуживание позволяют использовать машины систематически.",
+    "en": "Bombers must find their target, deliver their load and maintain formation en route. Navigation, crew cooperation and servicing make sustained operations possible.",
+    "name_ru": "Разработать Knickebein"
+  },
+  "GER_construct_the_kammhuber_line": {
+    "ru": "Нельзя допустить, чтобы вражеские бомбардировщики и истребители свободно летали над государством [ROOT.GetNameDef]. Надо построить оборонительную линию вдоль побережья Франции, чтобы перехватывать их раньше, чем они достигнут нашего тыла.\n\nИстребители должны вовремя встретить противника, занять выгодное положение и сохранить строй. Подготовка лётчиков и наведение помогают использовать характеристики самолёта там, где решается борьба за воздух.",
+    "en": "Fighters must intercept in time, gain a favourable position and keep formation. Pilot training and guidance put aircraft performance to use where control of the air is contested.",
+    "name_ru": "Построить линию Каммхубера"
+  },
+  "GER_establish_night_fighter_squadrons": {
+    "ru": "Следующим шагом в укреплении обороны отечества должно стать создание Nachtjagdgeschwader — ночных истребительных эскадрилий. Используя бортовые РЛС, они смогут днем и ночью защищать наше небо от врага.\n\nИстребители должны вовремя встретить противника, занять выгодное положение и сохранить строй. Подготовка лётчиков и наведение помогают использовать характеристики самолёта там, где решается борьба за воздух.",
+    "en": "Fighters must intercept in time, gain a favourable position and keep formation. Pilot training and guidance put aircraft performance to use where control of the air is contested.",
+    "name_ru": "Сформировать ночные истребительные эскадрильи"
+  },
+  "GER_torpedobomber": {
+    "ru": "$naval_air_effort_desc$\n\nНад морем самолёту нужны свои процедуры поиска, связи и возвращения. Совместная подготовка экипажей и корабельных штабов позволяет авиации работать на задачи флота.",
+    "en": "Aircraft over the sea need specialised search, communication and recovery procedures. Joint training of aircrews and naval staffs puts aviation to work for the fleet.",
+    "name_ru": "Бомбардировщик-торпедоносец"
+  },
+  "GER_establish_carrier_groups": {
+    "ru": "Мы намерены создать не знающий себе равных авианосный флот и поэтому должны обучить пилотов взлетать и садиться на палубы этих авианосцев. Наши самолеты будут властвовать в небе как над сушей, так и над морем!\n\nНад морем самолёту нужны свои процедуры поиска, связи и возвращения. Совместная подготовка экипажей и корабельных штабов позволяет авиации работать на задачи флота.",
+    "en": "Aircraft over the sea need specialised search, communication and recovery procedures. Joint training of aircrews and naval staffs puts aviation to work for the fleet.",
+    "name_ru": "Создать авианосные группы"
+  },
+  "GER_aerodynamic_research_institute": {
+    "ru": "Слово «[ROOT.GetNameDefCap]» в последнее время ассоциируется с инновациями в авиации, поскольку мы вложили значительные средства в развитие ВВС. Нужно продолжать инвестировать в эту отрасль, чтобы опережать конкурентов. Выделение средств Аэродинамическому исследовательскому институту, в том числе на разработку новых двигателей, — верный шаг к новым открытиям и дальнейшему покорению неба.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Аэродинамический исследовательский институт"
+  },
+  "GER_amerikabomber": {
+    "ru": "Мы должны полностью сосредоточиться на достижении амбициозной цели и создать самолет дальнего действия, который шокирует врага, поразив цели в глубине его территории, — или пересечет Атлантику, чтобы показать всем: от нас не скрыться нигде.\n\nБомбардировочная авиация должна найти цель, доставить нагрузку и сохранить строй на маршруте. Навигация, взаимодействие экипажей и обслуживание позволяют использовать машины систематически.",
+    "en": "Bombers must find their target, deliver their load and maintain formation en route. Navigation, crew cooperation and servicing make sustained operations possible.",
+    "name_ru": "Америкабомбер"
+  },
+  "GER_expand_kriegsmarinewerft": {
+    "ru": "Нам надо удвоить усилия по построению флота, способного соперничать с вражеским. Задействуя самые передовые технологии и создавая самые прогрессивные корабли, мы, несомненно, лишим противника контроля над морями.\n\nКорабельным соединениям необходимы подготовленные штабы, береговые службы и общая программа действий. Организация флота определяет, как именно страна сможет использовать построенные корабли.",
+    "en": "Naval formations need trained staffs, shore services and a shared operational programme. Naval organisation determines how the country can employ the ships it builds.",
+    "name_ru": "[GetKriegsmarinewerftName]: расширить"
+  },
+  "GER_construct_aircraft_carriers": {
+    "ru": "Любой большой современный флот, достойный так называться, должен иметь в своем составе авианосцы. Роль этих кораблей в доминировании на море становится всё важнее, и, чтобы не отставать от противника, мы должны запустить амбициозную программу строительства авианосцев.\n\nНад морем самолёту нужны свои процедуры поиска, связи и возвращения. Совместная подготовка экипажей и корабельных штабов позволяет авиации работать на задачи флота.",
+    "en": "Aircraft over the sea need specialised search, communication and recovery procedures. Joint training of aircrews and naval staffs puts aviation to work for the fleet.",
+    "name_ru": "Построить авианосцы"
+  },
+  "GER_grosskampfschiff_construction": {
+    "ru": "$GER_pride_of_the_modern_germany_desc$\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Строительство крупных боевых кораблей"
+  },
+  "GER_high_seas_fleet": {
+    "ru": "Нашей амбициозной целью должно быть превращение [ROOT.GetNameRuGen] в поистине мировую державу. Для этого нам надо возродить Hochseeflotte — флот открытого моря, который однажды почти смог побороться с Королевским флотом за владычество над морями.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Флот открытого моря"
+  },
+  "GER_re_establish_the_seekriegsleitung": {
+    "ru": "Восстановив Seekriegsleitung — Военно-морское командование, мы улучшим планирование и выполнение приказов флоту, а также ввод кораблей в строй.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Восстановить Seekriegsleitung"
+  },
+  "GER_marinestosstrupp": {
+    "ru": "Если мы желаем расширить свое влияние за моря, нам нужно основать подразделение морской пехоты, т. н. штурмовые отряды морской пехоты, способные стремительно десантироваться с кораблей и прорывать береговую оборону противника.\n\nКорабельным соединениям необходимы подготовленные штабы, береговые службы и общая программа действий. Организация флота определяет, как именно страна сможет использовать построенные корабли.",
+    "en": "Naval formations need trained staffs, shore services and a shared operational programme. Naval organisation determines how the country can employ the ships it builds.",
+    "name_ru": "Основать Marinestosstrupp"
+  },
+  "GER_atlantic_naval_bases": {
+    "ru": "Мы осознаем стратегическую важность прибрежных регионов Атлантики для достижения нашей цели — доминирования в Атлантическом океане. И поэтому нам следует сделать своим приоритетом расширение и модернизацию морских баз.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Атлантические морские базы"
+  },
+  "GER_atlantic_naval_dominance": {
+    "ru": "Чтобы закрепить свое доминирование в Атлантическом океане, нам нужно еще сильнее расширить зону влияния и обеспечить военно-морское присутствие от берега до берега.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Доминирование в Атлантическом океане"
+  },
+  "GER_cruiser_warfare": {
+    "ru": "Легкие крейсеры способны на большее, чем просто сопровождение судов. Их следует послать в открытое море и поставить капитанам задачу перерезать маршруты конвоев и подрывать промышленный потенциал врага.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Война крейсеров"
+  },
+  "GER_panzerschiff_raiders": {
+    "ru": "Нужно задействовать крупные корабли для заграждения морских путей. Они могут наносить удар и отступать раньше, чем основной боевой флот противника вообще успеет выйти из порта.\n\nПодводные лодки и рейдеры ищут уязвимые коммуникации противника, избегая невыгодного генерального боя. Их результат зависит от разведки маршрутов, совместных действий и своевременного возвращения на базу.",
+    "en": "Submarines and raiders seek vulnerable enemy communications while avoiding an unfavourable fleet battle. Their effectiveness depends on route intelligence, cooperation and timely returns to base.",
+    "name_ru": "Броненосные рейдеры"
+  },
+  "GER_unrestricted_convoy_raiding": {
+    "ru": "Мы должны удвоить интенсивность охоты на конвои и утроить ответственность при планировании операций, чтобы полностью контролировать моря!\n\nТорговый путь существует лишь пока грузы доходят до порта. Охранение, распределение маршрутов и взаимодействие с авиацией связывают работу промышленности с возможностью снабжать удалённый фронт.",
+    "en": "A trade route exists only while cargo reaches port. Escorts, routing and air cooperation connect industrial output to the ability to supply a distant front.",
+    "name_ru": "Неограниченная охота на конвои"
+  },
+  "GER_seeherrschaft": {
+    "ru": "Мы сейчас на пути к тому, чтобы стать непререкаемыми властителями океана и реализовать план Seeherrschaft — господства на море. Теперь морями правит [ROOT.GetNameDef]!\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Seeherrschaft"
+  },
+  "GER_fuhrerprinzip": {
+    "ru": "От своих приближенных фюрер ожидает безоговорочной преданности, и даже тем немногим, кто пользуется его расположением, следует помнить, что никаких личных мнений здесь быть не может. Любое своевольное поведение, любое неповиновение желаниям фюрера может повлечь за собой страшные последствия. Один лишь фюрер задает наш курс.\n\nПересекающиеся распоряжения и конкуренция ведомств расходуют время и материалы. Разграничение ответственности помогает направить ограниченные возможности государства на согласованные задачи.",
+    "en": "Overlapping orders and competing departments waste time and materials. Clear responsibilities direct the state’s limited capacity towards agreed objectives.",
+    "name_ru": "Фюрерство"
+  },
+  "GER_demand_sudetenland": {
+    "ru": "Версальский договор допустил величайшую несправедливость в отношении судетских немцев. Они должны быть переданы под нашу защиту, невзирая на все протесты чехов.\n\nЧешская промышленность и освоенные лёгкие шасси дают готовую основу для переоборудования. Временная программа использует уже накопленные мощности; она не заменяет разработку следующего поколения танков.",
+    "en": "Czech industry and established light chassis provide a ready basis for conversion. This temporary programme exploits existing capacity rather than replacing development of the next tank generation.",
+    "name_ru": "Потребовать Судетскую область"
+  },
+  "SOV_infrastructure_effort_nsb": {
+    "ru": "$SOV_infrastructure_effort_desc$\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Развитие инфраструктуры"
+  },
+  "SOV_heavy_industry": {
+    "ru": "Наши проекты по индустриализации продолжают набирать обороты, но пришло время сделать ставку на тяжелую промышленность — вскоре нам понадобится больше военной техники.\n\nТяжёлая машина принимает на себя огонь там, где более лёгкие соединения не могут удержаться. Защита и мощное вооружение подходят для трудного прорыва, но требуют соответствующего ремонта, снабжения и производственного приоритета.",
+    "en": "Heavy armour absorbs fire where lighter formations cannot hold. Protection and powerful weapons suit difficult breakthroughs, but demand matching repair, supply and production priorities.",
+    "name_ru": "Тяжелая промышленность"
+  },
+  "SOV_finish_the_five_year_plan": {
+    "ru": "[GetFinishTheFiveYearPlanDesc]\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "[GetFinishTheFiveYearPlanName]"
+  },
+  "SOV_improve_railway_network": {
+    "ru": "Наш первый пятилетний план увенчался полным успехом. Бурный рост тяжелой промышленности усилил оборону Советского Союза, но советская железнодорожная сеть оказалась не готова к таким объемам грузов. Народный комиссариат по железнодорожным делам (НКЖД) разработал амбициозный план по устранению узких мест, чтобы мы смогли лучше защитить нашу Родину.\n\nЖелезная дорога задаёт предел объёму перевозок на дальнее расстояние. Единое расписание, исправный парк и восстановленные пути позволяют доставлять фронту то, что уже произведено в тылу.",
+    "en": "Railways set the limit on long-distance transport capacity. A common timetable, serviceable rolling stock and repaired tracks bring the front what the rear has already produced.",
+    "name_ru": "Модернизировать железнодорожную сеть"
+  },
+  "SOV_third_five_year_plan": {
+    "ru": "[GetThirdFiveYearPlanDesc]\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "[GetThirdFiveYearPlanName]"
+  },
+  "SOV_reorganize_the_pc_of_heavy_industry": {
+    "ru": "Наш предыдущий упор на тяжелую промышленность со всей очевидностью выявил неэффективность управления. Чтобы система снова работала нормально, нужно назначать на должности подходящих людей.\n\nТяжёлая машина принимает на себя огонь там, где более лёгкие соединения не могут удержаться. Защита и мощное вооружение подходят для трудного прорыва, но требуют соответствующего ремонта, снабжения и производственного приоритета.",
+    "en": "Heavy armour absorbs fire where lighter formations cannot hold. Protection and powerful weapons suit difficult breakthroughs, but demand matching repair, supply and production priorities.",
+    "name_ru": "[GetReorganizeThePcOfHeavyIndustryName]"
+  },
+  "SOV_industrial_modernization": {
+    "ru": "Западные страны быстро внедряют новые методы производства и технологии. Мы не должны довольствоваться тем, что не отстаем от них — мы должны их обогнать!\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Модернизация промышленности"
+  },
+  "SOV_increase_state_reserves": {
+    "ru": "Нашей растущей промышленности отчаянно требуются все новые и новые ресурсы. Мы не всегда можем гарантировать рост производства ресурсов и потому должны по возможности создавать резервы.\n\nРезерв должен иметь командиров, план выдвижения и место в боевом порядке. Подготовленные пополнения позволяют восстанавливать части и наращивать усилие без потери общего управления.",
+    "en": "Reserves need commanders, movement plans and a place in the battle order. Prepared replacements restore units and reinforce effort without sacrificing overall control.",
+    "name_ru": "Увеличить государственные резервы"
+  },
+  "SOV_shift_to_armaments_production": {
+    "ru": "Близится война. Мы не знаем, кто нанесет удар первым, но рано или поздно атакуют и нас. К этому нужно готовиться заранее.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Перейти к производству оружия"
+  },
+  "SOV_optimize_production_lines": {
+    "ru": "Другие страны успешно внедряют на своих заводах т. н. фордизм, чтобы максимизировать выход продукции. Мы должны брать с них пример.\n\nЕдиные чертежи, оснастка и взаимозаменяемые детали связывают конструкторов с серийным заводом. Упорядочение производства уменьшает потери на переходах между предприятиями и моделями.",
+    "en": "Common drawings, tooling and interchangeable parts connect designers to series production. Standardisation reduces losses at the interfaces between factories and models.",
+    "name_ru": "Оптимизировать производственные линии"
+  },
+  "SOV_steel_casting_industry": {
+    "ru": "Наша металлургическая промышленность находится на острие нашего индустриального роста, но ее можно сделать еще эффективнее, приняв новые методы производства.\n\nАвиация поддержки приносит наибольшую пользу, когда её удар совпадает с движением наземных частей. Связь с передовыми штабами позволяет выбирать нужную цель, избегать рассеивания сил и поддерживать развитие прорыва.",
+    "en": "Support aviation is most useful when its strikes coincide with the movement of ground forces. Links to forward headquarters help select the right target, avoid dispersing effort and sustain exploitation.",
+    "name_ru": "Сталелитейная индустрия"
+  },
+  "SOV_eastern_development": {
+    "ru": "Земли Дальнего Востока за Уральскими горами таят в себе огромный нетронутый запас полезных ископаемых и обширные площади для промышленной застройки. Нужно подготовить их для наших крупных проектов.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Восточное развитие"
+  },
+  "SOV_develop_the_urals": {
+    "ru": "Вероятно, главная угроза нашей стране будет исходить из Европы. Развивая территорию за Уралом, мы создадим промышленный резерв, достичь которого вряд ли сможет даже самый дальнобойный бомбардировщик.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Развивать Урал"
+  },
+  "SOV_found_the_pcdi": {
+    "ru": "[GetFoundThePcdiDesc]\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "[GetFoundThePcdiName]"
+  },
+  "SOV_military_engineering_university": {
+    "ru": "Многие утверждают, что с развитием танков и самолетов окопной войне пришел конец, но ясно, что ремесло военного инженера актуально по-прежнему. Мы должны основать учебное заведение, где изучались бы современные методы возведения полевых укреплений.\n\nДвигатель должен выдавать мощность без постоянных остановок на обслуживание. Настройка подачи топлива и охлаждения определяет компромисс между форсировкой, запасом хода и надёжностью в ежедневной эксплуатации.",
+    "en": "An engine must deliver power without constant maintenance stops. Fuel delivery and cooling determine the compromise between peak performance, range and reliability in daily service.",
+    "name_ru": "Университет военных инженеров"
+  },
+  "SOV_strengthen_the_mobilization_plan": {
+    "ru": "Нашим главным военным преимуществом всегда была обширная территория нашей страны и ее большое население, но когда дело касается мобилизации солдат на фронт, два этих фактора могут мешать друг другу. Нам надо постоянно улучшать и перерабатывать мобилизационные планы, чтобы в случае войны мы смогли быстро собрать войска.\n\nРезерв должен иметь командиров, план выдвижения и место в боевом порядке. Подготовленные пополнения позволяют восстанавливать части и наращивать усилие без потери общего управления.",
+    "en": "Reserves need commanders, movement plans and a place in the battle order. Prepared replacements restore units and reinforce effort without sacrificing overall control.",
+    "name_ru": "Усилить план мобилизации"
+  },
+  "SOV_cohesion_first": {
+    "ru": "Последнее, что нам сейчас нужно, — снижение стандартов. Мы рады всем, кто желает служить в армии, но служить они будут в уже существующих войсках и обучаться по соответствующим военным стандартам.\n\nОборона удерживает не только линию на карте, но и способность армии продолжать бой. Эшелонирование, контрудары и сохранение кадров дают командованию выбор между удержанием позиции и организованным отходом.",
+    "en": "Defence preserves an army’s ability to continue fighting as well as a line on the map. Echelons, counterattacks and cadre preservation give commanders a choice between holding and an organised withdrawal.",
+    "name_ru": "Целостность прежде всего"
+  },
+  "SOV_rehabilitated_military": {
+    "ru": "[GetRehabilitatedMilitaryName]\n\nПосле разрушений прежние планы приходится сверять с уцелевшими людьми, транспортом и оборудованием. Очерёдность ремонта возвращает работоспособность стране раньше, чем восстановится каждый отдельный объект.",
+    "en": "After destruction, old plans must be reconciled with surviving personnel, transport and equipment. Repair priorities restore a functioning country before every individual site has been rebuilt.",
+    "name_ru": "Восстановление военной мощи"
+  },
+  "SOV_military_reorganization": {
+    "ru": "Наши попытки построить большую механизированную армию были похвальными, но непосильными для нас. Чтобы выиграть эту войну, мы должны сосредоточиться на оружии, помогавшем русской армии веками: пехоте и артиллерии. Для этого нужно будет в определенной мере нарушить существующую доктрину.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Реорганизация армии"
+  },
+  "SOV_desperate_measures": {
+    "ru": "В такой отчаянной ситуации мы должны предпринять меры, ранее считавшиеся невозможными. Все, что можно сделать, чтобы остановить вторжение, должно быть сделано.\n\nРуководство требует подчинить оставшиеся возможности страны военной задаче. Чрезвычайные меры ускоряют сосредоточение сил, но не устраняют нехватку людей, оборудования и времени.",
+    "en": "The leadership demands that remaining national resources serve the military objective. Emergency measures accelerate concentration without abolishing shortages of people, equipment and time.",
+    "name_ru": "Отчаянные меры"
+  },
+  "SOV_an_adaptable_army": {
+    "ru": "Война идет в нескольких климатических зонах и на различных видах ландшафта. Чтобы победить, мы должны уметь сражаться в любых условиях и при любой погоде.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Адаптирующаяся армия"
+  },
+  "SOV_lessons_of_war": {
+    "ru": "Почти все планы, имевшиеся у нас до войны, не пережили столкновения с реальностью. Мы должны быть открыты урокам, которые преподает нам война, и не цепляться за устаревшие догмы. Лишь тогда мы сможем перейти от отступления к наступлению.\n\nДействующая армия учится ценой потерь: меняет порядок управления, взаимодействие и подготовку пополнений. Пройденное время само по себе не заменяет опыт боёв; переход к устойчивой системе означает освоение накопленных уроков.",
+    "en": "An army in the field learns at the cost of losses, changing command practice, cooperation and replacement training. Passing calendar time is no substitute for combat experience; a mature system puts accumulated lessons into practice.",
+    "name_ru": "Уроки войны"
+  },
+  "SOV_the_defense_of_moscow": {
+    "ru": "Враг стоит у ворот Москвы. Пора отбросить и одолеть его в решающей битве, как уже было с Наполеоном!\n\nОборона удерживает не только линию на карте, но и способность армии продолжать бой. Эшелонирование, контрудары и сохранение кадров дают командованию выбор между удержанием позиции и организованным отходом.",
+    "en": "Defence preserves an army’s ability to continue fighting as well as a line on the map. Echelons, counterattacks and cadre preservation give commanders a choice between holding and an organised withdrawal.",
+    "name_ru": "Оборона Москвы"
+  },
+  "SOV_the_molotov_line": {
+    "ru": "Недавние перемены в политической географии Европы переместили нашу западную границу заметно дальше. Все прежние планы по фортификации теперь устарели. Мы должны создать линию вдоль нашей новой границы, чтобы замедлить любого атакующего врага до тех пор, пока не мобилизуем войска для контратаки.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "[GetTheMolotovLineName]"
+  },
+  "SOV_improve_the_stalin_line": {
+    "ru": "Наша западная граница слишком протяженна, чтобы укрепить ее по всей длине. Вместо этого мы можем построить сеть укреплений, направляющих атаки противника в предсказуемые места, где им можно будет массово противостоять.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "[GetImproveTheStalinLineName]"
+  },
+  "SOV_transpolar_flights": {
+    "ru": "Наши отважные летчики доказали, что рискованные перелеты через Арктику возможны. Используя неожиданные маршруты вроде этого при планировании воздушных налетов, мы сможем застать противника врасплох.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Трансарктические перелеты"
+  },
+  "SOV_expand_the_aircraft_industry": {
+    "ru": "В будущих войнах наша авиация должна будет защищать небо от врагов, вооруженных самым современным оборудованием. Мы должны быть уверены, что у нас не только сравнимые со вражескими самолеты, но и что этих самолетов достаточно.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Расширить авиационную индустрию"
+  },
+  "SOV_modernize_aircraft_facilities": {
+    "ru": "И лучший самолет в мире скоро станет бесполезен, если будет взлетать с кочковатой полосы и обслуживаться в сарае с прохудившейся крышей. Чтобы гарантировать максимальную эффективность ВВС, нужно организовать лучшую из возможных инфраструктуру.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Модернизировать аэродромы"
+  },
+  "SOV_merge_aircraft_plants": {
+    "ru": "Конкуренция между проектировщиками не только порождает в них тягу к улучшению, но и увеличивает расход ресурсов, что очень некстати. Нужно объединить конструкторские бюро, чтобы избавиться от подобных расходов.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Объединить авиазаводы"
+  },
+  "SOV_foster_flying_clubs": {
+    "ru": "Обучать новых пилотов, ни разу до того не видевших самолета, дорого, но сейчас многие молодые люди увлечены авиацией и при некоторой поддержке могут стать очень способными пилотами, которых затем легче будет обучить ведению воздушного боя.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Опекать летные клубы"
+  },
+  "SOV_ground_support": {
+    "ru": "Главной задачей нашей авиации должна стать поддержка наземных войск. Этот фундаментальный факт необходимо учитывать при каждом решении.\n\nАвиация поддержки приносит наибольшую пользу, когда её удар совпадает с движением наземных частей. Связь с передовыми штабами позволяет выбирать нужную цель, избегать рассеивания сил и поддерживать развитие прорыва.",
+    "en": "Support aviation is most useful when its strikes coincide with the movement of ground forces. Links to forward headquarters help select the right target, avoid dispersing effort and sustain exploitation.",
+    "name_ru": "Наземная поддержка"
+  },
+  "SOV_long_range_aircraft": {
+    "ru": "Технология развилась до того этапа, когда наши бомбардировщики могут достичь любой точки вражеского государства и быстро лишить его военного потенциала. Сухопутные войска нужны лишь для того, чтобы сдерживать фронт до этого момента.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Авиация дальнего действия"
+  },
+  "SOV_expand_the_red_fleet": {
+    "ru": "[GetExpandTheRedFleetDesc]\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Расширить [GetSovietArmyAdjectiveBasedOnIdeology][GetSovietArmyBasedOnIdeology_RU_END_NOM] флот"
+  },
+  "SOV_reinforce_western_naval_bases": {
+    "ru": "Балтийский флот на своих базах крайне незащищен. Нужно выделить ресурсы на оборону его якорных стоянок и улучшить его ремонтопригодность.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Укрепить западные морские базы"
+  },
+  "SOV_pc_of_the_ussr_navy": {
+    "ru": "Наш флот становится все более современным и эффективным. Пришло время признать его родом войск, не уступающим по важности армии. Для этого мы первым делом разрешим флоту образовать свою структуру управления, отдельную от армии.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "[GetPcOfTheUssrNavyName]"
+  },
+  "SOV_surface_warfare": {
+    "ru": "Крупные корабли требуют уймы времени и ресурсов и в результате устаревают еще до окончания их строительства. Относительно небольшие корабли строятся гораздо быстрее и потому им проще не отставать от прогресса. Надо сосредоточиться на строительстве легких кораблей и сделать из них основную ударную силу флота.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Надводные боевые действия"
+  },
+  "SOV_addressing_internal_affairs": {
+    "ru": "У революции все еще много врагов по всему миру, и миллионы рабочих еще только ждут своего освобождения, но мы не должны забывать и о своих многочисленных внутренних делах.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Внутренние дела государства"
+  },
+  "SOV_the_new_soviet_woman": {
+    "ru": "Политическая революция принесла свободу миллионам людей в нашем Союзе — и прежде всего миллионам женщин, которые больше не ограничены ролью матери и жены, а могут работать наравне с мужчинами.\n\nМассовая армия держится на подготовленных людях, младших командирах и слаженных небольших подразделениях. Приоритет пехоты делает устойчивость строя самостоятельной ценностью, а не побочным результатом количества вооружения.",
+    "en": "A mass army depends on trained personnel, junior leaders and cohesive small units. Prioritising infantry treats the resilience of formations as a goal in its own right rather than a by-product of weapon numbers.",
+    "name_ru": "Новая советская женщина"
+  },
+  "SOV_expand_the_agitprop": {
+    "ru": "Чтобы достучаться до миллионов рабочих со всех уголков Союза, мы должны говорить на их языке. Мы должны выдвигать простые и понятные аргументы, такие, которые останутся в памяти обычного гражданина. Мы должны расширить работу в этой области.\n\nПересекающиеся распоряжения и конкуренция ведомств расходуют время и материалы. Разграничение ответственности помогает направить ограниченные возможности государства на согласованные задачи.",
+    "en": "Overlapping orders and competing departments waste time and materials. Clear responsibilities direct the state’s limited capacity towards agreed objectives.",
+    "name_ru": "Расширить агитпроп"
+  },
+  "SOV_policy_of_collective_security": {
+    "ru": "Несмотря на их капиталистическую и нередко реакционную природу, демократические правительства в Европе знают, что фашисты считают их слабыми и недоразвитыми. Если придет война, они падут первыми еще до того, как вся ярость фашизма обернется против родины революции. Те из политиков, кому хватает прозорливости признать это, должны знать, что в Москве их всегда готовы выслушать.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Политика коллективной безопасности"
+  },
+  "SOV_seek_a_defense_pact_with_the_allies": {
+    "ru": "Мы общались с западными демократиями в неформальной обстановке, но ни к каким конкретным и зафиксированным на бумаге соглашениям пока не пришли. Пора это исправить и объявить всему миру, что западные демократии хотят объединиться с нами в общий фронт борьбы с фашистской экспансией.\n\nОборона удерживает не только линию на карте, но и способность армии продолжать бой. Эшелонирование, контрудары и сохранение кадров дают командованию выбор между удержанием позиции и организованным отходом.",
+    "en": "Defence preserves an army’s ability to continue fighting as well as a line on the map. Echelons, counterattacks and cadre preservation give commanders a choice between holding and an organised withdrawal.",
+    "name_ru": "Оборонительный пакт с союзниками"
+  },
+  "SOV_policy_of_individual_security": {
+    "ru": "У нас мало друзей в этом мире и много врагов. Не стоит слишком задумываться над тем, с кем именно мы заключаем сделки — все равно либо они, либо мы нарушим условия договоров, как только те себя исчерпают.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Политика индивидуальной безопасности"
+  },
+  "SOV_reconcile_japan": {
+    "ru": "Основная угроза нам будет исходить из Европы. Нужно разобраться со всеми текущими проблемами с Японией, чтобы затем сосредоточиться на западных границах и не бояться удара в спину.\n\nКарты, наблюдатели, радиоперехват и проверка донесений должны складываться в достоверную картину фронта. Работа с информацией помогает командованию выбирать направление удара и скрывать собственный замысел; она не обещает полного исчезновения противника с карты.",
+    "en": "Maps, observers, interception and verified reports must form a reliable picture of the front. Information work helps commanders choose where to strike and conceal their intentions; it does not promise to make enemy counters disappear from the map.",
+    "name_ru": "Примириться с Японией"
+  },
+  "SOV_restoration_and_development": {
+    "ru": "Теперь, когда война закончилась, мы можем вернуться к мирному развитию промышленности и улучшению качества жизни народа.\n\nПосле разрушений прежние планы приходится сверять с уцелевшими людьми, транспортом и оборудованием. Очерёдность ремонта возвращает работоспособность стране раньше, чем восстановится каждый отдельный объект.",
+    "en": "After destruction, old plans must be reconciled with surviving personnel, transport and equipment. Repair priorities restore a functioning country before every individual site has been rebuilt.",
+    "name_ru": "Восстановление и развитие"
+  },
+  "SOV_fourth_five_year_plan": {
+    "ru": "Чтобы полностью устранить последствия войны, потребуется время, но задав нужные цели, мы можем уже сейчас добиться определенного прироста производства.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "[GetFourthFiveYearPlanName]"
+  },
+  "SOV_synthetic_rubber": {
+    "ru": "Настанет день, когда мы больше не сможем полагаться на импорт зарубежной резины. Когда это время придет, мы должны быть готовы удовлетворить свою потребность в резине силами внутреннего производства.\n\nВоенная промышленность и моторизованные части зависят от постоянного потока сырья и горючего. Запасы, переработка и распределение уменьшают уязвимость к перебоям, но требуют заранее выделенных мощностей.",
+    "en": "War industry and motorised forces depend on a constant flow of raw materials and fuel. Stocks, processing and allocation reduce vulnerability to disruption but require capacity to be committed in advance.",
+    "name_ru": "Синтетический каучук"
+  },
+  "SOV_oil_production": {
+    "ru": "Следующий логичный шаг как в нашем промышленном развитии, так и в модернизации армии — повысить моторизацию. Для этого потребуются большие запасы горюче-смазочных материалов. К счастью, у нас есть большие месторождения нефти, которую как раз можно задействовать в моторизации, если мы разовьем необходимую промышленность.\n\nВоенная промышленность и моторизованные части зависят от постоянного потока сырья и горючего. Запасы, переработка и распределение уменьшают уязвимость к перебоям, но требуют заранее выделенных мощностей.",
+    "en": "War industry and motorised forces depend on a constant flow of raw materials and fuel. Stocks, processing and allocation reduce vulnerability to disruption but require capacity to be committed in advance.",
+    "name_ru": "Добыча нефти"
+  },
+  "SOV_found_the_comecon": {
+    "ru": "Война показала, что нам следует наращивать сотрудничество и способствовать экономическому развитию наших друзей и партнеров. Для этого мы создадим организацию, координирующую торговлю и экономическое развитие наших стран.\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Основать СЭВ"
+  },
+  "SOV_the_common_economic_space_initiative": {
+    "ru": "Наращивать экономику проще, имея доступ к новым рынкам для наших товаров и необходимые ресурсы, но обходясь при этом без лишних преград торговле. Нужно создать организацию, которая бы способствовала этому.\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Инициатива об экономической взаимопомощи"
+  },
+  "SOV_found_the_warsaw_pact": {
+    "ru": "По всей Европе дует ветер перемен, и становится всё очевиднее, что нам необходим договор о коллективной безопасности, чтобы противостоять любой агрессии со стороны прогнившего Запада. С этой целью нам следует официально учредить Организацию Варшавского договора — военное дополнение к СЭВ.\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Заключить Варшавский договор"
+  },
+  "SOV_no_time_for_peace": {
+    "ru": "Как бы мы этого ни желали, на долгий мир надежды мало. Новое оружие и технологии сделают войну более разрушительной, чем когда-либо, и мы, к сожалению, должны вкладывать ресурсы, заработанные тяжким трудом, чтобы не отставать от противников.\n\nРуководство требует подчинить оставшиеся возможности страны военной задаче. Чрезвычайные меры ускоряют сосредоточение сил, но не устраняют нехватку людей, оборудования и времени.",
+    "en": "The leadership demands that remaining national resources serve the military objective. Emergency measures accelerate concentration without abolishing shortages of people, equipment and time.",
+    "name_ru": "Нет времени на мир"
+  },
+  "SOV_national_specialists": {
+    "ru": "Наше экономическое развитие должно проводиться в основном теми, кто знаком с нашей страной. Иностранцам понадобится много времени, чтобы овладеть таким знанием, и, что еще хуже, это знание они потом могут увезти с собой.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Национальные специалисты"
+  },
+  "SOV_foreign_experts": {
+    "ru": "Есть немало иностранных экспертов, способных многому научить нас в вопросах улучшения экономики. К счастью, большая их часть — капиталисты, а следовательно, их можно купить.\n\nДоговорённости определяют доступ к поставкам, технологиям и поддержке партнёров. Подготовленная внешнеполитическая служба связывает дипломатические решения с реальными потребностями армии и хозяйства.",
+    "en": "Agreements shape access to supplies, technology and partner support. A prepared foreign service connects diplomatic decisions to the practical needs of the military and economy.",
+    "name_ru": "Иностранные эксперты"
+  },
+  "SOV_the_ussr_academy_of_sciences": {
+    "ru": "Чтобы сохранять конкурентоспособность в области прикладных наук, мы должны находиться также и на острие развития теории. У нас уже есть достаточно развитая Академия наук, но дополнительное финансирование позволит снабдить ее исследовательской инфраструктурой мирового уровня.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "[GetTheUssrAcademyOfSciencesName]"
+  },
+  "SOV_national_academies_of_sciences": {
+    "ru": "Следует поощрить партнерские страны создавать у себя организации, аналогичные нашей Академии наук, чтобы усиливать свой научный потенциал.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "Национальная академия наук"
+  },
+  "SOV_transformation_of_nature": {
+    "ru": "Наше научное сообщество раздвигает границы возможного, и нам становятся доступны самые масштабные и влиятельные проекты.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Преобразование природы"
+  },
+  "SOV_transformation_of_nature_alt": {
+    "ru": "$SOV_transformation_of_nature_desc$\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "$SOV_transformation_of_nature$"
+  },
+  "SOV_found_the_jet_institute": {
+    "ru": "У современных поршневых двигателей есть свои ограничения. Самолеты будущего должны будут полагаться на другие технологии. Мы должны основать институт по изучению реактивных двигателей, чтобы нас не опередили иностранные производители.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Разрабатывать реактивную авиацию"
+  },
+  "SOV_increase_aircraft_production": {
+    "ru": "В последнее время мы делаем особенно сильный упор на безопасность, что начало отрицательно влиять на объем производства новых самолетов. Можно сэкономить значительное количество ресурсов, отказавшись от самых избыточных систем безопасности и сохранив при этом надежность и эффективность наших ВВС.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Увеличить производство самолетов"
+  },
+  "SOV_women_in_aviation": {
+    "ru": "В прошлом отсталые люди объявляли авиацию исключительно мужским делом, но женщины всего мира не стали поддаваться на провокацию и доказали, что могут летать ничуть не хуже своих коллег-мужчин. Нужно поощрять наших женщин пробовать себя в авиации, чтобы затем выбрать из них наиболее способных пилотов.\n\nЛётчики должны освоить не только самолёт, но и взаимодействие в составе части. Систематическая подготовка связывает индивидуальное мастерство с общим замыслом воздушной операции.",
+    "en": "Pilots must master their aircraft and cooperation within a unit. Systematic training connects individual skill to the broader plan of an air operation.",
+    "name_ru": "Женщины в авиации"
+  },
+  "SOV_raskovas_aviation_group": {
+    "ru": "[GetRaskovasAviationGroupDesc]\n\nЛётчики должны освоить не только самолёт, но и взаимодействие в составе части. Систематическая подготовка связывает индивидуальное мастерство с общим замыслом воздушной операции.",
+    "en": "Pilots must master their aircraft and cooperation within a unit. Systematic training connects individual skill to the broader plan of an air operation.",
+    "name_ru": "[GetRaskovasAviationGroupName]"
+  },
+  "SOV_intensify_pilot_training_program": {
+    "ru": "Чтобы сохранять конкурентоспособность, наши ВВС должны сражаться и летать в любых обстоятельствах. Лучший способ достичь этого — готовить наших пилотов по наивысшим стандартам. То, чего нам недостает в численности или технике, мы будем восполнять мастерством.\n\nЛётчики должны освоить не только самолёт, но и взаимодействие в составе части. Систематическая подготовка связывает индивидуальное мастерство с общим замыслом воздушной операции.",
+    "en": "Pilots must master their aircraft and cooperation within a unit. Systematic training connects individual skill to the broader plan of an air operation.",
+    "name_ru": "Усилить программу подготовки летчиков"
+  },
+  "SOV_expand_aviation_institutes": {
+    "ru": "Главная преграда к увеличению размера наших ВВС — допустимая численность обучаемых пилотов. Расширив наши летные школы, мы заложим основы создания более масштабных и подготовленных ВВС.\n\nЛётчики должны освоить не только самолёт, но и взаимодействие в составе части. Систематическая подготовка связывает индивидуальное мастерство с общим замыслом воздушной операции.",
+    "en": "Pilots must master their aircraft and cooperation within a unit. Systematic training connects individual skill to the broader plan of an air operation.",
+    "name_ru": "Расширить институт авиации"
+  },
+  "SOV_the_modern_war_in_the_skies": {
+    "ru": "Со времен бипланов, сражающихся один на один над окопами, боевая авиация прошла большой путь. Сегодня она по природе своей индустриальна и должна поддерживать рабочий темп, чтобы круглые сутки не ослаблять давление на противника. Мы должны учитывать этот факт и действовать соответственно.\n\nАвиачасть зависит от лётной подготовки, наземных служб и работы штабов не меньше, чем от нового самолёта. Общие процедуры делают вылеты управляемой системой, а накопленный опыт — основой дальнейшего развития.",
+    "en": "An air unit depends on training, ground crews and staff work as much as on a new aircraft. Common procedures make sorties a coordinated system and accumulated experience a basis for development.",
+    "name_ru": "Современная война в небе"
+  },
+  "SOV_reinforce_northern_naval_bases": {
+    "ru": "Несмотря на то что Мурманск расположен к северу от Полярного круга, это наш единственный порт, не замерзающий круглый год и имеющий доступ к открытому океану. Нужно развивать его дальше, чтобы получить доступ ко всему миру.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Укрепить северные морские базы"
+  },
+  "SOV_reinforce_southern_naval_bases": {
+    "ru": "На первый взгляд Черное море может показаться второстепенным театром военных действий, но если мы утратим контроль над ним, то откроем все наши южные территории для вторжения противника, как случилось в Крымской войне. Такого повторяться не должно. Нам следует укрепить морские базы в этом регионе.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Укрепить южные морские базы"
+  },
+  "SOV_reinforce_eastern_naval_bases": {
+    "ru": "Даже после унижения 1905 года японцы не перестали строить планы по захвату нашей территории. Мы должны быть готовы к войне с ними, а это значит, что требуется усилить наши морские базы в регионе.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Укрепить восточные морские базы"
+  },
+  "SOV_expand_shipbuilding_plants": {
+    "ru": "Наша география вынуждает нас строить верфи по всей стране, чтобы поддерживать разные флоты. Следовательно, наращивать строительство кораблей нужно тоже сразу везде.\n\nКорабль проходит через длинную цепь стапелей, механизмов и оборудования. Согласованные заказы и оснастка верфей уменьшают задержки между закладкой и передачей боеспособного корабля флоту.",
+    "en": "A ship passes through a long chain of slips, machinery and fitting-out work. Coordinated orders and yard tooling reduce delays between laying down a hull and delivering a combat-ready ship.",
+    "name_ru": "Расширить судостроительные заводы"
+  },
+  "SOV_merge_naval_plants": {
+    "ru": "Проектировка и строительство кораблей — долгий процесс, а избыточная конкуренция снижает его эффективность. Надо объединить наши конструкторские бюро, чтобы избавиться от напрасной траты усилий.\n\nКорабль проходит через длинную цепь стапелей, механизмов и оборудования. Согласованные заказы и оснастка верфей уменьшают задержки между закладкой и передачей боеспособного корабля флоту.",
+    "en": "A ship passes through a long chain of slips, machinery and fitting-out work. Coordinated orders and yard tooling reduce delays between laying down a hull and delivering a combat-ready ship.",
+    "name_ru": "Объединить судостроительные заводы"
+  },
+  "SOV_submarine_warfare": {
+    "ru": "Подводные лодки обеспечивают значительное преимущество в морских сражениях. Хорошо спроектированная современная подлодка практически незаметна до тех пор, пока не выпустит торпеды, нейтрализовав крупный корабль, многократно превосходящий ее размерами и стоимостью. Нужно сосредоточиться на строительстве подлодок и сделать их основной наступательной силой нашего флота.\n\nПодводные лодки и рейдеры ищут уязвимые коммуникации противника, избегая невыгодного генерального боя. Их результат зависит от разведки маршрутов, совместных действий и своевременного возвращения на базу.",
+    "en": "Submarines and raiders seek vulnerable enemy communications while avoiding an unfavourable fleet battle. Their effectiveness depends on route intelligence, cooperation and timely returns to base.",
+    "name_ru": "Стратегия подводного боя"
+  },
+  "SOV_offensive_maritime_strategy": {
+    "ru": "Мы не можем позволить себе сидеть и ждать, когда враг придет к нам. Мы должны взять инициативу в свои руки и атаковать противника везде, где только сумеем.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Наступательная морская стратегия"
+  },
+  "SOV_an_oceangoing_navy": {
+    "ru": "$SOV_ocean_going_navy_desc$\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Океанский флот"
+  },
+  "SOV_mine_warfare": {
+    "ru": "Пытаться защитить все наше побережье кораблями неэкономично. Поставив минные заграждения в стратегических местах, мы сможем отвадить или хотя бы повредить любой вражеский флот, пытающийся подойти к нашим берегам.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Минная война"
+  },
+  "SOV_long_range_raiders": {
+    "ru": "Из-за большой удаленности наших морских баз от главных маршрутов поставок нашим подлодкам будет трудно дойти до богатых «охотничьих угодий». Надо разработать подводные лодки с увеличенным радиусом действия, чтобы наносить противнику чувствительные удары.\n\nПодводные лодки и рейдеры ищут уязвимые коммуникации противника, избегая невыгодного генерального боя. Их результат зависит от разведки маршрутов, совместных действий и своевременного возвращения на базу.",
+    "en": "Submarines and raiders seek vulnerable enemy communications while avoiding an unfavourable fleet battle. Their effectiveness depends on route intelligence, cooperation and timely returns to base.",
+    "name_ru": "Рейдеры дальнего действия"
+  },
+  "SOV_advanced_maneuvers": {
+    "ru": "Нет смысла иметь большие и современные корабли, если команда не умеет с ними обращаться. Нужно проводить регулярные крупномасштабные учения, чтобы тренировать наших матросов и офицеров вести современную морскую войну.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Усовершенствованные маневры"
+  },
+  "SOV_expand_the_morskaya_aviatsiya": {
+    "ru": "Самолеты уже значительно изменили природу наземных боевых действий. В будущем они будут представлять значительную угрозу даже для самых современных кораблей. Нам нужно обзавестись современной морской авиацией, чтобы защищать свой флот.\n\nФлот требует общего замысла, подготовленных баз и согласованных действий соединений. Штабная работа превращает отдельные корабли в силу, способную решать задачи в выбранном морском районе.",
+    "en": "A navy requires a shared plan, prepared bases and coordinated formations. Staff work turns individual ships into a force capable of pursuing objectives in a chosen sea area.",
+    "name_ru": "Расширить морскую авиацию"
+  },
+  "SOV_naval_infantry": {
+    "ru": "[GetNavalInfantryDesc]\n\nМассовая армия держится на подготовленных людях, младших командирах и слаженных небольших подразделениях. Приоритет пехоты делает устойчивость строя самостоятельной ценностью, а не побочным результатом количества вооружения.",
+    "en": "A mass army depends on trained personnel, junior leaders and cohesive small units. Prioritising infantry treats the resilience of formations as a goal in its own right rather than a by-product of weapon numbers.",
+    "name_ru": "Морская пехота"
+  },
+  "SOV_pc_of_mechanical_engineering": {
+    "ru": "Нашей промышленности удается производить все более большие и сложные станки и другую тяжелую технику. Настало время образовать отдельную правительственную структуру для координации этих проектов.\n\nДвигатель должен выдавать мощность без постоянных остановок на обслуживание. Настройка подачи топлива и охлаждения определяет компромисс между форсировкой, запасом хода и надёжностью в ежедневной эксплуатации.",
+    "en": "An engine must deliver power without constant maintenance stops. Fuel delivery and cooling determine the compromise between peak performance, range and reliability in daily service.",
+    "name_ru": "[GetPcOfMechanicalEngineeringName]"
+  },
+  "SOV_superior_war_machines": {
+    "ru": "За последнее десятилетие танки и бронетехника значительно развились. Обладая большой индустрией, способной производить и снабжать их, мы можем создавать превосходные боевые машины и массово задействовать их в битвах с врагом.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Превосходные военные машины"
+  },
+  "SOV_the_means_to_wage_war": {
+    "ru": "Самолеты, пушки и танки часто привлекают к себе больше всего внимания и лучше всего выглядят на парадах, но обычного солдата куда сильнее заботит качество его винтовки и удобство сапог. Мы должны признать, что такие факторы не менее важны для ведения войн, чем любой самолет-истребитель или тяжелая гаубица.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Средства ведения войны"
+  },
+  "SOV_soviet_artillery": {
+    "ru": "Сегодняшние войны выигрываются точным и точечным ведением огня. Мы сосредоточим наши усилия не только на том, чтобы улучшить производимые орудия, но и на том, чтобы использовать их как можно более эффективно.\n\nРазведанные цели, согласованные таблицы огня и своевременный подвоз снарядов превращают отдельные орудия в общую систему поддержки. Выигрыш возникает из управления огнём, а не только из числа стволов.",
+    "en": "Located targets, coordinated fire plans and timely ammunition deliveries turn individual guns into a shared support system. The gain comes from fire control as well as the number of barrels.",
+    "name_ru": "[ROOT.GetAdjective]ая артиллерия"
+  },
+  "SOV_pc_of_mortar_armament": {
+    "ru": "Скромные минометы быстро становятся в наших войсках основным оружием поддержки непрямым огнем. Мы должны стремиться производить как можно больше минометов всех размеров и образовать правительственный орган, который будет заниматься исключительно этим.\n\nРазведанные цели, согласованные таблицы огня и своевременный подвоз снарядов превращают отдельные орудия в общую систему поддержки. Выигрыш возникает из управления огнём, а не только из числа стволов.",
+    "en": "Located targets, coordinated fire plans and timely ammunition deliveries turn individual guns into a shared support system. The gain comes from fire control as well as the number of barrels.",
+    "name_ru": "[GetPcOfMortarArmamentName]"
+  },
+  "SOV_development_of_tankograd": {
+    "ru": "Наша страна занимает огромную площадь, и перевозить запчасти с одного завода на другой в ней нерентабельно. Вместо этого нужно реализовать вертикальную интеграцию наших танковых заводов — с одного конца поступает сталь, с другого выходят готовые танки.\n\nКрупное хозяйственное решение связывает сырьё, энергетику, специалистов и готовую продукцию. Согласованное развитие этой цепочки делает новые мощности полезными для страны, а не только заметными в отчёте о строительстве.",
+    "en": "A major economic programme links raw materials, power, specialists and finished output. Coordinating this chain makes new capacity useful to the country rather than merely visible in construction reports.",
+    "name_ru": "Развитие танкограда"
+  },
+  "SOV_merge_tank_and_materiel_plants": {
+    "ru": "Танки и артиллерия, вероятно, лучше всего приспособлены для массового производства с его эффектом масштаба. Нужно начать объединять танковые заводы и заводы МТО, чтобы воспользоваться этим.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Объединить танковые заводы и заводы маттехобеспечения"
+  },
+  "SOV_leningrad_polytechnical_institute": {
+    "ru": "[195.GetName] политехнический институт, наша главная инженерная школа, уже давно обеспечивает страну инженерами и конструкторами. Нужно расширить его, чтобы у нас всегда были лучшие кадры на новые места в растущей промышленности.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "[195.GetName] политехнический институт"
+  },
+  "SOV_soviet_atomic_bomb_project": {
+    "ru": "Мы знаем, что ученые других стран усердно трудятся над разработкой методов по обращению фундаментальных сил вселенной в новый вид оружия. Мы отстаем от них, но можем использовать их наработки, чтобы продвинуться самим и не утратить паритет вооружений.\n\nИспытания и обмен опытом связывают научную разработку с требованиями войск. Согласованная работа учебных и исследовательских учреждений помогает превращать отдельные достижения в применимые решения.",
+    "en": "Trials and exchanges of experience connect scientific development to military requirements. Coordinated educational and research institutions turn individual advances into usable solutions.",
+    "name_ru": "[ROOT.GetAdjective]ий проект атомной бомбы"
+  },
+  "SOV_move_industry_to_the_urals": {
+    "ru": "Война пришла к нам, и родина теперь в опасности. Хоть наши войска и будут драться до последнего патрона, не отдавая врагу ни пяди земли, этого, учитывая всю мощь противника, может оказаться недостаточно. Нужно эвакуировать заводы в безопасное место, пока враги не захватили их.\n\nРасширение выпуска требует не только новых зданий, но и специалистов, оборудования и согласованных заказов. Производственная программа превращает разрозненные мощности в основу длительного снабжения армии.",
+    "en": "Expanding output requires skilled workers, equipment and coordinated orders as well as new buildings. An industrial programme turns scattered capacity into a basis for sustained army supply.",
+    "name_ru": "Эвакуировать промышленность на Урал"
+  },
+  "SOV_the_road_of_life": {
+    "ru": "Теперь, когда несколько наших городов находятся в блокаде, мы должны любой ценой доставить туда войска, чтобы поддержать эти города и помочь им выстоять.\n\nПодвижность начинается с подготовленного маршрута, исправной машины и согласованного движения колонн. Порядок перевозок и обслуживания помогает соединениям использовать скорость вне идеальных условий полигона.",
+    "en": "Mobility begins with a prepared route, a serviceable vehicle and coordinated columns. Transport and servicing arrangements help formations use their speed beyond ideal proving-ground conditions.",
+    "name_ru": "Дорога жизни"
+  },
+  "SOV_impregnable_forts": {
+    "ru": "[ROOT.GetAdjective]ое инженерное мастерство сейчас позволяет создавать поистине неприступные укрепления, способные выстоять даже при сильнейшей бомбардировке и практически неуязвимые при штурме. При большом количестве боезапаса и припасов такие укрепления могут, если потребуется, отражать вражеские атаки годами.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Неприступные укрепления"
+  },
+  "SOV_protect_the_white_sea_baltic_canal": {
+    "ru": "Канал между Балтийским и Белым морями — чудо современной инженерной мысли. Нельзя допустить, чтобы он попал в руки врага.\n\nВодная преграда задерживает наступление, пока разведка, переправа и огневая поддержка не работают по одному плану. Подготовка позволяет превратить рискованный переход в согласованную общевойсковую задачу.",
+    "en": "A water obstacle delays an advance until reconnaissance, crossing equipment and fire support follow one plan. Preparation turns a dangerous crossing into a coordinated combined-arms task.",
+    "name_ru": "Защита Беломорско-Балтийского канала"
+  },
+  "SOV_far_east_fortification": {
+    "ru": "Еще со времен войны 1905 г. с Японией мы внимательно следим за этим регионом. Не секрет, что японская армия смотрит на наши дальневосточные владения с беззастенчивой жадностью. Мы должны подготовиться к конфронтации в этом регионе и предпринять шаги по замедлению вражеских атак — это даст нам время доставить туда войска с запада России.\n\nУкрепление полезно, когда выбраны секторы огня, обеспечены укрытия и подготовлены подходы резервов. Стандартизация инженерных работ ускоряет создание позиций, но их ценность всё равно зависит от местности и войск.",
+    "en": "Fortifications work when fields of fire, shelters and reserve approaches are properly chosen. Standardised engineering accelerates construction, while their value still depends on terrain and troops.",
+    "name_ru": "Укрепление Дальнего Востока"
+  },
+  "SOV_restore_cossack_units": {
+    "ru": "В час нужды родина готова принять любого, кто хочет защищать ее. Мы рады всем, кто готов взять в руки оружие, и с радостью это оружие предоставим.\n\nМассовая армия держится на подготовленных людях, младших командирах и слаженных небольших подразделениях. Приоритет пехоты делает устойчивость строя самостоятельной ценностью, а не побочным результатом количества вооружения.",
+    "en": "A mass army depends on trained personnel, junior leaders and cohesive small units. Prioritising infantry treats the resilience of formations as a goal in its own right rather than a by-product of weapon numbers.",
+    "name_ru": "Восстановить казацкие отряды"
+  },
+  "SOV_penal_battalions": {
+    "ru": "При отступлении многие способные в целом солдаты опозорились, побежав еще до того, как их позиции были захвачены, или еще как-то проявив недостойное нашей армии поведение. Просто арестовать или казнить их в такой ситуации значило бы лишить себя опытных бойцов. Надо образовать специальные отряды, где такие люди могли бы искупить свою вину в бою.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Штрафные батальоны"
+  },
+  "SOV_organization_of_the_partisans": {
+    "ru": "Солдаты на оккупированных территориях, оказавшиеся в тылу врага, предпочли унизительному плену дальнейшую борьбу. Вместе с рабочими и крестьянами этих мест они продолжили сражаться с захватчиками. Мы должны поддерживать их, чтобы они еще эффективнее сдерживали противника.\n\nНовые условия требуют соединений с ясной задачей и подходящим обеспечением. Организация специальных сил и использование доступного имущества расширяют выбор командования, но требуют отдельной подготовки.",
+    "en": "New conditions require formations with a clear mission and suitable support. Special forces and the use of available equipment broaden the command’s options but require dedicated preparation.",
+    "name_ru": "Организация партизанских отрядов"
+  },
+  "SOV_smersh": {
+    "ru": "Мы должны ясно донести до всех граждан, что шпионы и вражеские агенты сейчас повсюду и любая досужая болтовня может выдать им ценную информацию, которую враг обратит себе на пользу.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "СМЕРШ"
+  },
+  "SOV_barrier_troops": {
+    "ru": "В бою часто царит хаос, и неудивительно, что иногда солдаты теряют связь с командованием. Нужно ввести специальные отряды, которые будут располагаться за линией фронта, собирать тех, кто потерялся, и возвращать их на фронт — а также арестовывать тех, кто предал товарищей, пытаясь бежать от воинского долга.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Заградительные отряды"
+  },
+  "SOV_experts_in_camouflage": {
+    "ru": "Чтобы достичь элемента неожиданности и поддерживать его, мы должны быть абсолютно уверены, что враг не обнаружит позиции или передвижения наших войск, пока не станет слишком поздно. Каждый солдат должен быть обучен искусству маскировки.\n\nКарты, наблюдатели, радиоперехват и проверка донесений должны складываться в достоверную картину фронта. Работа с информацией помогает командованию выбирать направление удара и скрывать собственный замысел; она не обещает полного исчезновения противника с карты.",
+    "en": "Maps, observers, interception and verified reports must form a reliable picture of the front. Information work helps commanders choose where to strike and conceal their intentions; it does not promise to make enemy counters disappear from the map.",
+    "name_ru": "Эксперты маскировки"
+  },
+  "SOV_keep_commissars_organization": {
+    "ru": "Даже в нашей новой организации есть потребность в людях, которые проследят, чтобы армия оставалась безоговорочно лояльной правительству. Если солдаты потеряют в него веру, мы проиграем эту войну, причем быстро.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Сохранить комиссарскую организацию"
+  },
+  "SOV_adjoined_battle_priests": {
+    "ru": "Мощь и влияние церкви в нашей стране сейчас растет, и, возможно, пришло время допустить ее в военные дела. Армейские священники сделают все, чтобы солдаты знали, что Бог на нашей стороне, что в идеале повысит боевой дух и заставит простых солдат усерднее сражаться за свою страну.\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Боевые священники"
+  },
+  "SOV_swap_to_political_advisors": {
+    "ru": "Наша война — не просто спор двух наций за ресурсы, это состязание политических систем. Хоть мы и не можем допустить, чтобы политические вопросы диктовали боевые решения, нам все равно нужно проследить, чтобы эти вопросы принимались во внимание.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Военные политические советники"
+  },
+  "SOV_the_glory_of_the_red_army": {
+    "ru": "Мы успешно выдержали наступление врага. Теперь пора нам самим перейти в наступление и гнать врага туда, откуда он пришел!\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "Слава [GetSovietArmyAdjectiveBasedOnIdeology]ой армии"
+  },
+  "SOV_the_glory_of_the_red_army_alt": {
+    "ru": "$SOV_the_glory_of_the_red_army_desc$\n\nСила армии зависит от того, как штабы соединяют подготовку, резервы и взаимодействие частей в общий план. Наставления и учения закрепляют опыт, чтобы следующий бой меньше зависел от случайного удачного решения.",
+    "en": "An army’s strength depends on how its staffs combine training, reserves and cooperation into a common plan. Manuals and exercises preserve experience so the next battle depends less on a fortunate improvisation.",
+    "name_ru": "$SOV_the_glory_of_the_red_army$"
+  },
+  "SOV_nkvd_primacy": {
+    "ru": "Пока мы не будем знать точно, что со всеми врагам государства покончено, мы должны и дальше полагаться на НКВД в деле защиты революции.\n\nДисциплина, охрана объектов и ясная ответственность должны поддерживать управляемость армии и тыла. Усиление контроля отнимает людей и ресурсы у других задач; его назначение — уменьшить уязвимость военной системы.",
+    "en": "Discipline, site security and clear responsibility support control over the army and its rear. Stronger supervision draws personnel and resources away from other tasks; its purpose is to reduce vulnerabilities in the military system.",
+    "name_ru": "Главенство НКВД"
+  },
+  "SOV_rebuild_the_nation": {
+    "ru": "Страну, опустошенную войной, теперь надо восстанавливать. Пропагандистскими кампаниями мы добьемся того, что каждые мужчина, женщина и ребенок будут вносить свой вклад в дело восстановления.\n\nПосле разрушений прежние планы приходится сверять с уцелевшими людьми, транспортом и оборудованием. Очерёдность ремонта возвращает работоспособность стране раньше, чем восстановится каждый отдельный объект.",
+    "en": "After destruction, old plans must be reconciled with surviving personnel, transport and equipment. Repair priorities restore a functioning country before every individual site has been rebuilt.",
+    "name_ru": "Возродить нацию"
+  },
+  "SOV_the_komsomol": {
+    "ru": "Мы не строим социализм для сегодняшних взрослых, мы строим его для детей и еще не рожденных поколений. Их нужно учить, как улучшать и развивать построенное нами, чтобы они могли завершить то, что начали мы. Нужно организовать особую молодежную ассоциацию, которая будет не только давать знания, но и учить быть хорошими коммунистами.\n\nМассовая армия держится на подготовленных людях, младших командирах и слаженных небольших подразделениях. Приоритет пехоты делает устойчивость строя самостоятельной ценностью, а не побочным результатом количества вооружения.",
+    "en": "A mass army depends on trained personnel, junior leaders and cohesive small units. Prioritising infantry treats the resilience of formations as a goal in its own right rather than a by-product of weapon numbers.",
+    "name_ru": "Комсомол"
+  },
+  "SOV_the_path_of_marxism_leninism": {
+    "ru": "Непогрешимое учение Маркса, Энгельса и Ленина вывело нашу страну из глубочайшей отсталости к технологическому и индустриальному равенству. Было бы глубочайшей ошибкой теперь менять курс. Нерушимый молот рабочего освободительного движения продолжает свой путь!\n\nПересекающиеся распоряжения и конкуренция ведомств расходуют время и материалы. Разграничение ответственности помогает направить ограниченные возможности государства на согласованные задачи.",
+    "en": "Overlapping orders and competing departments waste time and materials. Clear responsibilities direct the state’s limited capacity towards agreed objectives.",
+    "name_ru": "Путь марксизма-ленинизма"
+  },
+  "SOV_they_will_know_fear": {
+    "ru": "Наши враги научились бояться Красной армии и советского народа. Мы выдержали натиск противника, и теперь пришло время нанести ответный удар. Надо разработать новые военные машины, способные прорвать даже самую прочную оборону противника. Такие военные машины должны вселять страх в сердца врагов одним своим названием...\n\nПересекающиеся распоряжения и конкуренция ведомств расходуют время и материалы. Разграничение ответственности помогает направить ограниченные возможности государства на согласованные задачи.",
+    "en": "Overlapping orders and competing departments waste time and materials. Clear responsibilities direct the state’s limited capacity towards agreed objectives.",
+    "name_ru": "Они познают страх"
+  }
+}

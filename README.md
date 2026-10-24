@@ -1,3 +1,15 @@
+# Historical Reality — 2.0.0
+
+[Скачать explained.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-explained-content/dist/explained.zip)
+
+Большое обновление описаний: национальные духи, фокусы, исследования и модули, события и решения получили объяснение контекста и назначения. Условия и численные эффекты сохранены; устаревшее объяснение сложения танковых специализаций исправлено.
+
+[Все изменения и установка](overhaul/docs/DESCRIPTIONS_200_RU.md) · [Энциклопедия описаний](overhaul/docs/ENCYCLOPEDIA_RU.md)
+
+Полный мод для HOI4 1.19.3 со всеми DLC. Замените старую папку и перезапустите игру; новая партия не нужна.
+
+## Предыдущие версии
+
 # Historical Reality — 1.9.3
 
 [Скачать tanks.zip](https://github.com/ivanlag2825/1111/raw/refs/heads/mod-ww2-loading-art/dist/tanks.zip)

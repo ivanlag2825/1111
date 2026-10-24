@@ -50,3 +50,5 @@ dist/*
 !dist/cities.zip
 
 !dist/tanks.zip
+
+!dist/explained.zip
